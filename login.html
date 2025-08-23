@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Travel Login Page</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1500&q=80") no-repeat center center/cover;
+    }
+
+    .container {
+      display: flex;
+      width: 900px;
+      height: 500px;
+      border-radius: 15px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(8px);
+    }
+
+    .left {
+      flex: 1;
+      color: black;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      font-family: poppins;
+      font-family: monospace;
+    }
+
+    .left h1 {
+      font-size: 40px;
+      margin-bottom: 20px;
+    }
+
+    .left p {
+      margin-top: 10px;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .right {
+      flex: 1;
+      background: rgba(255, 255, 255, 0.7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .form-box {
+      width: 80%;
+      max-width: 300px;
+    }
+
+    .form-box h2 {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .form-box input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 8px;
+      outline: none;
+    }
+
+    .form-box a {
+      font-size: 12px;
+      color: #333;
+      text-decoration: none;
+      float: right;
+      margin-bottom: 15px;
+    }
+
+    .form-box button {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      background: #007bff;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      margin-bottom: 20px;
+    }
+
+    .form-box .google {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 10px;
+      cursor: pointer;
+      font-size: 14px;
+      background: white;
+    }
+
+    .form-box .google img {
+      width: 20px;
+      margin-right: 10px;
+    }
+
+    .form-box .signup {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 13px;
+    }
+
+    .form-box .signup a {
+      color: #007bff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Left Side -->
+    <div class="left">
+      <h2>TRAVEL</h2>
+      <h1>EXPLORE<br> HORIZONS</h1>
+      <p>Where Your Dream Destinations Become Reality.</p>
+      <p>Embark on a journey where every corner of the world is within your reach.</p>
+    </div>
+
+    <!-- Right Side -->
+    <div class="right">
+      <div class="form-box">
+        <input type="email" placeholder="Enter your email">
+        <input type="password" placeholder="Password">
+        <a href="#">Forgot password?</a>
+        <button>SIGN IN</button>
+        <div class="google">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google">
+          Sign in with Google
+        </div>
+        <div class="signup">
+          Are you new? <a href="#">Create an Account</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
