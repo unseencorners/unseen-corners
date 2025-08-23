@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unseen Corners</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+    body { line-height: 1.6; background: #fff; color: #333; }
+
+    /* Navbar */
+    header {
+      background: #1b2735;
+      color: #fff;
+      padding: 15px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 { color: #f4c542; font-size: 22px; font-weight: bold; }
+    nav a {
+      color: #fff; text-decoration: none; margin-left: 20px; font-size: 16px;
+    }
+    nav a:hover { text-decoration: underline; }
+    .nav-btn {
+      background: #f4c542; color: #000; font-weight: bold;
+      padding: 8px 16px; border: none; border-radius: 5px;
+      margin-left: 20px; cursor: pointer;
+    }
+    .nav-btn:hover { background: #e3b72c; }
+    .lang-select {
+      margin-left: 20px; padding: 6px 10px; border-radius: 5px;
+      border: none; font-size: 14px; cursor: pointer;
+    }
+   
+    /* Hero */
+    .hero {
+      background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e') no-repeat center center/cover;
+      color: #fff; text-align: left; padding: 100px 50px; position: relative;
+    }
+    .hero h2 { font-size: 42px; margin-bottom: 15px; }
+    .hero p { font-size: 18px; margin-bottom: 20px; max-width: 500px; }
+    .btn {
+      background: #f4c542; color: #000; padding: 12px 25px; font-size: 16px;
+      font-weight: bold; border: none; border-radius: 5px;
+      cursor: pointer; display: inline-flex; align-items: center;
+    }
+    .btn:hover { background: #e3b72c; }
+    .btn span { margin-left: 8px; }
+
+    /* Search bar */
+    .search-bar { margin-top: 25px; display: flex; max-width: 500px; }
+    .search-bar input {
+      flex: 1; padding: 12px; border: none; border-radius: 5px 0 0 5px; font-size: 16px;
+    }
+    .search-bar button {
+      padding: 12px 20px; border: none; background: #f4c542;
+      color: #000; font-weight: bold; font-size: 16px;
+      border-radius: 0 5px 5px 0; cursor: pointer;
+    }
+    .search-bar button:hover { background: #e3b72c; }
+
+    /* Packages */
+    .packages { padding: 50px; text-align: center; }
+    .packages h2 { font-size: 28px; margin-bottom: 30px; }
+    .package-list {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;
+    }
+    .card {
+      background: #fff; border-radius: 10px; overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: transform 0.2s ease;
+    }
+    .card:hover { transform: scale(1.05); }
+    .card img { width: 100%; height: 180px; object-fit: cover; }
+    .card-body { padding: 15px; text-align: left; }
+    .card-body h3 { font-size: 20px; margin-bottom: 8px; }
+    .card-body p { font-size: 15px; color: #555; }
+     footer { text-align:center; padding: 50px; color: #789; background: #f3f3f8; border-top: 1px solid #ddd; }
+     
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header>
+    <h1 id="site-title">Unseen Corners</h1>
+    <nav>
+      <a href="Home.html" id="nav-home"><b>Home</b></a>
+      <a href="about.html" id="nav-about"><b>About</b></a>
+      <a href="contactUN.html" id="nav-contact"><b>Contact</b></a>
+      <a href="https://chatgpt.com/" id="nav-chatBot"><b>Chat Bot</b></a>
+      <button class="nav-btn" id="book-btn"><b>Book Now</b></button>
+      <button class="nav-btn" onclick="window.location.href='login.html'"><b>Login</b></button>
+      
+      <!-- Language Selector -->
+
+      <select class="lang-select" id="language-select" onchange="changeLanguage()">
+        <option value="en"><b>English</b></option>
+        <option value="hi"><b>हिन्दी</b></option>
+        <option value="te"><b>తెలుగు</b></option>
+      </select>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h2 id="hero-title">Discover Hidden Destinations</h2>
+    <p id="hero-desc">Explore breathtaking places around the world with our curated travel packages.</p>
+    <button class="btn" id="explore-btn" onclick="">Explore Now <span>🌍</span></button>
+    <div class="search-bar">
+      <input type="text" placeholder="Search destinations...">
+      <button id="search-btn">Search 🔍</button>
+    </div>
+  </section>
+
+  <!-- Packages Section -->
+  <section class="packages">
+    <h2 id="packages-title">Popular Packages</h2>
+    <div class="package-list">
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" alt="Goa Beaches">
+        <div class="card-body">
+          <h3 id="pkg1-title">Goa Beaches</h3>
+          <p id="pkg1-price">3 Nights | ₹15,000</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://cdn.britannica.com/05/58605-050-86F58113/Annapurna-massif-village-Nepal.jpg" alt="Himalayan Trek">
+        <div class="card-body">
+          <h3 id="pkg2-title">Himalayan Trek</h3>
+          <p id="pkg2-price">5 Nights | ₹25,000</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://res.cloudinary.com/jerrick/image/upload/c_scale,f_jpg,q_auto/64ca35310384d0001dffee86.jpg" alt="Jaipur Heritage">
+        <div class="card-body">
+          <h3 id="pkg3-title">Jaipur Heritage</h3>
+          <p id="pkg3-price">2 Nights | ₹10,000</p>
+        </div>
+      </div>
+    </div>
+    <footer>
+     <div style="text-align:center;max-width:1200px;">
+          <h3>Our Office</h3>
+          <p>📍Rajamandry, Ap, India</p>
+          <p>📞 +91 7207252439</p>
+          <p>✉ hello@unseencorners.com</p>
+
+          <h3 style="margin-top:20px">Find Us</h3>
+          <div style="background:#ddd;height:200px;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#666">
+            Google Map Placeholder
+          </div>
+    </div>
+    &copy; 2025 Unseen Corners| connect: info@Unseencorners.com | All Rights reserved.
+  </footer>
+  </section>
+
+  <script>
+    const translations = {
+      en: {
+        siteTitle: "Unseen Corners",
+        navHome: "Home",
+        navAbout: "About",
+        navContact: "Contact",
+        heroTitle: "Discover Hidden Destinations",
+        heroDesc: "Explore breathtaking places around the our Nation with our curated travel packages.",
+        bookBtn: "Book Now",
+        exploreBtn: "Explore Now 🌍",
+        searchBtn: "Search 🔍",
+        packagesTitle: "Popular Packages",
+        pkg1: { title: "Goa Beaches", price: "3 Nights | ₹15,000" },
+        pkg2: { title: "Himalayan Trek", price: "5 Nights | ₹25,000" },
+        pkg3: { title: "Jaipur Heritage", price: "2 Nights | ₹10,000" }
+      },
+      hi: {
+        siteTitle: "अनसीन कॉर्नर्स",
+        navHome: "होम",
+        navAbout: "के बारे में",
+        navContact: "संपर्क",
+        heroTitle: "छिपे हुए गंतव्यों की खोज करें",
+        heroDesc: "हमारे चुनिंदा यात्रा पैकेजों के साथ देश भर के लुभावने स्थानों का अन्वेषण करें|",
+        bookBtn: "अभी बुक करें",
+        exploreBtn: "अब खोजें 🌍",
+        searchBtn: "खोजें 🔍",
+        packagesTitle: "लोकप्रिय पैकेज",
+        pkg1: { title: "गोवा बीच", price: "3 रातें | ₹15,000" },
+        pkg2: { title: "हिमालय ट्रेक", price: "5 रातें | ₹25,000" },
+        pkg3: { title: "जयपुर हेरिटेज", price: "2 रातें | ₹10,000" }
+      },
+      te: {
+        siteTitle: "అన్సీన్ కార్నర్స్",
+        navHome: "హోమ్",
+        navAbout: "గురించి",
+        navContact: "సంప్రదించండి",
+        heroTitle: "దాచిన గమ్యస్థానాలను కనుగొనండి",
+        heroDesc: "మా క్యూరేటెడ్ ట్రావెల్ ప్యాకేజీలతో మన దేశంలోని ఉత్కంఠభరితమైన ప్రదేశాలను అన్వేషించండి..",
+        bookBtn: "ఇప్పుడే బుక్ చేయండి",
+        exploreBtn: "ఇప్పుడు అన్వేషించండి 🌍",
+        searchBtn: "శోధించండి 🔍",
+        packagesTitle: "ప్రముఖ ప్యాకేజీలు",
+        pkg1: { title: "గోవా బీచ్‌లు", price: "3 రాత్రులు | ₹15,000" },
+        pkg2: { title: "హిమాలయన్ ట్రెక్", price: "5 రాత్రులు | ₹25,000" },
+        pkg3: { title: "జైపూర్ హెరిటేజ్", price: "2 రాత్రులు | ₹10,000" }
+      }
+    };
+
+    function changeLanguage() {
+      const lang = document.getElementById("language-select").value;
+      const t = translations[lang];
+
+      document.getElementById("site-title").innerText = t.siteTitle;
+      document.getElementById("nav-home").innerText = t.navHome;
+      document.getElementById("nav-about").innerText = t.navAbout;
+      document.getElementById("nav-contact").innerText = t.navContact;
+      document.getElementById("hero-title").innerText = t.heroTitle;
+      document.getElementById("hero-desc").innerText = t.heroDesc;
+      document.getElementById("book-btn").innerText = t.bookBtn;
+      document.getElementById("explore-btn").innerText = t.exploreBtn;
+      document.getElementById("search-btn").innerText = t.searchBtn;
+      document.getElementById("packages-title").innerText = t.packagesTitle;
+      document.getElementById("pkg1-title").innerText = t.pkg1.title;
+      document.getElementById("pkg1-price").innerText = t.pkg1.price;
+      document.getElementById("pkg2-title").innerText = t.pkg2.title;
+      document.getElementById("pkg2-price").innerText = t.pkg2.price;
+      document.getElementById("pkg3-title").innerText = t.pkg3.title;
+      document.getElementById("pkg3-price").innerText = t.pkg3.price;
+    }
+  </script>
+
+</body>
+</html>
