@@ -165,7 +165,20 @@
     &copy; 2025 Unseen Corners| connect: info@Unseencorners.com | All Rights reserved.
   </footer>
   </section>
+  <script>
+function showSection(id) {
+  document.querySelectorAll('.content').forEach(sec => sec.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
 
+function openWiki(name) {
+  window.open(https://en.wikipedia.org/wiki/${name}, '_blank');
+}
+
+// Scientists data
+const scientists = [
+  {name:"Albert Einstein",desc:"Theory of Relativity",img:"https://upload.wikimedia.org/wikipedia/commons/d/d3/Albert_Einstein_Head.jpg",wiki:"Albert_Einstein",field:"physics"},
+  </script>
   <script>
     const translations = {
       en: {
@@ -240,4 +253,5 @@
 
 </body>
 </html>
+
 
