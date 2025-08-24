@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unseen Corners - Packages</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      background: #f5f5f5;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Navbar */
+    header {
+      background: #1b2735;
+      color: #fff;
+      padding: 15px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 { color: #f4c542; font-size: 22px; font-weight: bold; }
+    nav a {
+      color: #fff; text-decoration: none; margin-left: 20px; font-size: 16px;
+    }
+    nav a:hover { text-decoration: underline; }
+    .nav-btn {
+      background: #f4c542; color: #000; font-weight: bold;
+      padding: 8px 16px; border: none; border-radius: 5px;
+      margin-left: 20px; cursor: pointer;
+    }
+    .nav-btn:hover { background: #e3b72c; }
+    .lang-select {
+      margin-left: 20px; padding: 6px 10px; border-radius: 5px;
+      border: none; font-size: 14px; cursor: pointer;
+    }
+
+    /* Packages Section */
+    .packages {
+      padding: 40px 20px;
+    }
+    .packages h2 {
+      text-align: center;
+      font-size: 28px;
+      margin-bottom: 30px;
+    }
+    .package-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    /* Card */
+    .card {
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      width: 250px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .card:hover img {
+      transform: scale(1.1);
+    }
+    .card-body {
+      padding: 15px;
+      text-align: left;
+    }
+    .card-body h3 {
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+    .card-body p {
+      font-size: 15px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header>
+    <h1 id="site-title">Unseen Corners</h1>
+    <nav>
+      <a href="Home.html" id="nav-home"><b>Home</b></a>
+      <a href="about.html" id="nav-about"><b>About</b></a>
+      <a href="contactUN.html" id="nav-contact"><b>Contact</b></a>
+      <a href="https://chatgpt.com/" id="nav-chatBot"><b>Chat Bot</b></a>
+      <button class="nav-btn" id="book-btn"><b>Book Now</b></button>
+      <button class="nav-btn" id="Login-btn" onclick="window.location.href='login.html'"><b>Login</b></button>
+
+      <select class="lang-select" id="language-select" onchange="changeLanguage()">
+        <option value="en"><b>English</b></option>
+        <option value="hi"><b>हिन्दी</b></option>
+        <option value="te"><b>తెలుగు</b></option>
+      </select>
+    </nav>
+  </header>
+
+  <!-- Packages Section -->
+  <section class="packages">
+    <h2 id="packages-title">Popular Packages</h2>
+    <div class="package-list">
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" alt="Goa Beaches">
+        <div class="card-body">
+          <h3 id="pkg1-title">Goa Beaches</h3>
+          <p id="pkg1-price">3 Nights | ₹15,000</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://cdn.britannica.com/05/58605-050-86F58113/Annapurna-massif-village-Nepal.jpg" alt="Himalayan Trek">
+        <div class="card-body">
+          <h3 id="pkg2-title">Himalayan Trek</h3>
+          <p id="pkg2-price">5 Nights | ₹25,000</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://res.cloudinary.com/jerrick/image/upload/c_scale,f_jpg,q_auto/64ca35310384d0001dffee86.jpg" alt="Jaipur Heritage">
+        <div class="card-body">
+          <h3 id="pkg3-title">Jaipur Heritage</h3>
+          <p id="pkg3-price">2 Nights | ₹10,000</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://mystreal.com/_next/image/?url=%2Ftemple%2Ftirupati-temple%2Ftirupati-devastanam.webp&w=3840&q=75" alt="Tirupati Temple">
+        <div class="card-body">
+          <h3 id="pkg4-title">Tirupati</h3>
+          <p id="pkg4-price">2 Nights | ₹5,000</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://cdn.99pandit.com/images/blogsimg/Meenakshi-Amman-Temple-in-Madurai-1.webp" alt="Madurai Temple">
+        <div class="card-body">
+          <h3 id="pkg5-title">Madurai</h3>
+          <p id="pkg5-price">3 Nights | ₹15,000</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</body>
+</html>
