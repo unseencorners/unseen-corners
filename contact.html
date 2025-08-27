@@ -4,24 +4,100 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact | Unseen Corners</title>
-  <style>
-    body { margin:0; font-family: Arial, sans-serif; }
+ <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+    body { background: #f9f9f9; color: #333; line-height: 1.6; }
+
+    /* Navbar */
     header {
-      background:#1b2735; color:#fff; padding:15px 50px;
-      display:flex; justify-content:space-between; align-items:center;
+      background: #1b2735;
+      color: #fff;
+      padding: 15px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
-    nav a { color:#fff; margin-left:20px; text-decoration:none; }
-    .nav-btn { background:#f4c542; border:none; padding:8px 16px; margin-left:20px; cursor:pointer; border-radius:5px; }
-    .contact-section { 
-      background:url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e') no-repeat center/cover; 
-      padding:80px 50px; 
+    header h1 { color: #f4c542; font-size: 22px; font-weight: bold; }
+    nav a { color: #fff; text-decoration: none; margin-left: 20px; font-size: 16px; }
+    nav a:hover { text-decoration: underline; }
+    .nav-btn {
+      background: #f4c542; color: #000; font-weight: bold;
+      padding: 8px 16px; border: none; border-radius: 5px;
+      margin-left: 20px; cursor: pointer;
     }
-    .overlay {
-      background:rgba(255,255,255,0.85); 
-      padding:40px; border-radius:10px; max-width:800px; margin:auto; text-align:center;
+    .nav-btn:hover { background: #e3b72c; }
+    .lang-select {
+      margin-left: 20px; padding: 6px 10px; border-radius: 5px;
+      border: none; font-size: 14px; cursor: pointer;
     }
-    footer { background:#f3f3f3; text-align:center; padding:20px; margin-top:20px; }
-  </style>
+
+    /* Contact Section */
+    .content {
+      max-width: 900px;
+      margin: 50px auto;
+      background: #fff;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .content h1 { font-size: 32px; margin-bottom: 20px; text-align: center; color: #1b2735; }
+
+    .form-group { margin-bottom: 15px; }
+    input, textarea {
+      width: 100%; padding: 12px;
+      border-radius: 5px; border: 1px solid #ccc;
+      font-size: 16px;
+    }
+    button {
+      background: #1b2735; color: #fff; border: none;
+      padding: 12px 20px; border-radius: 5px; font-size: 16px;
+      cursor: pointer; font-weight: bold;
+    }
+    button:hover { background: #333; }
+
+    /* Map */
+    iframe {
+      width: 100%;
+      height: 350px;
+      border: 0;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+
+    /* Footer */
+    footer {
+      text-align:center;
+      padding: 30px;
+      color: #555;
+      background: #f3f3f8;
+      border-top: 1px solid #ddd;
+      margin-top: 40px;
+    }
+
+    /* ===================== */
+    /*   RESPONSIVE QUERIES  */
+    /* ===================== */
+
+    /* Navbar responsive */
+    @media (max-width: 768px) {
+      header { flex-direction: column; align-items: flex-start; }
+      nav { display: flex; flex-direction: column; width: 100%; margin-top: 10px; }
+      nav a, .nav-btn, .lang-select { margin: 8px 0; font-size: 16px; }
+    }
+
+    /* Contact form responsive */
+    @media (max-width: 768px) {
+      .content { padding: 20px; margin: 20px; }
+      .content h1 { font-size: 24px; }
+      input, textarea, button { font-size: 14px; }
+    }
+
+    /* Footer responsive */
+    @media (max-width: 768px) {
+      footer { padding: 20px; font-size: 14px; }
+    }
+</style>
+
 </head>
 <body>
 
@@ -152,6 +228,7 @@
 
 </body>
 </html>
+
 
 
 
