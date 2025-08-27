@@ -6,7 +6,7 @@
   <title>About | Unseen Corners</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
-    body { line-height: 1.6; background: #fff; color: #333; }
+    body { background: #f9f9f9; color: #333; line-height: 1.6; }
 
     /* Navbar */
     header {
@@ -18,9 +18,7 @@
       align-items: center;
     }
     header h1 { color: #f4c542; font-size: 22px; font-weight: bold; }
-    nav a {
-      color: #fff; text-decoration: none; margin-left: 20px; font-size: 16px;
-    }
+    nav a { color: #fff; text-decoration: none; margin-left: 20px; font-size: 16px; }
     nav a:hover { text-decoration: underline; }
     .nav-btn {
       background: #f4c542; color: #000; font-weight: bold;
@@ -33,34 +31,53 @@
       border: none; font-size: 14px; cursor: pointer;
     }
 
-    /* About Section */
-    .about-section {
-      padding: 60px 50px;
-      max-width: 1000px;
-      margin: auto;
+    /* Content */
+    .content {
+      max-width: 800px;
+      margin: 60px auto;
+      background: #fff;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
       text-align: center;
     }
-    .about-section h2 {
-      font-size: 32px;
-      margin-bottom: 20px;
-      color: #1b2735;
-    }
-    .about-section p {
-      font-size: 18px;
-      color: #555;
-      margin-bottom: 15px;
-      line-height: 1.8;
-    }
+    .content h1 { font-size: 32px; margin-bottom: 20px; color: #1b2735; }
+    .content p { font-size: 18px; color: #555; }
 
     /* Footer */
     footer {
       text-align:center;
-      padding: 40px;
-      color: #789;
+      padding: 30px;
+      color: #555;
       background: #f3f3f8;
       border-top: 1px solid #ddd;
+      margin-top: 40px;
     }
-  </style>
+
+    /* ===================== */
+    /*   RESPONSIVE QUERIES  */
+    /* ===================== */
+
+    /* Navbar responsive */
+    @media (max-width: 768px) {
+      header { flex-direction: column; align-items: flex-start; }
+      nav { display: flex; flex-direction: column; width: 100%; margin-top: 10px; }
+      nav a, .nav-btn, .lang-select { margin: 8px 0; font-size: 16px; }
+    }
+
+    /* Content responsive */
+    @media (max-width: 768px) {
+      .content { padding: 20px; margin: 30px 15px; }
+      .content h1 { font-size: 24px; }
+      .content p { font-size: 15px; }
+    }
+
+    /* Footer responsive */
+    @media (max-width: 768px) {
+      footer { padding: 20px; font-size: 14px; }
+    }
+</style>
+
 </head>
 <body>
 
@@ -163,6 +180,7 @@
 
 </body>
 </html>
+
 
 
 
