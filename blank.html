@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title data-lang="page-title">Unseen Corners – Tirupati Balaji Temple</title>
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+    body { line-height: 1.6; background: #fff; color: #333; }
+
+    /* Navbar */
+    header {
+      background: #1b2735;
+      color: #fff;
+      padding: 15px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+    header h1 { color: #f4c542; font-size: 22px; font-weight: bold; }
+    nav a { color: #fff; text-decoration: none; margin-left: 20px; font-size: 16px; }
+    nav a:hover { text-decoration: underline; }
+    .nav-btn {
+      background: #f4c542; color: #000; font-weight: bold;
+      padding: 8px 16px; border: none; border-radius: 5px;
+      margin-left: 20px; cursor: pointer;
+    }
+    .nav-btn:hover { background: #e3b72c; }
+    .lang-select {
+      margin-left: 20px; padding: 6px 10px; border-radius: 5px;
+      border: none; font-size: 14px; cursor: pointer;
+    }
+
+    /* Hero with overlay content */
+    .hero {
+      background: url('https://upload.wikimedia.org/wikipedia/commons/4/49/Tirumala_temple_gopuram.jpg')
+                  no-repeat center center/cover;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      padding-top: 70px;
+      color: #fff;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+      z-index: 1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      padding: 20px;
+    }
+    .hero-content h2 { font-size: 32px; margin-bottom: 20px; color: #f4c542; }
+    .hero-content p { font-size: 18px; margin-bottom: 20px; }
+    .hero-content ul { text-align: left; margin: 15px 0; }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+    .info-card {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 8px;
+      padding: 15px;
+      font-size: 15px;
+    }
+
+    /* 360 View */
+    .view360 {
+      margin: 50px auto;
+      max-width: 1000px;
+      padding: 10px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    .view360 iframe {
+      width: 100%;
+      height: 500px;
+      border: none;
+      border-radius: 12px;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #1b2735;
+      color: #fff;
+    }
+
+    /* Fade animation */
+    .fade {
+      opacity: 0;
+      transition: opacity 0.6s ease-in-out;
+    }
+    .fade.show {
+      opacity: 1;
+    }
+
+    @media(max-width:768px){
+      .hero-content h2 { font-size: 24px; }
+      .hero-content p { font-size: 16px; }
+      .view360 iframe { height: 300px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header>
+    <h1 id="site-title">Unseen Corners</h1>
+    <nav>
+      <a href="#" data-lang="nav-home"><b>Home</b></a>
+      <a href="#" data-lang="nav-about"><b>About</b></a>
+      <a href="#" data-lang="nav-contact"><b>Contact</b></a>
+      <a href="#" data-lang="nav-chat"><b>Chat Bot</b></a>
+
+      <button class="nav-btn" data-lang="nav-book"><b>Book Now</b></button>
+      <button class="nav-btn" data-lang="nav-login"><b>Login</b></button>
+
+      <select class="lang-select" id="language-select">
+        <option value="en">English</option>
+        <option value="hi">हिन्दी</option>
+        <option value="te">తెలుగు</option>
+      </select>
+    </nav>
+  </header>
+
+  <!-- Hero Section with temple info -->
+  <section class="hero">
+    <div class="hero-content">
+      <h2 class="fade show" data-lang="title">🛕 Tirupati Balaji Temple (Tirumala Venkateswara Temple)</h2>
+      <p class="fade show" data-lang="intro">The Tirumala Venkateswara Temple in Tirupati, Andhra Pradesh, is one of the most famous and richest temples in the world. Dedicated to Lord Venkateswara (an incarnation of Vishnu), it attracts millions of devotees every year from across the globe.</p>
+
+      <h3 class="fade show" data-lang="history-title">📜 History – When Was It Built?</h3>
+      <ul>
+        <li class="fade show" data-lang="history-1">The temple has ancient origins, believed to be over 1,000 years old.</li>
+        <li class="fade show" data-lang="history-2">The Alwars (Vaishnava saints) sang hymns in praise of Lord Venkateswara as early as the 9th century.</li>
+        <li class="fade show" data-lang="history-3">The temple’s grand structures and gopurams were expanded during the Pallava, Chola, and Vijayanagara dynasties (10th–15th centuries).</li>
+        <li class="fade show" data-lang="history-4">Today, it is managed by Tirumala Tirupati Devasthanams (TTD).</li>
+      </ul>
+
+      <h3 class="fade show" data-lang="visit-title">🕒 Visiting Information</h3>
+      <div class="info-grid">
+        <div class="info-card fade show" data-lang="visit-time"><b>Timings:</b><br> 2:30 AM – 1:30 AM (22 hours daily).</div>
+        <div class="info-card fade show" data-lang="visit-location"><b>Location:</b><br> Tirumala Hills, Tirupati, Andhra Pradesh.</div>
+        <div class="info-card fade show" data-lang="visit-best"><b>Best Time:</b><br> All year, esp. <i>Brahmotsavam</i> (Sept–Oct).</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 360 View Section -->
+  <section class="view360">
+    <h2 style="text-align:center; margin-bottom:15px; color:#1b2735;" data-lang="view360-title">🌐 Explore 360° View of Tirupati Temple</h2>
+    <iframe src="file:///C:/Users/HP/AppData/Local/Microsoft/Windows/INetCache/IE/SMQGRYEH/Tirupati[1].html" allowfullscreen></iframe>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p class="fade show" data-lang="footer">&copy; 2025 Unseen Corners | All Rights Reserved</p>
+  </footer>
+
+  <!-- Language Switcher JS -->
+  <script>
+    const translations = {
+      en: {
+        "page-title": "Unseen Corners – Tirupati Balaji Temple",
+        "nav-home": "<b>Home</b>", "nav-about": "<b>About</b>", "nav-contact": "<b>Contact</b>", "nav-chat": "<b>Chat Bot</b>", "nav-book": "<b>Book Now</b>", "nav-login": "<b>Login</b>",
+        footer: "&copy; 2025 Unseen Corners | All Rights Reserved",
+        title: "🛕 Tirupati Balaji Temple (Tirumala Venkateswara Temple)",
+        intro: "The Tirumala Venkateswara Temple in Tirupati, Andhra Pradesh, is one of the most famous and richest temples in the world. Dedicated to Lord Venkateswara (an incarnation of Vishnu), it attracts millions of devotees every year from across the globe.",
+        "history-title": "📜 History – When Was It Built?",
+        "history-1": "The temple has ancient origins, believed to be over 1,000 years old.",
+        "history-2": "The Alwars (Vaishnava saints) sang hymns in praise of Lord Venkateswara as early as the 9th century.",
+        "history-3": "The temple’s grand structures and gopurams were expanded during the Pallava, Chola, and Vijayanagara dynasties (10th–15th centuries).",
+        "history-4": "Today, it is managed by Tirumala Tirupati Devasthanams (TTD).",
+        "visit-title": "🕒 Visiting Information",
+        "visit-time": "<b>Timings:</b><br> 2:30 AM – 1:30 AM (22 hours daily).",
+        "visit-location": "<b>Location:</b><br> Tirumala Hills, Tirupati, Andhra Pradesh.",
+        "visit-best": "<b>Best Time:</b><br> All year, esp. <i>Brahmotsavam</i> (Sept–Oct).",
+        "view360-title": "🌐 Explore 360° View of Tirupati Temple"
+      },
+      hi: {
+        "page-title": "अनसीन कॉर्नर्स – तिरुपति बालाजी मंदिर",
+        "nav-home": "<b>होम</b>", "nav-about": "<b>परिचय</b>", "nav-contact": "<b>संपर्क</b>", "nav-chat": "<b>चैट बॉट</b>", "nav-book": "<b>बुक करें</b>", "nav-login": "<b>लॉगिन</b>",
+        footer: "&copy; 2025 अनसीन कॉर्नर्स | सर्वाधिकार सुरक्षित",
+        title: "🛕 तिरुपति बालाजी मंदिर (तिरुमला वेंकटेश्वर मंदिर)",
+        intro: "आंध्र प्रदेश के तिरुपति में स्थित तिरुमला वेंकटेश्वर मंदिर दुनिया के सबसे प्रसिद्ध और सबसे अमीर मंदिरों में से एक है।",
+        "history-title": "📜 इतिहास – यह कब बनाया गया था?",
+        "history-1": "मंदिर की प्राचीन उत्पत्ति है, माना जाता है कि यह 1,000 साल से अधिक पुराना है।",
+        "history-2": "आलवार (वैष्णव संत) ने 9वीं शताब्दी में ही भजन गाए।",
+        "history-3": "मंदिर का विस्तार पल्लव, चोल और विजयनगर राजवंशों के दौरान किया गया।",
+        "history-4": "आज इसे TTD द्वारा प्रबंधित किया जाता है।",
+        "visit-title": "🕒 यात्रा संबंधी जानकारी",
+        "visit-time": "<b>समय:</b><br> सुबह 2:30 – रात 1:30 (22 घंटे खुला)।",
+        "visit-location": "<b>स्थान:</b><br> तिरुमला हिल्स, तिरुपति, आंध्र प्रदेश।",
+        "visit-best": "<b>सबसे अच्छा समय:</b><br> साल भर, खासकर <i>ब्रह्मोत्सव</i> (सितंबर–अक्टूबर)।",
+        "view360-title": "🌐 तिरुपति मंदिर का 360° दृश्य देखें"
+      },
+      te: {
+        "page-title": "అన్‌సీన్ కార్నర్స్ – తిరుపతి బాలాజీ దేవాలయం",
+        "nav-home": "<b>హోమ్</b>", "nav-about": "<b>గురించి</b>", "nav-contact": "<b>సంప్రదించండి</b>", "nav-chat": "<b>చాట్ బాట్</b>", "nav-book": "<b>బుక్ చేయండి</b>", "nav-login": "<b>లాగిన్</b>",
+        footer: "&copy; 2025 అన్‌సీన్ కార్నర్స్ | అన్ని హక్కులుสง",
+        title: "🛕 తిరుపతి బాలాజీ దేవాలయం (తిరుమల వెంకటేశ్వర ఆలయం)",
+        intro: "ఆంధ్రప్రదేశ్ రాష్ట్రంలోని తిరుపతిలోని తిరుమల వెంకటేశ్వర ఆలయం ప్రపంచంలో ప్రసిద్ధి పొందిన మరియు అత్యంత ధనికమైన ఆలయాలలో ఒకటి.",
+        "history-title": "📜 చరిత్ర – ఇది ఎప్పుడు నిర్మించబడింది?",
+        "history-1": "దాదాపు 1,000 సంవత్సరాల నాటి ఆలయం.",
+        "history-2": "ఆళ్వార్లు 9వ శతాబ్దంలోనే భక్తి గీతాలు పాడారు.",
+        "history-3": "పల్లవ, చోళ, విజయనగర కాలంలో విస్తరించబడింది.",
+        "history-4": "ప్రస్తుతం ఇది TTD చేత నిర్వహించబడుతుంది.",
+        "visit-title": "🕒 దర్శన సమాచారం",
+        "visit-time": "<b>సమయం:</b><br> ఉదయం 2:30 – రాత్రి 1:30 (22 గంటలు తెరిచి ఉంటుంది).",
+        "visit-location": "<b>ప్రాంతం:</b><br> తిరుమల కొండలు, తిరుపతి, ఆంధ్రప్రదేశ్.",
+        "visit-best": "<b>ఉత్తమ సమయం:</b><br> సంవత్సరం పొడవునా, ముఖ్యంగా <i>బ్రహ్మోత్సవం</i> (సెప్టెంబర్–అక్టోబర్).",
+        "view360-title": "🌐 తిరుపతి దేవాలయం యొక్క 360° దృశ్యం"
+      }
+    };
+
+    const langSelect = document.getElementById('language-select');
+    langSelect.addEventListener('change', e => {
+      const lang = e.target.value;
+      document.querySelectorAll('[data-lang]').forEach(el => {
+        const key = el.getAttribute('data-lang');
+        if(translations[lang][key]) {
+          el.classList.remove('show');
+          setTimeout(() => {
+            el.innerHTML = translations[lang][key];
+            el.classList.add('show');
+          }, 300);
+        }
+      });
+      document.title = translations[lang]["page-title"];
+    });
+  </script>
+
+ </body>
+ </html>
