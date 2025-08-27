@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About | Unseen Corners</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+    body { line-height: 1.6; background: #fff; color: #333; }
+
+    /* Navbar */
+    header {
+      background: #1b2735;
+      color: #fff;
+      padding: 15px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 { color: #f4c542; font-size: 22px; font-weight: bold; }
+    nav a {
+      color: #fff; text-decoration: none; margin-left: 20px; font-size: 16px;
+    }
+    nav a:hover { text-decoration: underline; }
+    .nav-btn {
+      background: #f4c542; color: #000; font-weight: bold;
+      padding: 8px 16px; border: none; border-radius: 5px;
+      margin-left: 20px; cursor: pointer;
+    }
+    .nav-btn:hover { background: #e3b72c; }
+    .lang-select {
+      margin-left: 20px; padding: 6px 10px; border-radius: 5px;
+      border: none; font-size: 14px; cursor: pointer;
+    }
+
+    /* About Section */
+    .about-section {
+      padding: 60px 50px;
+      max-width: 1000px;
+      margin: auto;
+      text-align: center;
+    }
+    .about-section h2 {
+      font-size: 32px;
+      margin-bottom: 20px;
+      color: #1b2735;
+    }
+    .about-section p {
+      font-size: 18px;
+      color: #555;
+      margin-bottom: 15px;
+      line-height: 1.8;
+    }
+
+    /* Footer */
+    footer {
+      text-align:center;
+      padding: 40px;
+      color: #789;
+      background: #f3f3f8;
+      border-top: 1px solid #ddd;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header>
+    <h1 id="site-title">Unseen Corners</h1>
+    <nav>
+      <a href="index123.html" id="nav-home"><b>Home</b></a>
+      <a href="about.html" id="nav-about" style="text-decoration:underline;"><b>About</b></a>
+      <a href="contact.html" id="nav-contact"><b>Contact</b></a>
+      <a href="https://chatgpt.com/" id="nav-chatBot"><b>Chat Bot</b></a>
+      <button class="nav-btn" id="book-btn" onclick="window.location.href='cardpackages.html'"><b>Book Now</b></button>
+      <!-- Language Selector -->
+      <select class="lang-select" id="language-select" onchange="changeLanguage()">
+        <option value="en">English</option>
+        <option value="hi">हिन्दी</option>
+        <option value="te">తెలుగు</option>
+      </select>
+    </nav>
+  </header>
+
+  <!-- About Section -->
+  <section class="about-section">
+    <h2 id="about-title">About Us</h2>
+    <p id="about-line1">
+      Welcome to <strong>Unseen Corners</strong> – your trusted travel partner for discovering hidden destinations across India and beyond.
+    </p>
+    <p id="about-line2">
+      Our mission is to bring you closer to unexplored places, unique cultures, and breathtaking experiences that are often missed by mainstream tourism.
+    </p>
+    <p id="about-line3">
+      From serene beaches and majestic mountains to historic cities and cultural gems, our carefully curated packages are designed to give you unforgettable journeys.
+    </p>
+    <p id="about-line4">
+      We believe that travel is not just about visiting places – it’s about creating memories, building connections, and experiencing life in its purest form.
+    </p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2025 Unseen Corners | connect: info@unseencorners.com | All Rights Reserved.
+  </footer>
+
+  <!-- Language Script -->
+  <script>
+    const translations = {
+      en: {
+        siteTitle: "Unseen Corners",
+        navHome: "Home",
+        navAbout: "About",
+        navContact: "Contact",
+        bookBtn: "Book Now",
+        aboutTitle: "About Us",
+        line1: "Welcome to Unseen Corners – your trusted travel partner for discovering hidden destinations across India and beyond.",
+        line2: "Our mission is to bring you closer to unexplored places, unique cultures, and breathtaking experiences that are often missed by mainstream tourism.",
+        line3: "From serene beaches and majestic mountains to historic cities and cultural gems, our carefully curated packages are designed to give you unforgettable journeys.",
+        line4: "We believe that travel is not just about visiting places – it’s about creating memories, building connections, and experiencing life in its purest form."
+      },
+      hi: {
+        siteTitle: "अनसीन कॉर्नर्स",
+        navHome: "होम",
+        navAbout: "के बारे में",
+        navContact: "संपर्क",
+        bookBtn: "अभी बुक करें",
+        aboutTitle: "हमारे बारे में",
+        line1: "अनसीन कॉर्नर्स में आपका स्वागत है – आपके विश्वसनीय यात्रा साथी, जो भारत और उससे आगे के छिपे हुए गंतव्यों की खोज कराते हैं।",
+        line2: "हमारा मिशन आपको अनदेखी जगहों, अनोखी संस्कृतियों और अद्भुत अनुभवों के करीब लाना है जिन्हें अक्सर मुख्यधारा का पर्यटन मिस कर देता है।",
+        line3: "शांत समुद्र तटों और भव्य पर्वतों से लेकर ऐतिहासिक शहरों और सांस्कृतिक धरोहरों तक, हमारे पैकेज आपको अविस्मरणीय यात्राएँ देने के लिए तैयार किए गए हैं।",
+        line4: "हम मानते हैं कि यात्रा केवल स्थानों को देखने के बारे में नहीं है – यह यादें बनाने, रिश्ते बनाने और जीवन को उसके शुद्धतम रूप में अनुभव करने के बारे में है।"
+      },
+      te: {
+        siteTitle: "అన్సీన్ కార్నర్స్",
+        navHome: "హోమ్",
+        navAbout: "గురించి",
+        navContact: "సంప్రదించండి",
+        bookBtn: "ఇప్పుడే బుక్ చేయండి",
+        aboutTitle: "మా గురించి",
+        line1: "అన్సీన్ కార్నర్స్‌కు స్వాగతం – భారత్ మరియు దాని పర్యంతంలోని దాగి ఉన్న గమ్యస్థానాలను కనుగొనడానికి మీ విశ్వసనీయ ట్రావెల్ భాగస్వామి.",
+        line2: "మా లక్ష్యం మీరు తరచుగా మిస్ అయ్యే కొత్త ప్రదేశాలు, ప్రత్యేక సంస్కృతులు మరియు అద్భుతమైన అనుభవాలకు దగ్గర కావడం.",
+        line3: "నిశ్శబ్ద తీరాలు, అద్భుతమైన పర్వతాలు, చారిత్రక నగరాలు మరియు సాంస్కృతిక ప్రదేశాల వరకు – మా ప్రత్యేక ప్యాకేజీలు మీకు మరపురాని ప్రయాణాలను అందించడానికి రూపొందించబడ్డాయి.",
+        line4: "ప్రయాణం అనేది కేవలం ప్రదేశాలను సందర్శించడం మాత్రమే కాదు – జ్ఞాపకాలు సృష్టించడం, అనుబంధాలు ఏర్పరచడం మరియు జీవితాన్ని దాని అత్యంత స్వచ్ఛమైన రూపంలో అనుభవించడం అని మేము నమ్ముతాము."
+      }
+    };
+
+    function changeLanguage() {
+      const lang = document.getElementById("language-select").value;
+      const t = translations[lang];
+
+      document.getElementById("site-title").innerText = t.siteTitle;
+      document.getElementById("nav-home").innerText = t.navHome;
+      document.getElementById("nav-about").innerText = t.navAbout;
+      document.getElementById("nav-contact").innerText = t.navContact;
+      document.getElementById("book-btn").innerText = t.bookBtn;
+      document.getElementById("about-title").innerText = t.aboutTitle;
+      document.getElementById("about-line1").innerText = t.line1;
+      document.getElementById("about-line2").innerText = t.line2;
+      document.getElementById("about-line3").innerText = t.line3;
+      document.getElementById("about-line4").innerText = t.line4;
+    }
+  </script>
+
+</body>
+</html>
