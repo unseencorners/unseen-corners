@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tirupathi 360 Embed</title>
+  <style>
+    /* Responsive 16:9 container */
+    .pano-wrap {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      background: #000;
+      border-radius: 16px;
+    }
+    .pano-wrap iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="pano-wrap">
+    <!-- Initial view set via #yaw,pitch,fov -->
+    <iframe
+      src="https://www.360cities.net/embed_iframe/tirupathi#98.94,6.44,70.0"
+      allow="fullscreen"
+      allowfullscreen
+      loading="lazy">
+    </iframe>
+  </div>
+</body>
+</html>
