@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - Unseen Corners</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+    body { line-height: 1.6; background: #fff; color: #333; }
+
+    /* Navbar */
+    header {
+      background: #1b2735;
+      color: #fff;
+      padding: 15px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    header h1 { color: #f4c542; font-size: 22px; font-weight: bold; }
+    nav a {
+      color: #fff; text-decoration: none; margin-left: 20px; font-size: 16px;
+    }
+    nav a:hover { text-decoration: underline; }
+    .nav-btn {
+      background: #f4c542; color: #000; font-weight: bold;
+      padding: 8px 16px; border: none; border-radius: 5px;
+      margin-left: 20px; cursor: pointer;
+    }
+    .nav-btn:hover { background: #e3b72c; }
+    .lang-select {
+      margin-left: 20px; padding: 6px 10px; border-radius: 5px;
+      border: none; font-size: 14px; cursor: pointer;
+    }
+
+    /* Contact Hero with background */
+    .contact-hero {
+      background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e') no-repeat center center/cover;
+      color: #333;
+      text-align: center;
+      padding: 100px 20px;
+      position: relative;
+    }
+    .overlay-box {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 40px;
+      border-radius: 10px;
+      max-width: 700px;
+      margin: auto;
+      text-align: center;
+    }
+    .overlay-box h2 { font-size: 32px; margin-bottom: 15px; }
+    .overlay-box p { font-size: 18px; margin-bottom: 15px; }
+
+    /* Map box */
+    .map-box {
+      background: #ddd;
+      height: 150px;
+      width: 100%;
+      max-width: 500px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #666;
+      margin: 20px auto;
+    }
+
+    /* Contact Form */
+    form {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    form input, form textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 15px;
+    }
+    form textarea { resize: none; }
+    form button {
+      background: #f4c542;
+      color: #000;
+      font-weight: bold;
+      padding: 12px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    form button:hover {
+      background: #e3b72c;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 40px;
+      color: #789;
+      background: #f3f3f8;
+      border-top: 1px solid #ddd;
+    }
+
+    /* 🌐 Media Queries */
+
+    /* Tablets */
+    @media (max-width: 1024px) {
+      header { flex-direction: column; text-align: center; }
+      nav { margin-top: 10px; }
+      .contact-hero { padding: 60px 30px; }
+      .overlay-box h2 { font-size: 26px; }
+      .overlay-box p { font-size: 16px; }
+    }
+
+    /* Mobiles */
+    @media (max-width: 768px) {
+      nav a, .nav-btn, .lang-select {
+        display: block;
+        margin: 10px auto;
+      }
+      .contact-hero { padding: 40px 15px; }
+      .overlay-box { padding: 25px; }
+      .overlay-box h2 { font-size: 22px; }
+      .overlay-box p { font-size: 14px; }
+      .map-box { height: 120px; }
+      form input, form textarea, form button {
+        font-size: 14px;
+        padding: 10px;
+      }
+    }
+
+    /* Extra Small Mobiles */
+    @media (max-width: 480px) {
+      header h1 { font-size: 18px; }
+      .overlay-box h2 { font-size: 20px; }
+      .overlay-box p { font-size: 13px; }
+      .map-box { height: 100px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header>
+    <h1 id="site-title">Unseen Corners</h1>
+    <nav>
+      <a href="Home.html" id="nav-home"><b>Home</b></a>
+      <a href="about.html" id="nav-about"><b>About</b></a>
+      <a href="contactUN.html" id="nav-contact"><b>Contact</b></a>
+      <a href="https://chatgpt.com/" id="nav-chatBot"><b>Chat Bot</b></a>
+      <button class="nav-btn" id="book-btn" onclick="window.location.href='cardpackages.html'"><b>Book Now</b></button>
+      <button class="nav-btn" onclick="window.location.href='log14.html'"><b>Login</b></button>
+      
+      <select class="lang-select" id="language-select" onchange="changeLanguage()">
+        <option value="en">English</option>
+        <option value="hi">हिन्दी</option>
+        <option value="te">తెలుగు</option>
+      </select>
+    </nav>
+  </header>
+
+  <!-- Contact Hero -->
+  <section class="contact-hero">
+    <div class="overlay-box">
+      <h2 id="contact-title">Contact Us</h2>
+      <p id="contact-desc">We’d love to hear from you! Reach out for bookings, questions, or collaborations.</p>
+
+      <p id="office-address">📍 Rajamandry, Ap, India</p>
+      <p id="office-phone">📞 +91 7207252439</p>
+      <p id="office-email">✉ hello@unseencorners.com</p>
+
+      <div class="map-box">Google Map Placeholder</div>
+
+      <!-- 📝 Contact Form -->
+      <form>
+        <input type="text" id="form-name" name="name" placeholder="Your Name" required>
+        <input type="email" id="form-email" name="email" placeholder="Your Email" required>
+        <textarea id="form-message" name="message" rows="4" placeholder="Your Message" required></textarea>
+        <button type="submit" id="form-submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Unseen Corners | <a href="about.html">About</a> | <a href="packages.html">Packages</a> | <a href="contactUN.html">Contact</a></p>
+  </footer>
+
+  <!-- Multi-language Script -->
+  <script>
+    const translations = {
+      en: {
+        siteTitle: "Unseen Corners",
+        navHome: "Home",
+        navAbout: "About",
+        navContact: "Contact",
+        navchatBot: "ChatBot",
+        bookBtn: "Book Now",
+        contactTitle: "Contact Us",
+        contactDesc: "We’d love to hear from you! Reach out for bookings, questions, or collaborations.",
+        officeAddress: "📍 Rajamandry, Ap, India",
+        officePhone: "📞 +91 7207252439",
+        officeEmail: "✉ hello@unseencorners.com",
+        formName: "Your Name",
+        formEmail: "Your Email",
+        formMessage: "Your Message",
+        formSubmit: "Send Message"
+      },
+      hi: {
+        siteTitle: "अनसीन कॉर्नर्स",
+        navHome: "होम",
+        navAbout: "के बारे में",
+        navContact: "संपर्क",
+        navchatBot: "चैटबॉट",
+        bookBtn: "अभी बुक करें",
+        contactTitle: "हमसे संपर्क करें",
+        contactDesc: "हम आपसे सुनना पसंद करेंगे! बुकिंग, प्रश्न या सहयोग के लिए संपर्क करें।",
+        officeAddress: "📍 राजमंड्री, आंध्र प्रदेश, भारत",
+        officePhone: "📞 +91 7207252439",
+        officeEmail: "✉ hello@unseencorners.com",
+        formName: "आपका नाम",
+        formEmail: "आपका ईमेल",
+        formMessage: "आपका संदेश",
+        formSubmit: "संदेश भेजें"
+      },
+      te: {
+        siteTitle: "అన్సీన్ కార్నర్స్",
+        navHome: "హోమ్",
+        navAbout: "గురించి",
+        navContact: "సంప్రదించండి",
+        navchatBot: "చాట్‌బాట్",
+        bookBtn: "ఇప్పుడే బుక్ చేయండి",
+        contactTitle: "మమ్మల్ని సంప్రదించండి",
+        contactDesc: "మేము మీ నుండి వినడం ఇష్టపడతాం! బుకింగ్స్, ప్రశ్నలు లేదా సహకారాల కోసం సంప్రదించండి.",
+        officeAddress: "📍 రాజమండ్రి, ఆంధ్రప్రదేశ్, ఇండియా",
+        officePhone: "📞 +91 7207252439",
+        officeEmail: "✉ hello@unseencorners.com",
+        formName: "మీ పేరు",
+        formEmail: "మీ ఇమెయిల్",
+        formMessage: "మీ సందేశం",
+        formSubmit: "సందేశాన్ని పంపండి"
+      }
+    };
+
+    function changeLanguage() {
+      const lang = document.getElementById("language-select").value;
+      const t = translations[lang];
+
+      document.getElementById("site-title").innerText = t.siteTitle;
+      document.getElementById("nav-home").innerText = t.navHome;
+      document.getElementById("nav-about").innerText = t.navAbout;
+      document.getElementById("nav-contact").innerText = t.navContact;
+      document.getElementById("nav-chatBot").innerText = t.navchatBot; 
+      document.getElementById("book-btn").innerText = t.bookBtn;
+      document.getElementById("contact-title").innerText = t.contactTitle;
+      document.getElementById("contact-desc").innerText = t.contactDesc;
+      document.getElementById("office-address").innerText = t.officeAddress;
+      document.getElementById("office-phone").innerText = t.officePhone;
+      document.getElementById("office-email").innerText = t.officeEmail;
+
+      document.getElementById("form-name").placeholder = t.formName;
+      document.getElementById("form-email").placeholder = t.formEmail;
+      document.getElementById("form-message").placeholder = t.formMessage;
+      document.getElementById("form-submit").innerText = t.formSubmit;
+    }
+  </script>
+
+</body>
+</html>
