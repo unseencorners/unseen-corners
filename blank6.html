@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title data-lang="page-title">Unseen Corners</title>
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+    body { line-height: 1.6; background: #fff; color: #333; }
+
+    /* Navbar */
+    header {
+      background: #1b2735;
+      color: #fff;
+      padding: 15px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+    header h1 { color: #f4c542; font-size: 22px; font-weight: bold; }
+    nav a { color: #fff; text-decoration: none; margin-left: 20px; font-size: 16px; }
+    nav a:hover { text-decoration: underline; }
+    .nav-btn {
+      background: #f4c542; color: #000; font-weight: bold;
+      padding: 8px 16px; border: none; border-radius: 5px;
+      margin-left: 20px; cursor: pointer;
+    }
+    .nav-btn:hover { background: #e3b72c; }
+    .lang-select {
+      margin-left: 20px; padding: 6px 10px; border-radius: 5px;
+      border: none; font-size: 14px; cursor: pointer;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: url()
+                  no-repeat center center/cover;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      padding-top: 70px;
+      color: #fff;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+      z-index: 1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      padding: 20px;
+    }
+    .hero-content h2 { font-size: 32px; margin-bottom: 20px; color: #f4c542; }
+
+    /* 360 View */
+    .view360 {
+      margin: 50px auto;
+      max-width: 1000px;
+      padding: 10px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    .view360 iframe {
+      width: 100%;
+      height: 500px;
+      border: none;
+      border-radius: 12px;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #1b2735;
+      color: #fff;
+    }
+
+    /* Fade animation */
+    .fade {
+      opacity: 0;
+      transition: opacity 0.6s ease-in-out;
+    }
+    .fade.show {
+      opacity: 1;
+    }
+
+    @media(max-width:768px){
+      .hero-content h2 { font-size: 24px; }
+      .view360 iframe { height: 300px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header>
+    <h1 id="site-title">Unseen Corners</h1>
+    <nav>
+      <a href="#" data-lang="nav-home"><b>Home</b></a>
+      <a href="#" data-lang="nav-about"><b>About</b></a>
+      <a href="#" data-lang="nav-contact"><b>Contact</b></a>
+      <a href="#" data-lang="nav-chat"><b>Chat Bot</b></a>
+
+      <button class="nav-btn" data-lang="nav-book"><b>Book Now</b></button>
+      <button class="nav-btn" data-lang="nav-login"><b>Login</b></button>
+
+      <select class="lang-select" id="language-select">
+        <option value="en">English</option>
+        <option value="hi">हिन्दी</option>
+        <option value="te">తెలుగు</option>
+      </select>
+    </nav>
+  </header>
+
+  <!-- Hero Section (empty placeholder) -->
+  <section class="hero">
+    <div class="hero-content">
+      <h2 class="fade show" data-lang="title">🌍 Welcome to Unseen Corners</h2>
+    </div>
+  </section>
+
+  <!-- 360 View -->
+  <section class="view360">
+    <h2 style="text-align:center; margin-bottom:15px; color:#1b2735;" data-lang="view360-title">🌐 Explore 360° View</h2>
+    <iframe src="tirupathi.html" allowfullscreen loading="lazy"></iframe>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p class="fade show" data-lang="footer">&copy; 2025 Unseen Corners | All Rights Reserved</p>
+  </footer>
+
+  <!-- Language Switcher JS -->
+  <script>
+    const translations = {
+      en: {
+        "page-title": "Unseen Corners",
+        "nav-home": "<b>Home</b>", "nav-about": "<b>About</b>", "nav-contact": "<b>Contact</b>", "nav-chat": "<b>Chat Bot</b>", "nav-book": "<b>Book Now</b>", "nav-login": "<b>Login</b>",
+        footer: "&copy; 2025 Unseen Corners | All Rights Reserved",
+        title: "🌍 Welcome to Unseen Corners",
+        "view360-title": "🌐 Explore 360° View"
+      },
+      hi: {
+        "page-title": "अनसीन कॉर्नर्स",
+        "nav-home": "<b>होम</b>", "nav-about": "<b>परिचय</b>", "nav-contact": "<b>संपर्क</b>", "nav-chat": "<b>चैट बॉट</b>", "nav-book": "<b>बुक करें</b>", "nav-login": "<b>लॉगिन</b>",
+        footer: "&copy; 2025 अनसीन कॉर्नर्स | सर्वाधिकार सुरक्षित",
+        title: "🌍 अनसीन कॉर्नर्स में आपका स्वागत है",
+        "view360-title": "🌐 360° दृश्य देखें"
+      },
+      te: {
+        "page-title": "అన్‌సీన్ కార్నర్స్",
+        "nav-home": "<b>హోమ్</b>", "nav-about": "<b>గురించి</b>", "nav-contact": "<b>సంప్రదించండి</b>", "nav-chat": "<b>చాట్ బాట్</b>", "nav-book": "<b>బుక్ చేయండి</b>", "nav-login": "<b>లాగిన్</b>",
+        footer: "&copy; 2025 అన్‌సీన్ కార్నర్స్ | అన్ని హక్కులు రిజర్వ్‌డ్",
+        title: "🌍 అన్‌సీన్ కార్నర్స్ కు స్వాగతం",
+        "view360-title": "🌐 360° దృశ్యం చూడండి"
+      }
+    };
+
+    const langSelect = document.getElementById('language-select');
+    langSelect.addEventListener('change', e => {
+      const lang = e.target.value;
+      document.querySelectorAll('[data-lang]').forEach(el => {
+        const key = el.getAttribute('data-lang');
+        if(translations[lang][key]) {
+          el.classList.remove('show');
+          setTimeout(() => {
+            el.innerHTML = translations[lang][key];
+            el.classList.add('show');
+          }, 300);
+        }
+      });
+      document.title = translations[lang]["page-title"];
+    });
+  </script>
+
+</body>
+</html>
