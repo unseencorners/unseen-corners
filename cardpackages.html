@@ -86,50 +86,57 @@
       font-size: 15px;
       color: #555;
     }
-    /* Tablet view (max-width: 992px) */
-@media (max-width: 992px) {
+   /* Base styles (Desktop default) */
+.packages {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+}
+
+/* Tablet (up to 1024px) */
+@media (max-width: 1024px) {
+  .packages {
+    grid-template-columns: repeat(3, 1fr);
+  }
   nav ul {
-    gap: 15px;   /* reduce spacing */
-  }
-  .logo {
-    font-size: 20px;
-  }
-  .btn {
-    padding: 8px 14px;
-    font-size: 14px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
   }
 }
 
-/* Small tablets & mobiles (max-width: 768px) */
+/* Mobile (up to 768px) */
 @media (max-width: 768px) {
+  .packages {
+    grid-template-columns: repeat(2, 1fr);
+  }
   nav {
     flex-direction: column;
     align-items: flex-start;
   }
   nav ul {
     flex-direction: column;
-    width: 100%;
-    display: none; /* hide menu by default */
+    gap: 8px;
   }
-  nav ul.show {
-    display: flex;  /* show when hamburger clicked */
-  }
-  .hamburger {
-    display: block;
-    cursor: pointer;
+  .logo {
+    font-size: 20px;
   }
 }
 
-/* Mobile phones (max-width: 480px) */
+/* Small Mobile (up to 480px) */
 @media (max-width: 480px) {
-  .logo {
-    font-size: 18px;
+  .packages {
+    grid-template-columns: 1fr;
   }
-  .btn {
-    padding: 6px 12px;
-    font-size: 12px;
-  }
+  nav {
+    font-size: 14px;
+  }
+  .package-card {
+    font-size: 14px;
+    padding: 10px;
+  }
 }
+
   </style>
 </head>
 <body>
@@ -278,5 +285,6 @@
 
 </body>
 </html>
+
 
 
