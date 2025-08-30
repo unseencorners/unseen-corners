@@ -86,57 +86,63 @@
       font-size: 15px;
       color: #555;
     }
-   /* Base styles (Desktop default) */
-.packages {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 20px;
-}
+  /* Responsive Design */
+    @media (max-width: 1024px) {
+      .packages {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
 
-/* Tablet (up to 1024px) */
-@media (max-width: 1024px) {
-  .packages {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  nav ul {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-}
+    @media (max-width: 768px) {
+      .packages {
+        grid-template-columns: repeat(2, 1fr);
+      }
 
-/* Mobile (up to 768px) */
-@media (max-width: 768px) {
-  .packages {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  nav {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  nav ul {
-    flex-direction: column;
-    gap: 8px;
-  }
-  .logo {
-    font-size: 20px;
-  }
-}
+      /* Navbar responsive */
+      .hamburger {
+        display: block;
+      }
 
-/* Small Mobile (up to 480px) */
-@media (max-width: 480px) {
-  .packages {
-    grid-template-columns: 1fr;
-  }
-  nav {
-    font-size: 14px;
-  }
-  .package-card {
-    font-size: 14px;
-    padding: 10px;
-  }
-}
+      nav ul, nav .buttons {
+        display: none;
+        flex-direction: column;
+        background: #0b1c2c;
+        width: 100%;
+        text-align: left;
+        padding: 10px;
+      }
 
+      nav ul.show, nav .buttons.show {
+        display: flex;
+      }
+
+      nav ul {
+        gap: 12px;
+        margin-top: 10px;
+      }
+
+      nav .buttons {
+        margin-top: 10px;
+        gap: 8px;
+      }
+
+      .logo {
+        font-size: 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .packages {
+        grid-template-columns: 1fr;
+      }
+      nav {
+        font-size: 14px;
+      }
+      .package-card {
+        font-size: 14px;
+        padding: 8px;
+      }
+    }
   </style>
 </head>
 <body>
