@@ -86,6 +86,50 @@
       font-size: 15px;
       color: #555;
     }
+    /* Tablet view (max-width: 992px) */
+@media (max-width: 992px) {
+  nav ul {
+    gap: 15px;   /* reduce spacing */
+  }
+  .logo {
+    font-size: 20px;
+  }
+  .btn {
+    padding: 8px 14px;
+    font-size: 14px;
+  }
+}
+
+/* Small tablets & mobiles (max-width: 768px) */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  nav ul {
+    flex-direction: column;
+    width: 100%;
+    display: none; /* hide menu by default */
+  }
+  nav ul.show {
+    display: flex;  /* show when hamburger clicked */
+  }
+  .hamburger {
+    display: block;
+    cursor: pointer;
+  }
+}
+
+/* Mobile phones (max-width: 480px) */
+@media (max-width: 480px) {
+  .logo {
+    font-size: 18px;
+  }
+  .btn {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+}
   </style>
 </head>
 <body>
@@ -234,3 +278,4 @@
 
 </body>
 </html>
+
