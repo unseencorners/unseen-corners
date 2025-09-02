@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ప్యాకేజీలు</title>
+  <style>
+    body { margin:0; padding:0; background:#f5f5f5; font-family: Arial, sans-serif; }
+    header { background: #1b2735; color: #fff; padding: 15px 20px; display:flex; justify-content:space-between; align-items:center; }
+    header h1 { color:#f4c542; font-size:22px; margin:0; }
+    nav a { color:#fff; text-decoration:none; margin-left:15px; }
+    .nav-btn { background:#f4c542; color:#000; border:none; border-radius:5px; padding:8px 16px; cursor:pointer; }
+    .lang-select { padding:6px 10px; border-radius:5px; border:none; cursor:pointer; }
+    .packages { padding:40px 20px; }
+    .packages h2 { text-align:center; font-size:28px; margin-bottom:30px; }
+    .package-list { display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:20px; justify-items:center; }
+    .card { background:#fff; border-radius:10px; overflow:hidden; width:250px; box-shadow:0 4px 10px rgba(0,0,0,0.1); transition:0.3s; }
+    .card:hover { transform:scale(1.05); box-shadow:0 8px 20px rgba(0,0,0,0.2); }
+    .card img { width:100%; height:180px; object-fit:cover; transition:0.4s; }
+    .card:hover img { transform:scale(1.1); }
+    .card-body { padding:15px; text-align:center; }
+    .card-body h3 { font-size:20px; margin-bottom:10px; }
+    .view-btn { display:inline-block; margin-top:8px; padding:10px 15px; background:#0077cc; color:#fff; border-radius:6px; text-decoration:none; transition:0.3s; cursor:pointer; }
+    .view-btn:hover { background:#005fa3; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1 id="site-title">అన్సీన్ కార్నర్స్</h1>
+  <nav>
+    <a href="index.html" id="nav-home">హోమ్</a>
+    <a href="about14.html" id="nav-about">గురించి</a>
+    <a href="c.html" id="nav-contact">సంప్రదించండి</a>
+    <a href="t4.html" id="nav-chatBot">చాట్ బాట్</a>
+    <button class="nav-btn" id="book-btn">బుక్ చేయండి</button>
+    <button class="nav-btn" id="Login-btn" onclick="window.location.href='l.html'">లాగిన్</button>
+    <select class="lang-select" id="language-select" onchange="changeLanguage()">
+      <option value="en">English</option>
+      <option value="hi">हिन्दी</option>
+      <option value="te" selected>తెలుగు</option>
+    </select>
+  </nav>
+</header>
+
+<section class="packages">
+  <h2 id="packages-title">ప్రముఖ ప్యాకేజీలు</h2>
+  <div class="package-list">
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" alt="Beaches">
+      <div class="card-body">
+        <h3 id="pkg1-title">బీచ్‌లు</h3>
+        <a href="javascript:void(0)" class="view-btn" onclick="viewPackage('beaches.html')">View Package</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://cdn.britannica.com/05/58605-050-86F58113/Annapurna-massif-village-Nepal.jpg" alt="Mountain Trek">
+      <div class="card-body">
+        <h3 id="pkg2-title">పర్వతారోహణ ట్రెక్</h3>
+        <a href="javascript:void(0)" class="view-btn" onclick="viewPackage('mountain.html')">View Package</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://res.cloudinary.com/jerrick/image/upload/c_scale,f_jpg,q_auto/64ca35310384d0001dffee86.jpg" alt="Famous Waterfalls">
+      <div class="card-body">
+        <h3 id="pkg3-title">ప్రసిద్ధ జలపాతాలు</h3>
+        <a href="javascript:void(0)" class="view-btn" onclick="viewPackage('waterfalls.html')">View Package</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://www.deccanchronicle.com/h-upload/2024/07/08/1822654-ttd.webp" alt="Temples">
+      <div class="card-body">
+        <h3 id="pkg4-title">దేవాలయాలు</h3>
+        <a href="javascript:void(0)" class="view-btn" onclick="viewPackage('temples.html')">View Package</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://cdn.99pandit.com/images/blogsimg/Meenakshi-Amman-Temple-in-Madurai-1.webp" alt="Caves & Hills">
+      <div class="card-body">
+        <h3 id="pkg5-title">గుహలు మరియు కొండలు</h3>
+        <a href="javascript:void(0)" class="view-btn" onclick="viewPackage('caves.html')">View Package</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  function viewPackage(pageUrl) {
+    let isLoggedIn = sessionStorage.getItem("isLoggedIn");
+    if(isLoggedIn === "true"){
+      window.location.href = pageUrl;
+    } else {
+      window.location.href = "l.html?redirect=" + pageUrl;
+    }
+  }
+
+  const translations = {
+    en:{ siteTitle:"Unseen Corners", navHome:"Home", navAbout:"About", navContact:"Contact", navChatBot:"Chat Bot", navBookNow:"Book Now", navLogin:"Login", packagesTitle:"Popular Packages", pkg1:{title:"Beaches"}, pkg2:{title:"Mountain Trek"}, pkg3:{title:"Famous Waterfalls"}, pkg4:{title:"Temples"}, pkg5:{title:"Caves & Hills"} },
+    hi:{ siteTitle:"अनसीन कॉर्नर्स", navHome:"होम", navAbout:"के बारे में", navContact:"संपर्क", navChatBot:"चैट बॉट", navBookNow:"अभी बुक करें", navLogin:"लॉगिन", packagesTitle:"लोकप्रिय पैकेज", pkg1:{title:"बीच"}, pkg2:{title:"पहाड़ ट्रेक"}, pkg3:{title:"प्रसिद्ध झरने"}, pkg4:{title:"मंदिर"}, pkg5:{title:"गुफाएँ और पहाड़ियाँ"} },
+    te:{ siteTitle:"అన్సీన్ కార్నర్స్", navHome:"హోమ్", navAbout:"గురించి", navContact:"సంప్రదించండి", navChatBot:"చాట్ బాట్", navBookNow:"బుక్ చేయండి", navLogin:"లాగిన్", packagesTitle:"ప్రముఖ ప్యాకేజీలు", pkg1:{title:"బీచ్‌లు"}, pkg2:{title:"పర్వతారోహణ ట్రెక్"}, pkg3:{title:"ప్రసిద్ధ జలపాతాలు"}, pkg4:{title:"దేవాలయాలు"}, pkg5:{title:"గుహలు మరియు కొండలు"} }
+  };
+
+  function changeLanguage() {
+    const lang = document.getElementById("language-select").value;
+    const t = translations[lang];
+    document.getElementById("site-title").innerText = t.siteTitle;
+    document.getElementById("nav-home").innerText = t.navHome;
+    document.getElementById("nav-about").innerText = t.navAbout;
+    document.getElementById("nav-contact").innerText = t.navContact;
+    document.getElementById("nav-chatBot").innerText = t.navChatBot;
+    document.getElementById("book-btn").innerText = t.navBookNow;
+    document.getElementById("Login-btn").innerText = t.navLogin;
+    document.getElementById("packages-title").innerText = t.packagesTitle;
+    document.getElementById("pkg1-title").innerText = t.pkg1.title;
+    document.getElementById("pkg2-title").innerText = t.pkg2.title;
+    document.getElementById("pkg3-title").innerText = t.pkg3.title;
+    document.getElementById("pkg4-title").innerText = t.pkg4.title;
+    document.getElementById("pkg5-title").innerText = t.pkg5.title;
+  }
+
+  document.getElementById("language-select").value = "te";
+  changeLanguage();
+</script>
+
+</body>
+</html>

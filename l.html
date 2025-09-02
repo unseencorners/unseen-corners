@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login / Signup</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif;}
+body{display:flex;justify-content:center;align-items:center;min-height:100vh;background:url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e') no-repeat center/cover;}
+.container{width:400px;background:rgba(255,255,255,0.15);padding:40px;border-radius:15px;backdrop-filter:blur(8px);box-shadow:0 8px 20px rgba(0,0,0,0.3);}
+.form-box{display:none;}
+.form-box.active{display:block;}
+h2{text-align:center;margin-bottom:20px;color:#1b2735;}
+input{width:100%;padding:12px;margin:10px 0;border:1px solid #ccc;border-radius:5px;font-size:16px;}
+button{width:100%;padding:12px;margin-top:15px;background:#1b2735;color:#fff;font-size:16px;border:none;border-radius:5px;cursor:pointer;font-weight:bold;}
+button:hover{background:#333;}
+.switch{text-align:center;margin-top:15px;font-size:14px;}
+.switch a{color:#f4c542;text-decoration:none;font-weight:bold;}
+.switch a:hover{text-decoration:underline;}
+</style>
+</head>
+<body>
+
+<div class="container">
+<div class="form-box active" id="login-form">
+<h2>Login</h2>
+<input type="email" id="login-email" placeholder="Enter your email" required>
+<input type="password" id="login-password" placeholder="Password" required>
+<button onclick="login()"><b>LOG IN</b></button>
+<div class="switch">New user? <a onclick="showSignup()">Create Account</a></div>
+</div>
+
+<div class="form-box" id="signup-form">
+<h2>Create Account</h2>
+<input type="text" id="name" placeholder="Enter your name" required>
+<input type="email" id="email" placeholder="Enter your email" required>
+<input type="password" id="password" placeholder="Enter your password" required>
+<button onclick="signup()"><b>SIGN UP</b></button>
+<div class="switch">Already have account? <a onclick="showLogin()">Login</a></div>
+</div>
+</div>
+
+<script>
+function showSignup(){document.getElementById("login-form").classList.remove("active");document.getElementById("signup-form").classList.add("active");}
+function showLogin(){document.getElementById("signup-form").classList.remove("active");document.getElementById("login-form").classList.add("active");}
+
+const urlParams = new URLSearchParams(window.location.search);
+const redirectPage = urlParams.get('redirect') || "index.html";
+
+function login(){
+let email=document.getElementById("login-email").value;
+let password=document.getElementById("login-password").value;
+if(email && password){sessionStorage.setItem("isLoggedIn","true");window.location.href=redirectPage;}
+else{alert("Please enter both email and password!");}
+}
+
+function signup(){
+let name=document.getElementById("name").value;
+let email=document.getElementById("email").value;
+let password=document.getElementById("password").value;
+if(name && email && password){sessionStorage.setItem("isLoggedIn","true");window.location.href=redirectPage;}
+else{alert("Please fill all fields!");}
+}
+</script>
+
+</body>
+</html>
