@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<!-- saved from url=(0113)file:///C:/Users/HP/OneDrive/%E6%96%87%E6%A1%A3/my/OneDrive/Desktop/tourism%20package/project%20files/blank3.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tourism Package Booking</title>
+    <link rel="stylesheet" href="./Tourism Package Booking_files/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            color: white;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        
+        header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .form-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .form-section {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .form-section h3 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #1a2a6c;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        .form-section h3 i {
+            color: #fdbb2d;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #444;
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #1a2a6c;
+            box-shadow: 0 0 0 2px rgba(26, 42, 108, 0.2);
+        }
+        
+        .inline-fields {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .inline-fields .form-group {
+            flex: 1;
+        }
+        
+        .travelers-container {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+        
+        .traveler {
+            padding: 10px 0;
+            border-bottom: 1px dashed #ddd;
+        }
+        
+        .traveler:last-child {
+            border-bottom: none;
+        }
+        
+        .add-traveler {
+            background: none;
+            border: 2px dashed #1a2a6c;
+            color: #1a2a6c;
+            padding: 10px;
+            border-radius: 8px;
+            width: 100%;
+            margin-top: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .add-traveler:hover {
+            background: #1a2a6c;
+            color: white;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(to right, #1a2a6c, #b21f1f);
+            color: white;
+            border: none;
+            padding: 16px 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            margin-top: 20px;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .payment-options {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .payment-option {
+            flex: 1;
+            text-align: center;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .payment-option.selected {
+            border-color: #1a2a6c;
+            background: rgba(26, 42, 108, 0.1);
+        }
+        
+        .payment-option i {
+            font-size: 2rem;
+            margin-bottom: 5px;
+            color: #1a2a6c;
+        }
+        
+        footer {
+            text-align: center;
+            color: white;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .package-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 10px;
+        }
+        
+        .package-option {
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+        }
+        
+        .package-option:hover {
+            border-color: #1a2a6c;
+            background: rgba(26, 42, 108, 0.05);
+        }
+        
+        .package-option.selected {
+            border-color: #1a2a6c;
+            background: rgba(26, 42, 108, 0.1);
+        }
+        
+        .package-name {
+            font-weight: bold;
+            color: #1a2a6c;
+            margin-bottom: 5px;
+        }
+        
+        .package-duration {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        @media (max-width: 768px) {
+            .inline-fields {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .payment-options {
+                flex-direction: column;
+            }
+            
+            .package-options {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>మీ కలల ప్రయాణాన్ని బుక్ చేయండి</h1>
+            <p>మీ పర్ఫెక్ట్ ట్రావెల్ ప్యాకేజ్ కోసం క్రింద ఉన్న ఫారమ్‌ను నింపండి. మా బృందం త్వరలో మీ బుకింగ్‌ను నిర్ధారించడానికి మీకు సంప్రదిస్తుంది.</p>
+        </header>
+        
+        <div class="form-container">
+            <form id="bookingForm">
+                <div class="form-section">
+                    <h3><i class="fas fa-user"></i> Personal Information</h3>
+                    <div class="inline-fields">
+                        <div class="form-group">
+                            <label for="firstName">మొదటి పేరు *</label>
+                            <input type="text" id="firstName" required="">
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">చివరి పేరు *</label>
+                            <input type="text" id="lastName" required="">
+                        </div>
+                    </div>
+                    <div class="inline-fields">
+                        <div class="form-group">
+                            <label for="email">ఇమెయిల్ *</label>
+                            <input type="email" id="email" required="">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">ఫోన్ నంబర్ *</label>
+                            <input type="tel" id="phone" required="">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">చిరునామా *</label>
+                        <input type="text" id="address" required="">
+                    </div>
+                    <div class="inline-fields">
+                        <div class="form-group">
+                            <label for="city">నగరం *</label>
+                            <input type="text" id="city" required="">
+                        </div>
+                        <div class="form-group">
+                            <label for="country">దేశం *</label>
+                            <input type="text" id="country" required="">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                    <h3><i class="fas fa-suitcase"></i> Travel Details</h3>
+                    <div class="form-group">
+                        <label for="package">ప్యాకేజ్ ఎంచుకోండి *</label>
+                        <div class="package-options">
+                            <div class="package-option selected" data-value="bali">
+                                <div class="package-name">బాలి పారడైస్</div>
+                                <div class="package-duration">7 రోజులు / 6 రాత్రులు</div>
+                            </div>
+                            <div class="package-option" data-value="europe">
+                                <div class="package-name">యూరోప్ అన్వేషణ</div>
+                                <div class="package-duration">14 రోజులు / 13 రాత్రులు</div>
+                            </div>
+                            <div class="package-option" data-value="thailand">
+                                <div class="package-name">థాయిలాండ్ అడ్వెంచర్</div>
+                                <div class="package-duration">10 రోజులు / 9 రాత్రులు</div>
+                            </div>
+                            <div class="package-option" data-value="maldives">
+                                <div class="package-name">మాల్దీవ్స్ రిల్యాక్ట్</div>
+                                <div class="package-duration">5 రోజులు / 4 రాత్రులు</div>
+                            </div>
+                        </div>
+                        <input type="hidden" id="package" value="bali" required="">
+                    </div>
+                    <div class="inline-fields">
+                        <div class="form-group">
+                            <label for="departureDate">ప్రయాణ తేదీ *</label>
+                            <input type="date" id="departureDate" required="" min="2025-10-08">
+                        </div>
+                        <div class="form-group">
+                            <label for="returnDate">తిరుగు తేదీ *</label>
+                            <input type="date" id="returnDate" required="">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="travelers">ప్రయాణికుల సంఖ్య *</label>
+                        <select id="travelers" required="">
+                            <option value="1">1 Traveler</option>
+                            <option value="2" selected="">2 Travelers</option>
+                            <option value="3">3 Travelers</option>
+                            <option value="4">4 Travelers</option>
+                            <option value="5">5+ Travelers</option>
+                        </select>
+                    </div>
+                    <div class="travelers-container" id="travelersContainer">
+                        <div class="traveler">
+                            <div class="inline-fields">
+                                <div class="form-group">
+                                    <label>ప్రయాణికుడు 1 పూర్తి పేరు *</label>
+                                    <input type="text" value="Primary Traveler" readonly="">
+                                </div>
+                                <div class="form-group">
+                                    <label>పుట్టిన తేదీ *</label>
+                                    <input type="date" required="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="traveler">
+                            <div class="inline-fields">
+                                <div class="form-group">
+                                    <label>ప్రయాణికుడు 2 పూర్తి పేరు *</label>
+                                    <input type="text" required="">
+                                </div>
+                                <div class="form-group">
+                                    <label>పుట్టిన తేదీ *</label>
+                                    <input type="date" required="">
+                                </div>
+                            </div>
+                        </div>
+                    <div class="traveler">
+                <div class="inline-fields">
+                    <div class="form-group">
+                        <label>ప్రయాణికుడు 3 పూర్తి పేరు *</label>
+                        <input type="text" required="">
+                    </div>
+                    <div class="form-group">
+                        <label>పుట్టిన తేదీ *</label>
+                        <input type="date" required="">
+                    </div>
+                </div>
+            </div><div class="traveler">
+                <div class="inline-fields">
+                    <div class="form-group">
+                        <label>ప్రయాణికుడు 4 పూర్తి పేరు *</label>
+                        <input type="text" required="">
+                    </div>
+                    <div class="form-group">
+                        <label>పుట్టిన తేదీ *</label>
+                        <input type="date" required="">
+                    </div>
+                </div>
+            </div><div class="traveler">
+                <div class="inline-fields">
+                    <div class="form-group">
+                        <label>ప్రయాణికుడు 5 పూర్తి పేరు *</label>
+                        <input type="text" required="">
+                    </div>
+                    <div class="form-group">
+                        <label>పుట్టిన తేదీ *</label>
+                        <input type="date" required="">
+                    </div>
+                </div>
+            </div></div>
+                    <button type="button" class="add-traveler" id="addTraveler">+ ఇంకో ప్రయాణికుడు జోడించండి</button>
+                </div>
+                
+                <div class="form-section">
+                    <h3><i class="fas fa-concierge-bell"></i> Special Requirements</h3>
+                    <div class="form-group">
+                        <label for="dietary">ఆహార పరిమితులు</label>
+                        <select id="dietary">
+                            <option value="none">None</option>
+                            <option value="vegetarian">Vegetarian</option>
+                            <option value="vegan">Vegan</option>
+                            <option value="gluten-free">Gluten-Free</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="accommodation">వసతి ప్రాధాన్యత</label>
+                        <select id="accommodation">
+                            <option value="standard">Standard Room</option>
+                            <option value="deluxe">Deluxe Room</option>
+                            <option value="suite">Suite</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="specialRequests">ప్రత్యేక అభ్యర్థనలు</label>
+                        <textarea id="specialRequests" rows="3" placeholder="Any special requirements or requests..."></textarea>
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                    <h3><i class="fas fa-credit-card"></i> Payment Information</h3>
+                    <div class="form-group">
+                        <label>చెల్లింపు విధానం *</label>
+                        <div class="payment-options">
+                            <div class="payment-option selected">
+                                <i class="fab fa-cc-visa"></i>
+                                <div>క్రెడిట్ కార్డ్</div>
+                            </div>
+                            <div class="payment-option">
+                                <i class="fab fa-paypal"></i>
+                                <div>పేపాల్</div>
+                            </div>
+                            <div class="payment-option">
+                                <i class="fas fa-university"></i>
+                                <div>బ్యాంకు బదిలీ</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="cardNumber">కార్డ్ నంబర్ *</label>
+                        <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" required="">
+                    </div>
+                    <div class="inline-fields">
+                        <div class="form-group">
+                            <label for="expiryDate">గడువు తేది *</label>
+                            <input type="text" id="expiryDate" placeholder="MM/YY" required="">
+                        </div>
+                        <div class="form-group">
+                            <label for="cvv">CVV *</label>
+                            <input type="text" id="cvv" placeholder="123" required="">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="cardName">కార్డుపై పేరు *</label>
+                        <input type="text" id="cardName" required="">
+                    </div>
+                </div>
+                
+                <button type="submit" class="submit-btn">బుకింగ్ పూర్తి చేయండి</button>
+            </form>
+        </div>
+        
+        <footer>
+            <p>© 2023 Wanderlust ట్రావెల్ ఏజెన్సీ. అన్ని హక్కులు రిజర్వ్ చేయబడ్డాయి.</p>
+            <p>సహాయం కావాలా? కాల్ చేయండి 1-800-TRAVEL లేదా ఇమెయిల్ చేయండి support@wanderlust.com</p>
+        </footer>
+    </div>
+
+    <script>
+        // Add traveler functionality
+        document.getElementById('addTraveler').addEventListener('click', function() {
+            const container = document.getElementById('travelersContainer');
+            const travelerCount = container.children.length + 1;
+            
+            if (travelerCount > 5) {
+                alert('Maximum 5 travelers allowed per booking. Please contact us for larger groups.');
+                return;
+            }
+            
+            const newTraveler = document.createElement('div');
+            newTraveler.className = 'traveler';
+            newTraveler.innerHTML = `
+                <div class="inline-fields">
+                    <div class="form-group">
+                        <label>Traveler ${travelerCount} Full Name *</label>
+                        <input type="text" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Date of Birth *</label>
+                        <input type="date" required>
+                    </div>
+                </div>
+            `;
+            
+            container.appendChild(newTraveler);
+        });
+        
+        // Payment method selection
+        const paymentOptions = document.querySelectorAll('.payment-option');
+        paymentOptions.forEach(option => {
+            option.addEventListener('click', function() {
+                // For payment options
+                if (this.querySelector('.fa-cc-visa') || this.querySelector('.fa-paypal') || this.querySelector('.fa-university')) {
+                    paymentOptions.forEach(opt => {
+                        if (opt.querySelector('.fa-cc-visa') || opt.querySelector('.fa-paypal') || opt.querySelector('.fa-university')) {
+                            opt.classList.remove('selected');
+                        }
+                    });
+                }
+                this.classList.add('selected');
+            });
+        });
+        
+        // Package selection
+        const packageOptions = document.querySelectorAll('.package-option');
+        packageOptions.forEach(option => {
+            option.addEventListener('click', function() {
+                packageOptions.forEach(opt => opt.classList.remove('selected'));
+                this.classList.add('selected');
+                document.getElementById('package').value = this.getAttribute('data-value');
+            });
+        });
+        
+      // Form submission with redirect to home after OK
+document.getElementById('bookingForm').addEventListener('submit', function(e) {
+    e.preventDefault(); // prevent default form submission
+    alert('Thank you for your booking! Our travel specialist will contact you within 24 hours to confirm your reservation.');
+    window.location.href = 'index.html'; // replace with your home page URL
+});
+
+        // Set min date for departure to today
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('departureDate').min = today;
+        
+        // Update return date min based on departure date
+        document.getElementById('departureDate').addEventListener('change', function() {
+            document.getElementById('returnDate').min = this.value;
+        });
+    </script>
+
+    <!-- ===== Multilanguage toggle (added, no other code changed) ===== -->
+    <div id="langToggle" style="position:fixed; top:16px; right:16px; z-index:9999; background: rgba(255,255,255,0.14); color:#fff; padding:8px 10px; border-radius:8px; cursor:pointer; font-weight:600;">English</div>
+    <script>
+    (function(){
+      // unique var names to avoid colliding with existing script variables
+      const _translations = {
+        en: {
+          headerTitle: "Book Your Dream Vacation",
+          headerSubtitle: "Fill out the form below to reserve your perfect travel package. Our team will contact you shortly to confirm your booking.",
+          personalInfo: "Personal Information",
+          firstName: "First Name *",
+          lastName: "Last Name *",
+          email: "Email Address *",
+          phone: "Phone Number *",
+          address: "Address *",
+          city: "City *",
+          country: "Country *",
+          travelDetails: "Travel Details",
+          packageLabel: "Select Package *",
+          packages: {
+            bali: { name: "Bali Paradise", duration: "7 Days / 6 Nights" },
+            europe: { name: "European Explorer", duration: "14 Days / 13 Nights" },
+            thailand: { name: "Thailand Adventure", duration: "10 Days / 9 Nights" },
+            maldives: { name: "Maldives Retreat", duration: "5 Days / 4 Nights" }
+          },
+          departureDate: "Departure Date *",
+          returnDate: "Return Date *",
+          travelersLabel: "Number of Travelers *",
+          travelerLabel: "Traveler {n} Full Name *",
+          dobLabel: "Date of Birth *",
+          addTraveler: "+ Add Another Traveler",
+          dietary: "Dietary Restrictions",
+          accommodation: "Accommodation Preference",
+          specialRequests: "Special Requests",
+          paymentInfo: "Payment Information",
+          paymentMethodLabel: "Payment Method *",
+          paymentOptions: ["Credit Card","PayPal","Bank Transfer"],
+          cardNumber: "Card Number *",
+          expiryDate: "Expiry Date *",
+          cvv: "CVV *",
+          cardName: "Name on Card *",
+          submitBtn: "Complete Booking",
+          footer1: "© 2023 Wanderlust Travel Agency. All rights reserved.",
+          footer2: "Need help? Call us at 1-800-TRAVEL or email support@wanderlust.com",
+          primaryTraveler: "Primary Traveler"
+        },
+        te: {
+          headerTitle: "మీ కలల ప్రయాణాన్ని బుక్ చేయండి",
+          headerSubtitle: "మీ పర్ఫెక్ట్ ట్రావెల్ ప్యాకేజ్ కోసం క్రింద ఉన్న ఫారమ్‌ను నింపండి. మా బృందం త్వరలో మీ బుకింగ్‌ను నిర్ధారించడానికి మీకు సంప్రదిస్తుంది.",
+          personalInfo: "వ్యక్తిగత సమాచారం",
+          firstName: "మొదటి పేరు *",
+          lastName: "చివరి పేరు *",
+          email: "ఇమెయిల్ *",
+          phone: "ఫోన్ నంబర్ *",
+          address: "చిరునామా *",
+          city: "నగరం *",
+          country: "దేశం *",
+          travelDetails: "ప్రయాణ వివరాలు",
+          packageLabel: "ప్యాకేజ్ ఎంచుకోండి *",
+          packages: {
+            bali: { name: "బాలి పారడైస్", duration: "7 రోజులు / 6 రాత్రులు" },
+            europe: { name: "యూరోప్ అన్వేషణ", duration: "14 రోజులు / 13 రాత్రులు" },
+            thailand: { name: "థాయిలాండ్ అడ్వెంచర్", duration: "10 రోజులు / 9 రాత్రులు" },
+            maldives: { name: "మాల్దీవ్స్ రిల్యాక్ట్", duration: "5 రోజులు / 4 రాత్రులు" }
+          },
+          departureDate: "ప్రయాణ తేదీ *",
+          returnDate: "తిరుగు తేదీ *",
+          travelersLabel: "ప్రయాణికుల సంఖ్య *",
+          travelerLabel: "ప్రయాణికుడు {n} పూర్తి పేరు *",
+          dobLabel: "పుట్టిన తేదీ *",
+          addTraveler: "+ ఇంకో ప్రయాణికుడు జోడించండి",
+          dietary: "ఆహార పరిమితులు",
+          accommodation: "వసతి ప్రాధాన్యత",
+          specialRequests: "ప్రత్యేక అభ్యర్థనలు",
+          paymentInfo: "చెల్లింపు సమాచారం",
+          paymentMethodLabel: "చెల్లింపు విధానం *",
+          paymentOptions: ["క్రెడిట్ కార్డ్","పేపాల్","బ్యాంకు బదిలీ"],
+          cardNumber: "కార్డ్ నంబర్ *",
+          expiryDate: "గడువు తేది *",
+          cvv: "CVV *",
+          cardName: "కార్డుపై పేరు *",
+          submitBtn: "బుకింగ్ పూర్తి చేయండి",
+          footer1: "© 2023 Wanderlust ట్రావెల్ ఏజెన్సీ. అన్ని హక్కులు రిజర్వ్ చేయబడ్డాయి.",
+          footer2: "సహాయం కావాలా? కాల్ చేయండి 1-800-TRAVEL లేదా ఇమెయిల్ చేయండి support@wanderlust.com",
+          primaryTraveler: "ప్రధాన ప్రయాణికుడు"
+        }
+      };
+
+      let _currentLang = 'en';
+      const _toggle = document.getElementById('langToggle');
+
+      function _applyLang(lang){
+        const t = _translations[lang] || _translations.en;
+
+        // header
+        const h1 = document.querySelector('header h1');
+        if(h1) h1.textContent = t.headerTitle;
+        const hp = document.querySelector('header p');
+        if(hp) hp.textContent = t.headerSubtitle;
+
+        // section headings
+        const personalH3 = Array.from(document.querySelectorAll('.form-section h3')).find(h => h.textContent.includes('Personal') || h.querySelector('.fa-user'));
+        if(personalH3) personalH3.childNodes[1] && (personalH3.lastChild.textContent = personalH3.lastChild.textContent); // noop but safe
+
+        // labels with for attributes
+        const setIf = (sel, txt) => { const el = document.querySelector(sel); if(el) el.textContent = txt; };
+
+        setIf('label[for="firstName"]', t.firstName);
+        setIf('label[for="lastName"]', t.lastName);
+        setIf('label[for="email"]', t.email);
+        setIf('label[for="phone"]', t.phone);
+        setIf('label[for="address"]', t.address);
+        setIf('label[for="city"]', t.city);
+        setIf('label[for="country"]', t.country);
+        setIf('label[for="package"]', t.packageLabel);
+        setIf('label[for="departureDate"]', t.departureDate);
+        setIf('label[for="returnDate"]', t.returnDate);
+        setIf('label[for="travelers"]', t.travelersLabel);
+        setIf('label[for="dietary"]', t.dietary);
+        setIf('label[for="accommodation"]', t.accommodation);
+        setIf('label[for="specialRequests"]', t.specialRequests);
+        setIf('label[for="cardNumber"]', t.cardNumber);
+        setIf('label[for="expiryDate"]', t.expiryDate);
+        setIf('label[for="cvv"]', t.cvv);
+        setIf('label[for="cardName"]', t.cardName);
+
+        // package names/durations by data-value
+        document.querySelectorAll('.package-option').forEach(opt => {
+          const key = opt.getAttribute('data-value');
+          const nameEl = opt.querySelector('.package-name');
+          const durEl = opt.querySelector('.package-duration');
+          if(nameEl && t.packages[key]) nameEl.textContent = t.packages[key].name;
+          if(durEl && t.packages[key]) durEl.textContent = t.packages[key].duration;
+        });
+
+        // payment method label (this label has no 'for', so find the payment section)
+        const paymentSection = Array.from(document.querySelectorAll('.form-section')).find(s => s.querySelector('i.fas.fa-credit-card'));
+        if(paymentSection){
+          const firstLabel = paymentSection.querySelector('label');
+          if(firstLabel) firstLabel.textContent = t.paymentMethodLabel;
+        }
+
+        // payment option labels (by order)
+        const pOpts = document.querySelectorAll('.payment-option');
+        pOpts.forEach((el, idx) => {
+          const divLabel = el.querySelector('div');
+          if(divLabel && t.paymentOptions[idx]) divLabel.textContent = t.paymentOptions[idx];
+        });
+
+        // add-traveler button
+        const addBtn = document.getElementById('addTraveler');
+        if(addBtn) addBtn.textContent = t.addTraveler;
+
+        // submit button
+        const submitBtn = document.querySelector('.submit-btn');
+        if(submitBtn) submitBtn.textContent = t.submitBtn;
+
+        // footer
+        const footPs = document.querySelectorAll('footer p');
+        if(footPs[0]) footPs[0].textContent = t.footer1;
+        if(footPs[1]) footPs[1].textContent = t.footer2;
+
+        // Traveler labels and primary traveler input value
+        _updateTravelerLabelsAndPrimary(t);
+
+      }
+
+      function _updateTravelerLabelsAndPrimary(t){
+        const travelers = document.querySelectorAll('#travelersContainer .traveler');
+        travelers.forEach((tr, i) => {
+          const labels = tr.querySelectorAll('.form-group label');
+          if(labels[0]) {
+            // first label is full name label
+            const txt = t.travelerLabel.replace('{n}', (i+1));
+            labels[0].textContent = txt;
+          }
+          if(labels[1]) labels[1].textContent = t.dobLabel;
+          // primary traveler readonly input
+          const primaryInput = tr.querySelector('input[readonly]');
+          if(primaryInput){
+            primaryInput.value = t.primaryTraveler;
+          }
+        });
+      }
+
+      // toggle handler
+      _toggle.addEventListener('click', function(){
+        _currentLang = _currentLang === 'en' ? 'te' : 'en';
+        _applyLang(_currentLang);
+        // button shows the language to switch to (so if current is 'en' show తెలుగు)
+        _toggle.textContent = (_currentLang === 'en') ? 'తెలుగు' : 'English';
+      });
+
+      // when user clicks "Add Another Traveler", original script adds English label.
+      // So listen and re-apply translation a little after addition.
+      const addTravelerBtn = document.getElementById('addTraveler');
+      if(addTravelerBtn){
+        addTravelerBtn.addEventListener('click', function(){
+          setTimeout(function(){
+            _applyLang(_currentLang);
+          }, 30);
+        });
+      }
+
+      // initial apply
+      _applyLang(_currentLang);
+      // initial toggle label
+      _toggle.textContent = 'తెలుగు';
+    })();
+    </script>
+    <!-- ===== end multilanguage toggle ===== -->
+
+
+
+</body></html>

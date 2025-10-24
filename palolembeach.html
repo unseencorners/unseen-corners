@@ -1,0 +1,246 @@
+<!-- Palolem Beach | Unseen Corners -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title data-lang="page-title">Unseen Corners – Palolem Beach</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Poppins", sans-serif; }
+    body {
+      background: url('https://www.tourmyindia.com/states/goa/image/palolem-beach-banner.webp') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      line-height: 1.6;
+      min-height: 100vh;
+      padding-top: 80px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    header {
+      background: #00695c; color: #fff;
+      padding: 15px 40px; display: flex; justify-content: space-between;
+      align-items: center; flex-wrap: wrap; position: fixed;
+      top: 0; left: 0; width: 100%; z-index: 1000;
+    }
+    header h1 { color: #ffca28; font-size: 22px; font-weight: bold; }
+    nav a { color: white; text-decoration: none; margin-left: 20px; font-weight: 500; }
+    nav a:hover { text-decoration: underline; }
+    .nav-btn {
+      background: #ffca28; color: #004d40; font-weight: bold;
+      padding: 8px 16px; border: none; border-radius: 6px;
+      margin-left: 20px; cursor: pointer;
+    }
+    .nav-btn:hover { background: #ffe082; }
+    .lang-select {
+      margin-left: 20px; padding: 6px 10px; border-radius: 5px;
+      border: none; font-size: 14px; cursor: pointer;
+    }
+
+    .hero {
+      background: url('https://www.tourmyindia.com/states/goa/image/palolem-beach-banner.webp') no-repeat center center/cover;
+      height: 100vh; display: flex; align-items: center; justify-content: center;
+      text-align: center; color: white; position: relative; padding-top: 70px;
+    }
+    .hero::before {
+      content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.5); z-index: 1;
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 800px; padding: 20px; }
+    .hero-content h2 { font-size: 34px; margin-bottom: 15px; color: #ffca28; }
+    .hero-content p { font-size: 18px; margin-bottom: 20px; }
+
+    .info-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 15px; margin-top: 20px;
+    }
+    .info-card {
+      background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 8px; padding: 15px; font-size: 15px; color: #fff;
+    }
+
+    .view360 {
+      margin: 60px auto; max-width: 1000px;
+      padding: 15px; border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    .view360 iframe { width: 100%; height: 500px; border: none; border-radius: 12px; }
+
+    .itinerary {
+      max-width: 900px; margin: 50px auto; padding: 25px;
+      background: rgba(255,255,255,0.2); border-radius: 10px;
+    }
+    .itinerary h2 { text-align: center; color: #ffca28; margin-bottom: 20px; }
+    .itinerary form { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 20px; }
+    .itinerary input, .itinerary textarea {
+      padding: 10px; border: 1px solid #ccc; border-radius: 5px;
+      width: 100%; max-width: 250px; font-size: 14px;
+    }
+    .itinerary button {
+      background: #00695c; color: white; padding: 10px 20px;
+      border: none; border-radius: 5px; cursor: pointer;
+    }
+    .itinerary button:hover { background: #004d40; }
+    .itinerary-item {
+      background: rgba(0,0,0,0.3); padding: 15px; border-left: 4px solid #ffca28;
+      margin-bottom: 10px; border-radius: 5px;
+    }
+
+    footer {
+      text-align: center; padding: 20px;
+      background: #00695c; color: white;
+      margin-top: 50px;
+    }
+
+    @media(max-width:768px){
+      .hero-content h2 { font-size: 26px; }
+      .hero-content p { font-size: 16px; }
+      .view360 iframe { height: 300px; }
+      .itinerary form { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1 data-lang="site-title">Unseen Corners</h1>
+  <nav>
+    <a href="index.html" data-lang="nav-home"><b>Home</b></a>
+    <a href="about14.html" data-lang="nav-about"><b>About</b></a>
+    <a href="contact.html" data-lang="nav-contact"><b>Contact</b></a>
+    <a href="t4.html" data-lang="nav-chat"><b>Chat Bot</b></a>
+    <button class="nav-btn"><b data-lang="nav-book" onclick="window.location.href='book.html'">Book Now</b></button>
+    <select class="lang-select" id="language-select">
+      <option value="en">English</option>
+      <option value="hi">हिन्दी</option>
+      <option value="te">తెలుగు</option>
+    </select>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+    <h2 data-lang="title">🌴 Palolem Beach, Goa</h2>
+    <p data-lang="intro">
+      Palolem Beach is one of South Goa’s most serene and scenic beaches, famous for its crescent shape, calm turquoise waters, and laid-back tropical vibe. Surrounded by coconut palms and beach huts, it’s ideal for swimming, kayaking, and peaceful getaways.
+    </p>
+
+    <h3 data-lang="highlights-title">🌅 Highlights & Facts</h3>
+    <div class="info-grid">
+      <div class="info-card" data-lang="high-1">Known for its beautiful crescent shape and golden sands.</div>
+      <div class="info-card" data-lang="high-2">Popular for dolphin spotting, kayaking, and yoga retreats.</div>
+      <div class="info-card" data-lang="high-3">Silent discos and beach huts create a unique nightlife.</div>
+      <div class="info-card" data-lang="high-4">Close to Agonda and Patnem beaches.</div>
+    </div>
+
+    <h3 data-lang="visit-title">🕒 Visitor Information</h3>
+    <div class="info-grid">
+      <div class="info-card" data-lang="time"><b>Timings:</b> Open 24 hours</div>
+      <div class="info-card" data-lang="location"><b>Location:</b> Canacona, South Goa</div>
+      <div class="info-card" data-lang="best-time"><b>Best Time:</b> November – February</div>
+    </div>
+  </div>
+</section>
+
+<section class="view360">
+  <h2 style="text-align:center; margin-bottom:15px; color:#ffca28;" data-lang="view360-title">🌐 Explore 360° View of Palolem Beach</h2>
+  <iframe src="https://www.google.com/maps/embed?pb=!4v1760026484431!6m8!1m7!1sCAoSF0NJSE0wb2dLRUlDQWdJRGVrNnZyN2dF!2m2!1d15.00996481329184!2d74.0232186047796!3f199.15317!4f0!5f0.7820865974627469" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</section>
+
+<section class="itinerary">
+  <h2 data-lang="itinerary-title">🧭 Plan Your Palolem Beach Trip</h2>
+  <form id="itinerary-form">
+    <input type="date" id="date" required />
+    <input type="text" id="activity" placeholder="Activity (e.g., Kayaking, Yoga, Dolphin Ride)" required />
+    <textarea id="notes" rows="1" placeholder="Notes (optional)"></textarea>
+    <button type="submit" data-lang="btn-add">Add to Itinerary</button>
+    <button type="button" id="clear-itinerary" style="background:#c0392b;" data-lang="btn-clear">Clear All</button>
+  </form>
+  <div id="itinerary-list"></div>
+
+  <div class="itinerary-list">
+    <h3 style="margin-top:30px;" data-lang="itinerary-suggested-title">🗓 Suggested Itinerary</h3>
+    <div class="itinerary-item" data-lang="day1-morning"><strong>Day 1 - Morning:</strong> Relax on the beach and take a swim in the calm waters.</div>
+    <div class="itinerary-item" data-lang="day1-afternoon"><strong>Day 1 - Afternoon:</strong> Enjoy seafood lunch at a beach shack and go kayaking.</div>
+    <div class="itinerary-item" data-lang="day1-evening"><strong>Day 1 - Evening:</strong> Attend a peaceful silent disco by the sea.</div>
+    <div class="itinerary-item" data-lang="day2-morning"><strong>Day 2 - Morning:</strong> Take a dolphin watching boat trip.</div>
+    <div class="itinerary-item" data-lang="day2-evening"><strong>Day 2 - Evening:</strong> Watch the sunset and dine under palm trees.</div>
+  </div>
+</section>
+
+<footer>
+  <p data-lang="footer">&copy; 2025 Unseen Corners | All Rights Reserved</p>
+</footer>
+
+<script>
+  // ✅ Translations object
+  const translations = {
+    en: {
+      "site-title":"Unseen Corners","nav-home":"Home","nav-about":"About","nav-contact":"Contact","nav-chat":"Chat Bot","nav-book":"Book Now",
+      "page-title":"Unseen Corners – Palolem Beach","title":"🌴 Palolem Beach, Goa",
+      "intro":"Palolem Beach is one of South Goa’s most serene and scenic beaches, famous for its crescent shape, calm turquoise waters, and laid-back tropical vibe. Surrounded by coconut palms and beach huts, it’s ideal for swimming, kayaking, and peaceful getaways.",
+      "highlights-title":"🌅 Highlights & Facts","high-1":"Known for its beautiful crescent shape and golden sands.","high-2":"Popular for dolphin spotting, kayaking, and yoga retreats.","high-3":"Silent discos and beach huts create a unique nightlife.","high-4":"Close to Agonda and Patnem beaches.",
+      "visit-title":"🕒 Visitor Information","time":"Timings: Open 24 hours","location":"Location: Canacona, South Goa","best-time":"Best Time: November – February",
+      "view360-title":"🌐 Explore 360° View of Palolem Beach","itinerary-title":"🧭 Plan Your Palolem Beach Trip","btn-add":"Add to Itinerary","btn-clear":"Clear All",
+      "itinerary-suggested-title":"🗓 Suggested Itinerary","day1-morning":"Day 1 - Morning: Relax on the beach and take a swim in the calm waters.","day1-afternoon":"Day 1 - Afternoon: Enjoy seafood lunch at a beach shack and go kayaking.","day1-evening":"Day 1 - Evening: Attend a peaceful silent disco by the sea.","day2-morning":"Day 2 - Morning: Take a dolphin watching boat trip.","day2-evening":"Day 2 - Evening: Watch the sunset and dine under palm trees.",
+      "footer":"© 2025 Unseen Corners | All Rights Reserved"
+    },
+    hi: {
+      "site-title":"अनसीन कॉर्नर्स","nav-home":"मुख्य पृष्ठ","nav-about":"हमारे बारे में","nav-contact":"संपर्क करें","nav-chat":"चैट बॉट","nav-book":"बुक करें",
+      "page-title":"अनसीन कॉर्नर्स – पालोलेम बीच","title":"🌴 पालोलेम बीच, गोवा",
+      "intro":"पालोलेम बीच दक्षिण गोवा का सबसे शांत और सुंदर समुद्र तट है, जो अपनी अर्धचंद्राकार आकृति, शांत फ़िरोज़ा पानी और आरामदायक ट्रॉपिकल वातावरण के लिए प्रसिद्ध है। नारियल के पेड़ों और बीच हाउट्स से घिरा यह तैराकी, कायकिंग और शांत छुट्टियों के लिए आदर्श है।",
+      "highlights-title":"🌅 मुख्य आकर्षण & तथ्य","high-1":"सुंदर अर्धचंद्राकार आकृति और सुनहरी रेत के लिए जाना जाता है।","high-2":"डॉल्फिन देखने, कायकिंग और योग शिविरों के लिए लोकप्रिय।","high-3":"साइलेंट डिस्को और बीच हाउट्स अद्वितीय नाइटलाइफ़ बनाते हैं।","high-4":"आगोंडा और पटनेम बीच के पास।",
+      "visit-title":"🕒 आगंतुक जानकारी","time":"समय: 24 घंटे खुले","location":"स्थान: कनकोना, दक्षिण गोवा","best-time":"सर्वश्रेष्ठ समय: नवम्बर – फरवरी",
+      "view360-title":"🌐 पालोलेम बीच का 360° दृश्य देखें","itinerary-title":"🧭 अपनी पालोलेम बीच यात्रा योजना बनाएं","btn-add":"सूची में जोड़ें","btn-clear":"सभी साफ करें",
+      "itinerary-suggested-title":"🗓 सुझाई गई यात्रा योजना","day1-morning":"दिन 1 - सुबह: समुद्र तट पर आराम करें और शांत पानी में तैरें।","day1-afternoon":"दिन 1 - दोपहर: बीच शैक में समुद्री भोजन का आनंद लें और कायकिंग करें।","day1-evening":"दिन 1 - शाम: समुद्र के किनारे शांत साइलेंट डिस्को में शामिल हों।","day2-morning":"दिन 2 - सुबह: डॉल्फिन देखने की नाव की सवारी करें।","day2-evening":"दिन 2 - शाम: सूर्यास्त देखें और नारियल के पेड़ों के नीचे भोजन करें।",
+      "footer":"© 2025 अनसीन कॉर्नर्स | सर्वाधिकार सुरक्षित"
+    },
+    te: {
+      "site-title":"అన్‌సీన్ కార్నర్స్","nav-home":"హోమ్","nav-about":"మన గురించి","nav-contact":"సంప్రదించండి","nav-chat":"చాట్ బాట్","nav-book":"బుక్ చేయండి",
+      "page-title":"అన్‌సీన్ కార్నర్స్ – పాలోలెం బీచ్","title":"🌴 పాలోలెం బీచ్, గోవా",
+      "intro":"పాలోలెం బీచ్ దక్షిణ గోవా లోని అత్యంత శాంతమైన మరియు అందమైన బీచ్‌లలో ఒకటి, దీని అర్థచంద్రాకార ఆకారం, శాంతమైన టర్క్వాయిజ్ నీరు మరియు రిలాక్స్ ట్రోపికల్ వాతావరణం కోసం ప్రసిద్ధి చెందింది. కొబ్బరి చెట్లు మరియు బీచ్ హట్స్‌తో окружించబడినది, ఈ బీచ్ కాయాకింగ్, ఈత మరియు శాంతమైన విహారాలకు సరైనది.",
+      "highlights-title":"🌅 ముఖ్య ఆకర్షణలు & విషయాలు","high-1":"అందమైన అర్థచంద్రాకార ఆకారం మరియు బంగారు ఇసుక కోసం ప్రసిద్ధి చెందింది.","high-2":"డాల్ఫిన్ వీక్షణ, కాయాకింగ్ మరియు యోగా రిట్రీట్స్ కోసం ప్రాచుర్యం పొందింది.","high-3":"సైలెంట్ డిస్కోస్ మరియు బీచ్ హట్స్ ప్రత్యేక రాత్రి జీవితం సృష్టిస్తాయి.","high-4":"అగొండ మరియు పట్నెం బీచ్‌లకు సమీపంలో ఉంది.",
+      "visit-title":"🕒 సందర్శకుల సమాచారం","time":"సమయం: 24 గంటలూ తెరిచి ఉంటుంది","location":"స్థానం: కనకోనా, దక్షిణ గోవా","best-time":"మంచి సమయం: నవంబర్ – ఫిబ్రవరి",
+      "view360-title":"🌐 పాలోలెం బీచ్ 360° వీక్షణను అన్వేషించండి","itinerary-title":"🧭 మీ పాలోలెం బీచ్ ట్రిప్‌ను ప్లాన్ చేయండి","btn-add":"ఇటినరరీకి జోడించండి","btn-clear":"అన్నీ తొలగించండి",
+      "itinerary-suggested-title":"🗓 సూచించిన ప్రయాణం","day1-morning":"Day 1 - ఉదయం: బీచ్‌లో విశ్రాంతి తీసుకోండి మరియు శాంతమైన నీటిలో ఈత తీయండి.","day1-afternoon":"Day 1 - మధ్యాహ్నం: బీచ్ శాక్‌లో సముద్ర ఆహారం తినండి మరియు కాయాకింగ్ చేయండి.","day1-evening":"Day 1 - సాయంత్రం: సముద్రతీరంలో సైలెంట్ డిస్కోలో పాల్గొనండి.","day2-morning":"Day 2 - ఉదయం: డాల్ఫిన్ వీక్షణ బోట్ ట్రిప్ చేయండి.","day2-evening":"Day 2 - సాయంత్రం: సూర్యాస్తమయం చూడండి మరియు కొబ్బరి చెట్ల కింద భోజనం చేయండి.",
+      "footer":"© 2025 అన్‌సీన్ కార్నర్స్ | అన్ని హక్కులు రిజర్వ్ చేయబడ్డాయి"
+    }
+  };
+
+  // Language Switcher
+  document.getElementById("language-select").addEventListener("change", function() {
+    const lang = this.value;
+    document.querySelectorAll("[data-lang]").forEach(el => {
+      const key = el.getAttribute("data-lang");
+      if (translations[lang][key]) el.innerHTML = translations[lang][key];
+    });
+  });
+
+  // Itinerary Builder
+  const form = document.getElementById('itinerary-form');
+  const list = document.getElementById('itinerary-list');
+  const clearBtn = document.getElementById('clear-itinerary');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const date = document.getElementById('date').value;
+    const activity = document.getElementById('activity').value;
+    const notes = document.getElementById('notes').value;
+    if (!date || !activity) return;
+
+    const item = document.createElement('div');
+    item.className = 'itinerary-item';
+    item.innerHTML = `<strong>${date}</strong> – ${activity}<br><small>${notes}</small>`;
+    list.appendChild(item);
+    form.reset();
+  });
+
+  clearBtn.addEventListener('click', () => { list.innerHTML = ''; });
+</script>
+
+</body>
+</html>
+
+
+
+

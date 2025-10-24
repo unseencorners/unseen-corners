@@ -1,0 +1,220 @@
+<!-- Juhu Beach | Unseen Corners -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Unseen Corners – Juhu Beach</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Poppins", sans-serif; }
+    body {
+      background: url('https://storage.googleapis.com/goa-app-12a91.appspot.com/2025-09-02T18%3A06%3A41.207Z1.webp?GoogleAccessId=firebase-adminsdk-zeqcj%40goa-app-12a91.iam.gserviceaccount.com&Expires=16447017600&Signature=IG95AflVQFHf3zFOFz6IsUlVQpOHPrmDjzHBfGpuNpV4OOtylwWDysNeHaQrwL1L6sP11gml1wNaMtKqqSoVnmX8ItpXS%2FP1VyrgekVz7XRGThLJNfsHIA7EjfDQbee1hmPtJaMfuCv7WDiCNur%2FbyuJSg72vHVBpidH7YWRB2wBTvz7yDL8Y6BrbrZlaWJerV6VshXKAzT70V41B71wIPrBB0ihh3ghiDIyBRx1rMEu4M67QiPhHd4hOoW%2FE8DK0uGb%2FpeB3rpgIHOsWK%2FYRgmjV6SUc%2F28J60AqUQSRcZcwejV4CU0oCbpQgOmVEnKKyXvOH6%2B6lrqzcprfZ7RQA%3D%3D') no-repeat center center fixed;
+      background-size: cover; min-height: 100vh; color: #fff; line-height: 1.6; padding-top: 80px;
+    }
+    header {
+      background: rgba(13,71,161,0.9); color: #fff; padding: 15px 40px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+    }
+    header h1 { color: #ffca28; font-size: 22px; font-weight: bold; }
+    nav a { color: white; text-decoration: none; margin-left: 20px; font-weight: 500; }
+    nav a:hover { text-decoration: underline; }
+    .nav-btn { background: #ffca28; color: #0d47a1; font-weight: bold; padding: 8px 16px; border: none; border-radius: 6px; margin-left: 20px; cursor: pointer; }
+    .nav-btn:hover { background: #ffe082; }
+    .lang-select { margin-left: 20px; padding: 6px 10px; border-radius: 5px; border: none; font-size: 14px; cursor: pointer; }
+
+    .hero { height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; color: white; position: relative; }
+    .hero::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1; }
+    .hero-content { position: relative; z-index: 2; max-width: 800px; padding: 20px; }
+    .hero-content h2 { font-size: 34px; margin-bottom: 15px; color: #ffca28; }
+    .hero-content p { font-size: 18px; margin-bottom: 20px; }
+
+    .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin-top: 20px; }
+    .info-card { background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.3); border-radius: 8px; padding: 15px; font-size: 15px; color: #fff; }
+
+    .view360 { margin: 60px auto; max-width: 1000px; padding: 15px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
+    .view360 iframe { width: 100%; height: 500px; border: none; border-radius: 12px; }
+
+    .itinerary { max-width: 900px; margin: 50px auto; padding: 25px; background: rgba(255,255,255,0.9); border-radius: 10px; color:#000; }
+    .itinerary h2 { text-align: center; color: #0d47a1; margin-bottom: 20px; }
+    .itinerary form { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 20px; }
+    .itinerary input, .itinerary textarea { padding: 10px; border: 1px solid #ccc; border-radius: 5px; width: 100%; max-width: 250px; font-size: 14px; }
+    .itinerary button { background: #0d47a1; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; }
+    .itinerary button:hover { background: #1565c0; }
+    .itinerary-item { background: white; padding: 15px; border-left: 4px solid #ffca28; margin-bottom: 10px; border-radius: 5px; }
+
+    footer { text-align: center; padding: 20px; background: rgba(13,71,161,0.9); color: white; margin-top: 50px; }
+
+    @media(max-width:768px){
+      .hero-content h2 { font-size: 26px; }
+      .hero-content p { font-size: 16px; }
+      .view360 iframe { height: 300px; }
+      .itinerary form { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Unseen Corners</h1>
+  <nav>
+    <a href="index.html" data-lang="home"><b>Home</b></a>
+    <a href="about14.html" data-lang="about"><b>About</b></a>
+    <a href="contact.html" data-lang="contact"><b>Contact</b></a>
+    <a href="t4.html" data-lang="chat"><b>Chat Bot</b></a>
+    <button class="nav-btn" data-lang="bookNow" onclick="window.location.href='book.html'"><b>Book Now</b></button>
+    <select class="lang-select" id="language-select">
+      <option value="en">English</option>
+      <option value="hi">हिन्दी</option>
+      <option value="te">తెలుగు</option>
+    </select>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+    <h2 data-lang="title">🌅 Juhu Beach, Mumbai</h2>
+    <p data-lang="description">
+      Juhu Beach is Mumbai’s most famous and lively coastal destination. Known for its golden sands, stunning sunsets, and vibrant street food, it offers a perfect blend of relaxation and city buzz.
+    </p>
+
+    <h3 data-lang="highlightsTitle">🏖️ Highlights & Facts</h3>
+    <ul>
+      <li data-lang="highlight1">Popular for Mumbai’s iconic street snacks like pav bhaji and bhel puri.</li>
+      <li data-lang="highlight2">Frequented by locals, tourists, and Bollywood celebrities.</li>
+      <li data-lang="highlight3">Perfect for morning jogs, camel rides, and beachside photography.</li>
+      <li data-lang="highlight4">Beautiful sunset views over the Arabian Sea.</li>
+    </ul>
+
+    <h3 data-lang="visitorInfoTitle">🕒 Visitor Information</h3>
+    <div class="info-grid">
+      <div class="info-card" data-lang="timings"><b>Timings:</b><br> Open all day (best time: evening sunset).</div>
+      <div class="info-card" data-lang="location"><b>Location:</b><br> Juhu, Mumbai, Maharashtra, India.</div>
+      <div class="info-card" data-lang="bestTime"><b>Best Time:</b><br> October – March (pleasant weather).</div>
+    </div>
+  </div>
+</section>
+
+<section class="view360">
+  <h2 style="text-align:center; margin-bottom:15px; color:#0d47a1;" data-lang="view360Title">🌐 Explore 360° View of Juhu Beach</h2>
+  <iframe src="https://www.google.com/maps/embed?pb=!4v1696943292900!6m8!1m7!1sCAoSLEFGMVFpcE1oM0Y2eE9Xbkt2NjFpbnhFcmN6M2RQRjZzVndmNVpZMGdOeEpK!2m2!1d19.0985!2d72.8261!3f0!4f0!5f0.7820865974627469" allowfullscreen></iframe>
+</section>
+
+<section class="itinerary">
+  <h2 data-lang="itineraryTitle">🧭 Plan Your Juhu Beach Trip</h2>
+  <form id="itinerary-form">
+    <input type="date" id="date" required />
+    <input type="text" id="activity" placeholder="Activity (e.g., Street Food Walk, Sunset Stroll)" required data-lang-placeholder="activity"/>
+    <textarea id="notes" rows="1" placeholder="Notes (optional)" data-lang-placeholder="notes"></textarea>
+    <button type="submit" data-lang="addItinerary">Add to Itinerary</button>
+    <button type="button" id="clear-itinerary" style="background:#c0392b;" data-lang="clearAll">Clear All</button>
+  </form>
+  <div id="itinerary-list"></div>
+  <div class="itinerary-list" id="suggested-itinerary">
+  <h3 style="margin-top:30px;" data-lang="suggestedItineraryTitle">🗓 Suggested Itinerary</h3>
+  <div class="itinerary-item" data-itinerary="day1morning"></div>
+  <div class="itinerary-item" data-itinerary="day1afternoon"></div>
+  <div class="itinerary-item" data-itinerary="day1evening"></div>
+  <div class="itinerary-item" data-itinerary="day2morning"></div>
+</div>
+
+</section>
+
+<footer>
+  <p>&copy; 2025 Unseen Corners | All Rights Reserved</p>
+</footer>
+
+<script>
+  const translations = {
+  en: {
+    home: "Home", about:"About", contact:"Contact", chat:"Chat Bot", bookNow:"Book Now",
+    title: "🌅 Juhu Beach, Mumbai",
+    description: "Juhu Beach is Mumbai’s most famous and lively coastal destination. Known for its golden sands, stunning sunsets, and vibrant street food, it offers a perfect blend of relaxation and city buzz.",
+    highlightsTitle:"🏖️ Highlights & Facts",
+    highlight1:"Popular for Mumbai’s iconic street snacks like pav bhaji and bhel puri.",
+    highlight2:"Frequented by locals, tourists, and Bollywood celebrities.",
+    highlight3:"Perfect for morning jogs, camel rides, and beachside photography.",
+    highlight4:"Beautiful sunset views over the Arabian Sea.",
+    visitorInfoTitle:"🕒 Visitor Information",
+    timings:"Timings: Open all day (best time: evening sunset).",
+    location:"Location: Juhu, Mumbai, Maharashtra, India.",
+    bestTime:"Best Time: October – March (pleasant weather).",
+    view360Title:"🌐 Explore 360° View of Juhu Beach",
+    itineraryTitle:"🧭 Plan Your Juhu Beach Trip",
+    addItinerary:"Add to Itinerary",
+    clearAll:"Clear All",
+    activity:"Activity (e.g., Street Food Walk, Sunset Stroll)",
+    notes:"Notes (optional)",
+    suggestedItineraryTitle:"🗓 Suggested Itinerary",
+    day1morning:"Day 1 - Morning: Jog along the beach and enjoy coconut water.",
+    day1afternoon:"Day 1 - Afternoon: Visit nearby ISKCON Temple and relax at a café.",
+    day1evening:"Day 1 - Evening: Watch the sunset and enjoy street food delicacies.",
+    day2morning:"Day 2 - Morning: Explore nearby Versova Beach or take a heritage walk."
+  },
+  hi: {
+    home:"मुख्यपृष्ठ", about:"हमारे बारे में", contact:"संपर्क", chat:"चैट बोट", bookNow:"बुक करें",
+    title:"🌅 जुहू बीच, मुंबई",
+    description:"जुहू बीच मुंबई का सबसे प्रसिद्ध और जीवंत तटीय स्थल है। यह अपने सुनहरे रेतीले किनारों, शानदार सूर्यास्त और जीवंत स्ट्रीट फूड के लिए जाना जाता है।",
+    highlightsTitle:"🏖️ मुख्य आकर्षण और तथ्य",
+    highlight1:"मुंबई के प्रसिद्ध स्ट्रीट स्नैक्स जैसे पाव भाजी और भेल पूरी।",
+    highlight2:"स्थानीय लोग, पर्यटक और बॉलीवुड हस्तियों द्वारा अक्सर आते हैं।",
+    highlight3:"सुबह की दौड़, ऊँट की सवारी और बीचसाइड फोटोग्राफी के लिए उपयुक्त।",
+    highlight4:"अरब सागर पर सुंदर सूर्यास्त दृश्य।",
+    visitorInfoTitle:"🕒 आगंतुक जानकारी",
+    timings:"समय: पूरा दिन खुला (सर्वश्रेष्ठ समय: शाम का सूर्यास्त)।",
+    location:"स्थान: जुहू, मुंबई, महाराष्ट्र, भारत।",
+    bestTime:"सर्वोत्तम समय: अक्टूबर – मार्च (सुखद मौसम)।",
+    view360Title:"🌐 जुहू बीच का 360° दृश्य देखें",
+    itineraryTitle:"🧭 अपनी जुहू बीच यात्रा योजना बनाएं",
+    addItinerary:"सूची में जोड़ें",
+    clearAll:"सभी साफ़ करें",
+    activity:"गतिविधि (जैसे, स्ट्रीट फूड वॉक, सूर्यास्त की सैर)",
+    notes:"टिप्पणियाँ (वैकल्पिक)",
+    suggestedItineraryTitle:"🗓 सुझाई गई यात्रा योजना",
+    day1morning:"दिन 1 - सुबह: बीच पर जॉग करें और नारियल पानी का आनंद लें।",
+    day1afternoon:"दिन 1 - दोपहर: पास के इस्कॉन मंदिर जाएँ और कैफ़े में आराम करें।",
+    day1evening:"दिन 1 - शाम: सूर्यास्त देखें और स्ट्रीट फूड का आनंद लें।",
+    day2morning:"दिन 2 - सुबह: पास के वर्सोवा बीच की खोज करें या हेरिटेज वॉक पर जाएँ।"
+  },
+  te: {
+    home:"హోమ్", about:"మా గురించి", contact:"సంప్రదించండి", chat:"చాట్ బోట్", bookNow:"ఇప్పుడు బుక్ చేయండి",
+    title:"🌅 జుహు బీచ్, ముంబై",
+    description:"జుహు బీచ్ ముంబైలో అత్యంత ప్రసిద్ధమైన మరియు సజీవ తీర ప్రాంత గమ్యం. స్వర్ణ ఇసుక, అద్భుతమైన సన్‌సెట్‌లు, మరియు ఉత్సాహభరితమైన వీధి ఆహారానికి ప్రసిద్ధి చెందింది.",
+    highlightsTitle:"🏖️ ముఖ్య విశేషాలు & వివరాలు",
+    highlight1:"ముంబైలో ప్రసిద్ధ వీధి స్నాక్స్ వంటి పవ్ భాజీ మరియు బెల్ పూరి.",
+    highlight2:"స్థానికులు, పర్యాటకులు మరియు బాలీవుడ్ ప్రముఖులు తరచూ వస్తారు.",
+    highlight3:"ఉదయం jogging, ఉंट రైడ్లు మరియు బీచ్ ఫొటోగ్రఫీకి అనుకూలం.",
+    highlight4:"ఆరబియన్ సముద్రం మీద అద్భుతమైన సన్‌సెట్ దృశ్యాలు.",
+    visitorInfoTitle:"🕒 సందర్శకుల సమాచారం",
+    timings:"సమయం: మొత్తం రోజు తెరవబడింది (సరైన సమయం: సాయంత్రం సన్‌సెట్).",
+    location:"స్థానం: జుహు, ముంబై, మహారాష్ట్ర, ఇండియా.",
+    bestTime:"చిరస్మరణీయ సమయం: అక్టోబర్ – మార్చి (ఆనందకరమైన వాతావరణం).",
+    view360Title:"🌐 జుహు బీచ్ 360° వీక్షణను అన్వేషించండి",
+    itineraryTitle:"🧭 మీ జుహు బీచ్ పర్యటనను ప్లాన్ చేయండి",
+    addItinerary:"పరిచయం జోడించండి",
+    clearAll:"అన్నీ క్లియర్ చేయండి",
+    activity:"చర్య (ఉదా: వీధి ఆహారం, సన్‌సెట్ వాక్)",
+    notes:"నోట్స్ (ఐచ్చిక)",
+    suggestedItineraryTitle:"🗓 సూచించిన పర్యటన",
+    day1morning:"రోజు 1 - ఉదయం: బీచ్ వెంట జాగింగ్ చేయండి మరియు కొబ్బరి నీటిని ఆస్వాదించండి.",
+    day1afternoon:"రోజు 1 - మధ్యాహ్నం: సమీప ISKCON మందిరాన్ని సందర్శించండి మరియు కేఫ్‌లో విశ్రాంతి తీసుకోండి.",
+    day1evening:"రోజు 1 - సాయంత్రం: సన్‌సెట్ చూడండి మరియు వీధి ఆహారం ఆస్వాదించండి.",
+    day2morning:"రోజు 2 - ఉదయం: సమీప Versova బీచ్‌ను అన్వేషించండి లేదా హెరిటేజ్ వాక్ చేయండి."
+  }
+};
+
+// Language switch
+const langSelect = document.getElementById('language-select');
+function updateLanguage() {
+  const lang = langSelect.value;
+  document.querySelectorAll('[data-lang]').forEach(el => el.innerText = translations[lang][el.getAttribute('data-lang')]);
+  document.querySelectorAll('[data-lang-placeholder]').forEach(el => el.placeholder = translations[lang][el.getAttribute('data-lang-placeholder')]);
+  document.querySelectorAll('[data-itinerary]').forEach(el => el.innerText = translations[lang][el.getAttribute('data-itinerary')]);
+}
+langSelect.addEventListener('change', updateLanguage);
+updateLanguage(); // initialize
+
+</script>
+
+</body>
+</html>
+
+

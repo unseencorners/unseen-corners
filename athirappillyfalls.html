@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title data-lang="page-title">Unseen Corners – Athirappilly Waterfalls</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; font-family: Arial, sans-serif; }
+html, body { height: 100%; }
+
+body {
+  color: #fff;
+  line-height: 1.6;
+  min-height: 100vh;
+  background: url('https://t3.ftcdn.net/jpg/03/09/80/64/360_F_309806423_jS5B6uzBJMmLOZnF4tW7bB7EQobRSs31.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+
+/* Header */
+header {
+  background: rgba(18,53,36,0.8);
+  color: #fff;
+  padding: 15px 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  position: fixed;
+  top: 0; left: 0; width: 100%; z-index: 1000;
+}
+header h1 { color:#9ef01a; font-size:22px; font-weight:bold; }
+nav a { color:#fff; text-decoration:none; margin-left:20px; font-size:16px; }
+nav a:hover { text-decoration:underline; }
+.nav-btn { background:#9ef01a; color:#000; font-weight:bold; padding:8px 16px; border:none; border-radius:5px; margin-left:20px; cursor:pointer; }
+.nav-btn:hover { background:#85cc16; }
+.lang-select { margin-left:20px; padding:6px 10px; border-radius:5px; border:none; font-size:14px; cursor:pointer; }
+
+/* Hero Section */
+.hero { padding-top:80px; text-align:center; }
+.hero-content { max-width:800px; margin:auto; padding:20px; }
+.hero-content h2 { font-size:32px; margin-bottom:20px; color:#9ef01a; }
+.hero-content p { font-size:18px; margin-bottom:20px; }
+.hero-content ul { text-align:left; margin:15px 0; }
+
+/* Info cards */
+.info-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:15px; margin-top:20px; }
+.info-card { background: rgba(0,0,0,0.5); border-radius:8px; padding:15px; font-size:15px; }
+
+/* 360 View */
+.view360 { margin:50px auto; max-width:1000px; padding:10px; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.3); background: rgba(255,255,255,0.9); }
+.view360 iframe { width:100%; height:500px; border:none; border-radius:12px; }
+
+/* Itinerary */
+.itinerary {
+  max-width:900px; margin:50px auto; padding:20px;
+  background: rgba(255,255,255,0.9); color:#000; border-radius:10px;
+}
+.itinerary h2 { text-align:center; color:#123524; margin-bottom:20px; }
+.itinerary form { display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin-bottom:20px; }
+.itinerary input, .itinerary textarea { padding:10px; border:1px solid #ccc; border-radius:5px; width:100%; max-width:250px; font-size:14px; }
+.itinerary button { background:#123524; color:#fff; padding:10px 20px; border:none; border-radius:5px; cursor:pointer; }
+.itinerary button:hover { background:#0f271a; }
+.itinerary-list { margin-top:20px; }
+.itinerary-item { background:#fff; padding:15px; border-left:4px solid #9ef01a; margin-bottom:10px; border-radius:5px; display:flex; justify-content:space-between; align-items:center; }
+.itinerary-item button { background:#c0392b; color:#fff; border:none; border-radius:5px; cursor:pointer; padding:3px 8px; }
+
+/* Footer */
+footer { text-align:center; padding:20px; background:rgba(18,53,36,0.9); color:#fff; margin-top:50px; }
+
+/* Responsive */
+@media(max-width:768px){
+  .hero-content h2 { font-size:26px; }
+  .hero-content p { font-size:16px; }
+  .view360 iframe { height:300px; }
+  .itinerary form { flex-direction:column; align-items:center; }
+}
+</style>
+</head>
+<body>
+
+<header>
+<h1 data-lang="site-title">Unseen Corners</h1>
+<nav>
+<a href="index.html" data-lang="nav-home"><b>Home</b></a>
+<a href="about14.html" data-lang="nav-about"><b>About</b></a>
+<a href="contact.html" data-lang="nav-contact"><b>Contact</b></a>
+<a href="t4.html" data-lang="nav-chat"><b>Chat Bot</b></a>
+<button class="nav-btn" data-lang="nav-book" onclick="window.location.href='book.html'" ><b>Book Now</b></button>
+<select class="lang-select" id="language-select">
+<option value="en">English</option>
+<option value="hi">हिन्दी</option>
+<option value="te">తెలుగు</option>
+</select>
+</nav>
+</header>
+
+<section class="hero">
+<div class="hero-content">
+<h2 data-lang="title">💦 Athirappilly Waterfalls</h2>
+<p data-lang="intro">
+Athirappilly Waterfalls, often called the "Niagara of India," is the largest waterfall in Kerala,
+cascading down 80 feet from the Chalakudy River amidst the lush Sholayar forests.
+</p>
+
+<h3 data-lang="highlights-title">📖 Highlights & Facts</h3>
+<ul>
+<li data-lang="high-1">Height: 80 feet, width over 330 feet during monsoon.</li>
+<li data-lang="high-2">Located on the Chalakudy River, Thrissur district.</li>
+<li data-lang="high-3">Famous shooting spot for many Indian films.</li>
+<li data-lang="high-4">Nearby attractions: Vazhachal Falls and Charpa Falls.</li>
+</ul>
+
+<h3 data-lang="visit-title">🕒 Visitor Information</h3>
+<div class="info-grid">
+<div class="info-card" data-lang="time"><b>Timings:</b><br> 8:00 AM – 6:00 PM</div>
+<div class="info-card" data-lang="location"><b>Location:</b><br> Chalakudy, Thrissur, Kerala</div>
+<div class="info-card" data-lang="best-time"><b>Best Time:</b><br> June – October & December – February</div>
+</div>
+</div>
+</section>
+
+<section class="view360">
+<h2 style="text-align:center; margin-bottom:15px; color:#123524;" data-lang="view360-title">🌐 Explore 360° View of Athirappilly Falls</h2>
+<iframe src="https://www.google.com/maps/embed?pb=!4v1760426346077!6m8!1m7!1sCAoSFkNJSE0wb2dLRUlDQWdJQzRpcjJaWHc.!2m2!1d10.28510721770439!2d76.56976433995509!3f49.56877874278726!4f18.821076744808778!5f0.6624424784508736" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</section>
+
+<section class="itinerary">
+<h2 data-lang="itinerary-title">🧭 Plan Your Athirappilly Trip</h2>
+<form id="itinerary-form">
+<input type="date" id="date" required />
+<input type="text" id="activity" placeholder="Activity (e.g., Waterfall Visit)" required />
+<textarea id="notes" rows="1" placeholder="Notes (optional)"></textarea>
+<button type="submit" data-lang="btn-add">Add to Itinerary</button>
+<button type="button" id="clear-itinerary" style="background:#c0392b;" data-lang="btn-clear">Clear All</button>
+</form>
+<div class="itinerary-list" id="itinerary-list"></div>
+
+<h3 style="margin-top:30px;">🗓 Suggested Itinerary</h3>
+<div class="itinerary-item"><strong>Day 1 - Morning:</strong> Arrive in Chalakudy, visit Athirappilly Falls</div>
+<div class="itinerary-item"><strong>Day 1 - Afternoon:</strong> Explore nearby Charpa and Vazhachal Falls</div>
+<div class="itinerary-item"><strong>Day 1 - Evening:</strong> Watch sunset and enjoy local Kerala cuisine</div>
+<div class="itinerary-item"><strong>Day 2 - Morning:</strong> Nature walk through the Sholayar forest</div>
+<div class="itinerary-item"><strong>Day 2 - Afternoon:</strong> Visit the Sholayar Dam or stay at a riverside resort</div>
+</section>
+
+<footer>
+<p data-lang="footer">&copy; 2025 Unseen Corners | All Rights Reserved</p>
+</footer>
+
+<script>
+const translations = {
+en:{
+  "page-title":"Unseen Corners – Athirappilly Waterfalls",
+  "site-title":"Unseen Corners",
+  "nav-home":"Home","nav-about":"About","nav-contact":"Contact","nav-chat":"Chat Bot","nav-book":"Book Now",
+  "title":"💦 Athirappilly Waterfalls",
+  "intro":"Athirappilly Waterfalls, often called the 'Niagara of India,' is the largest waterfall in Kerala, cascading down 80 feet from the Chalakudy River amidst the lush Sholayar forests.",
+  "highlights-title":"📖 Highlights & Facts",
+  "high-1":"Height: 80 feet, width over 330 feet during monsoon.",
+  "high-2":"Located on the Chalakudy River, Thrissur district.",
+  "high-3":"Famous shooting spot for many Indian films.",
+  "high-4":"Nearby attractions: Vazhachal Falls and Charpa Falls.",
+  "visit-title":"🕒 Visitor Information",
+  "time":"Timings: 8:00 AM – 6:00 PM","location":"Location: Chalakudy, Thrissur, Kerala","best-time":"Best Time: June – October & December – February",
+  "view360-title":"🌐 Explore 360° View of Athirappilly Falls",
+  "itinerary-title":"🧭 Plan Your Athirappilly Trip",
+  "btn-add":"Add to Itinerary","btn-clear":"Clear All",
+  "footer":"© 2025 Unseen Corners | All Rights Reserved"
+},
+hi:{
+  "page-title":"अनसीन कॉर्नर्स – एथिरप्पिली झरने",
+  "site-title":"अनसीन कॉर्नर्स",
+  "nav-home":"होम","nav-about":"हमारे बारे में","nav-contact":"संपर्क","nav-chat":"चैट बॉट","nav-book":"अभी बुक करें",
+  "title":"💦 एथिरप्पिली झरने",
+  "intro":"एथिरप्पिली झरने, जिसे अक्सर 'भारत का नायग्रा' कहा जाता है, केरल में सबसे बड़ा झरना है, जो शोलायार जंगल के बीच चालाकुडी नदी से 80 फीट गिरता है।",
+  "highlights-title":"📖 मुख्य तथ्य",
+  "high-1":"ऊंचाई: 80 फीट, मानसून के दौरान 330 फीट से अधिक चौड़ाई।",
+  "high-2":"स्थान: चालाकुडी नदी, त्रिशूर जिला।",
+  "high-3":"कई भारतीय फिल्मों की शूटिंग के लिए प्रसिद्ध।",
+  "high-4":"निकटवर्ती आकर्षण: वज़ाचल झरने और चारपा झरने।",
+  "visit-title":"🕒 आगंतुक जानकारी",
+  "time":"समय: 8:00 AM – 6:00 PM","location":"स्थान: चालाकुडी, त्रिशूर, केरल","best-time":"सर्वोत्तम समय: जून – अक्टूबर & दिसंबर – फरवरी",
+  "view360-title":"🌐 एथिरप्पिली झरने का 360° दृश्य",
+  "itinerary-title":"🧭 अपनी एथिरप्पिली यात्रा की योजना बनाएं",
+  "btn-add":"यात्रा में जोड़ें","btn-clear":"सभी साफ करें",
+  "footer":"© 2025 अनसीन कॉर्नर्स | सर्वाधिकार सुरक्षित"
+},
+te:{
+  "page-title":"అన్‌సీన్ కార్నర్స్ – ఆతిరప్పిల్లి జలపాతం",
+  "site-title":"అన్‌సీన్ కార్నర్స్",
+  "nav-home":"హోమ్","nav-about":"గురించి","nav-contact":"సంప్రదించండి","nav-chat":"చాట్ బాట్","nav-book":"ఇప్పుడు బుక్ చేయండి",
+  "title":"💦 ఆతిరప్పిల్లి జలపాతం",
+  "intro":"ఆతిరప్పిల్లి జలపాతం, 'ఇండియాకు నయాగరా' అని కూడా పిలువబడుతుంది, కేరళలోని అతిపెద్ద జలపాతం, చలకుడి నది నుండి 80 అడుగులు రాయిపడి, శోలయార్ అడవుల మధ్య ప్రవహిస్తుంది.",
+  "highlights-title":"📖 ముఖ్యాంశాలు & వాస్తవాలు",
+  "high-1":"ఎత్తు: 80 అడుగులు, మాన్సూన్ సమయంలో 330 అడుగుల విస్తీర్ణం.",
+  "high-2":"చలకుడి నది, త్రిశూర్ జిల్లా.",
+  "high-3":"చాలా భారతీయ సినిమాల షూటింగ్ కోసం ప్రసిద్ధి చెందింది.",
+  "high-4":"సన్నిహిత ఆకర్షణలు: వజాచల్ ఫాల్స్ మరియు చార్పా ఫాల్స్.",
+  "visit-title":"🕒 సందర్శకుల సమాచారం",
+  "time":"సమయం: 8:00 AM – 6:00 PM","location":"స్థానం: చలకుడి, త్రిశూర్, కేరళ","best-time":"మంచి సమయం: జూన్ – అక్టోబర్ & డిసెంబర్ – ఫిబ్రవరి",
+  "view360-title":"🌐 ఆతిరప్పిల్లి జలపాతం 360° వీక్షణ",
+  "itinerary-title":"🧭 మీ ఆతిరప్పిల్లి ట్రిప్ ప్లాన్ చేయండి",
+  "btn-add":"యాత్రలో జోడించండి","btn-clear":"అన్నీ తొలగించండి",
+  "footer":"© 2025 అన్‌సీన్ కార్నర్స్ | అన్ని హక్కులు రిజర్వ్"
+}
+};
+
+document.getElementById("language-select").addEventListener("change", function() {
+  const lang = this.value;
+  document.querySelectorAll("[data-lang]").forEach(el=>{
+    const key = el.getAttribute("data-lang");
+    if(translations[lang][key]) el.innerHTML = translations[lang][key];
+  });
+});
+
+// Itinerary builder
+const form = document.getElementById("itinerary-form");
+const list = document.getElementById("itinerary-list");
+let items = JSON.parse(localStorage.getItem("athirappilly-itinerary")) || [];
+function render() {
+  list.innerHTML = "";
+  if(items.length===0) list.innerHTML="<p>No itinerary items added yet.</p>";
+  items.forEach((i,index)=>{
+    const div=document.createElement("div");
+    div.className="itinerary-item";
+    div.innerHTML=`<span><strong>${i.date}:</strong> ${i.activity}${i.notes?`<br><em>Notes:</em> ${i.notes}`:""}</span>
+                   <button onclick="removeItem(${index})">X</button>`;
+    list.appendChild(div);
+  });
+}
+window.removeItem = function(index){
+  items.splice(index,1);
+  localStorage.setItem("athirappilly-itinerary",JSON.stringify(items));
+  render();
+}
+form.addEventListener("submit",e=>{
+  e.preventDefault();
+  const date=form.date.value;
+  const activity=form.activity.value.trim();
+  const notes=form.notes.value.trim();
+  if(date && activity){
+    items.push({date,activity,notes});
+    localStorage.setItem("athirappilly-itinerary",JSON.stringify(items));
+    render();
+    form.reset();
+  }
+});
+document.getElementById("clear-itinerary").addEventListener("click",()=>{
+  if(confirm("Are you sure you want to clear all itinerary items?")){
+    items=[]; localStorage.removeItem("athirappilly-itinerary"); render();
+  }
+});
+render();
+</script>
+
+</body>
+</html>
+
+
+

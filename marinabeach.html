@@ -1,0 +1,268 @@
+<!-- Marina Beach | Unseen Corners -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unseen Corners – Marina Beach</title>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; font-family:"Poppins", sans-serif; }
+    html, body { height: 100%; }
+
+    body {
+      color:#333; line-height:1.6; padding-top:70px;
+      background: url('https://travelsetu.com/apps/uploads/new_destinations_photos/destination/2023/12/21/b54df6cab2e2f5fd3150e2326eb4a818_1000x1000.jpg') no-repeat center center/cover;
+      background-attachment: fixed;
+    }
+
+    header {
+      background: rgba(1,87,155,0.9); color: #fff;
+      padding: 15px 40px; display: flex; justify-content: space-between;
+      align-items: center; flex-wrap: wrap; position: fixed;
+      top: 0; left: 0; width: 100%; z-index: 1000;
+    }
+    header h1 { color:#ffeb3b; font-size:22px; font-weight:bold; }
+    nav a { color:white; text-decoration:none; margin-left:20px; font-weight:500; }
+    nav a:hover { text-decoration:underline; }
+    .nav-btn { background:#ffeb3b; color:#01579b; font-weight:bold;
+               padding:8px 16px; border:none; border-radius:6px; margin-left:20px; cursor:pointer; }
+    .nav-btn:hover { background:#fff176; }
+    .lang-select { margin-left:20px; padding:6px 10px; border-radius:5px; border:none; font-size:14px; cursor:pointer; }
+
+    .content-container {
+      max-width:900px; margin:0 auto; padding:20px;
+      background: rgba(255,255,255,0.85); border-radius:12px;
+    }
+
+    h2, h3 { color:#01579b; margin-bottom:15px; text-align:center; }
+    p { margin-bottom:15px; text-align:justify; }
+
+    .info-grid {
+      display:grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+      gap:15px; margin-top:20px;
+    }
+    .info-card { background:rgba(1,87,155,0.8); color:#fff;
+                 border-radius:8px; padding:15px; font-size:15px; }
+
+    .view360 { margin:40px 0; }
+    .view360 iframe { width:100%; height:500px; border:none; border-radius:12px; }
+
+    .itinerary { margin:50px 0; padding:25px; background:#f9f9f9; border-radius:10px;
+                 box-shadow:0 2px 10px rgba(0,0,0,0.1);}
+    .itinerary form { display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin-bottom:20px; }
+    .itinerary input, .itinerary textarea { padding:10px; border:1px solid #ccc; border-radius:5px; width:100%; max-width:250px; font-size:14px; }
+    .itinerary button { background:#01579b; color:white; padding:10px 20px; border:none; border-radius:5px; cursor:pointer; }
+    .itinerary button:hover { background:#0277bd; }
+    .itinerary-item { background:white; padding:15px; border-left:4px solid #ffeb3b; margin-bottom:10px; border-radius:5px; }
+
+    footer { text-align:center; padding:20px; background:#01579b; color:white; margin-top:50px; }
+
+    @media(max-width:768px){
+      .view360 iframe { height:300px; }
+      .itinerary form { flex-direction:column; align-items:center; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Unseen Corners</h1>
+  <nav>
+    <a href="index.html"><b>Home</b></a>
+    <a href="about14.html"><b>About</b></a>
+    <a href="contact.html"><b>Contact</b></a>
+    <a href="t4.html"><b>Chat Bot</b></a>
+    <button class="nav-btn" onclick="window.location.href='book.html'"><b>Book Now</b></button>
+    <select class="lang-select" id="language-select">
+      <option value="en">English</option>
+      <option value="hi">हिन्दी</option>
+      <option value="te">తెలుగు</option>
+    </select>
+  </nav>
+</header>
+
+<div class="content-container">
+  <h2 id="hero-title">🌊 Marina Beach, Chennai</h2>
+  <p id="hero-desc">Marina Beach is one of the longest urban beaches in the world, stretching along the Bay of Bengal in Chennai, Tamil Nadu. It’s a perfect blend of natural beauty, cultural heritage, and coastal charm.</p>
+
+  <h3 id="highlights-title">🏖️ Highlights & Activities</h3>
+  <ul id="highlights-list">
+    <li>Enjoy peaceful sunrise walks and scenic ocean views.</li>
+    <li>Relish street foods like sundal, murukku, and bhajji.</li>
+    <li>Visit nearby attractions – MGR and Anna memorials.</li>
+    <li>Witness evening fairs, kites, and pony rides along the shore.</li>
+  </ul>
+
+  <h3 id="visitor-title">🕒 Visitor Information</h3>
+  <div class="info-grid">
+    <div class="info-card" id="timings"><b>Timings:</b><br> Open all day (Best: 5 AM – 8 PM)</div>
+    <div class="info-card" id="location"><b>Location:</b><br> Marina Beach Road, Chennai, Tamil Nadu.</div>
+    <div class="info-card" id="best-time"><b>Best Time:</b><br> November – February (pleasant evenings).</div>
+  </div>
+
+  <div class="view360">
+    <h2 id="view360-title">🌐 Explore 360° View of Marina Beach</h2>
+   <iframe src="https://www.google.com/maps/embed?pb=!4v1760028990416!6m8!1m7!1sCAoSF0NJSE0wb2dLRUlDQWdJREV1OWZfdWdF!2m2!1d13.04995260460426!2d80.28240257341209!3f58.9933423086273!4f-0.751150706220244!5f0.4000000000000002" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+
+  <div class="itinerary">
+    <h2 id="itinerary-title">🧭 Plan Your Marina Beach Trip</h2>
+    <form id="itinerary-form">
+      <input type="date" id="date" required />
+      <input type="text" id="activity" placeholder="Activity (e.g., Beach Walk, Local Food)" required />
+      <textarea id="notes" rows="1" placeholder="Notes (optional)"></textarea>
+      <button type="submit" id="add-btn">Add to Itinerary</button>
+      <button type="button" id="clear-itinerary" style="background:#c0392b;">Clear All</button>
+    </form>
+    <div id="itinerary-list"></div>
+
+    <div class="itinerary-list">
+      <h3 id="suggested-title">🗓 Suggested Itinerary</h3>
+      <div class="itinerary-item" id="day1-morning"><strong>Day 1 - Morning:</strong> Watch sunrise and take a stroll along the shore.</div>
+      <div class="itinerary-item" id="day1-afternoon"><strong>Day 1 - Afternoon:</strong> Visit MGR Memorial and sample local snacks.</div>
+      <div class="itinerary-item" id="day1-evening"><strong>Day 1 - Evening:</strong> Enjoy sunset and street performances.</div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>&copy; 2025 Unseen Corners | All Rights Reserved</p>
+</footer>
+
+<script>
+  // Itinerary Builder
+  const form = document.getElementById('itinerary-form');
+  const list = document.getElementById('itinerary-list');
+  const clearBtn = document.getElementById('clear-itinerary');
+  let userItinerary = [];
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    const date = document.getElementById('date').value;
+    const activity = document.getElementById('activity').value;
+    const notes = document.getElementById('notes').value;
+    if(!date || !activity) return;
+    userItinerary.push({date, activity, notes});
+    renderItinerary();
+    form.reset();
+  });
+
+  clearBtn.addEventListener('click', () => { userItinerary = []; renderItinerary(); });
+
+  function renderItinerary(){
+    list.innerHTML = '';
+    userItinerary.forEach(item=>{
+      const div = document.createElement('div');
+      div.className='itinerary-item';
+      div.innerHTML=`<strong>${item.date}</strong> – ${item.activity}<br><small>${item.notes}</small>`;
+      list.appendChild(div);
+    });
+  }
+
+  // Multi-language translations
+  const translations = {
+    en: {
+      heroTitle:"🌊 Marina Beach, Chennai",
+      heroDesc:"Marina Beach is one of the longest urban beaches in the world, stretching along the Bay of Bengal in Chennai, Tamil Nadu. It’s a perfect blend of natural beauty, cultural heritage, and coastal charm.",
+      highlightsTitle:"🏖️ Highlights & Activities",
+      highlightsList:["Enjoy peaceful sunrise walks and scenic ocean views.",
+                      "Relish street foods like sundal, murukku, and bhajji.",
+                      "Visit nearby attractions – MGR and Anna memorials.",
+                      "Witness evening fairs, kites, and pony rides along the shore."],
+      visitorTitle:"🕒 Visitor Information",
+      timings:"<b>Timings:</b><br> Open all day (Best: 5 AM – 8 PM)",
+      location:"<b>Location:</b><br> Marina Beach Road, Chennai, Tamil Nadu.",
+      bestTime:"<b>Best Time:</b><br> November – February (pleasant evenings).",
+      view360Title:"🌐 Explore 360° View of Marina Beach",
+      itineraryTitle:"🧭 Plan Your Marina Beach Trip",
+      addBtn:"Add to Itinerary",
+      suggestedTitle:"🗓 Suggested Itinerary",
+      day1Morning:"<strong>Day 1 - Morning:</strong> Watch sunrise and take a stroll along the shore.",
+      day1Afternoon:"<strong>Day 1 - Afternoon:</strong> Visit MGR Memorial and sample local snacks.",
+      day1Evening:"<strong>Day 1 - Evening:</strong> Enjoy sunset and street performances."
+    },
+    hi: {
+      heroTitle:"🌊 मरीना बीच, चेन्नई",
+      heroDesc:"मरीना बीच दुनिया के सबसे लंबे शहरी समुद्र तटों में से एक है, जो चेन्नई, तमिलनाडु में बंगाल की खाड़ी के किनारे फैला है। यह प्राकृतिक सुंदरता, सांस्कृतिक विरासत और तटीय आकर्षण का परिपूर्ण मिश्रण है।",
+      highlightsTitle:"🏖️ मुख्य आकर्षण और गतिविधियाँ",
+      highlightsList:["सूर्योदय पर शांतिपूर्ण सैर और समुद्र के दृश्य का आनंद लें।",
+                      "संडल, मुरुक्कू और भज्जी जैसे स्ट्रीट फूड का स्वाद लें।",
+                      "पास के आकर्षण – MGR और अन्ना स्मारक देखें।",
+                      "सांझ के मेले, पतंगें और समुद्र तट पर पोनी राइड का आनंद लें।"],
+      visitorTitle:"🕒 आगंतुक जानकारी",
+      timings:"<b>समय:</b><br> पूरे दिन खुला (सर्वश्रेष्ठ: सुबह 5 बजे – 8 बजे)",
+      location:"<b>स्थान:</b><br> मरीना बीच रोड, चेन्नई, तमिलनाडु।",
+      bestTime:"<b>सर्वश्रेष्ठ समय:</b><br> नवंबर – फरवरी (सुविधाजनक शामें)।",
+      view360Title:"🌐 मरीना बीच का 360° दृश्य देखें",
+      itineraryTitle:"🧭 अपनी मरीना बीच यात्रा की योजना बनाएं",
+      addBtn:"यात्रा योजना में जोड़ें",
+      suggestedTitle:"🗓 सुझाई गई यात्रा योजना",
+      day1Morning:"<strong>दिन 1 - सुबह:</strong> सूर्योदय देखें और समुद्र तट पर टहलें।",
+      day1Afternoon:"<strong>दिन 1 - दोपहर:</strong> MGR स्मारक देखें और स्थानीय स्नैक्स का स्वाद लें।",
+      day1Evening:"<strong>दिन 1 - शाम:</strong> सूर्यास्त का आनंद लें और सड़क प्रदर्शन देखें।"
+    },
+    te: {
+      heroTitle:"🌊 మరినా బీచ్, చెన్నై",
+      heroDesc:"మరినా బీచ్ ప్రపంచంలోనే అత్యంత పొడవైన నగర తీర ప్రాంతాల్లో ఒకటి, చెన్నై, తమిళనాడు లో బంగాళాఖాతం అంచులపై ఉంది. ఇది సహజ అందం, సాంస్కృతిక వారసత్వం మరియు తీరప్రాంత ఆకర్షణల కలయిక.",
+      highlightsTitle:"🏖️ ముఖ్య ఆకర్షణలు & కార్యకలాపాలు",
+      highlightsList:["ప్రశాంతమైన ఉదయం నడకల మరియు సముద్ర దృశ్యాలను ఆస్వాదించండి.",
+                      "సందల్, మురుక్కు మరియు భజ్జీ వంటి స్ట్రీట్ ఫుడ్ ను రుచి చూడండి.",
+                      "నికటంలోని ఆకర్షణలు – MGR మరియు అన్నా స్మారకాలను సందర్శించండి.",
+                      "సాయంత్రపు మేళాలు, గాలిపటాలు మరియు సముద్రతీరం వద్ద పొనీ రైడ్స్ ను అనుభవించండి."],
+      visitorTitle:"🕒 సందర్శక సమాచారం",
+      timings:"<b>సమయాలు:</b><br> రోజంతా తెరిచి ఉంటుంది (ఉత్తమం: ఉదయం 5 AM – 8 PM)",
+      location:"<b>స్థానం:</b><br> మరినా బీచ్ రోడ్, చెన్నై, తమిళనాడు.",
+      bestTime:"<b>ఉత్తమ సమయం:</b><br> నవంబర్ – ఫిబ్రవరి (సౌకర్యవంతమైన సాయంకాలాలు).",
+      view360Title:"🌐 మరినా బీచ్ 360° వీక్షణను అన్వేషించండి",
+      itineraryTitle:"🧭 మీ మరినా బీచ్ యాత్రను ప్లాన్ చేయండి",
+      addBtn:"యాత్రకు జోడించండి",
+      suggestedTitle:"🗓 సూచించిన యాత్రా ప్రణాళిక",
+      day1Morning:"<strong>1వ రోజు - ఉదయం:</strong> సూర్యోదయం చూడండి మరియు తీరంలో నడక చేయండి.",
+      day1Afternoon:"<strong>1వ రోజు - మధ్యాహ్నం:</strong> MGR స్మారకాన్ని సందర్శించండి మరియు స్థానిక స్నాక్స్ రుచి చూడండి.",
+      day1Evening:"<strong>1వ రోజు - సాయంత్రం:</strong> సూర్యాస్తమయం ఆనందించండి మరియు వీధి ప్రదర్శనలు చూడండి."
+    }
+  };
+
+  const langSelect = document.getElementById('language-select');
+  langSelect.addEventListener('change', function(){
+    const lang = this.value;
+    const t = translations[lang];
+
+    document.getElementById('hero-title').innerHTML = t.heroTitle;
+    document.getElementById('hero-desc').innerHTML = t.heroDesc;
+    document.getElementById('highlights-title').innerHTML = t.highlightsTitle;
+
+    const highlights = document.getElementById('highlights-list');
+    highlights.innerHTML = '';
+    t.highlightsList.forEach(item => {
+      const li = document.createElement('li');
+      li.textContent = item;
+      highlights.appendChild(li);
+    });
+
+    document.getElementById('visitor-title').innerHTML = t.visitorTitle;
+    document.getElementById('timings').innerHTML = t.timings;
+    document.getElementById('location').innerHTML = t.location;
+    document.getElementById('best-time').innerHTML = t.bestTime;
+    document.getElementById('view360-title').innerHTML = t.view360Title;
+    document.getElementById('itinerary-title').innerHTML = t.itineraryTitle;
+    document.getElementById('add-btn').textContent = t.addBtn;
+    document.getElementById('suggested-title').innerHTML = t.suggestedTitle;
+    document.getElementById('day1-morning').innerHTML = t.day1Morning;
+    document.getElementById('day1-afternoon').innerHTML = t.day1Afternoon;
+    document.getElementById('day1-evening').innerHTML = t.day1Evening;
+
+    // Translate placeholders
+    document.getElementById('activity').placeholder = lang==='en'?"Activity (e.g., Beach Walk, Local Food)":
+                                                     lang==='hi'?"गतिविधि (जैसे, समुद्र तट पर टहलना, स्थानीय भोजन)":
+                                                     "కార్యం (ఉదా: బీచ్ నడక, స్థానిక ఆహారం)";
+    document.getElementById('notes').placeholder = lang==='en'?"Notes (optional)":
+                                                  lang==='hi'?"नोट्स (वैकल्पिक)":
+                                                  "గమనికలు (ఐచ్ఛికం)";
+  });
+</script>
+
+</body>
+</html>
+
+

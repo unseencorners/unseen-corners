@@ -1,0 +1,237 @@
+<!-- Barehipani Waterfalls Page | Unseen Corners -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Unseen Corners – Barehipani Waterfalls</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Poppins", sans-serif; }
+    body { background: #eef7f4; color: #333; line-height: 1.6; padding-bottom: 80px; 
+           background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQj3sGs7kom7L2lVImNs8sZ3U4yDFfxaWeKY0T-jvL0r21KisYIXp5HMqgFUsYpfK3dqIU&usqp=CAU') no-repeat center center/cover;}
+
+    header {
+      background: #004d40; color: #fff;
+      padding: 15px 40px; display: flex; justify-content: space-between;
+      align-items: center; flex-wrap: wrap; position: fixed;
+      top: 0; left: 0; width: 100%; z-index: 1000;
+    }
+    header h1 { color: #00bfa5; font-size: 22px; font-weight: bold; }
+    nav a { color: white; text-decoration: none; margin-left: 20px; font-weight: 500; }
+    nav a:hover { text-decoration: underline; }
+    .nav-btn {
+      background: #00bfa5; color: #004d40; font-weight: bold;
+      padding: 8px 16px; border: none; border-radius: 6px;
+      margin-left: 20px; cursor: pointer;
+    }
+    .nav-btn:hover { background: #26a69a; }
+    .lang-select {
+      margin-left: 20px; padding: 6px 10px; border-radius: 5px;
+      border: none; font-size: 14px; cursor: pointer;
+    }
+
+    .hero {
+      background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQj3sGs7kom7L2lVImNs8sZ3U4yDFfxaWeKY0T-jvL0r21KisYIXp5HMqgFUsYpfK3dqIU&usqp=CAU') no-repeat center center/cover;
+      height: 100vh; display: flex; align-items: center; justify-content: center;
+      text-align: center; color: white; position: relative; padding-top: 70px;
+    }
+    .hero::before {
+      content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6); z-index: 1;
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 800px; padding: 20px; }
+    .hero-content h2 { font-size: 34px; margin-bottom: 15px; color: #00bfa5; }
+    .hero-content p { font-size: 18px; margin-bottom: 20px; }
+
+    .info-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 15px; margin-top: 20px;
+    }
+    .info-card {
+      background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 8px; padding: 15px; font-size: 15px; color: #fff;
+    }
+
+    .view360 {
+      margin: 60px auto; max-width: 1000px;
+      border-radius: 12px;
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .view360 iframe {
+      flex: 1 1 45%;
+      height: 500px;
+      border: none;
+      border-radius: 12px;
+    }
+
+    .itinerary {
+      max-width: 900px; margin: 50px auto; padding: 25px;
+      background: #f9f9f9; border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .itinerary h2 { text-align: center; color: #004d40; margin-bottom: 20px; }
+    .itinerary form { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 20px; }
+    .itinerary input, .itinerary textarea {
+      padding: 10px; border: 1px solid #ccc; border-radius: 5px;
+      width: 100%; max-width: 250px; font-size: 14px;
+    }
+    .itinerary button {
+      background: #004d40; color: white; padding: 10px 20px;
+      border: none; border-radius: 5px; cursor: pointer;
+    }
+    .itinerary button:hover { background: #002d26; }
+    .itinerary-item {
+      background: white; padding: 15px; border-left: 4px solid #00bfa5;
+      margin-bottom: 10px; border-radius: 5px;
+    }
+
+    footer {
+      text-align: center; padding: 20px;
+      background: #004d40; color: white;
+      margin-top: 50px;
+    }
+
+    .fade { opacity: 0; transition: opacity 0.7s ease-in-out; }
+    .fade.show { opacity: 1; }
+
+    @media(max-width:768px){
+      .hero-content h2 { font-size: 24px; }
+      .hero-content p { font-size: 16px; }
+      .view360 iframe { height: 300px; flex: 1 1 100%; }
+      .itinerary form { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Unseen Corners</h1>
+  <nav>
+    <a href="index.html"><b data-en="Home" data-hi="होम" data-te="హోమ్">Home</b></a>
+    <a href="about14.html"><b data-en="About" data-hi="हमारे बारे में" data-te="మా గురించి">About</b></a>
+    <a href="contact.html"><b data-en="Contact" data-hi="संपर्क करें" data-te="కాంటాక్ట్">Contact</b></a>
+    <a href="t4.html"><b data-en="Chat Bot" data-hi="चैट बॉट" data-te="చాట్ బాట్">Chat Bot</b></a>
+    <button class="nav-btn" data-en="Book Now"  onclick="window.location.href='book.html'"data-hi="अभी बुक करें" data-te="ఇప్పుడు బుక్ చేయండి">Book Now</button>
+    <select class="lang-select" id="language-select">
+      <option value="en">English</option>
+      <option value="hi">हिन्दी</option>
+      <option value="te">తెలుగు</option>
+    </select>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+    <h2 class="fade show" data-en="🌿 Barehipani Waterfalls" data-hi="🌿 बरेहीपानी जलप्रपात" data-te="🌿 బరేహిపాణి జలపాతం">🌿 Barehipani Waterfalls</h2>
+    <p class="fade show" data-en="Barehipani Waterfalls, nestled in Simlipal National Park, Odisha, is India’s second-highest waterfall. Cascading from about 1,309 feet (399 meters), it drops in two tiers amid dense forest and rich biodiversity."
+       data-hi="ओडिशा के सिमलीपाल नेशनल पार्क में स्थित बरेहीपानी जलप्रपात भारत का दूसरा सबसे ऊँचा जलप्रपात है। यह लगभग 1,309 फीट (399 मीटर) ऊँचाई से दो स्तरों में गिरता है।"
+       data-te="ఒడిశాలోని సిమ్లిపాల్ నేషనల్ పార్క్‌లో ఉన్న బరేహిపాణి జలపాతం, భారతదేశంలో రెండవ అతిపెద్ద జలపాతం. ఇది సుమారు 1,309 అడుగులు (399 మీటర్లు) ఎత్తులో రెండు దశలలో పడుతుంది.">
+      Barehipani Waterfalls, nestled in Simlipal National Park, Odisha, is India’s second-highest waterfall. Cascading from about 1,309 feet (399 meters), it drops in two tiers amid dense forest and rich biodiversity.
+    </p>
+
+    <h3 class="fade show" data-en="📖 Highlights & Facts" data-hi="📖 मुख्य तथ्य" data-te="📖 ముఖ్యమైన వివరాలు">📖 Highlights & Facts</h3>
+    <ul>
+      <li data-en="Height: 1,309 feet (399 m) – India’s 2nd highest waterfall."
+          data-hi="ऊँचाई: 1,309 फीट (399 मीटर) – भारत का 2वां सबसे ऊँचा जलप्रपात."
+          data-te="ఎత్తు: 1,309 అడుగులు (399 మీటర్లు) – భారత్‌లో రెండవ అతిపెద్ద జలపాతం.">
+          Height: 1,309 feet (399 m) – India’s 2nd highest waterfall.
+      </li>
+      <li data-en="Located inside Simlipal Tiger Reserve, Mayurbhanj district."
+          data-hi="सिमलीपाल टाइगर रिजर्व, मेयरभंज जिले में स्थित।"
+          data-te="సిమ్లిపాల్ టైగర్ రిజర్వ్, మయూరభంజ్ జిల్లా లో ఉంది.">
+          Located inside Simlipal Tiger Reserve, Mayurbhanj district.
+      </li>
+      <li data-en="Formed by the Budhabalanga River."
+          data-hi="बुधाबलांगा नदी द्वारा निर्मित।"
+          data-te="బుధాబలంగా నది ద్వారా ఏర్పడింది.">
+          Formed by the Budhabalanga River.
+      </li>
+      <li data-en="Falls in two major drops amidst lush greenery and wildlife."
+          data-hi="घने जंगल और जीव-जंतुओं के बीच दो मुख्य स्तरों में गिरता है।"
+          data-te="హరితపరిశుభ్రమైన అడవులు మరియు వన్యప్రాణుల మధ్య రెండు ప్రధాన దశల్లో పడుతుంది.">
+          Falls in two major drops amidst lush greenery and wildlife.
+      </li>
+    </ul>
+
+    <h3 class="fade show" data-en="🕒 Visitor Information" data-hi="🕒 आगंतुक जानकारी" data-te="🕒 సందర్శకుల సమాచారం">🕒 Visitor Information</h3>
+    <div class="info-grid">
+      <div class="info-card" data-en="Timings: 6:00 AM – 6:00 PM" data-hi="समय: 6:00 AM – 6:00 PM" data-te="సమయం: 6:00 AM – 6:00 PM">Timings: 6:00 AM – 6:00 PM</div>
+      <div class="info-card" data-en="Location: Simlipal National Park, Mayurbhanj, Odisha" data-hi="स्थान: सिमलीपाल नेशनल पार्क, मेयरभंज, ओडिशा" data-te="స్థానం: సిమ్లిపాల్ నేషనల్ పార్క్, మయూరభంజ్, ఒడిశా">Location: Simlipal National Park, Mayurbhanj, Odisha</div>
+      <div class="info-card" data-en="Best Time: October – February (Winter)" data-hi="सर्वोत्तम समय: अक्टूबर – फरवरी (सर्दी)" data-te="సరైన సమయం: అక్టోబర్ – ఫిబ్రవరి (చలికాలం)">Best Time: October – February (Winter)</div>
+    </div>
+  </div>
+</section>
+
+<section class="view360">
+  <iframe 
+    src="https://www.google.com/maps/embed?pb=!4v1760431041835!6m8!1m7!1sCAoSFkNJSE0wb2dLRUlDQWdJQ2lqcG1JRnc.!2m2!1d21.93288956308883!2d86.38018726699194!3f39.676796!4f0!5f0.7820865974627469" 
+    allowfullscreen 
+    loading="lazy" 
+    style="width:100%; height:500px; border:0; border-radius:12px;">
+  </iframe>
+</section>
+
+
+<section class="itinerary">
+  <h2 data-en="🧭 Plan Your Barehipani Trip" data-hi="🧭 अपनी यात्रा योजना बनाएं" data-te="🧭 మీ బరేహిపాణి ట్రిప్‌ను ప్లాన్ చేయండి">🧭 Plan Your Barehipani Trip</h2>
+  <form id="itinerary-form">
+    <input type="date" id="date" required />
+    <input type="text" id="activity" placeholder="Activity (e.g., Safari, Trek to Waterfall)" required />
+    <textarea id="notes" rows="1" placeholder="Notes (optional)"></textarea>
+    <button type="submit" data-en="Add to Itinerary" data-hi="सूची में जोड़ें" data-te="ఇటినరరీలో చేర్చండి">Add to Itinerary</button>
+    <button type="button" id="clear-itinerary" style="background:#c0392b;" data-en="Clear All" data-hi="सभी साफ़ करें" data-te="అన్ని క్లియర్ చేయండి">Clear All</button>
+  </form>
+  <div id="itinerary-list"></div>
+
+  <div class="itinerary-list">
+    <h3 data-en="🗓 Suggested Itinerary" data-hi="🗓 सुझावित यात्रा योजना" data-te="🗓 సూచించిన ఇటినరరీ" style="margin-top:30px;">🗓 Suggested Itinerary</h3>
+    <div class="itinerary-item" data-en="Day 1 - Morning: Arrive at Simlipal, drive to Barehipani viewpoint." data-hi="दिन 1 - सुबह: सिमलीपाल पहुँचें, बरेहीपानी व्यू पॉइंट जाएँ।" data-te="Day 1 - Morning: సిమ్లిపాల్ చేరి, బరేహిపాణి వీుపాయింట్‌కి డ్రైవ్ చేయండి.">Day 1 - Morning: Arrive at Simlipal, drive to Barehipani viewpoint.</div>
+    <div class="itinerary-item" data-en="Day 1 - Afternoon: Picnic near Joranda Falls and explore trails." data-hi="दिन 1 - दोपहर: जोरांडा जलप्रपात के पास पिकनिक और ट्रेल्स की खोज।" data-te="Day 1 - Afternoon: జొరాండా జలపాతం దగ్గర పిక్నిక్ మరియు ట్రైల్‌లను అన్వేషించండి.">Day 1 - Afternoon: Picnic near Joranda Falls and explore trails.</div>
+    <div class="itinerary-item" data-en="Day 2 - Morning: Early morning safari to spot elephants and deer." data-hi="दिन 2 - सुबह: हाथी और हिरण देखने के लिए सुबह की सफारी।" data-te="Day 2 - Morning: ఎలిఫెంట్స్ మరియు డియర్స్‌ను చూడడానికి ఉదయపు సఫారీ.">Day 2 - Morning: Early morning safari to spot elephants and deer.</div>
+    <div class="itinerary-item" data-en="Day 2 - Afternoon: Visit nearby Debkund riverbanks." data-hi="दिन 2 - दोपहर: पास के देबकुंड नदी तट पर जाएँ।" data-te="Day 2 - Afternoon: దగ్గరి డెబ్‌కుంద్ నది తీరాలను సందర్శించండి.">Day 2 - Afternoon: Visit nearby Debkund riverbanks.</div>
+  </div>
+</section>
+
+<footer>
+  <p data-en="&copy; 2025 Unseen Corners | All Rights Reserved" data-hi="&copy; 2025 Unseen Corners | सर्वाधिकार सुरक्षित" data-te="&copy; 2025 Unseen Corners | అన్ని హక్కులు రిజర్వ్ చేయబడ్డాయి">&copy; 2025 Unseen Corners | All Rights Reserved</p>
+</footer>
+
+<script>
+  // Itinerary Builder
+  const form = document.getElementById('itinerary-form');
+  const list = document.getElementById('itinerary-list');
+  const clearBtn = document.getElementById('clear-itinerary');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const date = document.getElementById('date').value;
+    const activity = document.getElementById('activity').value;
+    const notes = document.getElementById('notes').value;
+    if (!date || !activity) return;
+
+    const item = document.createElement('div');
+    item.className = 'itinerary-item';
+    item.innerHTML = `<strong>${date}</strong> – ${activity}<br><small>${notes}</small>`;
+    list.appendChild(item);
+    form.reset();
+  });
+
+  clearBtn.addEventListener('click', () => { list.innerHTML = ''; });
+
+  // ✅ Multi-language
+  const langSelect = document.getElementById('language-select');
+  langSelect.addEventListener('change', () => {
+    const lang = langSelect.value;
+    document.querySelectorAll('[data-en]').forEach(el => {
+      if (lang === 'en') el.textContent = el.dataset.en;
+      else if (lang === 'hi') el.textContent = el.dataset.hi;
+      else if (lang === 'te') el.textContent = el.dataset.te;
+    });
+  });
+</script>
+
+</body>
+</html>

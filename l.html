@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login / Signup</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif;}
+body{display:flex;justify-content:center;align-items:center;min-height:100vh;background:url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e') no-repeat center/cover;}
+.container{width:400px;background:rgba(255,255,255,0.15);padding:40px;border-radius:15px;backdrop-filter:blur(8px);box-shadow:0 8px 20px rgba(0,0,0,0.3);}
+.form-box{display:none;}
+.form-box.active{display:block;}
+h2{text-align:center;margin-bottom:20px;color:#1b2735;}
+.input-group{margin:10px 0;}
+input{width:100%;padding:12px;border:1px solid #ccc;border-radius:5px;font-size:16px;}
+button{width:100%;padding:12px;margin-top:15px;background:#1b2735;color:#fff;font-size:16px;border:none;border-radius:5px;cursor:pointer;font-weight:bold;}
+button:hover{background:#333;}
+button:disabled{background:#666;cursor:not-allowed;}
+.switch{text-align:center;margin-top:15px;font-size:14px;}
+.switch a{color:#f4c542;text-decoration:none;font-weight:bold;}
+.switch a:hover{text-decoration:underline;}
+.error-message{color:#ff4444;font-size:14px;margin-top:5px;display:none;}
+.success-message{color:#00C851;font-size:14px;margin-top:5px;display:none;}
+.loading{opacity:0.6;pointer-events:none;}
+</style>
+</head>
+<body>
+
+<div class="container">
+<div class="form-box active" id="login-form">
+<h2>Login</h2>
+<div class="input-group">
+<input type="email" id="login-email" placeholder="Enter your email" required>
+</div>
+<div class="input-group">
+<input type="password" id="login-password" placeholder="Password" required>
+</div>
+<div class="error-message" id="login-error"></div>
+<button id="login-btn" onclick="login()"><b>LOG IN</b></button>
+<div class="switch">New user? <a onclick="showSignup()">Create Account</a></div>
+</div>
+
+<div class="form-box" id="signup-form">
+<h2>Create Account</h2>
+<div class="input-group">
+<input type="text" id="name" placeholder="Enter your name" required>
+</div>
+<div class="input-group">
+<input type="email" id="email" placeholder="Enter your email" required>
+<div class="error-message" id="email-error"></div>
+</div>
+<div class="input-group">
+<input type="password" id="password" placeholder="Enter your password" required>
+<div class="error-message" id="password-error">
+Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, and one number
+</div>
+</div>
+<div class="error-message" id="signup-error"></div>
+<button id="signup-btn" onclick="signup()"><b>SIGN UP</b></button>
+<div class="switch">Already have account? <a onclick="showLogin()">Login</a></div>
+</div>
+</div>
+
+<script>
+function showSignup(){
+    clearErrors();
+    document.getElementById("login-form").classList.remove("active");
+    document.getElementById("signup-form").classList.add("active");
+}
+
+function showLogin(){
+    clearErrors();
+    document.getElementById("signup-form").classList.remove("active");
+    document.getElementById("login-form").classList.add("active");
+}
+
+function clearErrors() {
+    document.querySelectorAll('.error-message').forEach(el => {
+        el.style.display = 'none';
+    });
+}
+
+function showError(elementId, message) {
+    const element = document.getElementById(elementId);
+    element.textContent = message;
+    element.style.display = 'block';
+}
+
+function setLoading(button, isLoading) {
+    button.disabled = isLoading;
+    button.innerHTML = isLoading ? '<b>PLEASE WAIT...</b>' : `<b>${button.id === 'login-btn' ? 'LOG IN' : 'SIGN UP'}</b>`;
+    if (isLoading) {
+        button.parentElement.parentElement.classList.add('loading');
+    } else {
+        button.parentElement.parentElement.classList.remove('loading');
+    }
+}
+
+async function login(){
+    const email = document.getElementById("login-email").value;
+    const password = document.getElementById("login-password").value;
+    const button = document.getElementById("login-btn");
+    
+    clearErrors();
+
+    if(!email || !password){
+        showError('login-error', 'Please enter both email and password!');
+        return;
+    }
+
+    setLoading(button, true);
+
+    try {
+        const response = await fetch('/api/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ 
+                email, 
+                password,
+                redirect: getRedirectPage()
+            })
+        });
+
+        const data = await response.json();
+
+        if(data.success){
+            alert('Login successful! Redirecting...');
+            window.location.href = data.redirect || getRedirectPage();
+        } else {
+            showError('login-error', data.error || 'Login failed!');
+        }
+    } catch(error) {
+        console.error('Login error:', error);
+        showError('login-error', 'Network error. Please try again.');
+    } finally {
+        setLoading(button, false);
+    }
+}
+
+async function signup(){
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    const button = document.getElementById("signup-btn");
+    
+    clearErrors();
+
+    if(!name || !email || !password){
+        showError('signup-error', 'Please fill all fields!');
+        return;
+    }
+
+    // Client-side validation
+    if (!validateEmail(email)) {
+        showError('email-error', 'Please enter a valid email address');
+        return;
+    }
+
+    if (!validatePassword(password)) {
+        showError('password-error', 'Password must be at least 8 characters with uppercase, lowercase and number');
+        return;
+    }
+
+    setLoading(button, true);
+
+    try {
+        const response = await fetch('/api/signup', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ name, email, password })
+        });
+
+        const data = await response.json();
+
+        if(data.success){
+            alert('Account created successfully! Please login.');
+            showLogin();
+        } else {
+            showError('signup-error', data.error || 'Signup failed!');
+        }
+    } catch(error) {
+        console.error('Signup error:', error);
+        showError('signup-error', 'Network error. Please try again.');
+    } finally {
+        setLoading(button, false);
+    }
+}
+
+function getRedirectPage() {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get('redirect') || "index.html";
+}
+
+function validateEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+function validatePassword(password) {
+    return /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/.test(password);
+}
+
+// Real-time validation
+document.getElementById('password').addEventListener('input', function(e) {
+    const password = e.target.value;
+    const errorElement = document.getElementById('password-error');
+    
+    if (password && !validatePassword(password)) {
+        errorElement.style.display = 'block';
+    } else {
+        errorElement.style.display = 'none';
+    }
+});
+
+document.getElementById('email').addEventListener('input', function(e) {
+    const email = e.target.value;
+    const errorElement = document.getElementById('email-error');
+    
+    if (email && !validateEmail(email)) {
+        errorElement.textContent = 'Please enter a valid email address';
+        errorElement.style.display = 'block';
+    } else {
+        errorElement.style.display = 'none';
+    }
+});
+</script>
+
+</body>
+</html>

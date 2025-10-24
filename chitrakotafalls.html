@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Unseen Corners – Chitrakote Waterfalls</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; font-family:Arial,sans-serif; }
+
+  /* Full-page background image with overlay */
+  body {
+    line-height:1.6; color:#fff; padding-bottom:80px;
+    background: url('https://media.assettype.com/outlooktraveller/2024-09-18/ap0uvkn4/shutterstock2399894931.jpg?w=1200&h=675&auto=format%2Ccompress&fit=max&enlarge=true') center/cover no-repeat fixed;
+    position: relative; min-height: 100vh;
+  }
+  body::before {
+    content:""; position:fixed; inset:0; background:rgba(0,0,0,0.55); z-index:-1;
+  }
+
+  header {
+    position:fixed; top:0; left:0; width:100%; z-index:1000;
+    background: #1b263b; color:#fff; padding:15px 50px;
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap;
+  }
+  header h1 { color:#ffba08; font-size:22px; font-weight:bold; }
+  nav a { color:#fff; text-decoration:none; margin-left:20px; font-size:16px; }
+  nav a:hover { text-decoration:underline; }
+  .nav-btn { background:#ffba08; color:#000; font-weight:bold; padding:8px 16px; border:none; border-radius:5px; cursor:pointer; margin-left:20px; }
+  .nav-btn:hover { background:#e0a600; }
+  .lang-select { margin-left:20px; padding:6px 10px; border-radius:5px; border:none; font-size:14px; cursor:pointer; }
+
+  section {
+    background: rgba(0,0,0,0.55); margin:100px auto 40px; padding:40px 20px; border-radius:10px;
+    max-width:1000px;
+  }
+
+  h2,h3 { color:#ffba08; text-align:center; }
+  ul { margin:15px 0; padding-left:20px; }
+
+  .info-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:15px; margin-top:20px; }
+  .info-card { background: rgba(255,255,255,0.15); border-radius:8px; padding:15px; font-size:15px; }
+
+  .view360 { margin:50px auto; max-width:1000px; padding:10px; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.2); }
+  .view360 iframe { width:100%; height:500px; border:none; border-radius:12px; }
+
+  .itinerary { max-width:900px; margin:50px auto; padding:20px; background: rgba(255,255,255,0.1); border-radius:10px; }
+  .itinerary h2 { text-align:center; color:#ffba08; margin-bottom:20px; }
+  .itinerary form { display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin-bottom:20px; }
+  .itinerary input, .itinerary textarea { padding:10px; border:none; border-radius:5px; width:100%; max-width:250px; font-size:14px; }
+  .itinerary button { background:#1b263b; color:#fff; padding:10px 20px; border:none; border-radius:5px; cursor:pointer; }
+  .itinerary button:hover { background:#0f1828; }
+  .itinerary-list { margin-top:20px; }
+  .itinerary-item { background: rgba(255,255,255,0.2); padding:15px; border-left:4px solid #ffba08; margin-bottom:10px; border-radius:5px; }
+
+  footer { text-align:center; padding:20px; background:#1b263b; color:#fff; margin-top:50px; }
+
+  @media(max-width:768px){
+    .view360 iframe { height:300px; }
+    .itinerary form { flex-direction:column; align-items:center; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Unseen Corners</h1>
+  <nav>
+    <a href="index.html"><b>Home</b></a>
+    <a href="about14.html"><b>About</b></a>
+    <a href="contact.html"><b>Contact</b></a>
+    <a href="t4.html"><b>Chat Bot</b></a>
+    <button class="nav-btn" onclick="window.location.href='book.html'"><b>Book Now</b></button>
+    <select class="lang-select" id="language-select">
+      <option value="en">English</option>
+      <option value="hi">हिन्दी</option>
+      <option value="te">తెలుగు</option>
+    </select>
+  </nav>
+</header>
+
+<section>
+  <h2 data-key="title">🌊 Chitrakote Waterfalls</h2>
+  <p data-key="desc">Chitrakote Waterfalls, often called the "Niagara of India," is the widest waterfall in India, located on the Indravati River in Bastar district, Chhattisgarh. The horseshoe-shaped fall cascades from a height of about 30 meters, creating a mesmerizing view, especially during the monsoon.</p>
+
+  <h3 data-key="highlights">📖 Highlights & Facts</h3>
+  <ul>
+    <li data-key="fact1">Widest waterfall in India, about 300 meters wide in monsoon.</li>
+    <li data-key="fact2">Located near Jagdalpur in the Bastar region.</li>
+    <li data-key="fact3">Illuminated at night with colorful lights.</li>
+    <li data-key="fact4">Boating is available during the post-monsoon season.</li>
+  </ul>
+
+  <h3 data-key="visitor">🕒 Visitor Information</h3>
+  <div class="info-grid">
+    <div class="info-card" data-key="time"><b>Timings:</b><br> 7:00 AM – 6:00 PM</div>
+    <div class="info-card" data-key="location"><b>Location:</b><br> Indravati River, Bastar, Chhattisgarh</div>
+    <div class="info-card" data-key="best"><b>Best Time:</b><br> July – February</div>
+  </div>
+</section>
+
+<section class="view360">
+  <h2 style="text-align:center; color:#ffba08;">🌐 Explore 360° View of Chitrakote Falls</h2>
+<iframe src="https://www.google.com/maps/embed?pb=!4v1760425538030!6m8!1m7!1sCAoSFkNJSE0wb2dLRUlDQWdJQzF0SkdYWGc.!2m2!1d19.20717332885897!2d81.70006037280568!3f82.1720342492309!4f3.752803590217468!5f2.4364797389722614" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</section>
+
+<section class="itinerary">
+  <h2 data-key="plan">🧭 Plan Your Chitrakote Trip</h2>
+  <form id="itinerary-form">
+    <input type="date" id="date" required />
+    <input type="text" id="activity" placeholder="Activity (e.g., Boat Ride, Sightseeing)" required />
+    <textarea id="notes" rows="1" placeholder="Notes (optional)"></textarea>
+    <button type="submit">Add to Itinerary</button>
+    <button type="button" id="clear-itinerary" style="background:#c0392b;color:white;">Clear Added</button>
+  </form>
+
+  <div class="itinerary-list" id="itinerary-list"></div>
+
+  <div class="itinerary-list">
+    <h3>🗓 Suggested Itinerary</h3>
+    <div class="itinerary-item" data-key="day1m"><strong>Day 1 - Morning:</strong> Arrive in Jagdalpur, travel to Chitrakote Falls</div>
+    <div class="itinerary-item" data-key="day1a"><strong>Day 1 - Afternoon:</strong> Enjoy the view and boating near the falls</div>
+    <div class="itinerary-item" data-key="day1e"><strong>Day 1 - Evening:</strong> Watch the illuminated falls at sunset</div>
+    <div class="itinerary-item" data-key="day2m"><strong>Day 2 - Morning:</strong> Visit nearby attractions like Tirathgarh Falls</div>
+    <div class="itinerary-item" data-key="day2a"><strong>Day 2 - Afternoon:</strong> Explore Bastar Handicrafts Market</div>
+  </div>
+</section>
+
+<footer>&copy; 2025 Unseen Corners | All Rights Reserved</footer>
+
+<script>
+  // Itinerary Builder
+  const form = document.getElementById('itinerary-form');
+  const list = document.getElementById('itinerary-list');
+  const clearBtn = document.getElementById('clear-itinerary');
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const date = document.getElementById('date').value;
+    const activity = document.getElementById('activity').value.trim();
+    const notes = document.getElementById('notes').value.trim();
+    if(!date || !activity) return;
+
+    const item = document.createElement('div');
+    item.className = 'itinerary-item';
+    item.innerHTML = `<strong>${date}</strong> – ${activity}${notes ? "<br><small>"+notes+"</small>":""}`;
+    list.appendChild(item);
+    form.reset();
+  });
+
+  clearBtn.addEventListener('click', () => { list.innerHTML = ''; });
+
+  // Multi-language support
+  const translations = {
+    en: { 
+      title:"🌊 Chitrakote Waterfalls",
+      desc:"Chitrakote Waterfalls, often called the 'Niagara of India,' is the widest waterfall in India, located on the Indravati River in Bastar district, Chhattisgarh. The horseshoe-shaped fall cascades from a height of about 30 meters, creating a mesmerizing view, especially during the monsoon.",
+      highlights:"📖 Highlights & Facts",
+      fact1:"Widest waterfall in India, about 300 meters wide in monsoon.",
+      fact2:"Located near Jagdalpur in the Bastar region.",
+      fact3:"Illuminated at night with colorful lights.",
+      fact4:"Boating is available during the post-monsoon season.",
+      visitor:"🕒 Visitor Information",
+      plan:"🧭 Plan Your Chitrakote Trip",
+      day1m:"Day 1 - Morning: Arrive in Jagdalpur, travel to Chitrakote Falls",
+      day1a:"Day 1 - Afternoon: Enjoy the view and boating near the falls",
+      day1e:"Day 1 - Evening: Watch the illuminated falls at sunset",
+      day2m:"Day 2 - Morning: Visit nearby attractions like Tirathgarh Falls",
+      day2a:"Day 2 - Afternoon: Explore Bastar Handicrafts Market"
+    },
+    hi: { 
+      title:"🌊 चित्रकोट जलप्रपात",
+      desc:"चित्रकोट फॉल्स, जिसे 'भारत का निआगरा' कहा जाता है, भारत का सबसे चौड़ा झरना है, जो छत्तीसगढ़ के बस्तर जिले में इंद्रावती नदी पर स्थित है। घोड़े के नाल जैसी आकृति वाला झरना लगभग 30 मीटर की ऊंचाई से गिरता है और मानसून में विशेष रूप से आकर्षक दृश्य प्रस्तुत करता है।",
+      highlights:"📖 मुख्य आकर्षण और तथ्य",
+      fact1:"भारत का सबसे चौड़ा झरना, मानसून में लगभग 300 मीटर चौड़ा।",
+      fact2:"बस्तर क्षेत्र में जगदलपुर के पास स्थित।",
+      fact3:"रात में रंगीन रोशनी से प्रकाशित।",
+      fact4:"मानसून के बाद के मौसम में नौकायन उपलब्ध।",
+      visitor:"🕒 पर्यटक जानकारी",
+      plan:"🧭 अपनी चित्रकोट यात्रा की योजना बनाएं",
+      day1m:"दिन 1 - सुबह: जगदलपुर पहुंचें, चित्रकोट फॉल्स की यात्रा करें",
+      day1a:"दिन 1 - दोपहर: झरने के पास दृश्य और नौकायन का आनंद लें",
+      day1e:"दिन 1 - शाम: सूर्यास्त में रोशनी वाले झरने देखें",
+      day2m:"दिन 2 - सुबह: तिरथगढ़ फॉल्स जैसी पास की जगहों पर जाएँ",
+      day2a:"दिन 2 - दोपहर: बस्तर हस्तशिल्प बाजार का अन्वेषण करें"
+    },
+    te: { 
+      title:"🌊 చిత్రకోట్ జలపాతం",
+      desc:"చిత్రకోట్ ఫాల్స్, 'భారత నయాగరా' అని పిలవబడుతుంది, భారతదేశంలోనే అతిపెద్ద వెడల్పైన జలపాతం. ఇది బస్తార్ జిల్లా, ఛత్తీస్‌గఢ్ లోని ఇంద్రావతి నదిలో ఉంది. గోధుమ ఆకారంలో జలపాతం సుమారు 30 మీటర్ల ఎత్తు నుండి పడుతుంది, ప్రత్యేకంగా మోన్సూన్ సమయంలో అద్భుత దృశ్యాన్ని సృష్టిస్తుంది.",
+      highlights:"📖 ముఖ్యాంశాలు & వాస్తవాలు",
+      fact1:"భారతదేశంలోనే వెడల్పైన జలపాతం, మోన్సూన్‌లో సుమారు 300 మీటర్లు వెడల్పు.",
+      fact2:"బస్తార్ ప్రాంతంలోని జగ్దల్పూర్ దగ్గర ఉంది.",
+      fact3:"రాత్రి సమయంలో రంగురంగుల లైట్లతో ప్రకాశించబడుతుంది.",
+      fact4:"మోన్సూన్ తరువాతి సీజన్‌లో పడవ ప్రయాణం అందుబాటులో ఉంది.",
+      visitor:"🕒 సందర్శకుల సమాచారం",
+      plan:"🧭 మీ చిత్రకోట్ ట్రిప్ ప్లాన్ చేయండి",
+      day1m:"రోజు 1 - ఉదయం: జగ్దల్పూర్ చేరి, చిత్రకోట్ ఫాల్స్‌కు ప్రయాణించండి",
+      day1a:"రోజు 1 - మధ్యాహ్నం: జలపాతం దగ్గర వీక్షణ మరియు పడవలో సవారీ ఆస్వాదించండి",
+      day1e:"రోజు 1 - సాయంత్రం: సూర్యాస్తమయంలో లైటింగ్‌తో జలపాతం చూడండి",
+      day2m:"రోజు 2 - ఉదయం: తీరతఘర్ ఫాల్స్ వంటి దగ్గరి ప్రదేశాలను సందర్శించండి",
+      day2a:"రోజు 2 - మధ్యాహ్నం: బస్తార్ హ్యాండిక్రాఫ్ట్స్ మార్కెట్‌ను అన్వేషించండి"
+    }
+  };
+
+  const langSelect = document.getElementById('language-select');
+  langSelect.addEventListener('change', () => {
+    const lang = langSelect.value;
+    document.querySelectorAll("[data-key]").forEach(el => {
+      const key = el.getAttribute("data-key");
+      if(translations[lang][key]) el.textContent = translations[lang][key];
+    });
+  });
+</script>
+
+</body>
+</html>

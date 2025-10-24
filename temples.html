@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Temple Packages - Unseen Corners</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+      min-height: 100vh;
+    }
+
+    header {
+      background: linear-gradient(135deg, #1b2735 0%, #2c3e50 100%);
+      color: #fff;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    header h1 { 
+      color: #f4c542; 
+      font-size: 24px; 
+      font-weight: 800;
+      margin: 0;
+      white-space: nowrap;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: #fff; 
+      text-decoration: none; 
+      font-size: 14px;
+      white-space: nowrap;
+      padding: 8px 12px;
+      border-radius: 6px;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+
+    nav a:hover { 
+      background: rgba(255,255,255,0.15);
+      transform: translateY(-2px);
+    }
+
+    .nav-btn {
+      background: #f4c542; 
+      color: #000; 
+      font-weight: bold;
+      padding: 8px 16px; 
+      border: none; 
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 13px;
+      white-space: nowrap;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    .nav-btn:hover { 
+      background: #e3b72c; 
+      transform: translateY(-3px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+
+    .lang-select {
+      padding: 8px 12px; 
+      border-radius: 6px;
+      border: none; 
+      font-size: 13px; 
+      cursor: pointer;
+      background: white;
+      min-width: 120px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    /* Favourites Field Styles */
+    .favourites-field {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #34495e;
+      padding: 8px 16px;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      min-width: auto;
+      flex-shrink: 0;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    .favourites-field:hover {
+      background: #2c3e50;
+      transform: translateY(-2px);
+    }
+
+    .favourites-icon {
+      color: #ff4757;
+      font-size: 16px;
+    }
+
+    .favourites-count {
+      background: #ff4757;
+      color: white;
+      border-radius: 50%;
+      width: 22px;
+      height: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    .favourites-text {
+      color: white;
+      font-size: 14px;
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    .favourites-dropdown {
+      display: none;
+      position: absolute;
+      right: 0;
+      top: 100%;
+      background: white;
+      min-width: 380px;
+      max-height: 500px;
+      overflow-y: auto;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      border-radius: 12px;
+      z-index: 1000;
+      margin-top: 10px;
+      padding: 20px;
+      border: 1px solid #e9ecef;
+    }
+
+    .favourites-dropdown.show {
+      display: block;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .favourites-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 2px solid #f4c542;
+    }
+
+    .favourites-header h3 {
+      margin: 0;
+      font-size: 18px;
+      font-weight: bold;
+      color: #1b2735;
+    }
+
+    .clear-fav {
+      background: #ff4757;
+      color: white;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    .clear-fav:hover {
+      background: #ff3838;
+      transform: translateY(-2px);
+    }
+
+    .fav-cards-container {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    /* Mini Card Styles for Favourites Dropdown */
+    .fav-card {
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+      transition: all 0.3s ease;
+      border: 1px solid #e9ecef;
+    }
+
+    .fav-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .fav-card-content {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 15px;
+    }
+
+    .fav-card-img {
+      width: 70px;
+      height: 70px;
+      border-radius: 8px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .fav-card-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .fav-card-title {
+      font-size: 15px;
+      font-weight: bold;
+      color: #1b2735;
+      margin: 0 0 8px 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .fav-card-actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .fav-view-btn {
+      background: #f4c542;
+      color: #000;
+      text-decoration: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: bold;
+      white-space: nowrap;
+      transition: all 0.3s ease;
+    }
+
+    .fav-view-btn:hover {
+      background: #e3b72c;
+      transform: translateY(-2px);
+    }
+
+    .remove-fav {
+      background: #ff4757;
+      color: white;
+      border: none;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+    }
+
+    .remove-fav:hover {
+      background: #ff3838;
+      transform: scale(1.1);
+    }
+
+    .empty-fav {
+      padding: 40px 20px;
+      text-align: center;
+      color: #6c757d;
+      font-style: italic;
+      font-size: 16px;
+    }
+
+    .packages {
+      padding: 40px 20px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .packages h2 {
+      text-align: center;
+      font-size: 36px;
+      margin-bottom: 40px;
+      color: #1b2735;
+      position: relative;
+    }
+
+    .packages h2:after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: #f4c542;
+      margin: 10px auto;
+      border-radius: 2px;
+    }
+
+    .package-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 30px;
+      justify-content: center;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+      transition: all 0.4s ease;
+      position: relative;
+    }
+
+    .card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    }
+
+    .card-img-container {
+      overflow: hidden;
+      height: 200px;
+      position: relative;
+    }
+
+    .card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .card:hover img {
+      transform: scale(1.1);
+    }
+
+    .card-body {
+      padding: 20px;
+      text-align: left;
+    }
+
+    .card-body h3 {
+      font-size: 20px;
+      margin-bottom: 12px;
+      color: #1b2735;
+      min-height: 48px;
+    }
+
+    .card-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 15px;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #f4c542;
+      color: #000;
+      font-weight: bold;
+      padding: 10px 18px;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      flex: 1;
+      text-align: center;
+      font-size: 14px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .btn:hover {
+      background: #e3b72c;
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .fav-btn {
+      background: #f8f9fa;
+      border: 1px solid #dee2e6;
+      color: #6c757d;
+      padding: 10px 15px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+      flex: 1;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .fav-btn:hover {
+      background: #e9ecef;
+      transform: translateY(-2px);
+    }
+
+    .fav-btn.favourited {
+      background: #ff4757;
+      border-color: #ff4757;
+      color: white;
+    }
+
+    /* Alert Styles */
+    .alert {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 15px 25px;
+      border-radius: 8px;
+      z-index: 10000;
+      font-weight: bold;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transform: translateX(150%);
+      transition: transform 0.3s ease;
+      max-width: 350px;
+    }
+
+    .alert-success {
+      background: #2ed573;
+      color: white;
+    }
+
+    .alert-error {
+      background: #ff4757;
+      color: white;
+    }
+
+    /* Footer Styles */
+    footer {
+      background: #1b2735;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      margin-top: 50px;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1200px) {
+      header {
+        padding: 15px 20px;
+      }
+      
+      nav {
+        gap: 12px;
+      }
+      
+      .package-list {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      }
+    }
+
+    @media (max-width: 992px) {
+      .favourites-field .favourites-text {
+        display: none;
+      }
+      
+      .favourites-dropdown {
+        min-width: 340px;
+        right: -30px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+      
+      nav {
+        width: 100%;
+        justify-content: space-between;
+      }
+      
+      .package-list {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 20px;
+      }
+      
+      .favourites-dropdown {
+        min-width: 300px;
+        right: -60px;
+      }
+      
+      .card-actions {
+        flex-direction: column;
+        gap: 10px;
+      }
+      
+      .btn, .fav-btn {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 576px) {
+      header {
+        padding: 12px 15px;
+      }
+      
+      nav {
+        gap: 8px;
+      }
+      
+      .nav-btn, .lang-select {
+        font-size: 12px;
+        padding: 7px 12px;
+      }
+      
+      .favourites-field {
+        padding: 7px 12px;
+      }
+      
+      .packages {
+        padding: 30px 15px;
+      }
+      
+      .packages h2 {
+        font-size: 28px;
+      }
+      
+      .package-list {
+        grid-template-columns: 1fr;
+      }
+      
+      .favourites-dropdown {
+        min-width: 280px;
+        right: -80px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1 id="site-title">Unseen Corners</h1>
+    <nav>
+      <a href="index.html" id="nav-home"><b>Home</b></a>
+      <a href="about14.html" id="nav-about"><b>About</b></a>
+      <a href="contact.html" id="nav-contact"><b>Contact</b></a>
+      <a href="t4.html" id="nav-chatBot"><b>Chat Bot</b></a>
+      
+      <!-- Compact Favourites Field -->
+      <div class="favourites-field" id="favourites-field">
+        <span class="favourites-icon">❤️</span>
+        <span class="favourites-text" id="favourites-text">Favorites</span>
+        <span class="favourites-count" id="favourites-count">0</span>
+        <div class="favourites-dropdown" id="favourites-dropdown">
+          <div class="favourites-header">
+            <h3>My Favorite Temples</h3>
+            <button class="clear-fav" onclick="clearAllFav()">Clear All</button>
+          </div>
+          <div class="fav-cards-container" id="fav-cards-container">
+            <!-- Favorite cards will be dynamically added here -->
+          </div>
+        </div>
+      </div>
+
+      <button class="nav-btn" id="book-btn" onclick="window.location.href='book.html'"><b>Book Now</b></button>
+      <button class="nav-btn" id="Login-btn" onclick="window.location.href='l.html'"><b>Login</b></button>
+      <select class="lang-select" id="language-select" onchange="changeLanguage()">
+        <option value="en"><b>English</b></option>
+        <option value="hi"><b>हिन्दी</b></option>
+        <option value="te"><b>తెలుగు</b></option>
+      </select>
+    </nav>
+  </header>
+
+  <section class="packages">
+    <h2 id="packages-title">Temple Packages</h2>
+    <div class="package-list">
+      
+      <!-- Card 1: Tirupathi -->
+      <div class="card">
+        <div class="card-img-container">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Tirumala_Anand_nilayam4653.jpg" alt="Tirupathi">
+        </div>
+        <div class="card-body">
+          <h3 id="pkg1-title">Tirupathi</h3>
+          <div class="card-actions">
+            <a href="tirupathi.html" class="btn">View Details</a>
+            <button class="fav-btn" 
+                    data-package-id="tirupathi"
+                    data-package-image="https://upload.wikimedia.org/wikipedia/commons/4/4e/Tirumala_Anand_nilayam4653.jpg"
+                    data-package-link="tirupathi.html"
+                    onclick="toggleFav(this, 'tirupathi', 'Tirupathi')">
+              ♡ Add to Favorites
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: Kashi Vishwanath Temple -->
+      <div class="card">
+        <div class="card-img-container">
+          <img src="https://kashiyatra.in/wp-content/uploads/2024/04/shri-kashi-vishwanath.jpg" alt="Kashi Vishwanath Temple">
+        </div>
+        <div class="card-body">
+          <h3 id="pkg2-title">Kashi Vishwanath Temple</h3>
+          <div class="card-actions">
+            <a href="kashiviswanath.html" class="btn">View Details</a>
+            <button class="fav-btn" 
+                    data-package-id="kashiviswanath"
+                    data-package-image="https://kashiyatra.in/wp-content/uploads/2024/04/shri-kashi-vishwanath.jpg"
+                    data-package-link="kashiviswanath.html"
+                    onclick="toggleFav(this, 'kashiviswanath', 'Kashi Vishwanath Temple')">
+              ♡ Add to Favorites
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3: Jagannath Temple -->
+      <div class="card">
+        <div class="card-img-container">
+          <img src="https://i.pinimg.com/236x/a1/ff/09/a1ff092a5726555eba1b55cc57605166.jpg" alt="Jagannath Temple" />
+        </div>
+        <div class="card-body">
+          <h3 id="pkg3-title">Jagannath Temple</h3>
+          <div class="card-actions">
+            <a href="jagannath.html" class="btn">View Details</a>
+            <button class="fav-btn" 
+                    data-package-id="jagannath"
+                    data-package-image="https://i.pinimg.com/236x/a1/ff/09/a1ff092a5726555eba1b55cc57605166.jpg"
+                    data-package-link="jagannath.html"
+                    onclick="toggleFav(this, 'jagannath', 'Jagannath Temple')">
+              ♡ Add to Favorites
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4: Madurai Meenakshi -->
+      <div class="card">
+        <div class="card-img-container">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQv-c7u19kkcIUGm5uYPSo_Q59uOCf5IlbipQ&s" alt="Madurai">
+        </div>
+        <div class="card-body">
+          <h3 id="pkg4-title">Madurai Meenakshi Amman Temple</h3>
+          <div class="card-actions">
+            <a href="madhurai.html" class="btn">View Details</a>
+            <button class="fav-btn" 
+                    data-package-id="madurai"
+                    data-package-image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQv-c7u19kkcIUGm5uYPSo_Q59uOCf5IlbipQ&s"
+                    data-package-link="madhurai.html"
+                    onclick="toggleFav(this, 'madurai', 'Madurai Meenakshi Temple')">
+              ♡ Add to Favorites
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 5: Padmanabhaswamy -->
+      <div class="card">
+        <div class="card-img-container">
+          <img src="https://i.pinimg.com/736x/c6/e3/3e/c6e33e73a41c294022a85f7f099ff7d7.jpg" alt="Padmanabhaswamy">
+        </div>
+        <div class="card-body">
+          <h3 id="pkg5-title">Padmanabhaswamy Temple</h3>
+          <div class="card-actions">
+            <a href="padmanabhaswamy.html" class="btn">View Details</a>
+            <button class="fav-btn" 
+                    data-package-id="padmanabhaswamy"
+                    data-package-image="https://i.pinimg.com/736x/c6/e3/3e/c6e33e73a41c294022a85f7f099ff7d7.jpg"
+                    data-package-link="padmanabhaswamy.html"
+                    onclick="toggleFav(this, 'padmanabhaswamy', 'Padmanabhaswamy Temple')">
+              ♡ Add to Favorites
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 6: Ramanathaswamy -->
+      <div class="card">
+        <div class="card-img-container">
+          <img src="https://famoustemplesofindia.com/wp-content/uploads/2023/10/Ramanathaswamy-Temple-1.jpg" alt="Ramanathaswamy">
+        </div>
+        <div class="card-body">
+          <h3 id="pkg6-title">Ramanathaswamy Temple</h3>
+          <div class="card-actions">
+            <a href="ramanathaswamy.html" class="btn">View Details</a>
+            <button class="fav-btn" 
+                    data-package-id="ramanathaswamy"
+                    data-package-image="https://famoustemplesofindia.com/wp-content/uploads/2023/10/Ramanathaswamy-Temple-1.jpg"
+                    data-package-link="ramanathaswamy.html"
+                    onclick="toggleFav(this, 'ramanathaswamy', 'Ramanathaswamy Temple')">
+              ♡ Add to Favorites
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 7: Somnath -->
+      <div class="card">
+        <div class="card-img-container">
+          <img src="https://www.gujarattrips.com/assets/images/resources/destinations/62.png" alt="Somnath">
+        </div>
+        <div class="card-body">
+          <h3 id="pkg7-title">Somnath Temple</h3>
+          <div class="card-actions">
+            <a href="somnath.html" class="btn">View Details</a>
+            <button class="fav-btn" 
+                    data-package-id="somnath"
+                    data-package-image="https://www.gujarattrips.com/assets/images/resources/destinations/62.png"
+                    data-package-link="somnath.html"
+                    onclick="toggleFav(this, 'somnath', 'Somnath Temple')">
+              ♡ Add to Favorites
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 8: Vaishno Devi -->
+      <div class="card">
+        <div class="card-img-container">
+          <img src="https://holidayshunt.com/wp-content/uploads/2021/10/Vaishno-devi.jpg" alt="Vaishno Devi">
+        </div>
+        <div class="card-body">
+          <h3 id="pkg8-title">Vaishno Devi Temple</h3>
+          <div class="card-actions">
+            <a href="vaishno.html" class="btn">View Details</a>
+            <button class="fav-btn" 
+                    data-package-id="vaishnodevi"
+                    data-package-image="https://holidayshunt.com/wp-content/uploads/2021/10/Vaishno-devi.jpg"
+                    data-package-link="vaishno.html"
+                    onclick="toggleFav(this, 'vaishnodevi', 'Vaishno Devi Temple')">
+              ♡ Add to Favorites
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 9: Kedarnath -->
+      <div class="card">
+        <div class="card-img-container">
+          <img src="https://www.poojn.in/wp-content/uploads/2025/03/Kedarnath-Aarti-Rituals-and-Local-Culture-An-Immersive-Guide.jpeg.jpg" alt="Kedarnath">
+        </div>
+        <div class="card-body">
+          <h3 id="pkg9-title">Kedarnath Temple</h3>
+          <div class="card-actions">
+            <a href="kedarnath.html" class="btn">View Details</a>
+            <button class="fav-btn" 
+                    data-package-id="kedarnath"
+                    data-package-image="https://www.poojn.in/wp-content/uploads/2025/03/Kedarnath-Aarti-Rituals-and-Local-Culture-An-Immersive-Guide.jpeg.jpg"
+                    data-package-link="kedarnath.html"
+                    onclick="toggleFav(this, 'kedarnath', 'Kedarnath Temple')">
+              ♡ Add to Favorites
+            </button>
+          </div>
+        </div>
+      </div>
+        </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2023 Unseen Corners. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Language translations
+    const translations = {
+      en: {
+        siteTitle: "Unseen Corners",
+        navHome: "Home",
+        navAbout: "About",
+        navContact: "Contact",
+        navChatBot: "Chat Bot",
+        navBookNow: "Book Now",
+        navLogin: "Login",
+        packagesTitle: "Temple Packages",
+        pkg1: { title: "Tirupathi" },
+        pkg2: { title: "Kashi Vishwanath Temple" },
+        pkg3: { title: "Jagannath Temple" },
+        pkg4: { title: "Madurai Meenakshi Temple" },
+        pkg5: { title: "Padmanabhaswamy Temple" },
+        pkg6: { title: "Ramanathaswamy Temple" },
+        pkg7: { title: "Somnath Temple" },
+        pkg8: { title: "Vaishno Devi Temple" },
+        pkg9: { title: "Kedarnath Temple" },
+        fav: "Add to Favorites",
+        favourited: "In Favorites",
+        favs: "Favorites",
+        myFavs: "My Favorite Temples",
+        clearAll: "Clear All",
+        emptyFavs: "No favorite temples yet"
+      },
+      hi: {
+        siteTitle: "अनसीन कॉर्नर्स",
+        navHome: "होम",
+        navAbout: "के बारे में",
+        navContact: "संपर्क",
+        navChatBot: "चैट बॉट",
+        navBookNow: "बुक करें",
+        navLogin: "लॉगिन",
+        packagesTitle: "मंदिर पैकेज",
+        pkg1: { title: "तिरुपति" },
+        pkg2: { title: "काशी विश्वनाथ मंदिर" },
+        pkg3: { title: "जगन्नाथ मंदिर" },
+        pkg4: { title: "मदुरै मीनाक्षी मंदिर" },
+        pkg5: { title: "पद्मनाभस्वामी मंदिर" },
+        pkg6: { title: "रामनाथस्वामी मंदिर" },
+        pkg7: { title: "सोमनाथ मंदिर" },
+        pkg8: { title: "वैष्णो देवी मंदिर" },
+        pkg9: { title: "केदारनाथ मंदिर" },
+        fav: "फेव में जोड़ें",
+        favourited: "फेव में",
+        favs: "फेव्स",
+        myFavs: "मेरे पसंदीदा मंदिर",
+        clearAll: "सब साफ करें",
+        emptyFavs: "अभी कोई पसंदीदा मंदिर नहीं"
+      },
+      te: {
+        siteTitle: "అన్సీన్ కార్నర్స్",
+        navHome: "హోమ్",
+        navAbout: "గురించి",
+        navContact: "సంప్రదించండి",
+        navChatBot: "చాట్ బాట్",
+        navBookNow: "బుక్ చేయండి",
+        navLogin: "లాగిన్",
+        packagesTitle: "మందిరాల ప్యాకేజీలు",
+        pkg1: { title: "తిరుపతి" },
+        pkg2: { title: "కాశీ విశ్వనాథ్ టెంపుల్" },
+        pkg3: { title: "జగన్నాథ్ టెంపుల్" },
+        pkg4: { title: "మదురై మీనాక్షి టెంపుల్" },
+        pkg5: { title: "పద్మనాభస్వామి టెంపుల్" },
+        pkg6: { title: "రామనాథస్వామి టెంపుల్" },
+        pkg7: { title: "సోమ్నాథ్ టెంపుల్" },
+        pkg8: { title: "వైష్ణో దేవి టెంపుల్" },
+        pkg9: { title: "కెదారనాథ్ టెంపుల్" },
+        fav: "ఫేవ్ కు జోడించండి",
+        favourited: "ఫేవ్ లో",
+        favs: "ఫేవ్స్",
+        myFavs: "నా ఇష్టమైన మందిరాలు",
+        clearAll: "అన్నీ క్లియర్ చేయండి",
+        emptyFavs: "ఇంకా ఇష్టమైన మందిరాలు లేవు"
+      }
+    };
+
+    // Favourites functionality
+    function toggleFav(button, packageId, packageName) {
+        button.classList.toggle('favourited');
+        
+        let favs = JSON.parse(localStorage.getItem('templeFavs')) || [];
+        const lang = document.getElementById("language-select").value;
+        
+        if (button.classList.contains('favourited')) {
+            if (!favs.find(fav => fav.id === packageId)) {
+                const packageImage = button.getAttribute('data-package-image');
+                const packageLink = button.getAttribute('data-package-link');
+                favs.push({ 
+                    id: packageId, 
+                    name: packageName,
+                    image: packageImage,
+                    link: packageLink
+                });
+                showAlert(`${packageName} added to favorites!`, 'success');
+            }
+        } else {
+            favs = favs.filter(fav => fav.id !== packageId);
+            showAlert(`${packageName} removed from favorites`, 'error');
+        }
+        
+        localStorage.setItem('templeFavs', JSON.stringify(favs));
+        updateFavButtonText(button, lang);
+        updateFavsField();
+    }
+
+    function updateFavButtonText(button, lang) {
+        if (button.classList.contains('favourited')) {
+            button.innerHTML = `♥ ${translations[lang].favourited}`;
+        } else {
+            button.innerHTML = `♡ ${translations[lang].fav}`;
+        }
+    }
+
+    function updateFavsField() {
+        const favs = JSON.parse(localStorage.getItem('templeFavs')) || [];
+        const favContainer = document.getElementById('fav-cards-container');
+        const favCount = document.getElementById('favourites-count');
+        const favText = document.getElementById('favourites-text');
+        const lang = document.getElementById("language-select").value;
+
+        // Update count and text
+        favCount.textContent = favs.length;
+        favText.textContent = translations[lang].favs;
+
+        // Update dropdown content with actual cards
+        if (favs.length === 0) {
+            favContainer.innerHTML = `<div class="empty-fav">${translations[lang].emptyFavs}</div>`;
+        } else {
+            favContainer.innerHTML = favs.map(fav => `
+                <div class="fav-card" data-package-id="${fav.id}">
+                    <div class="fav-card-content">
+                        <img src="${fav.image}" alt="${fav.name}" class="fav-card-img">
+                        <div class="fav-card-info">
+                            <h4 class="fav-card-title">${fav.name}</h4>
+                            <div class="fav-card-actions">
+                                <a href="${fav.link}" class="fav-view-btn">View Details</a>
+                                <button class="remove-fav" onclick="removeFav('${fav.id}')">×</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Update dropdown header
+        document.querySelector('.favourites-header h3').textContent = translations[lang].myFavs;
+        document.querySelector('.clear-fav').textContent = translations[lang].clearAll;
+    }
+
+    function toggleFav(button, packageId, packageName) {
+        button.classList.toggle('favourited');
+        
+        let favs = JSON.parse(localStorage.getItem('templeFavs')) || [];
+        const lang = document.getElementById("language-select").value;
+        
+        if (button.classList.contains('favourited')) {
+            if (!favs.find(fav => fav.id === packageId)) {
+                const packageImage = button.getAttribute('data-package-image');
+                const packageLink = button.getAttribute('data-package-link');
+                favs.push({ 
+                    id: packageId, 
+                    name: packageName,
+                    image: packageImage,
+                    link: packageLink
+                });
+                showAlert(`${packageName} added to favorites!`, 'success');
+            }
+        } else {
+            favs = favs.filter(fav => fav.id !== packageId);
+            showAlert(`${packageName} removed from favorites`, 'error');
+        }
+        
+        localStorage.setItem('templeFavs', JSON.stringify(favs));
+        updateFavButtonText(button, lang);
+        updateFavsField();
+    }
+
+    function updateFavButtonText(button, lang) {
+        if (button.classList.contains('favourited')) {
+            button.innerHTML = `♥ ${translations[lang].favourited}`;
+        } else {
+            button.innerHTML = `♡ ${translations[lang].fav}`;
+        }
+    }
+
+    function updateFavsField() {
+        const favs = JSON.parse(localStorage.getItem('templeFavs')) || [];
+        const favContainer = document.getElementById('fav-cards-container');
+        const favCount = document.getElementById('favourites-count');
+        const favText = document.getElementById('favourites-text');
+        const lang = document.getElementById("language-select").value;
+
+        // Update count and text
+        favCount.textContent = favs.length;
+        favText.textContent = translations[lang].favs;
+
+        // Update dropdown content with actual cards
+        if (favs.length === 0) {
+            favContainer.innerHTML = `<div class="empty-fav">${translations[lang].emptyFavs}</div>`;
+        } else {
+            favContainer.innerHTML = favs.map(fav => `
+                <div class="fav-card" data-package-id="${fav.id}">
+                    <div class="fav-card-content">
+                        <img src="${fav.image}" alt="${fav.name}" class="fav-card-img">
+                        <div class="fav-card-info">
+                            <h4 class="fav-card-title">${fav.name}</h4>
+                            <div class="fav-card-actions">
+                                <a href="${fav.link}" class="fav-view-btn">View Details</a>
+                                <button class="remove-fav" onclick="removeFav('${fav.id}')">×</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Update dropdown header
+        document.querySelector('.favourites-header h3').textContent = translations[lang].myFavs;
+        document.querySelector('.clear-fav').textContent = translations[lang].clearAll;
+    }
+
+    function removeFav(packageId) {
+        let favs = JSON.parse(localStorage.getItem('templeFavs')) || [];
+        const packageName = favs.find(fav => fav.id === packageId)?.name || 'Item';
+        favs = favs.filter(fav => fav.id !== packageId);
+        localStorage.setItem('templeFavs', JSON.stringify(favs));
+        
+        // Update card button
+        const cardButton = document.querySelector(`.fav-btn[data-package-id="${packageId}"]`);
+        if (cardButton) {
+            cardButton.classList.remove('favourited');
+            updateFavButtonText(cardButton, document.getElementById("language-select").value);
+        }
+        
+        updateFavsField();
+        showAlert(`${packageName} removed from favorites`, 'error');
+    }
+
+    function clearAllFav() {
+        if (confirm('Are you sure you want to clear all favorites?')) {
+            localStorage.removeItem('templeFavs');
+            
+            // Update all card buttons
+            document.querySelectorAll('.fav-btn').forEach(button => {
+                button.classList.remove('favourited');
+                updateFavButtonText(button, document.getElementById("language-select").value);
+            });
+            
+            updateFavsField();
+            showAlert('All favorites cleared!', 'success');
+        }
+    }
+
+    // Language switching functionality
+    function changeLanguage() {
+        const lang = document.getElementById("language-select").value;
+        
+        // Update navigation
+        document.getElementById("site-title").textContent = translations[lang].siteTitle;
+        document.getElementById("nav-home").innerHTML = `<b>${translations[lang].navHome}</b>`;
+        document.getElementById("nav-about").innerHTML = `<b>${translations[lang].navAbout}</b>`;
+        document.getElementById("nav-contact").innerHTML = `<b>${translations[lang].navContact}</b>`;
+        document.getElementById("nav-chatBot").innerHTML = `<b>${translations[lang].navChatBot}</b>`;
+        document.getElementById("book-btn").innerHTML = `<b>${translations[lang].navBookNow}</b>`;
+        document.getElementById("Login-btn").innerHTML = `<b>${translations[lang].navLogin}</b>`;
+        
+        // Update packages section
+        document.getElementById("packages-title").textContent = translations[lang].packagesTitle;
+        
+        // Update package titles
+        document.getElementById("pkg1-title").textContent = translations[lang].pkg1.title;
+        document.getElementById("pkg2-title").textContent = translations[lang].pkg2.title;
+        document.getElementById("pkg3-title").textContent = translations[lang].pkg3.title;
+        document.getElementById("pkg4-title").textContent = translations[lang].pkg4.title;
+        document.getElementById("pkg5-title").textContent = translations[lang].pkg5.title;
+        document.getElementById("pkg6-title").textContent = translations[lang].pkg6.title;
+        document.getElementById("pkg7-title").textContent = translations[lang].pkg7.title;
+        document.getElementById("pkg8-title").textContent = translations[lang].pkg8.title;
+        document.getElementById("pkg9-title").textContent = translations[lang].pkg9.title;
+        
+        // Update favorite buttons
+        document.querySelectorAll('.fav-btn').forEach(button => {
+            updateFavButtonText(button, lang);
+        });
+        
+        // Update favorites field
+        updateFavsField();
+        
+        // Save language preference
+        localStorage.setItem('preferredLanguage', lang);
+    }
+
+    // Toggle favourites dropdown
+    document.getElementById('favourites-field').addEventListener('click', function(e) {
+        e.stopPropagation();
+        const dropdown = document.getElementById('favourites-dropdown');
+        dropdown.classList.toggle('show');
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(e) {
+        const dropdown = document.getElementById('favourites-dropdown');
+        const field = document.getElementById('favourites-field');
+        
+        if (!field.contains(e.target) && !dropdown.contains(e.target)) {
+            dropdown.classList.remove('show');
+        }
+    });
+
+    // Enhanced alert system
+    function showAlert(message, type = 'success') {
+        // Remove any existing alerts
+        const existingAlert = document.querySelector('.alert');
+        if (existingAlert) {
+            existingAlert.remove();
+        }
+        
+        const alert = document.createElement('div');
+        alert.className = `alert alert-${type}`;
+        alert.textContent = message;
+        document.body.appendChild(alert);
+        
+        setTimeout(() => alert.style.transform = 'translateX(0)', 100);
+        setTimeout(() => {
+            alert.style.transform = 'translateX(150%)';
+            setTimeout(() => alert.remove(), 300);
+        }, 3000);
+    }
+
+    // Initialize on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        // Set saved language preference
+        const savedLang = localStorage.getItem('preferredLanguage') || 'en';
+        document.getElementById('language-select').value = savedLang;
+        
+        // Initialize with saved language
+        changeLanguage();
+        
+        // Initialize favorite buttons state
+        const favs = JSON.parse(localStorage.getItem('templeFavs')) || [];
+        document.querySelectorAll('.fav-btn').forEach(button => {
+            const packageId = button.getAttribute('data-package-id');
+            if (favs.find(fav => fav.id === packageId)) {
+                button.classList.add('favourited');
+            }
+            updateFavButtonText(button, savedLang);
+        });
+        
+        // Initialize favorites field
+        updateFavsField();
+        
+        // Add loading animation for images
+        document.querySelectorAll('.card img').forEach(img => {
+            img.addEventListener('load', function() {
+                this.style.opacity = '1';
+            });
+            img.style.opacity = '0';
+            img.style.transition = 'opacity 0.3s ease';
+        });
+    });
+
+    // Keyboard navigation for favourites dropdown
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            document.getElementById('favourites-dropdown').classList.remove('show');
+        }
+    });
+  </script>
+</body>
+</html>

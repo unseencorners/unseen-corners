@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Unseen Corners – Seven Sisters Waterfalls</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;font-family:Arial, sans-serif}
+
+    body {
+      color:#fff;
+      background:url('https://captureatrip-cms-storage.s3.ap-south-1.amazonaws.com/Click_Some_Photos_at_Seven_Sisters_Falls_in_Meghalaya_098792644f.webp') 
+        no-repeat center center fixed;
+      background-size:cover;
+      min-height:100vh;
+      padding-top:80px;
+      padding-bottom:80px;
+      position:relative;
+    }
+
+    body::before {
+      content:"";
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,0.55);
+      z-index:-1;
+    }
+
+    header{
+      background:rgba(0,95,115,0.85);
+      color:#fff;
+      padding:15px 30px;
+      display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;
+      position:fixed;top:0;left:0;width:100%;
+      z-index:1000;
+      backdrop-filter:blur(6px);
+    }
+    #site-title{color:#ffd166;font-weight:700;font-size:20px}
+    nav a{color:#fff;text-decoration:none;margin-left:18px;font-size:15px}
+    .nav-btn{background:#ffd166;color:#000;padding:8px 14px;border-radius:6px;border:none;cursor:pointer;margin-left:10px}
+    .lang-select{margin-left:12px;padding:6px 10px;border-radius:6px;border:none;font-size:14px;cursor:pointer}
+
+    .hero {
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:100px 20px 40px;
+    }
+    .hero-content {
+      background:rgba(0,0,0,0.55);
+      padding:28px;
+      border-radius:14px;
+      max-width:880px;
+      color:#fff;
+      text-align:center;
+    }
+    .hero-content h2 {color:#ffd166;font-size:34px;margin-bottom:12px}
+    .hero-content p {font-size:17px;margin-bottom:14px}
+    .hero-content ul {text-align:left;margin:12px 0 0 18px}
+
+    .info-grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:14px;
+      margin-top:12px;
+    }
+    .info-card {
+      background:rgba(255,255,255,0.08);
+      padding:12px;
+      border-radius:8px;
+      color:#fff;
+    }
+
+    .view360 {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 12px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.view360 h2 {
+  color: #ffd166;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.view360 iframe {
+  width: 100%;
+  height: 460px;
+  border-radius: 10px;
+  border: 0;
+}
+
+
+    .itinerary {
+      max-width:920px;
+      margin:36px auto;
+      padding:18px;
+      border-radius:10px;
+      background:rgba(255,255,255,0.06);
+      color:#fff;
+    }
+    .itinerary h2 {color:#ffd166;text-align:center;margin-bottom:12px}
+    .itinerary form {display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+    .itinerary input,.itinerary textarea {
+      padding:10px;border-radius:6px;border:1px solid #ccc;background:#fff;color:#000;
+      max-width:260px;width:100%;
+    }
+    .itinerary button {
+      padding:10px 16px;border-radius:6px;border:none;cursor:pointer;background:#ffd166;color:#000;
+    }
+    .itinerary-list {margin-top:18px}
+    .itinerary-item {
+      background:rgba(255,255,255,0.12);
+      padding:12px;
+      border-left:4px solid #ffd166;
+      border-radius:6px;
+      margin-bottom:10px;
+      color:#fff;
+    }
+
+    footer {
+      background:rgba(0,95,115,0.85);
+      color:#fff;
+      padding:18px;
+      text-align:center;
+      margin:40px 30px 0;
+      border-radius:6px;
+    }
+
+    @media(max-width:768px){
+      .hero-content h2{font-size:24px}
+      .view360 iframe{height:300px}
+      .itinerary form{flex-direction:column;align-items:center}
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div id="site-title">Unseen Corners</div>
+  <nav>
+    <a href="index.html" id="nav-home"><b>Home</b></a>
+    <a href="about14.html" id="nav-about"><b>About</b></a>
+    <a href="contact.html" id="nav-contact"><b>Contact</b></a>
+    <a href="t4.html" id="nav-chat-bot"><b>Chat Bot</b></a>
+    <button class="nav-btn" id="book-btn" onclick="window.location.href='book.html'" ><b>Book Now</b></button>
+    <select id="language-select" class="lang-select" aria-label="Language selector">
+      <option value="en">English</option>
+      <option value="hi">हिन्दी</option>
+      <option value="te">తెలుగు</option>
+    </select>
+  </nav>
+</header>
+
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero-content">
+    <h2 id="hero-title">🌈 Seven Sisters Waterfalls</h2>
+    <p id="hero-desc">The Seven Sisters Waterfalls, also known as Nohsngithiang Falls, is one of the most spectacular natural wonders of Meghalaya.</p>
+
+    <h3 id="highlight-title">📖 Highlights & Facts</h3>
+    <ul>
+      <li id="h1">Located in Cherrapunji (Sohra), one of the wettest places on Earth.</li>
+      <li id="h2">The seven streams symbolize the seven states of Northeast India.</li>
+      <li id="h3">The falls are most stunning during the monsoon season (June–September).</li>
+    </ul>
+
+    <h3 id="visitor-title">🕒 Visitor Information</h3>
+    <div class="info-grid">
+      <div class="info-card" id="timing"><b>Timings:</b><br>6:00 AM – 6:00 PM</div>
+      <div class="info-card" id="location"><b>Location:</b><br>Mawsmai, near Cherrapunji, Meghalaya</div>
+      <div class="info-card" id="besttime"><b>Best Time:</b><br>June – September</div>
+    </div>
+  </div>
+</section>
+
+<section class="view360">
+  <h2 id="view360">🎥 Watch Seven Sisters Waterfalls Video</h2>
+  <div style="display:flex;justify-content:center;align-items:center;">
+    <iframe width="100%" height="460"
+      src="https://www.youtube.com/embed/s2e1toKoWQM?autoplay=0&mute=0&loop=1&playlist=s2e1toKoWQM"
+      title="Seven Sisters Waterfalls Video"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen
+      style="border-radius:10px;max-width:1000px;">
+    </iframe>
+  </div>
+</section>
+
+
+
+<section class="itinerary" aria-labelledby="plan-title">
+  <h2 id="plan-title">🧭 Plan Your Seven Sisters Falls Trip</h2>
+  <form id="itinerary-form">
+    <input type="date" id="date" required />
+    <input type="text" id="activity" placeholder="Activity (e.g., Photography, Trek)" required />
+    <textarea id="notes" rows="1" placeholder="Notes (optional)"></textarea>
+    <button type="submit" id="add-btn">Add to Itinerary</button>
+    <button type="button" id="clear-itinerary" style="background:#c0392b;color:#fff">Clear All</button>
+  </form>
+
+  <div class="itinerary-list" id="itinerary-list">
+    <h3 id="suggested-itinerary" style="margin-top:18px">🗓 Suggested Itinerary</h3>
+    <div class="itinerary-item" id="day1m"><strong>Day 1 - Morning:</strong> Arrive at Cherrapunji and visit Mawsmai Caves</div>
+    <div class="itinerary-item" id="day1a"><strong>Day 1 - Afternoon:</strong> Explore Seven Sisters Waterfalls viewpoint</div>
+    <div class="itinerary-item" id="day1e"><strong>Day 1 - Evening:</strong> Enjoy sunset views and local Khasi cuisine</div>
+    <div class="itinerary-item" id="day2m"><strong>Day 2 - Morning:</strong> Visit Nohkalikai Falls and nearby living root bridges</div>
+    <div class="itinerary-item" id="day2a"><strong>Day 2 - Afternoon:</strong> Relax at Eco Park and depart</div>
+  </div>
+</section>
+
+<footer>&copy; 2025 Unseen Corners | All Rights Reserved</footer>
+
+<script>
+const translations = {
+  en: {
+    "site-title":"<b>Unseen Corners</b>",
+    "nav-home":"<b>Home</b>",
+    "nav-about":"<b>About</b>",
+    "nav-contact":"<b>Contact</b>",
+    "nav-chat-bot":"<b>Chat Bot</b>",
+    "book-btn":"<b>Book Now</b>",
+    "hero-title":"🌈 Seven Sisters Waterfalls",
+    "hero-desc":"The Seven Sisters Waterfalls, also known as Nohsngithiang Falls, is one of the most spectacular natural wonders of Meghalaya.",
+    "highlight-title":"📖 Highlights & Facts",
+    "h1":"Located in Cherrapunji (Sohra), one of the wettest places on Earth.",
+    "h2":"The seven streams symbolize the seven states of Northeast India.",
+    "h3":"The falls are most stunning during the monsoon season (June–September).",
+    "visitor-title":"🕒 Visitor Information",
+    "timing":"<b>Timings:</b><br>6:00 AM – 6:00 PM",
+    "location":"<b>Location:</b><br>Mawsmai, near Cherrapunji, Meghalaya",
+    "besttime":"<b>Best Time:</b><br>June – September",
+    "view360":"🎥 Watch Seven Sisters Waterfalls Video",
+    "plan-title":"🧭 Plan Your Seven Sisters Falls Trip",
+    "add-btn":"Add to Itinerary",
+    "clear-itinerary":"Clear All",
+    "suggested-itinerary":"🗓 Suggested Itinerary",
+    "day1m":"<strong>Day 1 - Morning:</strong> Arrive at Cherrapunji and visit Mawsmai Caves",
+    "day1a":"<strong>Day 1 - Afternoon:</strong> Explore Seven Sisters Waterfalls viewpoint",
+    "day1e":"<strong>Day 1 - Evening:</strong> Enjoy sunset views and local Khasi cuisine",
+    "day2m":"<strong>Day 2 - Morning:</strong> Visit Nohkalikai Falls and nearby living root bridges",
+    "day2a":"<strong>Day 2 - Afternoon:</strong> Relax at Eco Park and depart"
+  },
+  hi: {
+    "site-title":"<b>अनसीन कॉर्नर्स</b>",
+    "nav-home":"<b>मुखपृष्ठ</b>",
+    "nav-about":"<b>के बारे में</b>",
+    "nav-contact":"<b>संपर्क करें</b>",
+    "nav-chat-bot":"<b>चैट बॉट</b>",
+    "book-btn":"<b>अभी बुक करें</b>",
+    "hero-title":"🌈 सेवन सिस्टर्स झरने",
+    "hero-desc":"सेवन सिस्टర్స్ वाटरफॉल (नोहसंगीथियांग फॉल्स) मेघालय के सबसे शानदार प्राकृतिक आश्चर्यों में से एक है।",
+    "highlight-title":"📖 मुख्य आकर्षण और तथ्य",
+    "h1":"चेरापूंजी (सोहरा) में स्थित, जो पृथ्वी के सबसे अधिक वर्षा वाले स्थानों में से एक है।",
+    "h2":"सात धाराएं पूर्वोत्तर भारत के सात राज्यों का प्रतीक हैं।",
+    "h3":"झरना मानसून (जून–सितंबर) के दौरान सबसे सुंदर दिखता है।",
+    "visitor-title":"🕒 आगंतुक जानकारी",
+    "timing":"<b>समय:</b><br>सुबह 6:00 – शाम 6:00",
+    "location":"<b>स्थान:</b><br>माव्स्माई, चेरापूंजी के पास, मेघालय",
+    "besttime":"<b>सर्वश्रेष्ठ समय:</b><br>जून – सितंबर",
+    "view360":"🎥 सेवन सिस्टर्स झरनों का वीडियो देखें",
+    "plan-title":"🧭 अपनी सेवन सिस्टर्स यात्रा की योजना बनाएं",
+    "add-btn":"यात्रा में जोड़ें",
+    "clear-itinerary":"सभी हटाएं",
+    "suggested-itinerary":"🗓 सुझाई गई यात्रा योजना",
+    "day1m":"<strong>दिन 1 - सुबह:</strong> चेरापूंजी पहुंचें और मावस्माई गुफाओं का दौरा करें",
+    "day1a":"<strong>दिन 1 - दोपहर:</strong> सेवन सिस्टर्स वाटरफॉल दृश्य बिंदु देखें",
+    "day1e":"<strong>दिन 1 - शाम:</strong> सूर्यास्त और स्थानीय खासी व्यंजन का आनंद लें",
+    "day2m":"<strong>दिन 2 - सुबह:</strong> नोहकलिकाई फॉल्स और जीवित जड़ पुल देखें",
+    "day2a":"<strong>दिन 2 - दोपहर:</strong> इको पार्क में विश्राम करें और वापसी करें"
+  },
+  te: {
+    "site-title":"<b>అన్‌సీన్ కార్నర్స్</b>",
+    "nav-home":"<b>హోమ్</b>",
+    "nav-about":"<b>గురించి</b>",
+    "nav-contact":"<b>సంప్రదించండి</b>",
+    "nav-chat-bot":"<b>చాట్ బాట్</b>",
+    "book-btn":"<b>బుక్ చేయండి</b>",
+    "hero-title":"🌈 సెవెన్ సిస్టర్స్ జలపాతం",
+    "hero-desc":"సెవెన్ సిస్టర్స్ జలపాతం (నోహ్‌సంగిథియాంగ్ ఫాల్స్) మేఘాలయలోని అద్భుత సహజ అద్భుతం.",
+    "highlight-title":"📖 ముఖ్యాంశాలు మరియు నిజాలు",
+    "h1":"చెరాపుంజి (సోహ్రా) లో ఉంది, ఇది అత్యధిక వర్షపాతం ఉండే ప్రదేశం.",
+    "h2":"ఏడు ప్రవాహాలు ఈశాన్య భారతదేశంలోని ఏడు రాష్ట్రాలను సూచిస్తాయి.",
+    "h3":"జూన్–సెప్టెంబర్ నాటికి వర్షాకాలంలో ఇది అత్యంత అందంగా ఉంటుంది.",
+    "visitor-title":"🕒 సందర్శకుల సమాచారం",
+    "timing":"<b>సమయం:</b><br>ఉదయం 6:00 – సాయంత్రం 6:00",
+    "location":"<b>ప్రదేశం:</b><br>మావ్స్మై, చెరాపుంజి సమీపంలో, మేఘాలయ",
+    "besttime":"<b>ఉత్తమ సమయం:</b><br>జూన్ – సెప్టెంబర్",
+    "view360":"🎥 సెవెన్ సిస్టర్స్ జలపాతం వీడియో చూడండి",
+    "plan-title":"🧭 మీ సెవెన్ సిస్టర్స్ యాత్రను ప్లాన్ చేయండి",
+    "add-btn":"యాత్రలో చేర్చండి",
+    "clear-itinerary":"అన్నీ తొలగించండి",
+    "suggested-itinerary":"🗓 సూచించిన యాత్రా ప్రణాళిక",
+    "day1m":"<strong>రోజు 1 - ఉదయం:</strong> చెరాపుంజి చేరి మావ్స్మై గుహలను సందర్శించండి",
+    "day1a":"<strong>రోజు 1 - మధ్యాహ్నం:</strong> సెవెన్ సిస్టర్స్ వాటర్‌ఫాల్ వీక్షణ స్థలాన్ని చూడండి",
+    "day1e":"<strong>రోజు 1 - సాయంత్రం:</strong> సూర్యాస్తమయాన్ని మరియు స్థానిక వంటకాలను ఆస్వాదించండి",
+    "day2m":"<strong>రోజు 2 - ఉదయం:</strong> నోహ్‌కలికై ఫాల్స్ మరియు లివింగ్ రూట్ బ్రిడ్జ్‌లను సందర్శించండి",
+    "day2a":"<strong>రోజు 2 - మధ్యాహ్నం:</strong> ఎకో పార్క్‌లో విశ్రాంతి తీసుకోండి మరియు తిరిగి వెళ్లండి"
+  }
+};
+
+function applyTranslations(lang) {
+  const selected = translations[lang] || translations.en;
+  for (const key in selected) {
+    const element = document.getElementById(key);
+    if (element) element.innerHTML = selected[key];
+  }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const select = document.getElementById("language-select");
+  const savedLang = localStorage.getItem("site-lang") || "en";
+  select.value = savedLang;
+  applyTranslations(savedLang);
+
+  select.addEventListener("change", () => {
+    const lang = select.value;
+    localStorage.setItem("site-lang", lang);
+    applyTranslations(lang);
+  });
+});
+</script>
+</body>
+</html>

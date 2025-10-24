@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title data-lang="page-title">Unseen Corners – Dodda Beta</title>
+
+  <style>
+    /* ✅ Fixed: only one body style (with background image) */
+    body {
+      background: 
+        linear-gradient(rgba(26, 42, 108, 0.6), rgba(178, 31, 31, 0.6)),
+        url('https://d2rdhxfof4qmbb.cloudfront.net/wp-content/uploads/2024/04/Doddabetta-Cover-768x487.jpg') no-repeat center center/cover;
+      color: #333;
+      line-height: 1.6;
+      padding: 20px;
+      min-height: 100vh;
+      background-attachment: fixed; /* Optional: keeps image static while scrolling */
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+
+    header { background: #1b2735; color: #fff; padding: 15px 50px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; }
+    header h1 { color: #f4c542; font-size: 22px; font-weight: bold; }
+    nav a { color: #fff; text-decoration: none; margin-left: 20px; font-size: 16px; }
+    nav a:hover { text-decoration: underline; }
+    .nav-btn { background: #f4c542; color: #000; font-weight: bold; padding: 8px 16px; border: none; border-radius: 5px; margin-left: 20px; cursor: pointer; }
+    .lang-select { margin-left: 20px; padding: 6px 10px; border-radius: 5px; border: none; font-size: 14px; cursor: pointer; }
+
+    .hero { background: url('https://upload.wikimedia.org/wikipedia/commons/8/87/Dodda_Betta.jpg') no-repeat center center/cover; height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; position: relative; padding-top: 70px; color: #fff; }
+    .hero::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 1; }
+    .hero-content { position: relative; z-index: 2; max-width: 800px; padding: 20px; }
+
+    .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 20px; }
+    .info-card { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; padding: 15px; font-size: 15px; }
+
+    .view360, .itinerary { margin: 50px auto; max-width: 1000px; padding: 10px 20px; }
+
+    .view360 iframe { width: 100%; height: 500px; border: none; border-radius: 12px; }
+
+    .itinerary h2 { text-align: center; margin-bottom: 20px; color: #1b2735; }
+
+    #itinerary-form { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; justify-content: center; }
+    #itinerary-form input, #itinerary-form textarea { padding: 8px; border: 1px solid #ccc; border-radius: 5px; }
+    #itinerary-form button { padding: 8px 16px; background: #27ae60; color: #fff; border: none; border-radius: 5px; cursor: pointer; }
+
+    .itinerary-item { padding: 10px; border: 1px solid #ccc; border-radius: 8px; margin-bottom: 10px; background: #f9f9f9; }
+
+    footer { text-align: center; padding: 20px; background: #1b2735; color: #fff; }
+    .fade { opacity: 0; transition: opacity 0.6s ease-in-out; }
+    .fade.show { opacity: 1; }
+
+    @media(max-width:768px){
+      .hero-content h2 { font-size: 24px; }
+      .view360 iframe { height: 300px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Your full HTML content stays exactly the same -->
+  <!-- No need to change anything else -->
+  <!-- Only the CSS was fixed -->
+  <header>
+  <h1 id="site-title">Unseen Corners</h1>
+  <nav>
+    <a href="index.html" data-lang="nav-home"><b>Home</b></a>
+    <a href="about14.html" data-lang="nav-about"><b>About</b></a>
+    <a href="contact.html" data-lang="nav-contact"><b>Contact</b></a>
+    <a href="t4.html" data-lang="nav-chat"><b>Chat Bot</b></a>
+    <button class="nav-btn" data-lang="nav-book"  onclick="window.location.href='book.html'" ><b>Book Now</b></button>
+    <select class="lang-select" id="language-select">
+      <option value="en">English</option>
+      <option value="hi">हिन्दी</option>
+      <option value="te">తెలుగు</option>
+    </select>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+    <h2 class="fade show" data-lang="title">🌄 Dodda Beta – Majestic Peak of Coorg</h2>
+    <p class="fade show" data-lang="intro">Dodda Beta is the highest peak in Coorg, Karnataka, India, known for its lush greenery and panoramic views of the Western Ghats.</p>
+
+    <h3 class="fade show" data-lang="history-title">📜 History & Significance</h3>
+    <ul>
+      <li class="fade show" data-lang="history-1">Popular trekking destination with rich biodiversity.</li>
+      <li class="fade show" data-lang="history-2">Known for spectacular sunrise and sunset views.</li>
+      <li class="fade show" data-lang="history-3">Home to diverse flora and fauna of the Western Ghats.</li>
+      <li class="fade show" data-lang="history-4">Important cultural spot for local Kodava communities.</li>
+    </ul>
+
+    <h3 class="fade show" data-lang="visit-title">🕒 Visiting Information</h3>
+    <div class="info-grid">
+      <div class="info-card fade show" data-lang="visit-time"><b>Best Trekking Season:</b><br> October–February.</div>
+      <div class="info-card fade show" data-lang="visit-location"><b>Location:</b><br> Coorg, Karnataka, India (Western Ghats).</div>
+      <div class="info-card fade show" data-lang="visit-best"><b>Activities:</b><br> Trekking, bird watching, nature photography.</div>
+    </div>
+  </div>
+</section>
+
+<section class="view360">
+  <h2 style="text-align:center; margin-bottom:15px; color:#1b2735;" data-lang="view360-title">🌐 Explore 360° View of Dodda Beta</h2>
+<iframe src="https://www.google.com/maps/embed?pb=!4v1760036716873!6m8!1m7!1sCAoSF0NJSE0wb2dLRUlDQWdJQzR4X3ZmeWdF!2m2!1d11.40082914923549!2d76.73541760506016!3f278.2850107901301!4f-4.14630900117659!5f0.7820865974627469" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</section>
+
+<section class="itinerary">
+  <h2 data-lang="itinerary-title">🧭 Plan Your Itinerary</h2>
+  <form id="itinerary-form">
+    <input type="date" id="date" required aria-label="Date" />
+    <input type="text" id="activity" placeholder="Activity (e.g., Dodda Beta Trek)" required aria-label="Activity" />
+    <textarea id="notes" rows="1" placeholder="Notes (optional)" aria-label="Notes (optional)"></textarea>
+    <button type="submit" data-lang="btn-add">Add to Itinerary</button>
+    <button type="button" id="clear-itinerary" style="background:#c0392b;" data-lang="btn-clear">Clear All</button>
+  </form>
+  <div class="itinerary-list" id="itinerary-list"></div>
+  <div class="itinerary-list">
+    <h3 style="margin-top:30px;" data-lang="suggested-title">🗓️ Suggested Itinerary (Built‑in)</h3>
+    <div class="itinerary-item"><strong data-lang="day1-label">Day 1:</strong> <span data-lang="day1-activity">Arrive in Madikeri</span></div>
+    <div class="itinerary-item"><strong data-lang="day2-label">Day 2:</strong> <span data-lang="day2-activity">Explore Abbey Falls and Raja’s Seat</span></div>
+    <div class="itinerary-item"><strong data-lang="day3-label">Day 3:</strong> <span data-lang="day3-activity">Trek Dodda Beta and enjoy sunset</span></div>
+    <div class="itinerary-item"><strong data-lang="day4-label">Day 4:</strong> <span data-lang="day4-activity">Visit local coffee plantations</span></div>
+    <div class="itinerary-item"><strong data-lang="day5-label">Day 5:</strong> <span data-lang="day5-activity">Return and depart</span></div>
+  </div>
+</section>
+
+<footer>
+  <p class="fade show" data-lang="footer">&copy; 2025 Unseen Corners | All Rights Reserved</p>
+</footer>
+
+<script>
+  const translations = {
+    en: {
+      "page-title": "Unseen Corners – Dodda Beta",
+      "nav-home": "<b>Home</b>", "nav-about": "<b>About</b>", "nav-contact": "<b>Contact</b>", "nav-chat": "<b>Chat Bot</b>", "nav-book": "<b>Book Now</b>",
+      "footer": "&copy; 2025 Unseen Corners | All Rights Reserved",
+      "title": "🌄 Dodda Beta – Majestic Peak of Coorg",
+      "intro": "Dodda Beta is the highest peak in Coorg, Karnataka, India, known for its lush greenery and panoramic views of the Western Ghats.",
+      "history-title": "📜 History & Significance",
+      "history-1": "Popular trekking destination with rich biodiversity.",
+      "history-2": "Known for spectacular sunrise and sunset views.",
+      "history-3": "Home to diverse flora and fauna of the Western Ghats.",
+      "history-4": "Important cultural spot for local Kodava communities.",
+      "visit-title": "🕒 Visiting Information",
+      "visit-time": "<b>Best Trekking Season:</b><br> October–February.",
+      "visit-location": "<b>Location:</b><br> Coorg, Karnataka, India (Western Ghats).",
+      "visit-best": "<b>Activities:</b><br> Trekking, bird watching, nature photography.",
+      "view360-title": "🌐 Explore 360° View of Dodda Beta",
+      "itinerary-title": "🧭 Plan Your Itinerary",
+      "btn-add": "Add to Itinerary",
+      "btn-clear": "Clear All",
+      "suggested-title": "🗓️ Suggested Itinerary (Built‑in)",
+      "day1-label": "Day 1:", "day1-activity": "Arrive in Madikeri",
+      "day2-label": "Day 2:", "day2-activity": "Explore Abbey Falls and Raja’s Seat",
+      "day3-label": "Day 3:", "day3-activity": "Trek Dodda Beta and enjoy sunset",
+      "day4-label": "Day 4:", "day4-activity": "Visit local coffee plantations",
+      "day5-label": "Day 5:", "day5-activity": "Return and depart"
+    },
+    hi: {
+      "page-title": "अनसेन कॉर्नर्स – डोड्डा बेट्टा",
+      "nav-home": "<b>होम</b>", "nav-about": "<b>हमारे बारे में</b>", "nav-contact": "<b>संपर्क करें</b>", "nav-chat": "<b>चैट बॉट</b>", "nav-book": "<b>अभी बुक करें</b>",
+      "footer": "© 2025 अनसेन कॉर्नर्स | सर्वाधिकार सुरक्षित",
+      "title": "🌄 डोड्डा बेट्टा – कूर्ग का भव्य शिखर",
+      "intro": "डोड्डा बेट्टा कूर्ग, कर्नाटक, भारत में सबसे ऊँचा शिखर है, जो अपनी हरी-भरी प्रकृति और पश्चिमी घाटों के व्यापक दृश्य के लिए जाना जाता है।",
+      "history-title": "📜 इतिहास और महत्व",
+      "history-1": "समृद्ध जैव विविधता वाला लोकप्रिय ट्रेकिंग गंतव्य।",
+      "history-2": "शानदार सूर्योदय और सूर्यास्त दृश्यों के लिए प्रसिद्ध।",
+      "history-3": "पश्चिमी घाटों की विविध वनस्पति और जीव-जंतुओं का घर।",
+      "history-4": "स्थानीय कोडावा समुदायों के लिए महत्वपूर्ण सांस्कृतिक स्थल।",
+      "visit-title": "🕒 यात्रा सूचना",
+      "visit-time": "<b>सर्वोत्तम ट्रेकिंग मौसम:</b><br> अक्टूबर–फ़रवरी।",
+      "visit-location": "<b>स्थान:</b><br> कूर्ग, कर्नाटक, भारत (पश्चिमी घाट)।",
+      "visit-best": "<b>गतिविधियाँ:</b><br> ट्रेकिंग, पक्षी दर्शन, प्रकृति फोटोग्राफी।",
+      "view360-title": "🌐 डोड्डा बेट्टा का 360° दृश्य अन्वेषण करें",
+      "itinerary-title": "🧭 अपनी यात्रा योजना बनाएं",
+      "btn-add": "यात्रा योजना में जोड़ें",
+      "btn-clear": "सभी साफ़ करें",
+      "suggested-title": "🗓️ सुझाई गई यात्रा योजना (इन-बिल्ट)",
+      "day1-label": "दिन 1:", "day1-activity": "मडिकेरी में आगमन",
+      "day2-label": "दिन 2:", "day2-activity": "ऐबी फॉल्स और राजा की सीट देखें",
+      "day3-label": "दिन 3:", "day3-activity": "डोड्डा बेट्टा की ट्रेकिंग और सूर्यास्त का आनंद लें",
+      "day4-label": "दिन 4:", "day4-activity": "स्थानीय कॉफी बागानों का दौरा करें",
+      "day5-label": "दिन 5:", "day5-activity": "वापस जाएं और प्रस्थान करें"
+    },
+    te: {
+      "page-title": "అన్సీన్ కార్నర్స్ – డోడ్డా బెట్ట",
+      "nav-home": "<b>హోమ్</b>", "nav-about": "<b>గురించి</b>", "nav-contact": "<b>సంప్రదించండి</b>", "nav-chat": "<b>చాట్ బాట్</b>", "nav-book": "<b>ఇప్పుడు బుక్ చేయండి</b>",
+      "footer": "© 2025 అన్సీన్ కార్నర్స్ | అన్నీ హక్కులు రిజర్వు",
+      "title": "🌄 డోడ్డా బెట్ట – కూరగు యొక్క అద్భుత శిఖరం",
+      "intro": "డోడ్డా బెట్ట కూరగు, కర్ణాటక, భారతదేశంలోని అత్యున్నత శిఖరం, పచ్చదనంతో మరియు వెస్టర్న్ ఘాట్స్ యొక్క విశాలమైన దృశ్యాలతో ప్రసిద్ధి చెందింది.",
+      "history-title": "📜 చరిత్ర మరియు ప్రాధాన్యత",
+      "history-1": "సంపన్నమైన జీవ వైవిధ్యం కలిగిన ప్రముఖ ట్రెక్కింగ్ స్థలం.",
+      "history-2": "అద్భుతమైన ఉదయం మరియు సాయంకాల దృశ్యాల కోసం ప్రసిద్ధి.",
+      "history-3": "వెస్టర్న్ ఘాట్స్ యొక్క వివిధ మొక్కలు మరియు జంతువులకు ఇల్లు.",
+      "history-4": "స్థానిక కోడవా సముదాయాల కోసం ముఖ్యమైన సాంస్కృతిక ప్రదేశం.",
+      "visit-title": "🕒 సందర్శన సమాచారం",
+      "visit-time": "<b>ఉత్తమ ట్రెక్కింగ్ కాలం:</b><br> అక్టోబర్–ఫిబ్రవరి.",
+      "visit-location": "<b>స్థానం:</b><br> కూరగు, కర్ణాటక, భారతదేశం (వెస్టర్న్ ఘాట్స్).",
+      "visit-best": "<b>చర్యలు:</b><br> ట్రెక్కింగ్, పక్షుల వీక్షణ, ప్రకృతి ఫోటోగ్రఫీ.",
+      "view360-title": "🌐 డోడ్డా బెట్ట 360° వీక్షణను అన్వేషించండి",
+      "itinerary-title": "🧭 మీ ప్రణాళికను తయారుచేసుకోండి",
+      "btn-add": "ప్రణాళికకు జోడించండి",
+      "btn-clear": "అన్నీ క్లియర్ చేయండి",
+      "suggested-title": "🗓️ సూచించిన ప్రణాళిక (ఇన్-బిల్ట్)",
+      "day1-label": "రోజు 1:", "day1-activity": "మడికేరి చేరిక",
+      "day2-label": "రోజు 2:", "day2-activity": "అబ్బే జలపాతం మరియు రాజా సీట్ పరిశీలన",
+      "day3-label": "రోజు 3:", "day3-activity": "డోడ్డా బెట్ట ట్రెక్కింగ్ మరియు సూర్యాస్తమయాన్ని ఆస్వాదించండి",
+      "day4-label": "రోజు 4:", "day4-activity": "స్థానిక కాఫీ తోటలను సందర్శించండి",
+      "day5-label": "రోజు 5:", "day5-activity": "వెనక్కి ప్రయాణం మరియు ప్రస్థానం"
+    }
+  };
+
+  const setLanguage = (lang) => {
+    document.querySelectorAll('[data-lang]').forEach(el => {
+      const key = el.getAttribute('data-lang');
+      if (translations[lang] && translations[lang][key]) {
+        el.innerHTML = translations[lang][key];
+      }
+    });
+  };
+
+  const langSelect = document.getElementById('language-select');
+  langSelect.addEventListener('change', (e) => {
+    setLanguage(e.target.value);
+  });
+
+  // Initialize default language
+  setLanguage('en');
+
+  // Itinerary planner code
+  const form = document.getElementById('itinerary-form');
+  const itineraryList = document.getElementById('itinerary-list');
+  let itinerary = JSON.parse(localStorage.getItem('doddabeta_itinerary')) || [];
+
+  const renderItinerary = () => {
+    itineraryList.innerHTML = '';
+    if (itinerary.length === 0) {
+      itineraryList.innerHTML = '<p style="text-align:center; font-style: italic;">No activities added yet.</p>';
+      return;
+    }
+    itinerary.forEach((item, i) => {
+      const div = document.createElement('div');
+      div.className = 'itinerary-item';
+      div.innerHTML = `<strong>${item.date}</strong>: ${item.activity}${item.notes ? ' — ' + item.notes : ''} <button aria-label="Remove activity" style="float:right; background:#e74c3c; border:none; color:#fff; border-radius:4px; cursor:pointer;" data-index="${i}">✖</button>`;
+      itineraryList.appendChild(div);
+    });
+    // Add event listeners to remove buttons
+    itineraryList.querySelectorAll('button').forEach(btn => {
+      btn.addEventListener('click', e => {
+        const idx = e.target.getAttribute('data-index');
+        itinerary.splice(idx, 1);
+        localStorage.setItem('doddabeta_itinerary', JSON.stringify(itinerary));
+        renderItinerary();
+      });
+    });
+  };
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const date = document.getElementById('date').value;
+    const activity = document.getElementById('activity').value.trim();
+    const notes = document.getElementById('notes').value.trim();
+    if (!date || !activity) return alert('Please enter date and activity.');
+    itinerary.push({ date, activity, notes });
+    localStorage.setItem('doddabeta_itinerary', JSON.stringify(itinerary));
+    renderItinerary();
+    form.reset();
+  });
+
+  document.getElementById('clear-itinerary').addEventListener('click', () => {
+    if (confirm('Are you sure you want to clear all itinerary items?')) {
+      itinerary = [];
+      localStorage.removeItem('doddabeta_itinerary');
+      renderItinerary();
+    }
+  });
+
+  renderItinerary();
+</script>
+
+</body>
+</html>
+
+
+
+

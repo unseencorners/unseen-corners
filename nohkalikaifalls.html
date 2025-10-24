@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Unseen Corners – Nohkalikai Waterfalls</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; font-family:Arial,sans-serif; }
+  body {
+    background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrYELAAO7Psbaj1wwm-fHzh6aiVJa4mjMGJjbDVQsz1qTTanru45_im2THrmBKCfQpy_U&usqp=CAU') center/cover no-repeat fixed;
+    color:#fff;
+    padding-bottom:80px;
+  }
+  body::before {
+    content:""; position:fixed; inset:0;
+    background:rgba(0,0,0,0.55); z-index:-1;
+  }
+
+  header {
+    position:fixed; top:0; left:0; width:100%; z-index:1000;
+    background: rgba(0,78,137,0.9); color:#fff;
+    padding:15px 50px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap;
+  }
+  header h1 { color:#ffd166; font-size:22px; font-weight:bold; }
+  nav a { color:#fff; text-decoration:none; margin-left:20px; font-size:16px; }
+  nav a:hover { text-decoration:underline; }
+  .nav-btn { background:#ffd166; color:#000; font-weight:bold; padding:8px 16px; border:none; border-radius:5px; cursor:pointer; margin-left:20px; }
+  .nav-btn:hover { background:#e0b84e; }
+  .lang-select { margin-left:20px; padding:6px 10px; border-radius:5px; border:none; font-size:14px; cursor:pointer; }
+
+  section { background: rgba(0,0,0,0.55); margin:100px auto 40px; padding:40px 20px; border-radius:10px; max-width:1000px; }
+
+  h2,h3 { color:#ffd166; text-align:center; }
+  ul { margin:15px 0; padding-left:20px; }
+
+  .info-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:15px; margin-top:20px; }
+  .info-card { background: rgba(255,255,255,0.15); border-radius:8px; padding:15px; font-size:15px; }
+
+  .view360 iframe { width:100%; height:500px; border:none; border-radius:12px; display:block; margin:20px auto; }
+
+  .itinerary { background: rgba(255,255,255,0.1); border-radius:10px; padding:20px; color:#fff; }
+  .itinerary input, .itinerary textarea { padding:10px; border:none; border-radius:5px; width:100%; max-width:250px; font-size:14px; margin-bottom:10px; }
+  .itinerary button { background:#ffd166; color:#000; padding:10px 20px; border:none; border-radius:5px; cursor:pointer; margin-right:10px; }
+  .itinerary button:hover { background:#e0b84e; }
+  .itinerary-item { background: rgba(255,255,255,0.2); padding:10px; border-left:4px solid #ffd166; border-radius:5px; margin-bottom:10px; }
+
+  footer { text-align:center; padding:20px; background: rgba(0,78,137,0.9); color:#fff; margin-top:50px; }
+
+  @media(max-width:768px){ .view360 iframe { height:300px; } }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Unseen Corners</h1>
+  <nav>
+    <a href="index.html"><b>Home</b></a>
+    <a href="about14.html"><b>About</b></a>
+    <a href="contact.html"><b>Contact</b></a>
+    <a href="t4.html"><b>Chat Bot</b></a>
+    <button class="nav-btn" onclick="window.location.href='book.html'"><b>Book Now</b></button>
+    <select class="lang-select" id="language-select">
+      <option value="en">English</option>
+      <option value="hi">हिन्दी</option>
+      <option value="te">తెలుగు</option>
+    </select>
+  </nav>
+</header>
+
+<section>
+  <h2 data-key="title">🌊 Nohkalikai Waterfalls</h2>
+  <p data-key="desc">Nohkalikai Falls, located near Cherrapunji in Meghalaya, is India’s tallest plunge waterfall. Cascading from a height of over 340 meters, it forms a turquoise pool below surrounded by misty cliffs.</p>
+
+  <h3 data-key="highlights">📖 Highlights & Facts</h3>
+  <ul>
+    <li data-key="fact1">At 340 meters, it is India’s tallest plunge waterfall.</li>
+    <li data-key="fact2">Located near Cherrapunji, one of the wettest places on Earth.</li>
+    <li data-key="fact3">Best seen during the monsoon when water flow is at its peak.</li>
+  </ul>
+
+  <h3 data-key="visitor">🕒 Visitor Information</h3>
+  <div class="info-grid">
+    <div class="info-card" data-key="time"><b>Timings:</b><br>8:00 AM – 5:00 PM</div>
+    <div class="info-card" data-key="location"><b>Location:</b><br>Cherrapunji, Meghalaya</div>
+    <div class="info-card" data-key="best"><b>Best Time:</b><br>June – September (Monsoon Season)</div>
+  </div>
+</section>
+
+<section class="view360">
+  <h2>🎥 Watch Nohkalikai Waterfalls Video</h2>
+ <iframe src="https://www.google.com/maps/embed?pb=!4v1760423427806!6m8!1m7!1sCAoSFkNJSE0wb2dLRUlDQWdJRGtsYU9OV1E.!2m2!1d25.27130499951294!2d91.68988498997699!3f253.4168985483907!4f-18.83875523832205!5f0.7820865974627469" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</section>
+
+<section class="itinerary">
+  <h2 data-key="plan">🧭 Plan Your Nohkalikai Trip</h2>
+  <form id="itinerary-form">
+    <input type="date" id="date" required />
+    <input type="text" id="activity" placeholder="Activity (e.g., Trek, Photography)" required />
+    <textarea id="notes" rows="1" placeholder="Notes (optional)"></textarea><br>
+    <button type="submit">Add to Itinerary</button>
+    <button type="button" id="clear-itinerary" style="background:#c0392b;color:white;">Clear Added</button>
+  </form>
+  <div class="itinerary-list" id="itinerary-list">
+      <h3>🗓 Suggested Itinerary</h3>
+      <div class="itinerary-item" data-key="day1m"><strong>Day 1 - Morning:</strong> Arrive at Cherrapunji, visit Mawsmai Caves</div>
+      <div class="itinerary-item" data-key="day1a"><strong>Day 1 - Afternoon:</strong> Visit Nohkalikai viewpoint and enjoy panoramic views</div>
+      <div class="itinerary-item" data-key="day1e"><strong>Day 1 - Evening:</strong> Explore local Khasi culture and dinner at a homestay</div>
+      <div class="itinerary-item" data-key="day2m"><strong>Day 2 - Morning:</strong> Visit Seven Sisters Falls and Eco Park</div>
+      <div class="itinerary-item" data-key="day2a"><strong>Day 2 - Afternoon:</strong> Relax and depart from Cherrapunji</div>
+  </div>
+</section>
+
+<footer>&copy; 2025 Unseen Corners | All Rights Reserved</footer>
+
+<script>
+  // Itinerary Builder
+  const form = document.getElementById('itinerary-form');
+  const list = document.getElementById('itinerary-list');
+  const clearBtn = document.getElementById('clear-itinerary');
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const date = document.getElementById('date').value;
+    const activity = document.getElementById('activity').value.trim();
+    const notes = document.getElementById('notes').value.trim();
+    if(!date || !activity) return;
+
+    const item = document.createElement('div');
+    item.className = 'itinerary-item';
+    item.textContent = `${date} – ${activity}${notes? " | "+notes : ""}`;
+    list.appendChild(item);
+    form.reset();
+  });
+
+  // Only clears **added items**, keeps Suggested Itinerary
+  clearBtn.addEventListener('click', () => {
+    [...list.children].forEach(child => {
+      if(!child.hasAttribute('data-key')) child.remove();
+    });
+  });
+
+  // Multi-language support
+  const translations = {
+    en: {
+      title:"🌊 Nohkalikai Waterfalls",
+      desc:"Nohkalikai Falls, located near Cherrapunji in Meghalaya, is India’s tallest plunge waterfall. Cascading from a height of over 340 meters, it forms a turquoise pool below surrounded by misty cliffs.",
+      highlights:"📖 Highlights & Facts",
+      fact1:"At 340 meters, it is India’s tallest plunge waterfall.",
+      fact2:"Located near Cherrapunji, one of the wettest places on Earth.",
+      fact3:"Best seen during the monsoon when water flow is at its peak.",
+      visitor:"🕒 Visitor Information",
+      plan:"🧭 Plan Your Nohkalikai Trip",
+      day1m:"Day 1 - Morning: Arrive at Cherrapunji, visit Mawsmai Caves",
+      day1a:"Day 1 - Afternoon: Visit Nohkalikai viewpoint and enjoy panoramic views",
+      day1e:"Day 1 - Evening: Explore local Khasi culture and dinner at a homestay",
+      day2m:"Day 2 - Morning: Visit Seven Sisters Falls and Eco Park",
+      day2a:"Day 2 - Afternoon: Relax and depart from Cherrapunji"
+    },
+    hi: {
+      title:"🌊 नोहकलिकाई जलप्रपात",
+      desc:"नोहकलिकाई जलप्रपात, मेघालय के चेरापूंजी के पास स्थित भारत का सबसे ऊँचा झरना है।",
+      highlights:"📖 मुख्य आकर्षण और तथ्य",
+      fact1:"340 मीटर की ऊंचाई पर, यह भारत का सबसे ऊँचा झरना है।",
+      fact2:"यह चेरापूंजी में स्थित है, जो पृथ्वी के सबसे अधिक वर्षा वाले स्थानों में से एक है।",
+      fact3:"मानसून के दौरान देखने का सबसे अच्छा समय है।",
+      visitor:"🕒 पर्यटक जानकारी",
+      plan:"🧭 अपनी नोहकलिकाई यात्रा की योजना बनाएं",
+      day1m:"दिन 1 - सुबह: चेरापूंजी पहुँचना, माव्समाई गुफाओं की यात्रा",
+      day1a:"दिन 1 - दोपहर: नोहकलिकाई दृश्य बिंदु की यात्रा और मनोरम दृश्य का आनंद लें",
+      day1e:"दिन 1 - शाम: स्थानीय खासी संस्कृति का अन्वेषण और होमस्टे में डिनर",
+      day2m:"दिन 2 - सुबह: सेवन सिस्टर्स फॉल्स और ईको पार्क की यात्रा",
+      day2a:"दिन 2 - दोपहर: आराम करें और चेरापूंजी से प्रस्थान करें"
+    },
+    te: {
+      title:"🌊 నోహ్కలికై జలపాతం",
+      desc:"నోహ్కలికై జలపాతం, మేఘాలయలోని చెర్రాపుంజీ సమీపంలో ఉన్న భారతదేశంలోనే ఎత్తైన జలపాతం.",
+      highlights:"📖 ముఖ్యాంశాలు మరియు వాస్తవాలు",
+      fact1:"340 మీటర్ల ఎత్తుతో ఇది భారతదేశంలోనే ఎత్తైన జలపాతం.",
+      fact2:"చెర్రాపుంజీ సమీపంలో ఉంది, ఇది భూమిపై అత్యధిక వర్షపాతం కలిగిన ప్రదేశాల్లో ఒకటి.",
+      fact3:"మాన్సూన్ కాలంలో చూడటానికి ఉత్తమ సమయం.",
+      visitor:"🕒 సందర్శకుల సమాచారం",
+      plan:"🧭 మీ నోహ్కలికై ట్రిప్ ప్లాన్ చేయండి",
+      day1m:"రోజు 1 - ఉదయం: చెర్రాపుంజీ చేరండి, మావ్స్మై గుహలను సందర్శించండి",
+      day1a:"రోజు 1 - మధ్యాహ్నం: నోహ్కలికై వీక్షణ పాయింట్ సందర్శన మరియు ఆకాశ దృశ్యాన్ని ఆనందించండి",
+      day1e:"రోజు 1 - సాయంత్రం: స్థానిక ఖాసీ సంస్కృతి అన్వేషణ మరియు హోమ్‌స్టే డిన్నర్",
+      day2m:"రోజు 2 - ఉదయం: సెవెన్ సిస్టర్స్ జలపాతం మరియు ఈకో పార్క్ సందర్శన",
+      day2a:"రోజు 2 - మధ్యాహ్నం: విశ్రాంతి మరియు చెర్రాపుంజీ నుండి బయలుదేరి"
+    }
+  };
+
+  const langSelect = document.getElementById('language-select');
+  langSelect.addEventListener('change', () => {
+    const lang = langSelect.value;
+    document.querySelectorAll("[data-key]").forEach(el => {
+      const key = el.getAttribute("data-key");
+      if(translations[lang][key]) el.textContent = translations[lang][key];
+    });
+  });
+</script>
+
+</body>
+</html>

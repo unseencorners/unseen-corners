@@ -1,0 +1,198 @@
+<!-- Dhauladhar Hills | Unseen Corners -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Unseen Corners – Dhauladhar Hills</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Poppins", sans-serif; }
+    body { background: #f3f9ff; color: #333; line-height: 1.6; padding-bottom: 70px; }
+
+    header {
+      background: #14213d; color: #fff;
+      padding: 15px 40px; display: flex; justify-content: space-between;
+      align-items: center; flex-wrap: wrap; position: fixed;
+      top: 0; left: 0; width: 100%; z-index: 1000;
+    }
+    header h1 { color: #fca311; font-size: 22px; font-weight: bold; }
+    nav a { color: #fff; text-decoration: none; margin-left: 20px; font-weight: 500; }
+    nav a:hover { text-decoration: underline; }
+    .nav-btn {
+      background: #fca311; color: #14213d; font-weight: bold;
+      padding: 8px 16px; border: none; border-radius: 6px;
+      margin-left: 20px; cursor: pointer;
+    }
+    .nav-btn:hover { background: #ffba08; }
+    .lang-select {
+      margin-left: 20px; padding: 6px 10px; border-radius: 5px;
+      border: none; font-size: 14px; cursor: pointer;
+    }
+
+    .hero {
+      background: url('https://upload.wikimedia.org/wikipedia/commons/4/4b/Dhauladhar_Range_from_Mcleod_Ganj.jpg') no-repeat center center/cover;
+      height: 100vh; display: flex; align-items: center; justify-content: center;
+      text-align: center; color: white; position: relative; padding-top: 70px;
+    }
+    .hero::before {
+      content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.55); z-index: 1;
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 800px; padding: 20px; }
+    .hero-content h2 { font-size: 34px; margin-bottom: 15px; color: #fca311; }
+    .hero-content p { font-size: 18px; margin-bottom: 20px; }
+
+    .info-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 15px; margin-top: 20px;
+    }
+    .info-card {
+      background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 8px; padding: 15px; font-size: 15px; color: #fff;
+    }
+
+    .view360 {
+      margin: 60px auto; max-width: 1000px;
+      padding: 15px; border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    .view360 iframe {
+      width: 100%; height: 500px; border: none; border-radius: 12px;
+    }
+
+    .itinerary {
+      max-width: 900px; margin: 50px auto; padding: 25px;
+      background: #f9f9f9; border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .itinerary h2 { text-align: center; color: #14213d; margin-bottom: 20px; }
+    .itinerary form { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 20px; }
+    .itinerary input, .itinerary textarea {
+      padding: 10px; border: 1px solid #ccc; border-radius: 5px;
+      width: 100%; max-width: 250px; font-size: 14px;
+    }
+    .itinerary button {
+      background: #14213d; color: white; padding: 10px 20px;
+      border: none; border-radius: 5px; cursor: pointer;
+    }
+    .itinerary button:hover { background: #1d3557; }
+    .itinerary-item {
+      background: white; padding: 15px; border-left: 4px solid #fca311;
+      margin-bottom: 10px; border-radius: 5px;
+    }
+
+    footer {
+      text-align: center; padding: 20px;
+      background: #14213d; color: white;
+      margin-top: 50px;
+    }
+
+    @media(max-width:768px){
+      .hero-content h2 { font-size: 26px; }
+      .hero-content p { font-size: 16px; }
+      .view360 iframe { height: 300px; }
+      .itinerary form { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Unseen Corners</h1>
+  <nav>
+    <a href="index.html"><b>Home</b></a>
+    <a href="about14.html"><b>About</b></a>
+    <a href="contact.html"><b>Contact</b></a>
+    <a href="t4.html"><b>Chat Bot</b></a>
+    <button class="nav-btn"><b>Book Now</b></button>
+    <select class="lang-select" id="language-select">
+      <option value="en">English</option>
+      <option value="hi">हिन्दी</option>
+      <option value="pa">ਪੰਜਾਬੀ</option>
+    </select>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+    <h2>🏔️ Dhauladhar Hills</h2>
+    <p>
+      The Dhauladhar Hills, a majestic sub-range of the Himalayas in Himachal Pradesh,
+      are known for their snow-clad peaks, serene monasteries, and breathtaking trekking routes.
+      From Dharamshala to Triund, every view offers a glimpse of nature’s perfection.
+    </p>
+
+    <h3>🌄 Highlights & Attractions</h3>
+    <ul>
+      <li>Triund Trek – a scenic trail offering stunning views of the Kangra Valley.</li>
+      <li>McLeod Ganj – home to the Dalai Lama and Tibetan culture.</li>
+      <li>Bhagsu Waterfall and Bhagsunath Temple nearby.</li>
+      <li>Paragliding and mountain camping experiences.</li>
+    </ul>
+
+    <h3>🕒 Visitor Information</h3>
+    <div class="info-grid">
+      <div class="info-card"><b>Timings:</b><br> Open all year; ideal for treks from March to June.</div>
+      <div class="info-card"><b>Location:</b><br> Kangra District, Himachal Pradesh, India.</div>
+      <div class="info-card"><b>Best Time:</b><br> March – June and September – November.</div>
+    </div>
+  </div>
+</section>
+
+<section class="view360">
+  <h2 style="text-align:center; margin-bottom:15px; color:#14213d;">🌐 Explore 360° View of Dhauladhar Hills</h2>
+  <iframe src="dhauladhar360.html" allowfullscreen loading="lazy"></iframe>
+</section>
+
+<section class="itinerary">
+  <h2>🧭 Plan Your Dhauladhar Trip</h2>
+  <form id="itinerary-form">
+    <input type="date" id="date" required />
+    <input type="text" id="activity" placeholder="Activity (e.g., Triund Trek)" required />
+    <textarea id="notes" rows="1" placeholder="Notes (optional)"></textarea>
+    <button type="submit">Add to Itinerary</button>
+    <button type="button" id="clear-itinerary" style="background:#c0392b;">Clear All</button>
+  </form>
+  <div id="itinerary-list"></div>
+
+  <div class="itinerary-list">
+    <h3 style="margin-top:30px;">🗓 Suggested Itinerary</h3>
+    <div class="itinerary-item"><strong>Day 1 - Morning:</strong> Visit McLeod Ganj and Namgyal Monastery.</div>
+    <div class="itinerary-item"><strong>Day 1 - Afternoon:</strong> Trek to Bhagsu Falls and relax in cafes.</div>
+    <div class="itinerary-item"><strong>Day 2 - Morning:</strong> Begin Triund Trek and enjoy mountain camping.</div>
+    <div class="itinerary-item"><strong>Day 2 - Evening:</strong> Watch sunset over the Dhauladhar range.</div>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2025 Unseen Corners | All Rights Reserved</p>
+</footer>
+
+<script>
+  // ✅ Itinerary Builder Logic
+  const form = document.getElementById('itinerary-form');
+  const list = document.getElementById('itinerary-list');
+  const clearBtn = document.getElementById('clear-itinerary');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const date = document.getElementById('date').value;
+    const activity = document.getElementById('activity').value;
+    const notes = document.getElementById('notes').value;
+    if (!date || !activity) return;
+
+    const item = document.createElement('div');
+    item.className = 'itinerary-item';
+    item.innerHTML = `<strong>${date}</strong> – ${activity}<br><small>${notes}</small>`;
+    list.appendChild(item);
+    form.reset();
+  });
+
+  clearBtn.addEventListener('click', () => { list.innerHTML = ''; });
+</script>
+
+</body>
+</html>
+
+
+

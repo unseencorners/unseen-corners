@@ -1,0 +1,246 @@
+<!-- Shillong Hills | Unseen Corners -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unseen Corners – Shillong Hills</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Poppins", sans-serif; }
+
+    /* --- Full-page background --- */
+    body {
+      background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2TbtNQFnZHlPWR9gnSkTUnPCXw09fRN-3XQ&s') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      line-height: 1.6;
+      padding-bottom: 70px;
+      position: relative;
+    }
+
+    /* Overlay for readability */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.55);
+      z-index: -1;
+    }
+
+    header {
+      background: rgba(0,48,73,0.85);
+      color: white;
+      padding: 15px 40px; display: flex; justify-content: space-between;
+      align-items: center; flex-wrap: wrap; position: fixed;
+      top: 0; left: 0; width: 100%;
+      z-index: 1000;
+    }
+    header h1 { color: #fcbf49; font-size: 22px; font-weight: bold; }
+    nav a { color: white; text-decoration: none; margin-left: 20px; font-weight: 500; }
+    nav a:hover { text-decoration: underline; }
+    .nav-btn { background: #fcbf49; color: #003049; font-weight: bold; padding: 8px 16px; border: none; border-radius: 6px; margin-left: 20px; cursor: pointer; }
+    .nav-btn:hover { background: #ffd60a; }
+    .lang-select { margin-left: 20px; padding: 6px 10px; border-radius: 5px; border: none; font-size: 14px; cursor: pointer; }
+
+    /* --- Hero section simplified --- */
+    .hero { height: auto; display: flex; align-items: center; justify-content: center; text-align: center; padding: 120px 20px 50px; }
+    .hero-content { max-width: 800px; }
+    .hero-content h2 { font-size: 34px; margin-bottom: 15px; color: #fcbf49; }
+    .hero-content p { font-size: 18px; margin-bottom: 20px; }
+
+    .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin-top: 20px; padding: 0 20px; }
+    .info-card { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 8px; padding: 15px; font-size: 15px; color: #fff; }
+
+    .view360 { margin: 60px auto; max-width: 1000px; padding: 15px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
+    .view360 iframe { width: 100%; height: 500px; border: none; border-radius: 12px; }
+
+    .itinerary { max-width: 900px; margin: 50px auto; padding: 25px; background: rgba(255,255,255,0.15); border-radius: 10px; }
+    .itinerary h2 { text-align: center; color: #003049; margin-bottom: 20px; }
+    .itinerary form { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 20px; }
+    .itinerary input, .itinerary textarea { padding: 10px; border-radius: 5px; width: 100%; max-width: 250px; font-size: 14px; border: none; }
+    .itinerary button { background: #003049; color: white; padding: 10px 20px; border-radius: 5px; cursor: pointer; border: none; }
+    .itinerary button:hover { background: #023e7d; }
+    .itinerary-item { background: rgba(255,255,255,0.2); padding: 15px; border-left: 4px solid #fcbf49; margin-bottom: 10px; border-radius: 5px; }
+
+    footer { text-align: center; padding: 20px; background: rgba(0,48,73,0.85); color: white; margin-top: 50px; }
+
+    @media(max-width:768px){
+      .hero-content h2 { font-size: 26px; }
+      .hero-content p { font-size: 16px; }
+      .view360 iframe { height: 300px; }
+      .itinerary form { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1 id="site-title">Unseen Corners</h1>
+  <nav>
+    <a href="index.html" data-lang="nav-home"><b>Home</b></a>
+    <a href="about.html" data-lang="nav-about"><b>About</b></a>
+    <a href="contact.html" data-lang="nav-contact"><b>Contact</b></a>
+    <a href="t4.html" data-lang="nav-chat"><b>Chat Bot</b></a>
+    <button class="nav-btn" data-lang="nav-book" onclick="window.location.href='book.html'"><b>Book Now</b></button>
+    <select class="lang-select" id="language-select">
+      <option value="en">English</option>
+      <option value="hi">हिन्दी</option>
+      <option value="te">తెలుగు</option>
+    </select>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+    <h2 data-lang="title">🏞️ Shillong Hills</h2>
+    <p data-lang="intro">
+      Nestled in the heart of Meghalaya, the Shillong Hills are famed for their lush landscapes, misty mountains, and cool climate.
+      Known as the “Scotland of the East,” Shillong offers panoramic viewpoints, cascading waterfalls, and a rich Khasi culture.
+    </p>
+
+    <h3 data-lang="highlights-title">🌿 Highlights & Attractions</h3>
+    <ul>
+      <li data-lang="highlight-1">Visit Shillong Peak for breathtaking views of the city and valleys below.</li>
+      <li data-lang="highlight-2">Explore Elephant Falls and Sweet Falls amidst dense greenery.</li>
+      <li data-lang="highlight-3">Stroll through Ward’s Lake and enjoy a peaceful boat ride.</li>
+      <li data-lang="highlight-4">Experience local Khasi culture at Don Bosco Museum.</li>
+    </ul>
+
+    <h3 data-lang="visit-title">🕒 Visitor Information</h3>
+    <div class="info-grid">
+      <div class="info-card" data-lang="visit-time"><b>Timings:</b><br> Open all year; best during daylight.</div>
+      <div class="info-card" data-lang="visit-location"><b>Location:</b><br> Shillong, Meghalaya, India.</div>
+      <div class="info-card" data-lang="visit-best"><b>Best Time:</b><br> October – May for clear skies and cool weather.</div>
+    </div>
+  </div>
+</section>
+
+<section class="view360">
+  <h2 style="text-align:center; margin-bottom:15px; color:#003049;" data-lang="view360-title">🎥 Shillong Hills Video</h2>
+  <iframe src="https://www.youtube.com/embed/uD-jlAkzjos" allowfullscreen loading="lazy"></iframe>
+</section>
+
+
+<section class="itinerary">
+  <h2 data-lang="itinerary-title">🧭 Plan Your Shillong Trip</h2>
+  <form id="itinerary-form">
+    <input type="date" id="date" required />
+    <input type="text" id="activity" placeholder="Activity (e.g., Visit Shillong Peak)" required />
+    <textarea id="notes" rows="1" placeholder="Notes (optional)"></textarea>
+    <button type="submit" data-lang="btn-add">Add to Itinerary</button>
+    <button type="button" id="clear-itinerary" style="background:#c0392b;" data-lang="btn-clear">Clear All</button>
+  </form>
+  <div id="itinerary-list"></div>
+
+  <div class="itinerary-list">
+    <h3 style="margin-top:30px;" data-lang="suggested-title">🗓 Suggested Itinerary</h3>
+    <div class="itinerary-item" data-lang="day1-morning"><strong>Day 1 - Morning:</strong> Visit Shillong Peak for a panoramic view.</div>
+    <div class="itinerary-item" data-lang="day1-afternoon"><strong>Day 1 - Afternoon:</strong> Explore Elephant Falls and Ward’s Lake.</div>
+    <div class="itinerary-item" data-lang="day1-evening"><strong>Day 1 - Evening:</strong> Walk through Police Bazaar for shopping and food.</div>
+    <div class="itinerary-item" data-lang="day2-morning"><strong>Day 2 - Morning:</strong> Trip to nearby Laitlum Canyons and Don Bosco Museum.</div>
+  </div>
+</section>
+
+<footer>
+  <p data-lang="footer">&copy; 2025 Unseen Corners | All Rights Reserved</p>
+</footer>
+
+<script>
+const translations = {
+  en: {
+    "nav-home":"<b>Home</b>",
+    "nav-about":"<b>About</b>",
+    "nav-contact":"<b>Contact</b>",
+    "nav-chat":"<b>Chat Bot</b>",
+    "nav-book":"<b>Book Now</b>",
+    "title":"🏞️ Shillong Hills",
+    "intro":"Nestled in the heart of Meghalaya, the Shillong Hills are famed for their lush landscapes, misty mountains, and cool climate. Known as the “Scotland of the East,” Shillong offers panoramic viewpoints, cascading waterfalls, and a rich Khasi culture.",
+    "highlights-title":"🌿 Highlights & Attractions",
+    "highlight-1":"Visit Shillong Peak for breathtaking views of the city and valleys below.",
+    "highlight-2":"Explore Elephant Falls and Sweet Falls amidst dense greenery.",
+    "highlight-3":"Stroll through Ward’s Lake and enjoy a peaceful boat ride.",
+    "highlight-4":"Experience local Khasi culture at Don Bosco Museum.",
+    "visit-title":"🕒 Visitor Information",
+    "visit-time":"<b>Timings:</b><br> Open all year; best during daylight.",
+    "visit-location":"<b>Location:</b><br> Shillong, Meghalaya, India.",
+    "visit-best":"<b>Best Time:</b><br> October – May for clear skies and cool weather.",
+    "view360-title":"🎥 Shillong Hills Video",
+    "itinerary-title":"🧭 Plan Your Shillong Trip",
+    "btn-add":"Add to Itinerary",
+    "btn-clear":"Clear All",
+    "suggested-title":"🗓 Suggested Itinerary",
+    "day1-morning":"<strong>Day 1 - Morning:</strong> Visit Shillong Peak for a panoramic view.",
+    "day1-afternoon":"<strong>Day 1 - Afternoon:</strong> Explore Elephant Falls and Ward’s Lake.",
+    "day1-evening":"<strong>Day 1 - Evening:</strong> Walk through Police Bazaar for shopping and food.",
+    "day2-morning":"<strong>Day 2 - Morning:</strong> Trip to nearby Laitlum Canyons and Don Bosco Museum.",
+    "footer":"&copy; 2025 Unseen Corners | All Rights Reserved"
+  },
+  hi: {
+    "nav-home":"<b>होम</b>",
+    "nav-about":"<b>हमारे बारे में</b>",
+    "nav-contact":"<b>संपर्क करें</b>",
+    "nav-chat":"<b>चैट बॉट</b>",
+    "nav-book":"<b>अभी बुक करें</b>",
+    "title":"🏞️ शिलांग हिल्स",
+    "intro":"मेघालय के दिल में स्थित, शिलांग हिल्स अपने हरे-भरे दृश्य, कोहरे वाले पहाड़ और ठंडी जलवायु के लिए प्रसिद्ध हैं। 'पूर्व का स्कॉटलैंड' के रूप में जाना जाता है।",
+    "highlights-title":"🌿 मुख्य आकर्षण",
+    "highlight-1":"शिलांग पीक पर जाएँ और शहर और घाटियों के दृश्य का आनंद लें।",
+    "highlight-2":"एलीफैंट फॉल्स और स्वीट फॉल्स का अन्वेषण करें।",
+    "highlight-3":"वॉर्ड्स लेक में टहलें और शांतिपूर्ण नाव की सवारी करें।",
+    "highlight-4":"डॉन बॉस्को म्यूजियम में स्थानीय खासी संस्कृति का अनुभव करें।",
+    "visit-title":"🕒 यात्रा जानकारी",
+    "visit-time":"<b>समय:</b><br> पूरे साल खुला; दिन के समय सबसे अच्छा।",
+    "visit-location":"<b>स्थान:</b><br> शिलांग, मेघालय, भारत।",
+    "visit-best":"<b>सर्वश्रेष्ठ समय:</b><br> अक्टूबर – मई।",
+    "view360-title":"🎥 शिलांग हिल्स वीडियो",
+    "itinerary-title":"🧭 अपनी यात्रा योजना बनाएं",
+    "btn-add":"योजना में जोड़ें",
+    "btn-clear":"सभी साफ़ करें",
+    "suggested-title":"🗓 सुझाई गई यात्रा योजना",
+    "day1-morning":"<strong>दिन 1 - सुबह:</strong> शिलांग पीक पर जाएँ।",
+    "day1-afternoon":"<strong>दिन 1 - दोपहर:</strong> एलीफैंट फॉल्स और वॉर्ड्स लेक।",
+    "day1-evening":"<strong>दिन 1 - शाम:</strong> पुलिस बाजार में खरीदारी और भोजन।",
+    "day2-morning":"<strong>दिन 2 - सुबह:</strong> नज़दीकी लैटलम कैन्यन्स और डॉन बॉस्को म्यूजियम की यात्रा।",
+    "footer":"© 2025 अनसीन कॉर्नर्स | सर्वाधिकार सुरक्षित"
+  },
+  te: {
+    "nav-home":"<b>హోమ్</b>",
+    "nav-about":"<b>గురించి</b>",
+    "nav-contact":"<b>సంప్రదించండి</b>",
+    "nav-chat":"<b>చాట్ బాట్</b>",
+    "nav-book":"<b>ఇప్పుడే బుక్ చేయండి</b>",
+    "title":"🏞️ శిలాంగ్ హిల్స్",
+    "intro":"మెఘాలయా హృదయంలో ఉన్న శిలాంగ్ హిల్స్, పచ్చికతో కప్పిన గ్రీనరీ, మబ్బులో మోడి పర్వతాలు మరియు చల్లని వాతావరణం కోసం ప్రసిద్ధి చెందాయి. “పూర్వపు స్కాట్లాండ్” అని పిలవబడుతుంది.",
+    "highlights-title":"🌿 ప్రధాన ఆకర్షణలు",
+    "highlight-1":"శిలాంగ్ పీక్ సందర్శించండి మరియు పానోరమిక్ వ్యూస్ అనుభవించండి.",
+    "highlight-2":"ఎలిఫెంట్ ఫాల్స్ మరియు స్వీట్ ఫాల్స్ ను అన్వేషించండి.",
+    "highlight-3":"వార్డ్‌లేక్ లో నడవండి మరియు శాంతమైన బోటు రైడ్ ఆస్వాదించండి.",
+    "highlight-4":"డాన్ బోస్కో మ్యూజియంలో స్థానిక ఖాసి సంస్కృతిని అనుభవించండి.",
+    "visit-title":"🕒 సందర్శన సమాచారం",
+    "visit-time":"<b>సమయం:</b><br> సంవత్సరాంతం అందుబాటులో; రోజు సమయంలో ఉత్తమం.",
+    "visit-location":"<b>స్థానం:</b><br> శిలాంగ్, మెఘాలయా, భారత్.",
+    "visit-best":"<b>ఉత్తమ సమయం:</b><br> అక్టోబర్ – మే.",
+    "view360-title":"🎥 శిలాంగ్ హిల్స్ వీడియో",
+    "itinerary-title":"🧭 మీ ప్రయాణం ప్రణాళికను రూపొందించండి",
+    "btn-add":"ప్రణాళికలో జోడించండి",
+    "btn-clear":"అన్నీ క్లియర్ చేయండి",
+    "suggested-title":"🗓 సూచించిన ప్రణాళిక",
+    "day1-morning":"<strong>రోజు 1 - ఉదయం:</strong> శిలాంగ్ పీక్ సందర్శించండి.",
+    "day1-afternoon":"<strong>రోజు 1 - మధ్యాహ్నం:</strong> ఎలిఫెంట్ ఫాల్స్ మరియు వార్డ్‌లేక్.",
+    "day1-evening":"<strong>రోజు 1 - సాయంత్రం:</strong> పోలీస్ బజార్ లో షాపింగ్ మరియు భోజనం.",
+    "day2-morning":"<strong>రోజు 2 - ఉదయం:</strong> సమీప Laitlum కేనియన్స్ మరియు డాన్ బోస్కో మ్యూజియం.",
+    "footer":"© 2025 Unseen Corners | అన్ని హక్కులు పరిరక్షించబడ్డాయి"
+  }
+};
+
+const langSelect = document.getElementById('language-select');
+langSelect.addEventListener('change', () => {
+  const selectedLang = langSelect.value;
+  document.querySelectorAll('[data-lang]').forEach(el => {
+    const key = el.getAttribute('data-lang');
+    el.innerHTML = translations[selectedLang][key] || el.innerHTML;
+  });
+});
+</script>
+</body>
+</html>

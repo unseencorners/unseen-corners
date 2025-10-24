@@ -1,0 +1,212 @@
+<!-- Kovalam Beach | Unseen Corners -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title data-lang="page-title">Unseen Corners – Kovalam Beach</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; font-family: "Poppins", sans-serif; }
+  body { background:#e0f7fa; color:#333; line-height:1.6; padding-bottom:80px; }
+
+  header {
+    background:#004d40; color:#fff;
+    padding:15px 40px; display:flex; justify-content:space-between;
+    align-items:center; flex-wrap:wrap; position:fixed;
+    top:0; left:0; width:100%; z-index:1000;
+  }
+  header h1 { color:#ffca28; font-size:22px; font-weight:bold; }
+  nav a { color:white; text-decoration:none; margin-left:20px; font-weight:500; }
+  nav a:hover { text-decoration:underline; }
+  .nav-btn {
+    background:#ffca28; color:#004d40; font-weight:bold;
+    padding:8px 16px; border:none; border-radius:6px;
+    margin-left:20px; cursor:pointer;
+  }
+  .nav-btn:hover { background:#ffe082; }
+  .lang-select { margin-left:20px; padding:6px 10px; border-radius:5px; border:none; font-size:14px; cursor:pointer; }
+
+  .hero {
+    background: url('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/05/12/dd/fa/kovalam.jpg?w=1200&h=700&s=1') no-repeat center center/cover;
+    height:100vh; display:flex; align-items:center; justify-content:center;
+    text-align:center; color:white; position:relative; padding-top:70px;
+  }
+  .hero::before {
+    content:""; position:absolute; top:0; left:0; width:100%; height:100%;
+    background: rgba(0,0,0,0.5); z-index:1;
+  }
+  .hero-content { position:relative; z-index:2; max-width:800px; padding:20px; }
+  .hero-content h2 { font-size:34px; margin-bottom:15px; color:#ffca28; }
+  .hero-content p { font-size:18px; margin-bottom:20px; }
+
+  .info-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:15px; margin-top:20px; }
+  .info-card { background: rgba(255,255,255,0.2); border:1px solid rgba(255,255,255,0.3); border-radius:8px; padding:15px; font-size:15px; color:#fff; }
+
+  .view360 { margin:60px auto; max-width:1000px; padding:15px; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.2); }
+  .view360 iframe { width:100%; height:500px; border:none; border-radius:12px; }
+
+  .itinerary {
+    max-width:900px; margin:50px auto; padding:25px; background:#f9f9f9; border-radius:10px; box-shadow:0 2px 10px rgba(0,0,0,0.1);
+  }
+  .itinerary h2 { text-align:center; color:#004d40; margin-bottom:20px; }
+  .itinerary form { display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin-bottom:20px; }
+  .itinerary input, .itinerary textarea { padding:10px; border:1px solid #ccc; border-radius:5px; width:100%; max-width:250px; font-size:14px; }
+  .itinerary button { background:#004d40; color:white; padding:10px 20px; border:none; border-radius:5px; cursor:pointer; }
+  .itinerary button:hover { background:#00695c; }
+  .itinerary-item { background:white; padding:15px; border-left:4px solid #ffca28; margin-bottom:10px; border-radius:5px; }
+
+  footer { text-align:center; padding:20px; background:#004d40; color:white; margin-top:50px; }
+
+  @media(max-width:768px){ .hero-content h2{ font-size:26px; } .hero-content p{ font-size:16px; } .view360 iframe{ height:300px; } .itinerary form{ flex-direction:column; align-items:center; } }
+</style>
+</head>
+<body>
+
+<header>
+  <h1 data-lang="site-title">Unseen Corners</h1>
+  <nav>
+    <a href="index.html" data-lang="nav-home"><b>Home</b></a>
+    <a href="about14.html" data-lang="nav-about"><b>About</b></a>
+    <a href="contact.html" data-lang="nav-contact"><b>Contact</b></a>
+    <a href="t4.html" data-lang="nav-chat"><b>Chat Bot</b></a>
+    <button class="nav-btn"><b data-lang="nav-book" onclick="window.location.href='book.html'">Book Now</b></button>
+    <select class="lang-select" id="language-select">
+      <option value="en">English</option>
+      <option value="hi">हिन्दी</option>
+      <option value="te">తెలుగు</option>
+    </select>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+    <h2 data-lang="title">🏖️ Kovalam Beach, Kerala</h2>
+    <p data-lang="intro">
+      Kovalam Beach, located near Thiruvananthapuram, is one of India’s most famous seaside destinations. Known for its golden sands, calm waves, and iconic lighthouse, it offers an ideal blend of relaxation, adventure, and coastal charm.
+    </p>
+
+    <h3 data-lang="highlights-title">🌅 Highlights & Facts</h3>
+    <ul>
+      <li data-lang="high-1">Renowned for its three crescent-shaped beaches: Lighthouse, Hawah, and Samudra.</li>
+      <li data-lang="high-2">Popular for surfing, sunbathing, and Ayurvedic wellness centers.</li>
+      <li data-lang="high-3">The lighthouse provides panoramic views of the Arabian Sea.</li>
+      <li data-lang="high-4">Famous for vibrant coastal cuisine and cultural festivals.</li>
+    </ul>
+
+    <h3 data-lang="visit-title">🕒 Visitor Information</h3>
+    <div class="info-grid">
+      <div class="info-card" data-lang="time"><b>Timings:</b><br> Open all day (best visits during sunrise & sunset)</div>
+      <div class="info-card" data-lang="location"><b>Location:</b><br> Thiruvananthapuram, Kerala, India</div>
+      <div class="info-card" data-lang="best-time"><b>Best Time:</b><br> September – March (pleasant weather for swimming & sightseeing)</div>
+    </div>
+  </div>
+</section>
+
+<section class="view360">
+  <h2 style="text-align:center; margin-bottom:15px; color:#004d40;" data-lang="view360-title">🌐 Explore 360° View of Kovalam Beach</h2>
+<iframe src="https://www.google.com/maps/embed?pb=!4v1760023065419!6m8!1m7!1sCAoSFkNJSE0wb2dLRUlDQWdJQ2h0S0tHYlE.!2m2!1d8.383784122129661!2d76.98041759965857!3f10.379039343982527!4f-1.319832011397338!5f0.7820865974627469" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</section>
+
+
+<section class="itinerary">
+  <h2 data-lang="itinerary-title">🧭 Plan Your Kovalam Beach Trip</h2>
+  <form id="itinerary-form">
+    <input type="date" id="date" required />
+    <input type="text" id="activity" placeholder="Activity (e.g., Lighthouse Visit, Surfing)" required data-lang-placeholder="activity" />
+    <textarea id="notes" rows="1" placeholder="Notes (optional)" data-lang-placeholder="notes"></textarea>
+    <button type="submit" data-lang="btn-add">Add to Itinerary</button>
+    <button type="button" id="clear-itinerary" style="background:#c0392b;" data-lang="btn-clear">Clear All</button>
+  </form>
+  <div id="itinerary-list"></div>
+
+  <div class="itinerary-list">
+    <h3 style="margin-top:30px;" data-lang="itinerary-suggested-title">🗓 Suggested Itinerary</h3>
+    <div class="itinerary-item" data-lang="day1-morning"><strong>Day 1 - Morning:</strong> Relax on Lighthouse Beach and climb the lighthouse.</div>
+    <div class="itinerary-item" data-lang="day1-afternoon"><strong>Day 1 - Afternoon:</strong> Try seafood at a beachfront restaurant and enjoy a surf session.</div>
+    <div class="itinerary-item" data-lang="day1-evening"><strong>Day 1 - Evening:</strong> Watch the sunset and shop for souvenirs at Kovalam market.</div>
+    <div class="itinerary-item" data-lang="day2-morning"><strong>Day 2 - Morning:</strong> Experience an Ayurvedic massage at a local spa.</div>
+    <div class="itinerary-item" data-lang="day2-night"><strong>Day 2 - Night:</strong> Dine while listening to the ocean waves.</div>
+  </div>
+</section>
+
+<footer>
+  <p data-lang="footer">&copy; 2025 Unseen Corners | All Rights Reserved</p>
+</footer>
+
+<script>
+const translations = {
+  en: {
+    "site-title":"Unseen Corners","nav-home":"Home","nav-about":"About","nav-contact":"Contact","nav-chat":"Chat Bot","nav-book":"Book Now",
+    "page-title":"Unseen Corners – Kovalam Beach","title":"🏖️ Kovalam Beach, Kerala",
+    "intro":"Kovalam Beach, located near Thiruvananthapuram, is one of India’s most famous seaside destinations. Known for its golden sands, calm waves, and iconic lighthouse, it offers an ideal blend of relaxation, adventure, and coastal charm.",
+    "highlights-title":"🌅 Highlights & Facts","high-1":"Renowned for its three crescent-shaped beaches: Lighthouse, Hawah, and Samudra.","high-2":"Popular for surfing, sunbathing, and Ayurvedic wellness centers.","high-3":"The lighthouse provides panoramic views of the Arabian Sea.","high-4":"Famous for vibrant coastal cuisine and cultural festivals.",
+    "visit-title":"🕒 Visitor Information","time":"Timings: Open all day (best visits during sunrise & sunset)","location":"Location: Thiruvananthapuram, Kerala, India","best-time":"Best Time: September – March",
+    "view360-title":"🌐 Explore 360° View of Kovalam Beach","itinerary-title":"🧭 Plan Your Kovalam Beach Trip",
+    "btn-add":"Add to Itinerary","btn-clear":"Clear All","itinerary-suggested-title":"🗓 Suggested Itinerary",
+    "day1-morning":"Day 1 - Morning: Relax on Lighthouse Beach and climb the lighthouse.","day1-afternoon":"Day 1 - Afternoon: Try seafood at a beachfront restaurant and enjoy a surf session.","day1-evening":"Day 1 - Evening: Watch the sunset and shop for souvenirs at Kovalam market.","day2-morning":"Day 2 - Morning: Experience an Ayurvedic massage at a local spa.","day2-night":"Day 2 - Night: Dine while listening to the ocean waves.",
+    "activity":"Activity (e.g., Lighthouse Visit, Surfing)","notes":"Notes (optional)"
+  },
+  hi: {
+    "site-title":"अनसीन कॉर्नर्स","nav-home":"मुख्य पृष्ठ","nav-about":"हमारे बारे में","nav-contact":"संपर्क करें","nav-chat":"चैट बॉट","nav-book":"बुक करें",
+    "page-title":"अनसीन कॉर्नर्स – कोवलम बीच","title":"🏖️ कोवलम बीच, केरल",
+    "intro":"कोवलम बीच, तिरुवनंतपुरम के पास स्थित, भारत के सबसे प्रसिद्ध समुद्री स्थलों में से एक है। स्वर्णिम रेत, शांत लहरों और प्रसिद्ध लाइटहाउस के लिए जाना जाता है। यह विश्राम, साहसिक गतिविधियों और तटीय आकर्षण का आदर्श मिश्रण प्रदान करता है।",
+    "highlights-title":"🌅 मुख्य आकर्षण & तथ्य","high-1":"तीन अर्धचंद्राकार समुद्र तटों के लिए प्रसिद्ध: लाइटहाउस, हवाह, और समुद्र।","high-2":"सर्फिंग, धूप सेंकने और आयुर्वेदिक वेलनेस केंद्रों के लिए लोकप्रिय।","high-3":"लाइटहाउस अरब सागर का पैनोरमिक दृश्य प्रदान करता है।","high-4":"जीवंत तटीय व्यंजन और सांस्कृतिक त्योहारों के लिए प्रसिद्ध।",
+    "visit-title":"🕒 आगंतुक जानकारी","time":"समय: दिनभर खुले (सूर्योदय और सूर्यास्त के दौरान सर्वोत्तम यात्रा)","location":"स्थान: तिरुवनंतपुरम, केरल, भारत","best-time":"सर्वश्रेष्ठ समय: सितंबर – मार्च",
+    "view360-title":"🌐 कोवलम बीच का 360° दृश्य देखें","itinerary-title":"🧭 अपनी कोवलम बीच यात्रा योजना बनाएं",
+    "btn-add":"सूची में जोड़ें","btn-clear":"सभी साफ़ करें","itinerary-suggested-title":"🗓 सुझाई गई यात्रा योजना",
+    "day1-morning":"दिन 1 - सुबह: लाइटहाउस बीच पर आराम करें और लाइटहाउस पर चढ़ें।","day1-afternoon":"दिन 1 - दोपहर: समुद्र तट के रेस्तरां में समुद्री भोजन का आनंद लें और सर्फिंग करें।","day1-evening":"दिन 1 - शाम: सूर्यास्त देखें और कोवलम बाजार में स्मृति चिन्ह खरीदें।","day2-morning":"दिन 2 - सुबह: स्थानीय स्पा में आयुर्वेदिक मसाज का अनुभव करें।","day2-night":"दिन 2 - रात: समुद्र की लहरों की आवाज़ सुनते हुए भोजन करें।",
+    "activity":"गतिविधि (उदा., लाइटहाउस विजिट, सर्फिंग)","notes":"नोट्स (वैकल्पिक)"
+  },
+  te: {
+    "site-title":"అన్‌సీన్ కార్నర్స్","nav-home":"హోమ్","nav-about":"గురించి","nav-contact":"సంప్రదించండి","nav-chat":"చాట్ బాట్","nav-book":"బుక్ చేయండి",
+    "page-title":"అన్‌సీన్ కార్నర్స్ – కోవలం బీచ్","title":"🏖️ కోవలం బీచ్, కేరళ",
+    "intro":"తిరువనంతపురం సమీపంలోని కోవలం బీచ్ భారత్‌లోని ప్రసిద్ధ సముద్రతీరాలలో ఒకటి. బంగారుమచ్చలు, సేదతీరంలో అల్లులు, ప్రసిద్ధ లైట్హౌస్ కోసం ప్రసిద్ధి చెందింది. విశ్రాంతి, అడ్వెంచర్, సముద్రతీర సౌందర్యానికి సరైన మిశ్రమాన్ని అందిస్తుంది.",
+    "highlights-title":"🌅 ముఖ్య ఆకర్షణలు & వివరాలు","high-1":"మూడు అర్ధచంద్రాకార బీచ్‌లు: లైట్హౌస్, హవా, సముద్రం.","high-2":"సర్ఫింగ్, సన్‌బాతింగ్, ఆయుర్వేద వెల్నెస్ సెంటర్లు ప్రసిద్ధం.","high-3":"లైట్హౌస్ అరేబియన్ సముద్రానికి ప్యానోరమిక్ వీక్షణలు అందిస్తుంది.","high-4":"జీవంతమైన సముద్రతీర ఆహారం మరియు సాంస్కృతిక ఉత్సవాలు ప్రసిద్ధం.",
+    "visit-title":"🕒 సందర్శక సమాచారం","time":"సమయం: రోజు మొత్తం తెరిచి ఉంటుంది (ఉత్తమ సమయాలు: సూర్యోదయం & సూర్యాస్తమయం)","location":"స్థానం: తిరువనంతపురం, కేరళ, భారతదేశం","best-time":"ఉత్తమ సమయం: సెప్టెంబర్ – మార్చ్",
+    "view360-title":"🌐 కోవలం బీచ్ 360° వీక్షణను అన్వేషించండి","itinerary-title":"🧭 మీ కోవలం బీచ్ ట్రిప్ ప్లాన్ చేయండి",
+    "btn-add":"ఇటినరరీలో జోడించండి","btn-clear":"అన్నీ తొలగించు","itinerary-suggested-title":"🗓 సూచించిన ఇటికరరీ",
+    "day1-morning":"రోజు 1 - ఉదయం: లైట్హౌస్ బీచ్‌లో విశ్రాంతి తీసుకోండి, లైట్హౌస్‌పై ఎక్కండి.","day1-afternoon":"రోజు 1 - మధ్యాహ్నం: బీచ్‌ఫ్రంట్ రెస్టారెంట్‌లో సముద్ర ఆహారం ఆస్వాదించండి, సర్ఫింగ్ చేయండి.","day1-evening":"రోజు 1 - సాయంత్రం: సూర్యాస్తమయం చూడండి, కోవలం మార్కెట్‌లో స్మారకాలు కొనండి.","day2-morning":"రోజు 2 - ఉదయం: స్థానిక స్పాలో ఆయుర్వేద మసాజ్ అనుభవించండి.","day2-night":"రోజు 2 - రాత్రి: సముద్ర అలలు వినిపిస్తున్నప్పుడు భోజనం చేయండి.",
+    "activity":"కార్యకలాపం (ఉదా., లైట్హౌస్ సందర్శన, సర్ఫింగ్)","notes":"గమనికలు (ఐచ్చికం)"
+  }
+};
+
+// Language switcher
+document.getElementById("language-select").addEventListener("change", function(){
+  const lang = this.value;
+  document.querySelectorAll("[data-lang]").forEach(el=>{
+    const key = el.getAttribute("data-lang");
+    if(translations[lang][key]) el.innerHTML = translations[lang][key];
+  });
+  document.querySelectorAll("[data-lang-placeholder]").forEach(el=>{
+    const key = el.getAttribute("data-lang-placeholder");
+    if(translations[lang][key]) el.placeholder = translations[lang][key];
+  });
+  if(translations[lang]["page-title"]) document.title = translations[lang]["page-title"];
+});
+
+// ✅ Itinerary Builder
+const form = document.getElementById('itinerary-form');
+const list = document.getElementById('itinerary-list');
+const clearBtn = document.getElementById('clear-itinerary');
+
+form.addEventListener('submit', function(e){
+  e.preventDefault();
+  const date = document.getElementById('date').value;
+  const activity = document.getElementById('activity').value;
+  const notes = document.getElementById('notes').value;
+  if(!date || !activity) return;
+  const item = document.createElement('div');
+  item.className = 'itinerary-item';
+  item.innerHTML = `<strong>${date}</strong> – ${activity}<br><small>${notes}</small>`;
+  list.appendChild(item);
+  form.reset();
+});
+
+clearBtn.addEventListener('click', ()=>{ list.innerHTML=''; });
+</script>
+
+</body>
+</html>
+
+
+

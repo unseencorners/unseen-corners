@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title data-lang="page-title">Unseen Corners – Nanda Devi</title>
+<style>
+  /* Full-page background */
+  body {
+    min-height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZgRr0ZO5wfb1xEDovxqwiylDpWV3qYMk3YA&s') no-repeat center center/cover;
+    background-attachment: fixed;
+    color: #fff;
+    padding-top: 70px; /* space for fixed header */
+  }
+
+  header {
+    background: rgba(27, 39, 53, 0.85); /* semi-transparent */
+    color: #fff;
+    padding: 15px 50px;
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;
+    position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+  }
+
+  header h1 { color: #f4c542; font-size: 22px; font-weight: bold; }
+  nav a { color: #fff; text-decoration: none; margin-left: 20px; font-size: 16px; }
+  nav a:hover { text-decoration: underline; }
+  .nav-btn { background: #f4c542; color: #000; font-weight: bold; padding: 8px 16px; border: none; border-radius: 5px; margin-left: 20px; cursor: pointer; }
+  .lang-select { margin-left: 20px; padding: 6px 10px; border-radius: 5px; border: none; font-size: 14px; cursor: pointer; }
+
+  /* Hero section transparent */
+  .hero {
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    padding: 50px 20px;
+    color: #fff;
+    min-height: 70vh;
+  }
+
+  .hero::before {
+    content: "";
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.4); /* optional overlay for readability */
+    z-index: 1;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    padding: 20px;
+  }
+
+  .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 20px; }
+  .info-card { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; padding: 15px; font-size: 15px; }
+
+  .view360, .itinerary { margin: 50px auto; max-width: 1000px; padding: 10px 20px; background: rgba(0,0,0,0.35); border-radius: 12px; }
+  .view360 iframe { width: 100%; height: 500px; border: none; border-radius: 12px; }
+
+  .itinerary h2 { text-align: center; margin-bottom: 20px; color: #f4c542; }
+
+  #itinerary-form { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; justify-content: center; }
+  #itinerary-form input, #itinerary-form textarea { padding: 8px; border: 1px solid #ccc; border-radius: 5px; }
+  #itinerary-form button { padding: 8px 16px; background: #27ae60; color: #fff; border: none; border-radius: 5px; cursor: pointer; }
+
+  .itinerary-item { padding: 10px; border: 1px solid #ccc; border-radius: 8px; margin-bottom: 10px; background: rgba(255,255,255,0.9); color: #000; }
+
+  footer { text-align: center; padding: 20px; background: rgba(27, 39, 53, 0.85); color: #fff; }
+
+  .fade { opacity: 0; transition: opacity 0.6s ease-in-out; }
+  .fade.show { opacity: 1; }
+
+  @media(max-width:768px){
+    .hero-content h2 { font-size: 24px; }
+    .view360 iframe { height: 300px; }
+  }
+</style>
+
+</head>
+<body>
+
+<header>
+  <h1 id="site-title">Unseen Corners</h1>
+  <nav>
+    <a href="index.html" data-lang="nav-home"><b>Home</b></a>
+    <a href="about14.html" data-lang="nav-about"><b>About</b></a>
+    <a href="contact.html" data-lang="nav-contact"><b>Contact</b></a>
+    <a href="t4.html" data-lang="nav-chat"><b>Chat Bot</b></a>
+    <button class="nav-btn" data-lang="nav-book" onclick="window.location.href='book.html'"><b>Book Now</b></button>
+    <select class="lang-select" id="language-select">
+      <option value="en">English</option>
+      <option value="hi">हिन्दी</option>
+      <option value="te">తెలుగు</option>
+    </select>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+    <h2 class="fade show" data-lang="title">🏔️ Nanda Devi – Goddess of the Mountains</h2>
+    <p class="fade show" data-lang="intro">Nanda Devi, standing at 7,816 m (25,643 ft), is the second-highest mountain in India. Located in Uttarakhand, it is a UNESCO World Heritage Site and a sacred symbol of protection and strength.</p>
+
+    <h3 class="fade show" data-lang="history-title">📜 History & Significance</h3>
+    <ul>
+      <li class="fade show" data-lang="history-1">First climbed in 1936 by British mountaineers Eric Shipton and H.W. Tilman.</li>
+      <li class="fade show" data-lang="history-2">The Nanda Devi Biosphere Reserve was established to protect its unique ecology.</li>
+      <li class="fade show" data-lang="history-3">Regarded as the abode of Goddess Nanda Devi, revered in local traditions.</li>
+      <li class="fade show" data-lang="history-4">Due to environmental concerns, access to the inner sanctuary is restricted.</li>
+    </ul>
+
+    <h3 class="fade show" data-lang="visit-title">🕒 Visiting Information</h3>
+    <div class="info-grid">
+      <div class="info-card fade show" data-lang="visit-time"><b>Best Trekking Season:</b><br> May–June and September–October.</div>
+      <div class="info-card fade show" data-lang="visit-location"><b>Location:</b><br> Uttarakhand, India (Chamoli District).</div>
+      <div class="info-card fade show" data-lang="visit-best"><b>Activities:</b><br> Trekking, wildlife watching, photography, cultural exploration.</div>
+    </div>
+  </div>
+</section>
+
+<section class="view360">
+  <h2 style="text-align:center; margin-bottom:15px; color:#1b2735;" data-lang="view360-title">🎥 Watch Video of Nanda Devi</h2>
+  <iframe width="100%" height="500" 
+          src="https://www.youtube.com/embed/oGzs8_E4z5s?autoplay=0&controls=1" 
+          title="Video of Nanda Devi" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+  </iframe>
+</section>
+
+
+<section class="itinerary">
+  <h2 data-lang="itinerary-title">🧭 Plan Your Itinerary</h2>
+  <form id="itinerary-form">
+    <input type="date" id="date" required aria-label="Date" />
+    <input type="text" id="activity" placeholder="Activity (e.g., Nanda Devi Trek)" required aria-label="Activity" />
+    <textarea id="notes" rows="1" placeholder="Notes (optional)" aria-label="Notes (optional)"></textarea>
+    <button type="submit" data-lang="btn-add">Add to Itinerary</button>
+    <button type="button" id="clear-itinerary" style="background:#c0392b;" data-lang="btn-clear">Clear All</button>
+  </form>
+  <div class="itinerary-list" id="itinerary-list"></div>
+  <div class="itinerary-list">
+    <h3 style="margin-top:30px;" data-lang="suggested-title">🗓️ Suggested Itinerary (Built‑in)</h3>
+    <div class="itinerary-item"><strong data-lang="day1-label">Day 1:</strong> <span data-lang="day1-activity">Arrive in Joshimath</span></div>
+    <div class="itinerary-item"><strong data-lang="day2-label">Day 2:</strong> <span data-lang="day2-activity">Drive to Lata Village, begin trek to Lata Kharak</span></div>
+    <div class="itinerary-item"><strong data-lang="day3-label">Day 3:</strong> <span data-lang="day3-activity">Trek to Dharansi Pass</span></div>
+    <div class="itinerary-item"><strong data-lang="day4-label">Day 4:</strong> <span data-lang="day4-activity">Explore Nanda Devi Outer Sanctuary</span></div>
+    <div class="itinerary-item"><strong data-lang="day5-label">Day 5–6:</strong> <span data-lang="day5-activity">Return trek and depart</span></div>
+  </div>
+</section>
+
+<footer>
+  <p class="fade show" data-lang="footer">&copy; 2025 Unseen Corners | All Rights Reserved</p>
+</footer>
+
+<script>
+  const translations = {
+    en: {
+      "page-title": "Unseen Corners – Nanda Devi",
+      "nav-home": "<b>Home</b>", "nav-about": "<b>About</b>", "nav-contact": "<b>Contact</b>", "nav-chat": "<b>Chat Bot</b>", "nav-book": "<b>Book Now</b>",
+      "footer": "&copy; 2025 Unseen Corners | All Rights Reserved",
+      "title": "🏔️ Nanda Devi – Goddess of the Mountains",
+      "intro": "Nanda Devi, standing at 7,816 m (25,643 ft), is the second-highest mountain in India. Located in Uttarakhand, it is a UNESCO World Heritage Site and a sacred symbol of protection and strength.",
+      "history-title": "📜 History & Significance",
+      "history-1": "First climbed in 1936 by British mountaineers Eric Shipton and H.W. Tilman.",
+      "history-2": "The Nanda Devi Biosphere Reserve was established to protect its unique ecology.",
+      "history-3": "Regarded as the abode of Goddess Nanda Devi, revered in local traditions.",
+      "history-4": "Due to environmental concerns, access to the inner sanctuary is restricted.",
+      "visit-title": "🕒 Visiting Information",
+      "visit-time": "<b>Best Trekking Season:</b><br> May–June and September–October.",
+      "visit-location": "<b>Location:</b><br> Uttarakhand, India (Chamoli District).",
+      "visit-best": "<b>Activities:</b><br> Trekking, wildlife watching, photography, cultural exploration.",
+      "view360-title": "🌐 Explore 360° View of Nanda Devi",
+      "itinerary-title": "🧭 Plan Your Itinerary",
+      "btn-add": "Add to Itinerary",
+      "btn-clear": "Clear All",
+      "suggested-title": "🗓️ Suggested Itinerary (Built‑in)",
+      "day1-label": "Day 1:", "day1-activity": "Arrive in Joshimath",
+      "day2-label": "Day 2:", "day2-activity": "Drive to Lata Village, begin trek to Lata Kharak",
+      "day3-label": "Day 3:", "day3-activity": "Trek to Dharansi Pass",
+      "day4-label": "Day 4:", "day4-activity": "Explore Nanda Devi Outer Sanctuary",
+      "day5-label": "Day 5–6:", "day5-activity": "Return trek and depart"
+    },
+    hi: {
+      "page-title": "अनसीन कॉर्नर्स – नंदा देवी",
+      "nav-home": "<b>होम</b>", "nav-about": "<b>परिचय</b>", "nav-contact": "<b>संपर्क</b>", "nav-chat": "<b>चैट बॉट</b>", "nav-book": "<b>बुक करें</b>",
+      "footer": "&copy; 2025 अनसीन कॉर्नर्स | सर्वाधिकार सुरक्षित",
+      "title": "🏔️ नंदा देवी – पर्वतों की देवी",
+      "intro": "नंदा देवी, जिसकी ऊंचाई 7,816 मीटर (25,643 फीट) है, भारत की दूसरी सबसे ऊँची चोटी है। यह उत्तराखंड में स्थित है और एक यूनेस्को विश्व धरोहर स्थल है।",
+      "history-title": "📜 इतिहास और महत्व",
+      "history-1": "1936 में ब्रिटिश पर्वतारोहियों एरिक शिपटन और एच.डब्ल्यू. टिलमन द्वारा पहली चढ़ाई।",
+      "history-2": "नंदा देवी जैव क्षेत्र आरक्षित क्षेत्र (बायोस्फीयर रिज़र्व) इसकी अनूठी पारिस्थितिकी की रक्षा हेतु स्थापित किया गया।",
+      "history-3": "स्थानीय परंपराओं में इसे देवी नंदा देवी का निवास स्थान माना जाता है।",
+      "history-4": "पर्यावरणीय कारणों से आंतरिक अभयारण्य तक पहुँच प्रतिबंधित है।",
+      "visit-title": "🕒 यात्रा जानकारी",
+      "visit-time": "<b>उत्तम मौसम:</b><br> मई–जून और सितंबर–अक्टूबर।",
+      "visit-location": "<b>स्थान:</b><br> उत्तराखंड, भारत (चमोली ज़िला)।",
+      "visit-best": "<b>गतिविधियाँ:</b><br> ट्रेकिंग, वन्यजीव अवलोकन, फोटोग्राफी, सांस्कृतिक अन्वेषण।",
+      "view360-title": "🌐 नंदा देवी का 360° दृश्य देखें",
+      "itinerary-title": "🧭 अपनी यात्रा योजना बनाएँ",
+      "btn-add": "यात्रा जोड़ें",
+      "btn-clear": "सभी हटाएं",
+      "suggested-title": "🗓️ प्रस्तावित यात्रा कार्यक्रम",
+      "day1-label": "दिन 1:", "day1-activity": "जोशिमठ में आगमन",
+      "day2-label": "दिन 2:", "day2-activity": "लता गाँव की ओर ड्राइव, लता खरक की ओर ट्रेक शुरू",
+      "day3-label": "दिन 3:", "day3-activity": "धराँसी पास तक ट्रेक",
+      "day4-label": "दिन 4:", "day4-activity": "नंदा देवी बाहरी अभयारण्य की खोज",
+      "day5-label": "दिन 5–6:", "day5-activity": "वापसी ट्रेक और प्रस्थान"
+    },
+    te: {
+      "page-title": "అన్‌సీన్ కార్నర్స్ – నందా దేవి",
+      "nav-home": "<b>హోమ్</b>", "nav-about": "<b>గురించి</b>", "nav-contact": "<b>సంప్రదించండి</b>", "nav-chat": "<b>చాట్ బాట్</b>", "nav-book": "<b>బుక్ చేయండి</b>",
+      "footer": "&copy; 2025 అన్‌సీన్ కార్నర్స్ | అన్ని హక్కులు सुरक्षित",
+      "title": "🏔️ నందా దేవి – పర్వత దేవి",
+      "intro": "నందా దేవి, ఎత్తు 7,816 మీటర్లు (25,643 అడుగులు), భారతదేశంలో రెండవ అత్యున్నత పర్వతం. ఇది ఉత్తరాఖండ్‌లో ఉంది మరియు యునెస్కో ప్రపంచ వారసత్వ స్థలం.",
+      "history-title": "📜 చరిత్ర & ప్రాముఖ్యత",
+      "history-1": "1936లో బ్రిటిష్ ఎక్స్పిడిషన్ ఎరిక్ షిప్టన్ & H.W. టిల్మాన్‌చే తొలి ఎక్కుదల.",
+      "history-2": "నందా దేవి బయోస్పియర్ రీజర్వ్ యొక్క ప్రత్యేక జీవవైవిధ్యాన్ని రక్షించడానికి ఏర్పాటు చేయబడింది.",
+      "history-3": "స్థానిక సంప్రదాయాలలో ఇది దేవి నందా దేవి నివాస స్థలంగా భావించబడుతుంది.",
+      "history-4": "పర్యావరణ పరిరక్షణ కారణంగా అంతర్గత ఆనందశాల ప్రాంతానికి ప్రవేశం పరిమితం.",
+      "visit-title": "🕒 సందర్శన సమాచారం",
+      "visit-time": "<b>ఉత్తమ సీజన్:</b><br> మే–జూన్ & సెప్టెంబర్–అక్టోబర్.",
+      "visit-location": "<b>స్థానం:</b><br> ఉత్తరాఖండ్, భారత్ (చమోలీ జిల్లా).",
+      "visit-best": "<b>చర్యలు:</b><br> ట్రెక్కింగ్, జంతు పరిశీలన, ఫోటోగ్రఫీ, సాంస్కృతిక పరిశీలన.",
+      "view360-title": "🌐 నందా దేవి యొక్క 360° వీక్షణ",
+      "itinerary-title": "🧭 మీ యాత్ర ప్రణాళిక",
+      "btn-add": "యాత్ర జోడించండి",
+      "btn-clear": "అన్నీ తొలగించండి",
+      "suggested-title": "🗓️ ప్రతిపాదిత యాత్ర పథకం",
+      "day1-label": "దిన 1:", "day1-activity": "జోషిమాథ్ చేరిక",
+      "day2-label": "దిన 2:", "day2-activity": "లటా గ్రామానికి డ్రైవ్, లటా ఖరక్ ట్రెక్క్ మొదలు",
+      "day3-label": "దిన 3:", "day3-activity": "ధరాన్సీ పాస్ వరకు ట్రెక్క్",
+      "day4-label": "దిన 4:", "day4-activity": "నందా దేవి బయటి అభయారణ్యాన్ని అన్వేషించండి",
+      "day5-label": "దిన 5–6:", "day5-activity": "వాపసి ట్రెక్క్ & బయలు"
+    }
+  };
+
+  const langSelect = document.getElementById('language-select');
+  langSelect.addEventListener('change', e => {
+    const lang = e.target.value;
+    document.querySelectorAll('[data-lang]').forEach(el => {
+      const key = el.getAttribute('data-lang');
+      if (translations[lang] && translations[lang][key]) {
+        el.classList.remove('show');
+        setTimeout(() => {
+          el.innerHTML = translations[lang][key];
+          el.classList.add('show');
+        }, 300);
+      }
+    });
+    document.title = translations[lang]?.["page-title"] || document.title;
+  });
+
+  // Itinerary builder logic (unchanged)
+  const form = document.getElementById('itinerary-form');
+  const list = document.getElementById('itinerary-list');
+  const clearBtn = document.getElementById('clear-itinerary');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const date = document.getElementById('date').value;
+    const activity = document.getElementById('activity').value;
+    const notes = document.getElementById('notes').value;
+    if (!date || !activity) return;
+
+    const item = document.createElement('div');
+    item.className = 'itinerary-item';
+    item.innerHTML = `<strong>${date}</strong> – ${activity}<br><small>${notes}</small>`;
+    list.appendChild(item);
+
+    form.reset();
+  });
+
+  clearBtn.addEventListener('click', () => {
+    list.innerHTML = '';
+  });
+</script>
+
+</body>
+</html>
+
+
+

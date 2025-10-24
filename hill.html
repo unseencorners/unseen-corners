@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Packages</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      background: #f5f5f5;
+      font-family: Arial, sans-serif;
+    }
+
+    header {
+      background: #1b2735;
+      color: #fff;
+      padding: 15px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 { color: #f4c542; font-size: 22px; font-weight: bold; }
+    nav a {
+      color: #fff; text-decoration: none; margin-left: 20px; font-size: 16px;
+    }
+    nav a:hover { text-decoration: underline; }
+    .nav-btn {
+      background: #f4c542; color: #000; font-weight: bold;
+      padding: 8px 16px; border: none; border-radius: 5px;
+      margin-left: 20px; cursor: pointer;
+    }
+    .nav-btn:hover { background: #e3b72c; }
+    .lang-select {
+      margin-left: 20px; padding: 6px 10px; border-radius: 5px;
+      border: none; font-size: 14px; cursor: pointer;
+    }
+
+    .packages {
+      padding: 40px 20px;
+    }
+    .packages h2 {
+      text-align: center;
+      font-size: 28px;
+      margin-bottom: 30px;
+    }
+    .package-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      width: 250px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .card:hover img {
+      transform: scale(1.1);
+    }
+    .card-body {
+      padding: 15px;
+      text-align: left;
+    }
+    .card-body h3 {
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 16px;
+      background: #1a237e;
+      color: #fff;
+      font-weight: bold;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+      cursor: pointer;
+    }
+    .btn:hover {
+      background: #121858;
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    @media (max-width: 1024px) {
+      .packages { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 480px) {
+      .packages { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1 id="site-title">Unseen Corners</h1>
+  <nav>
+    <a href="index.html" id="nav-home">Home</a>
+    <a href="about14.html" id="nav-about">About</a>
+    <a href="contact.html" id="nav-contact">Contact</a>
+    <a href="t4.html" id="nav-chatBot">Chat Bot</a>
+    <button class="nav-btn" id="book-btn">Book Now</button>
+    <button class="nav-btn" id="Login-btn" onclick="window.location.href='l.html'">Login</button>
+    <select class="lang-select" id="language-select" onchange="changeLanguage()">
+      <option value="en">English</option>
+      <option value="hi">हिन्दी</option>
+      <option value="te">తెలుగు</option>
+    </select>
+  </nav>
+</header>
+
+<section class="packages">
+  <h2 id="packages-title">Hills Packages</h2>
+  <div class="package-list">
+
+    <div class="card">
+      <img src="nilgiri.jpg" alt="Nilagiri hills">
+      <div class="card-body">
+        <h3 id="pkg1-title">Nilagiri Hills</h3>
+        <a href="#" class="btn">View Details</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="aravali.jpg" alt="Aravalli hills">
+      <div class="card-body">
+        <h3 id="pkg2-title">Aravalli Hills</h3>
+        <a href="#" class="btn">View Details</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="shilling.jpg" alt="Shillong hills">
+      <div class="card-body">
+        <h3 id="pkg3-title">Shillong Hills</h3>
+        <a href="#" class="btn">View Details</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="dhauladhar.jpg" alt="Dhaulandhar hills">
+      <div class="card-body">
+        <h3 id="pkg4-title">Dhaulandhar Hills</h3>
+        <a href="#" class="btn">View Details</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="satpura.jpg" alt="Satpura hills">
+      <div class="card-body">
+        <h3 id="pkg5-title">Satpura Hills</h3>
+        <a href="#" class="btn">View Details</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="cardmom.jpg" alt="Cardmom hills">
+      <div class="card-body">
+        <h3 id="pkg6-title">Cardmom Hills</h3>
+        <a href="#" class="btn">View Details</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="anamali.jpg" alt="Anamalai hills">
+      <div class="card-body">
+        <h3 id="pkg7-title">Anamalai Hills</h3>
+        <a href="#" class="btn">View Details</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="khasi.jpg" alt="Khasi hills">
+      <div class="card-body">
+        <h3 id="pkg8-title">Khasi Hills</h3>
+        <a href="#" class="btn">View Details</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="vindya.jpg" alt="Vindya hills">
+      <div class="card-body">
+        <h3 id="pkg9-title">Vindya Hills</h3>
+        <a href="#" class="btn">View Details</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const translations = {
+    en: {
+      siteTitle: "Unseen Corners",
+      navHome: "Home",
+      navAbout: "About",
+      navContact: "Contact",
+      navChatBot: "Chat Bot",
+      navBookNow: "Book Now",
+      navLogin: "Login",
+      packagesTitle: "Hills Packages",
+      pkg1: { title: "Nilagiri Hills" },
+      pkg2: { title: "Aravalli Hills" },
+      pkg3: { title: "Shillong Hills" },
+      pkg4: { title: "Dhaulandhar Hills" },
+      pkg5: { title: "Satpura Hills" },
+      pkg6: { title: "Cardmom Hills" },
+      pkg7: { title: "Anamalai Hills" },
+      pkg8: { title: "Khasi Hills" },
+      pkg9: { title: "Vindya Hills" }
+    },
+    hi: {
+      siteTitle: "अनसीन कॉर्नर्स",
+      navHome: "होम",
+      navAbout: "के बारे में",
+      navContact: "संपर्क",
+      navChatBot: "चैट बॉट",
+      navBookNow: "अभी बुक करें",
+      navLogin: "लॉगिन",
+      packagesTitle: "पहाड़ पैकेज",
+      pkg1: { title: "नीलगिरी पहाड़" },
+      pkg2: { title: "अरावली पहाड़" },
+      pkg3: { title: "शिलॉन्ग पहाड़" },
+      pkg4: { title: "धौलंधर पहाड़" },
+      pkg5: { title: "सतपुड़ा पहाड़" },
+      pkg6: { title: "कार्डमॉम पहाड़" },
+      pkg7: { title: "अनमलाई पहाड़" },
+      pkg8: { title: "खासी पहाड़" },
+      pkg9: { title: "विंद्य पहाड़" }
+    },
+    te: {
+      siteTitle: "అన్సీన్ కార్నర్స్",
+      navHome: "హోమ్",
+      navAbout: "గురించి",
+      navContact: "సంప్రదించండి",
+      navChatBot: "చాట్ బాట్",
+      navBookNow: "బుక్ చేయండి",
+      navLogin: "లాగిన్",
+      packagesTitle: "కొండల ప్యాకేజీలు",
+      pkg1: { title: "నీలగిరి కొండలు" },
+      pkg2: { title: "అరావళి కొండలు" },
+      pkg3: { title: "శిలాంగ్ కొండలు" },
+      pkg4: { title: "ధౌలంధర్ కొండలు" },
+      pkg5: { title: "సత్పురా కొండలు" },
+      pkg6: { title: "కార్డ్మామ్ కొండలు" },
+      pkg7: { title: "అనమలై కొండలు" },
+      pkg8: { title: "ఖాసి కొండలు" },
+      pkg9: { title: "వింద్య కొండలు" }
+    }
+  };
+
+  function changeLanguage() {
+    const lang = document.getElementById("language-select").value;
+    const t = translations[lang];
+
+    const elementsMap = {
+      "site-title": "siteTitle",
+      "nav-home": "navHome",
+      "nav-about": "navAbout",
+      "nav-contact": "navContact",
+      "nav-chatBot": "navChatBot",
+      "book-btn": "navBookNow",
+      "Login-btn": "navLogin",
+      "packages-title": "packagesTitle"
+    };
+
+    for (const id in elementsMap) {
+      document.getElementById(id).innerText = t[elementsMap[id]];
+    }
+
+    for (let i = 1; i <= 9; i++) {
+      document.getElementById(`pkg${i}-title`).innerText = t[`pkg${i}`].title;
+    }
+  }
+
+  document.getElementById("language-select").value = "te";
+  changeLanguage();
+
+  window.changeLanguage = changeLanguage; // Expose globally for onchange
+});
+</script>
+
+</body>
+</html>

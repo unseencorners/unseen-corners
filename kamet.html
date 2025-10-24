@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title data-lang="page-title">Unseen Corners – Kamet</title>
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+
+    body {
+      line-height: 1.6;
+      color: #fff;
+      background: url('https://t3.ftcdn.net/jpg/12/40/95/86/360_F_1240958638_uS7Zc1tY785uaQXArjER7mfTDC6XDRlq.jpg') no-repeat center center fixed;
+      background-size: cover;
+      min-height: 100vh;
+    }
+
+    header {
+      background: rgba(27, 39, 53, 0.85);
+      color: #fff;
+      padding: 15px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    header h1 { color: #f4c542; font-size: 22px; font-weight: bold; }
+    nav a { color: #fff; text-decoration: none; margin-left: 20px; font-size: 16px; }
+    nav a:hover { text-decoration: underline; }
+    .nav-btn { background: #f4c542; color: #000; font-weight: bold; padding: 8px 16px; border: none; border-radius: 5px; margin-left: 20px; cursor: pointer; }
+    .lang-select { margin-left: 20px; padding: 6px 10px; border-radius: 5px; border: none; font-size: 14px; cursor: pointer; }
+
+    .content {
+      margin-top: 100px;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    h2, h3 { color: #f4c542; text-align: center; }
+
+    .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-top: 20px; }
+    .info-card { background: rgba(255,255,255,0.15); padding: 15px; border-radius: 8px; color: #fff; }
+
+    .itinerary { margin: 40px auto; max-width: 900px; background: rgba(0,0,0,0.5); padding: 20px; border-radius: 10px; }
+
+    #itinerary-form { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 20px; }
+    #itinerary-form input, #itinerary-form textarea { padding: 8px; border: 1px solid #ccc; border-radius: 5px; width: 200px; }
+    #itinerary-form button { padding: 8px 16px; background: #27ae60; color: #fff; border: none; border-radius: 5px; cursor: pointer; }
+
+    .itinerary-item { padding: 10px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; margin-bottom: 10px; color: #fff; }
+
+    footer { text-align: center; padding: 20px; background: rgba(27, 39, 53, 0.9); color: #fff; margin-top: 30px; border-radius: 10px; }
+
+    iframe {
+      display: block;
+      width: 100%;
+      height: 450px;
+      border: none;
+      border-radius: 10px;
+    }
+
+    @media(max-width:768px){
+      iframe { height: 300px; }
+      #itinerary-form input, #itinerary-form textarea { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1 id="site-title">Unseen Corners</h1>
+  <nav>
+    <a href="index.html" data-lang="nav-home"><b>Home</b></a>
+    <a href="about14.html" data-lang="nav-about"><b>About</b></a>
+    <a href="contact.html" data-lang="nav-contact"><b>Contact</b></a>
+    <a href="t4.html" data-lang="nav-chat"><b>Chat Bot</b></a>
+    <button class="nav-btn" data-lang="nav-book" onclick="window.location.href='book.html'"<b>Book Now</b></button>
+    <select class="lang-select" id="language-select">
+      <option value="en">English</option>
+      <option value="hi">हिन्दी</option>
+      <option value="te">తెలుగు</option>
+    </select>
+  </nav>
+</header>
+
+<div class="content">
+  <h2 data-lang="title">🏔️ Kamet – The Giant of Garhwal Himalaya</h2>
+  <p data-lang="intro">Kamet, at 7,756 m (25,446 ft), is the third-highest mountain in the Garhwal region of Uttarakhand, India. It is known for its majestic peak and challenging climbs.</p>
+
+  <h3 data-lang="visit-title">🕒 Visiting Information</h3>
+  <div class="info-grid">
+    <div class="info-card" data-lang="visit-time"><b>Best Trekking Season:</b><br> May–June and September–October.</div>
+    <div class="info-card" data-lang="visit-location"><b>Location:</b><br> Uttarakhand, India (Chamoli District).</div>
+    <div class="info-card" data-lang="visit-best"><b>Activities:</b><br> Mountaineering, trekking, wildlife photography, cultural visits.</div>
+  </div>
+</div>
+
+<div class="view360">
+  <h2 data-lang="view360-title" style="text-align:center;">🎥 Kamet View Video</h2>
+  <iframe src="https://www.youtube.com/embed/fftD7d6VxWs" allowfullscreen></iframe>
+</div>iv>
+
+<div class="itinerary">
+  <h2 data-lang="itinerary-title">🧭 Plan Your Itinerary</h2>
+  <form id="itinerary-form">
+    <input type="date" id="date" required />
+    <input type="text" id="activity" placeholder="Activity" required />
+    <textarea id="notes" rows="1" placeholder="Notes (optional)"></textarea>
+    <button type="submit" data-lang="btn-add">Add</button>
+    <button type="button" id="clear-itinerary" style="background:#c0392b;" data-lang="btn-clear">Clear</button>
+  </form>
+  <div class="itinerary-list" id="itinerary-list"></div>
+</div>
+
+<footer>
+  <p data-lang="footer">&copy; 2025 Unseen Corners | All Rights Reserved</p>
+</footer>
+
+<script>
+const translations = {
+  en: {
+    "page-title": "Unseen Corners – Kamet",
+    "nav-home": "<b>Home</b>", "nav-about": "<b>About</b>", "nav-contact": "<b>Contact</b>", "nav-chat": "<b>Chat Bot</b>", "nav-book": "<b>Book Now</b>",
+    "title": "🏔️ Kamet – The Giant of Garhwal Himalaya",
+    "intro": "Kamet, at 7,756 m (25,446 ft), is the third-highest mountain in the Garhwal region of Uttarakhand, India.",
+    "visit-title": "🕒 Visiting Information",
+    "visit-time": "<b>Best Trekking Season:</b><br> May–June and September–October.",
+    "visit-location": "<b>Location:</b><br> Uttarakhand, India (Chamoli District).",
+    "visit-best": "<b>Activities:</b><br> Mountaineering, trekking, wildlife photography, cultural visits.",
+    "view360-title": "🎥 Kamet View Video",
+    "itinerary-title": "🧭 Plan Your Itinerary",
+    "btn-add": "Add", "btn-clear": "Clear",
+    "footer": "&copy; 2025 Unseen Corners | All Rights Reserved"
+  },
+  hi: {
+    "page-title": "अनसीन कॉर्नर्स – कामेत",
+    "nav-home": "<b>होम</b>", "nav-about": "<b>परिचय</b>", "nav-contact": "<b>संपर्क</b>", "nav-chat": "<b>चैट बॉट</b>", "nav-book": "<b>बुक करें</b>",
+    "title": "🏔️ कामेत – गढ़वाल हिमालय का दिग्गज",
+    "intro": "कामेत, जिसकी ऊँचाई 7,756 मीटर है, उत्तराखंड के गढ़वाल क्षेत्र का तीसरा सबसे ऊँचा पर्वत है।",
+    "visit-title": "🕒 यात्रा जानकारी",
+    "visit-time": "<b>सर्वश्रेष्ठ ट्रेकिंग मौसम:</b><br> मई–जून और सितंबर–अक्टूबर।",
+    "visit-location": "<b>स्थान:</b><br> उत्तराखंड, भारत (चमोली जिला)।",
+    "visit-best": "<b>गतिविधियाँ:</b><br> पर्वतारोहण, ट्रेकिंग, फोटोग्राफी, सांस्कृतिक भ्रमण।",
+    "view360-title": "🎥 कामेत वीडियो देखें",
+    "itinerary-title": "🧭 अपनी यात्रा योजना बनाएं",
+    "btn-add": "जोड़ें", "btn-clear": "साफ़ करें",
+    "footer": "&copy; 2025 अनसीन कॉर्नर्स | सर्वाधिकार सुरक्षित"
+  },
+  te: {
+    "page-title": "అన్సీన్ కార్నర్స్ – కామెట్",
+    "nav-home": "<b>హోమ్</b>", "nav-about": "<b>గురించి</b>", "nav-contact": "<b>సంప్రదించండి</b>", "nav-chat": "<b>చాట్ బాట్</b>", "nav-book": "<b>బుక్ చేయండి</b>",
+    "title": "🏔️ కామెట్ – గర్హ్వాల్ హిమాలయ మహాకాయుడు",
+    "intro": "కామెట్ 7,756 మీటర్ల ఎత్తుతో ఉత్తరాఖండ్ గర్హ్వాల్ ప్రాంతంలో మూడవ ఎత్తైన పర్వతం.",
+    "visit-title": "🕒 సందర్శన సమాచారం",
+    "visit-time": "<b>ఉత్తమ ట్రెక్కింగ్ కాలం:</b><br> మే–జూన్ మరియు సెప్టెంబర్–అక్టోబర్.",
+    "visit-location": "<b>స్థానం:</b><br> ఉత్తరాఖండ్, ఇండియా (చమోలి జిల్లా).",
+    "visit-best": "<b>కార్యకలాపాలు:</b><br> పర్వతారోహణ, ట్రెక్కింగ్, వన్యప్రాణి ఫోటోగ్రఫీ, సాంస్కృతిక పర్యటనలు.",
+    "view360-title": "🎥 కామెట్ వీడియో వీక్షించండి",
+    "itinerary-title": "🧭 మీ యాత్ర ప్రణాళిక చేయండి",
+    "btn-add": "జోడించు", "btn-clear": "తొలగించు",
+    "footer": "&copy; 2025 అన్సీన్ కార్నర్స్ | అన్ని హక్కులు రిజర్వ్ చేయబడ్డాయి"
+  }
+};
+
+const langSelect = document.getElementById('language-select');
+function setLanguage(lang) {
+  document.querySelectorAll('[data-lang]').forEach(el => {
+    const key = el.getAttribute('data-lang');
+    if (translations[lang] && translations[lang][key]) {
+      el.innerHTML = translations[lang][key];
+    }
+  });
+}
+
+langSelect.addEventListener('change', e => setLanguage(e.target.value));
+
+// Itinerary builder with localStorage
+const form = document.getElementById('itinerary-form');
+const itineraryList = document.getElementById('itinerary-list');
+const clearBtn = document.getElementById('clear-itinerary');
+
+let itineraryItems = JSON.parse(localStorage.getItem('kametItinerary')) || [];
+
+function renderItinerary() {
+  itineraryList.innerHTML = '';
+  itineraryItems.forEach(({date, activity, notes}, i) => {
+    const div = document.createElement('div');
+    div.className = 'itinerary-item';
+    div.innerHTML = `<strong>${date}:</strong> ${activity} ${notes ? `<br><em>${notes}</em>` : ''} 
+    <button onclick="removeItem(${i})" style="float:right;background:#e74c3c;color:#fff;border:none;padding:2px 8px;border-radius:4px;cursor:pointer;">✕</button>`;
+    itineraryList.appendChild(div);
+  });
+}
+
+function removeItem(i){
+  itineraryItems.splice(i,1);
+  localStorage.setItem('kametItinerary', JSON.stringify(itineraryItems));
+  renderItinerary();
+}
+window.removeItem = removeItem;
+
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  const date = form.date.value;
+  const activity = form.activity.value.trim();
+  const notes = form.notes.value.trim();
+  if(date && activity){
+    itineraryItems.push({date, activity, notes});
+    localStorage.setItem('kametItinerary', JSON.stringify(itineraryItems));
+    renderItinerary();
+    form.reset();
+  }
+});
+
+clearBtn.addEventListener('click', () => {
+  itineraryItems = [];
+  localStorage.removeItem('kametItinerary');
+  renderItinerary();
+});
+
+setLanguage('en');
+renderItinerary();
+</script>
+
+</body>
+</html>
+
+

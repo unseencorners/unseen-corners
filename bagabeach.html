@@ -1,0 +1,314 @@
+<!-- Baga Beach Page | Unseen Corners -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title data-lang="page-title">Unseen Corners – Baga Beach</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Poppins", sans-serif; }
+    body {
+      background: url('https://q-xx.bstatic.com/xdata/images/hotel/max1024x768/579636323.jpg?k=c54e66e68ff799e768319352bb011f4a6a057869952d7b1913ecb53b7a82e566&o=') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      line-height: 1.6;
+      min-height: 100vh;
+      padding-top: 80px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    header {
+      background: rgba(1,87,155,0.9);
+      color: #fff;
+      padding: 15px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; z-index: 1000;
+    }
+    header h1 { color: #ffca28; font-size: 22px; font-weight: bold; }
+    nav a { color: white; text-decoration: none; margin-left: 20px; font-weight: 500; }
+    nav a:hover { text-decoration: underline; }
+    .nav-btn {
+      background: #ffca28; color: #01579b; font-weight: bold;
+      padding: 8px 16px; border: none; border-radius: 6px;
+      margin-left: 20px; cursor: pointer;
+    }
+    .nav-btn:hover { background: #ffd54f; }
+    .lang-select {
+      margin-left: 20px; padding: 6px 10px; border-radius: 5px;
+      border: none; font-size: 14px; cursor: pointer;
+    }
+
+    .hero {
+      height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center; position: relative;
+      padding-top: 70px;
+    }
+    .hero::before {
+      content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.5); z-index: 1;
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 800px; padding: 20px; }
+    .hero-content h2 { font-size: 34px; margin-bottom: 15px; color: #ffca28; }
+    .hero-content p { font-size: 18px; margin-bottom: 20px; }
+
+    .info-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 15px; margin-top: 20px;
+    }
+    .info-card {
+      background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 8px; padding: 15px; font-size: 15px; color: #fff;
+    }
+
+    .view360 {
+      margin: 60px auto; max-width: 1000px;
+      padding: 15px; border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      background: rgba(255,255,255,0.1);
+    }
+    .view360 iframe { width: 100%; height: 500px; border: none; border-radius: 12px; }
+
+    .itinerary {
+      max-width: 900px; margin: 50px auto; padding: 25px;
+      background: rgba(255,255,255,0.2); border-radius: 10px;
+    }
+    .itinerary h2 { text-align: center; color: #ffca28; margin-bottom: 20px; }
+    .itinerary form { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 20px; }
+    .itinerary input, .itinerary textarea {
+      padding: 10px; border: 1px solid #ccc; border-radius: 5px;
+      width: 100%; max-width: 250px; font-size: 14px;
+    }
+    .itinerary button {
+      background: #01579b; color: white; padding: 10px 20px;
+      border: none; border-radius: 5px; cursor: pointer;
+    }
+    .itinerary button:hover { background: #003d73; }
+    .itinerary-item {
+      background: rgba(0,0,0,0.3); padding: 15px; border-left: 4px solid #ffca28;
+      margin-bottom: 10px; border-radius: 5px;
+    }
+
+    footer {
+      text-align: center; padding: 20px;
+      background: rgba(1,87,155,0.9); color: white;
+      margin-top: 50px;
+    }
+
+    @media(max-width:768px){
+      .hero-content h2 { font-size: 26px; }
+      .hero-content p { font-size: 16px; }
+      .view360 iframe { height: 300px; }
+      .itinerary form { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1 data-lang="site-title">Unseen Corners</h1>
+  <nav>
+    <a href="index.html" data-lang="nav-home"><b>Home</b></a>
+    <a href="about14.html" data-lang="nav-about"><b>About</b></a>
+    <a href="contact.html" data-lang="nav-contact"><b>Contact</b></a>
+    <a href="t4.html" data-lang="nav-chat"><b>Chat Bot</b></a>
+    <button class="nav-btn" onclick="window.location.href='book.html'" data-lang="nav-book"><b>Book Now</b></button>
+    <select class="lang-select" id="language-select">
+      <option value="en">English</option>
+      <option value="hi">हिन्दी</option>
+      <option value="te">తెలుగు</option>
+    </select>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+    <h2 data-lang="title">🏖️ Baga Beach, Goa</h2>
+    <p data-lang="intro">Baga Beach, located in North Goa, is one of India’s most popular beach destinations...</p>
+
+    <h3 data-lang="highlights-title">🌅 Highlights & Facts</h3>
+    <div class="info-grid">
+      <div class="info-card" data-lang="high-1">Famous for water sports like parasailing, jet-skiing, and banana rides.</div>
+      <div class="info-card" data-lang="high-2">Home to iconic clubs like Tito’s and Britto’s beach shack.</div>
+      <div class="info-card" data-lang="high-3">Located close to Calangute Beach and Anjuna Beach.</div>
+      <div class="info-card" data-lang="high-4">Perfect for sunsets, seafood, and lively music scenes.</div>
+    </div>
+
+    <h3 data-lang="visit-title">🕒 Visitor Information</h3>
+    <div class="info-grid">
+      <div class="info-card" data-lang="time">Timings: Open 24 hours</div>
+      <div class="info-card" data-lang="location">Location: North Goa, near Calangute</div>
+      <div class="info-card" data-lang="best-time">Best Time: November – February</div>
+    </div>
+  </div>
+</section>
+
+<section class="view360">
+  <h2 style="text-align:center; margin-bottom:15px; color:#ffca28;" data-lang="view360-title">🌐 Explore 360° View of Baga Beach</h2>
+ <iframe src="https://www.google.com/maps/embed?pb=!4v1760026346625!6m8!1m7!1sCAoSF0NJSE0wb2dLRUlDQWdJRFI5Y1d3OWdF!2m2!1d15.55527870172785!2d73.75173070181762!3f37.5500869397803!4f-66.88787856572824!5f0.7820865974627469" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</section>
+
+<section class="itinerary">
+  <h2 data-lang="itinerary-title">🧭 Plan Your Baga Beach Trip</h2>
+  <form id="itinerary-form">
+    <input type="date" id="date" required />
+    <input type="text" id="activity" placeholder="Activity (e.g., Water Sports, Night Party)" required />
+    <textarea id="notes" rows="1" placeholder="Notes (optional)"></textarea>
+    <button type="submit" data-lang="btn-add">Add to Itinerary</button>
+    <button type="button" id="clear-itinerary" style="background:#c0392b;" data-lang="btn-clear">Clear All</button>
+  </form>
+  <div id="itinerary-list"></div>
+
+  <div class="itinerary-list">
+    <h3 style="margin-top:30px;" data-lang="itinerary-suggested-title">🗓 Suggested Itinerary</h3>
+    <div class="itinerary-item" data-lang="day1-morning"><strong>Day 1 - Morning:</strong> Relax on the beach and try parasailing or jet-skiing.</div>
+    <div class="itinerary-item" data-lang="day1-afternoon"><strong>Day 1 - Afternoon:</strong> Enjoy seafood lunch at Britto’s or St. Anthony’s shack.</div>
+    <div class="itinerary-item" data-lang="day1-night"><strong>Day 1 - Night:</strong> Experience the lively club scene at Tito’s Lane.</div>
+    <div class="itinerary-item" data-lang="day2-morning"><strong>Day 2 - Morning:</strong> Visit nearby Calangute Beach or take a dolphin cruise.</div>
+    <div class="itinerary-item" data-lang="day2-evening"><strong>Day 2 - Evening:</strong> Watch the sunset and enjoy Goan folk performances.</div>
+  </div>
+</section>
+
+<footer>
+  <p data-lang="footer">© 2025 Unseen Corners | All Rights Reserved</p>
+</footer>
+
+<script>
+const translations = {
+  en: {
+    "page-title":"Unseen Corners – Baga Beach",
+    "site-title":"Unseen Corners",
+    "nav-home":"Home",
+    "nav-about":"About",
+    "nav-contact":"Contact",
+    "nav-chat":"Chat Bot",
+    "nav-book":"Book Now",
+    "title":"🏖️ Baga Beach, Goa",
+    "intro":"Baga Beach, located in North Goa, is one of India’s most popular beach destinations. Known for its golden sands, vibrant nightlife, beach shacks, and thrilling water sports, it’s a perfect blend of relaxation and excitement by the Arabian Sea.",
+    "highlights-title":"🌅 Highlights & Facts",
+    "high-1":"Famous for water sports like parasailing, jet-skiing, and banana rides.",
+    "high-2":"Home to iconic clubs like Tito’s and Britto’s beach shack.",
+    "high-3":"Located close to Calangute Beach and Anjuna Beach.",
+    "high-4":"Perfect for sunsets, seafood, and lively music scenes.",
+    "visit-title":"🕒 Visitor Information",
+    "time":"Timings: Open 24 hours",
+    "location":"Location: North Goa, near Calangute",
+    "best-time":"Best Time: November – February",
+    "view360-title":"🌐 Explore 360° View of Baga Beach",
+    "itinerary-title":"🧭 Plan Your Baga Beach Trip",
+    "btn-add":"Add to Itinerary",
+    "btn-clear":"Clear All",
+    "itinerary-suggested-title":"🗓 Suggested Itinerary",
+    "day1-morning":"<strong>Day 1 - Morning:</strong> Relax on the beach and try parasailing or jet-skiing.",
+    "day1-afternoon":"<strong>Day 1 - Afternoon:</strong> Enjoy seafood lunch at Britto’s or St. Anthony’s shack.",
+    "day1-night":"<strong>Day 1 - Night:</strong> Experience the lively club scene at Tito’s Lane.",
+    "day2-morning":"<strong>Day 2 - Morning:</strong> Visit nearby Calangute Beach or take a dolphin cruise.",
+    "day2-evening":"<strong>Day 2 - Evening:</strong> Watch the sunset and enjoy Goan folk performances.",
+    "footer":"© 2025 Unseen Corners | All Rights Reserved"
+  },
+  hi: {
+    "page-title":"अनसीन कॉर्नर्स – बागा बीच",
+    "site-title":"अनसीन कॉर्नर्स",
+    "nav-home":"होम",
+    "nav-about":"हमारे बारे में",
+    "nav-contact":"संपर्क",
+    "nav-chat":"चैट बॉट",
+    "nav-book":"अभी बुक करें",
+    "title":"🏖️ बागा बीच, गोवा",
+    "intro":"बागा बीच, उत्तर गोवा में स्थित, भारत के सबसे लोकप्रिय समुद्र तटों में से एक है। सुनहरी रेत, जीवंत नाइटलाइफ़, समुद्र तट शैक और रोमांचक जल क्रीड़ाओं के लिए प्रसिद्ध, यह अरबी सागर के किनारे विश्राम और रोमांच का आदर्श मिश्रण है।",
+    "highlights-title":"🌅 मुख्य तथ्य",
+    "high-1":"पैरासेलिंग, जेट स्कीइंग और बनाना राइड जैसी जल क्रीड़ाओं के लिए प्रसिद्ध।",
+    "high-2":"प्रसिद्ध क्लबों जैसे Tito’s और Britto’s बीच शैक का घर।",
+    "high-3":"Calangute Beach और Anjuna Beach के पास स्थित।",
+    "high-4":"सूर्यास्त, समुद्री भोजन और जीवंत संगीत दृश्यों के लिए उत्तम।",
+    "visit-title":"🕒 आगंतुक जानकारी",
+    "time":"समय: 24 घंटे खुले",
+    "location":"स्थान: उत्तर गोवा, Calangute के पास",
+    "best-time":"सर्वोत्तम समय: नवंबर – फरवरी",
+    "view360-title":"🌐 बागा बीच का 360° दृश्य",
+    "itinerary-title":"🧭 अपनी बागा बीच यात्रा की योजना बनाएं",
+    "btn-add":"यात्रा में जोड़ें",
+    "btn-clear":"सभी साफ करें",
+    "itinerary-suggested-title":"🗓 सुझाई गई यात्रा योजना",
+    "day1-morning":"<strong>दिन 1 - सुबह:</strong> समुद्र तट पर आराम करें और पैरासेलिंग या जेट-स्की का आनंद लें।",
+    "day1-afternoon":"<strong>दिन 1 - दोपहर:</strong> Britto’s या St. Anthony’s शैक में समुद्री भोजन का आनंद लें।",
+    "day1-night":"<strong>दिन 1 - रात:</strong> Tito’s Lane में जीवंत क्लब दृश्य का अनुभव करें।",
+    "day2-morning":"<strong>दिन 2 - सुबह:</strong> पास के Calangute Beach पर जाएँ या डॉल्फ़िन क्रूज़ लें।",
+    "day2-evening":"<strong>दिन 2 - शाम:</strong> सूर्यास्त देखें और गोवा की लोक परफ़ॉर्मेंस का आनंद लें।",
+    "footer":"© 2025 अनसीन कॉर्नर्स | सर्वाधिकार सुरक्षित"
+  },
+  te: {
+    "page-title":"అన్‌సీన్ కార్నర్స్ – బాగా బీచ్",
+    "site-title":"అన్‌సీన్ కార్నర్స్",
+    "nav-home":"హోమ్",
+    "nav-about":"గురించి",
+    "nav-contact":"సంప్రదించండి",
+    "nav-chat":"చాట్ బాట్",
+    "nav-book":"ఇప్పుడు బుక్ చేయండి",
+    "title":"🏖️ బాగా బీచ్, గోవా",
+    "intro":"బాగా బీచ్, ఉత్తర గోవాలో ఉంది, భారతదేశంలో అత్యంత ప్రసిద్ధి గల బీచ్‌లలో ఒకటి. పసిపచ్చ బీచ్‌లు, సజీవ రాత్రి జీవితం, బీచ్ షాక్స్ మరియు సాహసోపేతమైన జలక్రీడలతో, ఇది అరబియన్ సముద్రం ఒడ్డున విశ్రాంతి మరియు ఉల్లాసం కలిసిన ప్రదేశం.",
+    "highlights-title":"🌅 ముఖ్యాంశాలు & వాస్తవాలు",
+    "high-1":"ప్యారాసైలింగ్, జెట్-స్కీయింగ్, బనానా రైడ్స్ వంటి జలక్రీడల కోసం ప్రసిద్ధి చెందింది.",
+    "high-2":"ప్రసిద్ధ క్లబ్బులు, Tito’s మరియు Britto’s బీచ్ షాక్‌లు ఇక్కడ ఉన్నాయి.",
+    "high-3":"Calangute Beach మరియు Anjuna Beach సమీపంలో ఉంది.",
+    "high-4":"సూర్యాస్తమయం, సముద్ర ఆహారం మరియు సంగీత వాతావరణానికి ఉత్తమం.",
+    "visit-title":"🕒 సందర్శకుల సమాచారం",
+    "time":"సమయం: 24 గంటల పాటు ఓపెన్",
+    "location":"స్థానం: ఉత్తర గోవా, Calangute దగ్గర",
+    "best-time":"ఉత్తమ సమయం: నవంబర్ – ఫిబ్రవరి",
+    "view360-title":"🌐 బాగా బీచ్ 360° వీక్షణ",
+    "itinerary-title":"🧭 మీ బాగా బీచ్ యాత్రను ప్రణాళిక చేయండి",
+    "btn-add":"యాత్రలో జోడించండి",
+    "btn-clear":"అన్నీ తొలగించండి",
+    "itinerary-suggested-title":"🗓 సూచించిన యాత్రా ప్రణాళిక",
+    "day1-morning":"<strong>Day 1 - Morning:</strong> బీచ్‌లో విశ్రాంతి తీసుకుని ప్యారాసైలింగ్ లేదా జెట్-స్కీయింగ్‌ని ప్రయత్నించండి.",
+    "day1-afternoon":"<strong>Day 1 - Afternoon:</strong> Britto’s లేదా St. Anthony’s షాక్‌లో సముద్ర ఆహారం ఆస్వాదించండి.",
+    "day1-night":"<strong>Day 1 - Night:</strong> Tito’s Lane లో lively క్లబ్ సీన్‌ని అనుభవించండి.",
+    "day2-morning":"<strong>Day 2 - Morning:</strong> సమీప Calangute Beach ను సందర్శించండి లేదా డాల్ఫిన్ క్రూయిజ్ తీసుకోండి.",
+    "day2-evening":"<strong>Day 2 - Evening:</strong> సూర్యాస్తమయం చూడండి మరియు గోవా ఫోక్ ప్రదర్శనలు ఆస్వాదించండి.",
+    "footer":"© 2025 అన్‌సీన్ కార్నర్స్ | అన్ని హక్కులు రిజర్వ్"
+  }
+};
+
+// Language Switcher
+document.getElementById("language-select").addEventListener("change", function() {
+  const lang = this.value;
+  document.querySelectorAll("[data-lang]").forEach(el=>{
+    const key = el.getAttribute("data-lang");
+    if(translations[lang][key]) el.innerHTML = translations[lang][key];
+  });
+});
+
+// Itinerary Form
+const form = document.getElementById('itinerary-form');
+const list = document.getElementById('itinerary-list');
+const clearBtn = document.getElementById('clear-itinerary');
+
+form.addEventListener('submit', function(e) {
+  e.preventDefault();
+  const date = document.getElementById('date').value;
+  const activity = document.getElementById('activity').value;
+  const notes = document.getElementById('notes').value;
+  if (!date || !activity) return;
+
+  const item = document.createElement('div');
+  item.className = 'itinerary-item';
+  item.innerHTML = `<strong>${date}</strong> – ${activity}<br><small>${notes}</small>`;
+  list.appendChild(item);
+  form.reset();
+});
+
+clearBtn.addEventListener('click', () => { list.innerHTML = ''; });
+</script>
+
+</body>
+</html>
+
+
+
+
+

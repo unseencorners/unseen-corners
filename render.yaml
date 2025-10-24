@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: unseen-corners
+    env: node
+    region: oregon
+    plan: free
+    branch: main
+    buildCommand: "npm install"
+    startCommand: "node server.js"
+    envVars:
+      - key: MONGODB_URI
+        # Do NOT commit sensitive credentials here. Set this value in Render's dashboard as a secret.
+        value: ""
+    autoDeploy: true
+
+# Notes:
+# - This deploys the repository as a Node web service on Render.
+# - The app must listen on the PORT environment variable (server.js has been updated to use process.env.PORT).
+# - Set MONGODB_URI in the Render service's Environment > Environment Variables (or use their Secret management) with your MongoDB Atlas connection string.
+# - If you use a different branch name, update `branch` above or remove the field to use Render's default branch selection.

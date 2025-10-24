@@ -1,0 +1,288 @@
+<!-- Puri Beach | Unseen Corners -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Unseen Corners – Puri Beach</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Poppins", sans-serif; }
+    body { background: #e0f7fa; color: #333; line-height: 1.6; padding-bottom: 80px; }
+
+    header {
+      background: #004d40; color: #fff;
+      padding: 15px 40px; display: flex; justify-content: space-between;
+      align-items: center; flex-wrap: wrap; position: fixed;
+      top: 0; left: 0; width: 100%; z-index: 1000;
+    }
+    header h1 { color: #ffeb3b; font-size: 22px; font-weight: bold; }
+    nav a { color: white; text-decoration: none; margin-left: 20px; font-weight: 500; }
+    nav a:hover { text-decoration: underline; }
+    .nav-btn {
+      background: #ffeb3b; color: #004d40; font-weight: bold;
+      padding: 8px 16px; border: none; border-radius: 6px;
+      margin-left: 20px; cursor: pointer;
+    }
+    .nav-btn:hover { background: #fff176; }
+    .lang-select {
+      margin-left: 20px; padding: 6px 10px; border-radius: 5px;
+      border: none; font-size: 14px; cursor: pointer;
+    }
+
+    .hero {
+      background: url('https://www.connectingtraveller.com/images/localtip/1630260093images%20(46).jpeg') no-repeat center center/cover;
+      height: 100vh; display: flex; align-items: center; justify-content: center;
+      text-align: center; color: white; position: relative; padding-top: 70px;
+    }
+    .hero::before {
+      content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.5); z-index: 1;
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 800px; padding: 20px; }
+    .hero-content h2 { font-size: 34px; margin-bottom: 15px; color: #ffeb3b; }
+    .hero-content p { font-size: 18px; margin-bottom: 20px; }
+
+    .info-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 15px; margin-top: 20px;
+    }
+    .info-card {
+      background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 8px; padding: 15px; font-size: 15px; color: #fff;
+    }
+
+    .view360 {
+      margin: 60px auto; max-width: 1000px;
+      padding: 15px; border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    .view360 iframe {
+      width: 100%; height: 500px; border: none; border-radius: 12px;
+    }
+
+    .itinerary {
+      max-width: 900px; margin: 50px auto; padding: 25px;
+      background: #f9f9f9; border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .itinerary h2 { text-align: center; color: #004d40; margin-bottom: 20px; }
+    .itinerary form { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 20px; }
+    .itinerary input, .itinerary textarea {
+      padding: 10px; border: 1px solid #ccc; border-radius: 5px;
+      width: 100%; max-width: 250px; font-size: 14px;
+    }
+    .itinerary button {
+      background: #004d40; color: white; padding: 10px 20px;
+      border: none; border-radius: 5px; cursor: pointer;
+    }
+    .itinerary button:hover { background: #00695c; }
+    .itinerary-item {
+      background: white; padding: 15px; border-left: 4px solid #ffeb3b;
+      margin-bottom: 10px; border-radius: 5px;
+    }
+
+    footer {
+      text-align: center; padding: 20px;
+      background: #004d40; color: white;
+      margin-top: 50px;
+    }
+
+    .fade { opacity: 0; transition: opacity 0.7s ease-in-out; }
+    .fade.show { opacity: 1; }
+
+    @media(max-width:768px){
+      .hero-content h2 { font-size: 26px; }
+      .hero-content p { font-size: 16px; }
+      .view360 iframe { height: 300px; }
+      .itinerary form { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Unseen Corners</h1>
+  <nav>
+    <a href="index.html"><b data-lang="navHome">Home</b></a>
+    <a href="about14.html"><b data-lang="navAbout">About</b></a>
+    <a href="contact.html"><b data-lang="navContact">Contact</b></a>
+    <a href="t4.html"><b data-lang="navChat">Chat Bot</b></a>
+    <button class="nav-btn" data-lang="bookNow" onclick="window.location.href='book.html'"><b>Book Now</b></button>
+    <select class="lang-select" id="language-select">
+      <option value="en">English</option>
+      <option value="hi">हिन्दी</option>
+      <option value="te">తెలుగు</option>
+    </select>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+    <h2 class="fade show" data-lang="heroTitle">🏖️ Puri Beach, Odisha</h2>
+    <p class="fade show" data-lang="heroDesc">
+      Puri Beach, located along the Bay of Bengal, is one of India’s most spiritual and scenic coastlines. Known for its golden sands, rolling waves, and proximity to the Jagannath Temple, it’s a perfect blend of culture and relaxation.
+    </p>
+
+    <h3 class="fade show" data-lang="highlightsTitle">🌅 Highlights & Facts</h3>
+    <ul>
+      <li data-lang="highlight1">Renowned for sunrise and sunset views over the Bay of Bengal.</li>
+      <li data-lang="highlight2">Hosts the famous Puri Beach Festival every year.</li>
+      <li data-lang="highlight3">Perfect for swimming, camel rides, and local seafood.</li>
+      <li data-lang="highlight4">Located close to Jagannath Temple – a major pilgrimage site.</li>
+    </ul>
+
+    <h3 class="fade show" data-lang="visitorInfoTitle">🕒 Visitor Information</h3>
+    <div class="info-grid">
+      <div class="info-card" data-lang="timings"><b>Timings:</b><br> Open 24 hours (best time: sunrise and sunset).</div>
+      <div class="info-card" data-lang="location"><b>Location:</b><br> Puri, Odisha, India.</div>
+      <div class="info-card" data-lang="bestTime"><b>Best Time:</b><br> November – February (pleasant weather).</div>
+    </div>
+  </div>
+</section>
+
+<section class="view360">
+  <h2 style="text-align:center; margin-bottom:15px; color:#004d40;" data-lang="view360Title">🌐 Explore 360° View of Puri Beach</h2>
+  <iframe src="https://www.google.com/maps/embed?pb=!4v1760026136474!6m8!1m7!1sCAoSF0NJSE0wb2dLRUlDQWdJRDRzYjZleEFF!2m2!1d19.79474900069361!2d85.82528823116658!3f307.80139214459746!4f3.14560118048351!5f0.7820865974627469" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</section>
+
+<section class="itinerary">
+  <h2 data-lang="itineraryTitle">🧭 Plan Your Puri Beach Trip</h2>
+  <form id="itinerary-form">
+    <input type="date" id="date" required />
+    <input type="text" id="activity" placeholder="" data-lang-placeholder="activity" required />
+    <textarea id="notes" rows="1" placeholder="" data-lang-placeholder="notes"></textarea>
+    <button type="submit" data-lang="addBtn">Add to Itinerary</button>
+    <button type="button" id="clear-itinerary" style="background:#c0392b;" data-lang="clearBtn">Clear All</button>
+  </form>
+  <div id="itinerary-list"></div>
+
+  <div class="itinerary-list" id="suggested-itinerary">
+    <h3 style="margin-top:30px;" data-itinerary="suggestedItineraryTitle"></h3>
+    <div class="itinerary-item" data-itinerary="day1morning"></div>
+    <div class="itinerary-item" data-itinerary="day1afternoon"></div>
+    <div class="itinerary-item" data-itinerary="day1evening"></div>
+    <div class="itinerary-item" data-itinerary="day2morning"></div>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2025 Unseen Corners | All Rights Reserved</p>
+</footer>
+
+<script>
+const translations = {
+  en: {
+    navHome: "Home", navAbout: "About", navContact: "Contact", navChat: "Chat Bot", bookNow: "Book Now",
+    heroTitle: "🏖️ Puri Beach, Odisha",
+    heroDesc: "Puri Beach, located along the Bay of Bengal, is one of India’s most spiritual and scenic coastlines. Known for its golden sands, rolling waves, and proximity to the Jagannath Temple, it’s a perfect blend of culture and relaxation.",
+    highlightsTitle: "🌅 Highlights & Facts",
+    highlight1: "Renowned for sunrise and sunset views over the Bay of Bengal.",
+    highlight2: "Hosts the famous Puri Beach Festival every year.",
+    highlight3: "Perfect for swimming, camel rides, and local seafood.",
+    highlight4: "Located close to Jagannath Temple – a major pilgrimage site.",
+    visitorInfoTitle: "🕒 Visitor Information",
+    timings: "Timings: Open 24 hours (best time: sunrise and sunset).",
+    location: "Location: Puri, Odisha, India.",
+    bestTime: "Best Time: November – February (pleasant weather).",
+    view360Title: "🌐 Explore 360° View of Puri Beach",
+    itineraryTitle: "🧭 Plan Your Puri Beach Trip",
+    activity: "Activity (e.g., Beach Walk, Visit Jagannath Temple)",
+    notes: "Notes (optional)",
+    addBtn: "Add to Itinerary",
+    clearBtn: "Clear All",
+    suggestedItineraryTitle: "🗓 Suggested Itinerary",
+    day1morning: "Day 1 - Morning: Watch sunrise and enjoy beachside breakfast.",
+    day1afternoon: "Day 1 - Afternoon: Visit the sacred Jagannath Temple.",
+    day1evening: "Day 1 - Evening: Enjoy Puri Beach Festival or camel ride at sunset.",
+    day2morning: "Day 2 - Morning: Explore Chilika Lake and dolphin spotting tours."
+  },
+  hi: {
+    navHome: "होम", navAbout: "हमारे बारे में", navContact: "संपर्क करें", navChat: "चैट बॉट", bookNow: "बुक करें",
+    heroTitle: "🏖️ पुरी बीच, ओडिशा",
+    heroDesc: "पुरी बीच, बंगाल की खाड़ी के किनारे स्थित, भारत के सबसे आध्यात्मिक और सुंदर तटों में से एक है। अपनी सुनहरी रेत, लहरों और जगन्नाथ मंदिर के निकटता के लिए जाना जाता है।",
+    highlightsTitle: "🌅 मुख्य आकर्षण & तथ्य",
+    highlight1: "बंगाल की खाड़ी में सूर्योदय और सूर्यास्त के लिए प्रसिद्ध।",
+    highlight2: "हर साल प्रसिद्ध पुरी बीच फेस्टिवल आयोजित करता है।",
+    highlight3: "तैराकी, ऊंट की सवारी और स्थानीय समुद्री भोजन के लिए उपयुक्त।",
+    highlight4: "जगन्नाथ मंदिर के पास स्थित – प्रमुख तीर्थ स्थल।",
+    visitorInfoTitle: "🕒 आगंतुक जानकारी",
+    timings: "समय: 24 घंटे खुला (सर्वोत्तम समय: सूर्योदय और सूर्यास्त)।",
+    location: "स्थान: पुरी, ओडिशा, भारत।",
+    bestTime: "सर्वोत्तम समय: नवंबर – फरवरी (सुखद मौसम)।",
+    view360Title: "🌐 पुरी बीच का 360° दृश्य देखें",
+    itineraryTitle: "🧭 अपनी पुरी बीच यात्रा की योजना बनाएं",
+    activity: "गतिविधि (उदा., बीच वॉक, जगन्नाथ मंदिर भ्रमण)",
+    notes: "नोट्स (वैकल्पिक)",
+    addBtn: "यात्रा में जोड़ें",
+    clearBtn: "सभी साफ़ करें",
+    suggestedItineraryTitle: "🗓 सुझाई गई यात्रा योजना",
+    day1morning: "दिन 1 - सुबह: सूर्योदय देखें और बीचसाइड नाश्ता करें।",
+    day1afternoon: "दिन 1 - दोपहर: पवित्र जगन्नाथ मंदिर जाएँ।",
+    day1evening: "दिन 1 - शाम: पुरी बीच फेस्टिवल का आनंद लें या सूर्यास्त पर ऊंट की सवारी करें।",
+    day2morning: "दिन 2 - सुबह: चिलिका झील और डॉल्फिन टूर का अन्वेषण करें।"
+  },
+  te: {
+    navHome: "హోమ్", navAbout: "మాకు గురించి", navContact: "సంప్రదించండి", navChat: "చాట్ బాట్", bookNow: "బుక్ చేయండి",
+    heroTitle: "🏖️ పూరి బీచ్, ఒడిశా",
+    heroDesc: "పూరి బీచ్, బే ఆఫ్ బెంగాల్ వద్ద, భారతదేశంలో అత్యంత ఆధ్యాత్మిక మరియు అందమైన తీరాలలో ఒకటి. ఇది స్వర్ణపు ఇసుక, rolling waves మరియు జగన్నాథ్ టెంపుల్ దగ్గరగా ఉండటంతో ప్రసిద్ధి చెందింది.",
+    highlightsTitle: "🌅 ముఖ్యమైన ఆకర్షణలు & నిజాలు",
+    highlight1: "బే ఆఫ్ బెంగాల్ వద్ద సూర్యోదయం మరియు సూర్యాస్తమయం కోసం ప్రసిద్ధి చెందింది.",
+    highlight2: "ప్రతి సంవత్సరం ప్రసిద్ధ పూరి బీచ్ ఫెస్టివల్ నిర్వహిస్తుంది.",
+    highlight3: "స్విమ్మింగ్, ఊంటు రైడ్స్ మరియు స్థానిక సముద్ర ఆహారానికి సరిపోతుంది.",
+    highlight4: "జగన్నాథ్ టెంపుల్ సమీపంలో ఉంది – ప్రధాన యాత్ర స్థలం.",
+    visitorInfoTitle: "🕒 సందర్శకుల సమాచారం",
+    timings: "సమయం: 24 గంటలు తెరిచి ఉంటుంది (మంచి సమయం: సూర్యోదయం మరియు సూర్యాస్తమయం).",
+    location: "స్థానం: పూరి, ఒడిశా, ఇండియా.",
+    bestTime: "మంచి సమయం: నవంబర్ – ఫిబ్రవరి (సంతోషకరమైన వాతావరణం).",
+    view360Title: "🌐 పూరి బీచ్ 360° వీక్షణను అన్వేషించండి",
+    itineraryTitle: "🧭 మీ పూరి బీచ్ ప్రయాణాన్ని ప్రణాళిక చేయండి",
+    activity: "క్రియ (ఉదా., బీచ్ వాక్, జగన్నాథ్ టెంపుల్ సందర్శన)",
+    notes: "గమనికలు (ఐచ్ఛికం)",
+    addBtn: "ప్రయాణంలో జోడించండి",
+    clearBtn: "అన్ని తుడవండి",
+    suggestedItineraryTitle: "🗓 సూచించిన పర్యటన",
+    day1morning: "రోజు 1 - ఉదయం: సూర్యోదయం చూడండి మరియు బీచ్ పక్కన బ్రేక్‌ఫాస్ట్ ఆస్వాదించండి.",
+    day1afternoon: "రోజు 1 - మధ్యాహ్నం: పవిత్ర జగన్నాథ్ మందిరాన్ని సందర్శించండి.",
+    day1evening: "రోజు 1 - సాయంత్రం: పూరి బీచ్ ఫెస్టివల్ ఆస్వాదించండి లేదా సూర్యాస్తమయంలో ఉంట రైడ్ చేయండి.",
+    day2morning: "రోజు 2 - ఉదయం: చిలికా సరస్సును మరియు డాల్ఫిన్ టూర్లను అన్వేషించండి."
+  }
+};
+
+// Update language for all elements
+const langSelect = document.getElementById('language-select');
+function updateLanguage() {
+  const lang = langSelect.value;
+  document.querySelectorAll('[data-lang]').forEach(el => el.innerText = translations[lang][el.getAttribute('data-lang')]);
+  document.querySelectorAll('[data-itinerary]').forEach(el => el.innerText = translations[lang][el.getAttribute('data-itinerary')]);
+  document.querySelectorAll('[data-lang-placeholder]').forEach(el => el.placeholder = translations[lang][el.getAttribute('data-lang-placeholder')]);
+}
+langSelect.addEventListener('change', updateLanguage);
+updateLanguage();
+
+// ✅ Itinerary Builder
+const form = document.getElementById('itinerary-form');
+const list = document.getElementById('itinerary-list');
+const clearBtn = document.getElementById('clear-itinerary');
+
+form.addEventListener('submit', function(e) {
+  e.preventDefault();
+  const date = document.getElementById('date').value;
+  const activity = document.getElementById('activity').value;
+  const notes = document.getElementById('notes').value;
+  if (!date || !activity) return;
+
+  const item = document.createElement('div');
+  item.className = 'itinerary-item';
+  item.innerHTML = `<strong>${date}</strong> – ${activity}<br><small>${notes}</small>`;
+  list.appendChild(item);
+  form.reset();
+});
+
+clearBtn.addEventListener('click', () => { list.innerHTML = ''; });
+</script>
+
+</body>
+</html>
+
+
+

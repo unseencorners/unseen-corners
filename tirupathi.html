@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title data-lang="page-title">Unseen Corners – Tirupati Temple</title>
+    <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+
+    /* ✅ Full-page background image */
+    body {
+      line-height: 1.6;
+      background: url('https://tirupatitirumalainfo.com/wp-content/uploads/2016/09/Tirumala-history.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      padding-bottom: 80px;
+      position: relative;
+    }
+
+    /* ✅ Overlay for better text readability */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+      z-index: -1;
+    }
+
+    header {
+      background: rgba(27, 39, 53, 0.9);
+      color: #fff;
+      padding: 15px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    header h1 { color: #f4c542; font-size: 22px; font-weight: bold; }
+    nav a { color: #fff; text-decoration: none; margin-left: 20px; font-size: 16px; }
+    nav a:hover { text-decoration: underline; }
+    .nav-btn {
+      background: #f4c542; color: #000; font-weight: bold;
+      padding: 8px 16px; border: none; border-radius: 5px;
+      margin-left: 20px; cursor: pointer;
+    }
+    .lang-select {
+      margin-left: 20px; padding: 6px 10px;
+      border-radius: 5px; border: none;
+      font-size: 14px; cursor: pointer;
+    }
+
+    /* ✅ Hero section now transparent (not with background) */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fff;
+      padding: 100px 20px 20px;
+    }
+    .hero-content {
+      max-width: 800px;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 25px;
+      border-radius: 10px;
+    }
+    .hero-content h2 { font-size: 32px; margin-bottom: 20px; color: #f4c542; }
+    .hero-content p { font-size: 18px; margin-bottom: 20px; }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+    .info-card {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 8px;
+      padding: 15px;
+      font-size: 15px;
+    }
+
+    .view360 {
+      margin: 50px auto;
+      max-width: 1000px;
+      padding: 10px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      background: rgba(0, 0, 0, 0.5);
+    }
+    .view360 iframe {
+      width: 100%;
+      height: 500px;
+      border: none;
+      border-radius: 12px;
+    }
+
+    .itinerary {
+      max-width: 900px;
+      margin: 50px auto;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.9);
+      color: #000;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+
+    .itinerary h2 {
+      text-align: center;
+      color: #1b2735;
+      margin-bottom: 20px;
+    }
+
+    .itinerary form {
+      display: flex; flex-wrap: wrap;
+      gap: 10px; justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .itinerary input, .itinerary textarea {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      width: 100%;
+      max-width: 250px;
+      font-size: 14px;
+    }
+
+    .itinerary button {
+      background: #1b2735;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .itinerary button:hover { background: #34495e; }
+
+    .itinerary-item {
+      background: #fff;
+      padding: 15px;
+      border-left: 4px solid #f4c542;
+      margin-bottom: 10px;
+      border-radius: 5px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: rgba(27, 39, 53, 0.9);
+      color: #fff;
+      margin-top: 50px;
+    }
+
+    @media(max-width:768px){
+      .hero-content h2 { font-size: 24px; }
+      .hero-content p { font-size: 16px; }
+      .view360 iframe { height: 300px; }
+      .itinerary form { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1 id="site-title" data-lang="site-title">Unseen Corners</h1>
+  <nav>
+    <a href="index.html" data-lang="nav-home"><b>Home</b></a>
+    <a href="about14.html" data-lang="nav-about"><b>About</b></a>
+    <a href="contact.html" data-lang="nav-contact"><b>Contact</b></a>
+    <a href="t4.html" data-lang="nav-chat"><b>Chat Bot</b></a>
+    <button class="nav-btn" data-lang="nav-book" onclick="window.location.href='book.html'"><b>Book Now</b></button>
+    <select class="lang-select" id="language-select">
+      <option value="en">English</option>
+      <option value="hi">हिन्दी</option>
+      <option value="te">తెలుగు</option>
+    </select>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+    <h2 class="fade show" data-lang="title">🛕 Tirumala Venkateswara Temple</h2>
+    <p class="fade show" data-lang="intro">The Tirumala Venkateswara Temple in Andhra Pradesh is one of the most famous Hindu temples dedicated to Lord Venkateswara, a form of Lord Vishnu. It attracts millions of devotees annually.</p>
+
+    <h3 class="fade show" data-lang="history-title">📜 History – When Was It Built?</h3>
+    <ul>
+      <li class="fade show" data-lang="history-1">The temple's origins date back over a thousand years, with significant contributions from various dynasties like the Pallavas and Vijayanagara Empire.</li>
+      <li class="fade show" data-lang="history-2">It is one of the richest temples in the world by donations received.</li>
+      <li class="fade show" data-lang="history-3">The temple architecture reflects Dravidian style.</li>
+      <li class="fade show" data-lang="history-4">It is a major pilgrimage center for devotees across India.</li>
+    </ul>
+
+    <h3 class="fade show" data-lang="visit-title">🕒 Visiting Information</h3>
+    <div class="info-grid">
+      <div class="info-card fade show" data-lang="visit-time"><b>Timings:</b><br> 3:00 AM – 10:00 PM daily.</div>
+      <div class="info-card fade show" data-lang="visit-location"><b>Location:</b><br> Tirupati, Andhra Pradesh, India.</div>
+      <div class="info-card fade show" data-lang="visit-best"><b>Best Time:</b><br> September to January, especially during Brahmotsavam festival.</div>
+    </div>
+  </div>
+</section>
+
+<section class="view360">
+  <h2 style="text-align:center; margin-bottom:15px; color:#1b2735;" data-lang="view360-title">🌐 Explore 360° View of Tirumala Temple</h2>
+ <iframe src="https://www.google.com/maps/embed?pb=!4v1760436016546!6m8!1m7!1sCAoSF0NJSE0wb2dLRUlDQWdJQ2s3TUxRMHdF!2m2!1d13.68326724214185!2d79.34742187717714!3f56.067806!4f0!5f0.7820865974627469" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</section>
+
+<section class="itinerary">
+  <h2 data-lang="itin-title">🧭 Plan Your Itinerary</h2>
+  <form id="itinerary-form">
+    <input type="date" id="date" required />
+    <input type="text" id="activity" data-lang-placeholder="itin-activity" placeholder="Activity (e.g., Temple Visit)" required />
+    <textarea id="notes" rows="1" data-lang-placeholder="itin-notes" placeholder="Notes (optional)"></textarea>
+    <button type="submit" data-lang="itin-add">Add to Itinerary</button>
+    <button type="button" id="clear-itinerary" style="background:#c0392b;" data-lang="itin-clear">Clear All</button>
+  </form>
+  <div class="itinerary-list" id="itinerary-list"></div>
+  <div class="itinerary-list">
+    <h3 style="margin-top:30px;" data-lang="itin-suggested-title">🗓️ Suggested Itinerary (Built-in)</h3>
+    <div class="itinerary-item" data-lang="itin-day1m"><strong>Day 1 - Morning:</strong> Darshan and Suprabhatam Seva</div>
+    <div class="itinerary-item" data-lang="itin-day1a"><strong>Day 1 - Afternoon:</strong> Visit Papavinasanam and Akasaganga Falls</div>
+    <div class="itinerary-item" data-lang="itin-day1e"><strong>Day 1 - Evening:</strong> Participate in Thomala Seva and Arjitha Brahmotsavam</div>
+    <div class="itinerary-item" data-lang="itin-day2m"><strong>Day 2 - Morning:</strong> Visit Sri Venkateswara Museum and nearby temples</div>
+    <div class="itinerary-item" data-lang="itin-day2a"><strong>Day 2 - Afternoon:</strong> Explore Tirupati town and local cuisine</div>
+    <div class="itinerary-item" data-lang="itin-day2n"><strong>Day 2 - Night:</strong> Rest or attend special night prayers</div>
+  </div>
+</section>
+
+<footer>
+  <p class="fade show" data-lang="footer">&copy; 2025 Unseen Corners | All Rights Reserved</p>
+</footer>
+
+<script>
+const translations = {
+  en: {
+    "site-title": "Unseen Corners",
+    "nav-home": "<b>Home</b>", "nav-about": "<b>About</b>", "nav-contact": "<b>Contact</b>", "nav-chat": "<b>Chat Bot</b>", "nav-book": "<b>Book Now</b>",
+    title: "🛕 Tirumala Venkateswara Temple",
+    intro: "The Tirumala Venkateswara Temple in Andhra Pradesh is one of the most famous Hindu temples dedicated to Lord Venkateswara, a form of Lord Vishnu. It attracts millions of devotees annually.",
+    "history-title": "📜 History – When Was It Built?",
+    "history-1": "The temple's origins date back over a thousand years, with contributions from the Pallavas and Vijayanagara Empire.",
+    "history-2": "It is one of the richest temples in the world by donations received.",
+    "history-3": "The temple architecture reflects Dravidian style.",
+    "history-4": "It is a major pilgrimage center for devotees across India.",
+    "visit-title": "🕒 Visiting Information",
+    "visit-time": "<b>Timings:</b><br> 3:00 AM – 10:00 PM daily.",
+    "visit-location": "<b>Location:</b><br> Tirupati, Andhra Pradesh, India.",
+    "visit-best": "<b>Best Time:</b><br> September to January, especially during Brahmotsavam festival.",
+    "view360-title": "🌐 Explore 360° View of Tirumala Temple",
+    "itin-title": "🧭 Plan Your Itinerary",
+    "itin-activity": "Activity (e.g., Temple Visit)",
+    "itin-notes": "Notes (optional)",
+    "itin-add": "Add to Itinerary",
+    "itin-clear": "Clear All",
+    "itin-suggested-title": "🗓️ Suggested Itinerary (Built-in)",
+    "itin-day1m": "<strong>Day 1 - Morning:</strong> Darshan and Suprabhatam Seva",
+    "itin-day1a": "<strong>Day 1 - Afternoon:</strong> Visit Papavinasanam and Akasaganga Falls",
+    "itin-day1e": "<strong>Day 1 - Evening:</strong> Participate in Thomala Seva and Arjitha Brahmotsavam",
+    "itin-day2m": "<strong>Day 2 - Morning:</strong> Visit Sri Venkateswara Museum and nearby temples",
+    "itin-day2a": "<strong>Day 2 - Afternoon:</strong> Explore Tirupati town and local cuisine",
+    "itin-day2n": "<strong>Day 2 - Night:</strong> Rest or attend special night prayers",
+    footer: "&copy; 2025 Unseen Corners | All Rights Reserved"
+  },
+  hi: {
+    "site-title": "अनसीन कॉर्नर्स",
+    "nav-home": "<b>होम</b>", "nav-about": "<b>के बारे में</b>", "nav-contact": "<b>संपर्क</b>", "nav-chat": "<b>चैट बॉट</b>", "nav-book": "<b>अभी बुक करें</b>",
+    title: "🛕 तिरुमला वेंकटेश्वर मंदिर",
+    intro: "आंध्र प्रदेश में स्थित तिरुमला वेंकटेश्वर मंदिर भगवान विष्णु के अवतार वेंकटेश्वर को समर्पित सबसे प्रसिद्ध मंदिरों में से एक है। यह हर साल लाखों श्रद्धालुओं को आकर्षित करता है।",
+    "history-title": "📜 इतिहास – इसे कब बनाया गया था?",
+    "history-1": "मंदिर की उत्पत्ति एक हजार से अधिक वर्ष पुरानी है, जिसमें पल्लव और विजयनगर साम्राज्य का योगदान रहा है।",
+    "history-2": "यह दान के मामले में दुनिया के सबसे समृद्ध मंदिरों में से एक है।",
+    "history-3": "मंदिर की वास्तुकला द्रविड़ शैली को दर्शाती है।",
+    "history-4": "यह पूरे भारत के श्रद्धालुओं के लिए एक प्रमुख तीर्थ स्थल है।",
+    "visit-title": "🕒 यात्रा की जानकारी",
+    "visit-time": "<b>समय:</b><br> प्रतिदिन सुबह 3:00 बजे – रात 10:00 बजे तक।",
+    "visit-location": "<b>स्थान:</b><br> तिरुपति, आंध्र प्रदेश, भारत।",
+    "visit-best": "<b>सबसे अच्छा समय:</b><br> सितंबर से जनवरी तक, विशेषकर ब्रह्मोत्सवम उत्सव के दौरान।",
+    "view360-title": "🌐 तिरुमला मंदिर का 360° दृश्य देखें",
+    "itin-title": "🧭 अपनी यात्रा की योजना बनाएं",
+    "itin-activity": "गतिविधि (जैसे मंदिर दर्शन)",
+    "itin-notes": "नोट्स (वैकल्पिक)",
+    "itin-add": "यात्रा में जोड़ें",
+    "itin-clear": "सभी हटाएं",
+    "itin-suggested-title": "🗓️ सुझाई गई यात्रा योजना",
+    "itin-day1m": "<strong>दिन 1 - सुबह:</strong> दर्शन और सुप्रभातम सेवा",
+    "itin-day1a": "<strong>दिन 1 - दोपहर:</strong> पापविनासनम और आकाशगंगा झरनों का दर्शन",
+    "itin-day1e": "<strong>दिन 1 - शाम:</strong> थॉमला सेवा और अर्जिता ब्रह्मोत्सव में भाग लें",
+    "itin-day2m": "<strong>दिन 2 - सुबह:</strong> श्री वेंकटेश्वर संग्रहालय और आसपास के मंदिर देखें",
+    "itin-day2a": "<strong>दिन 2 - दोपहर:</strong> तिरुपति शहर और स्थानीय भोजन का आनंद लें",
+    "itin-day2n": "<strong>दिन 2 - रात:</strong> विश्राम करें या विशेष रात्रि पूजा में भाग लें",
+    footer: "&copy; 2025 अनसीन कॉर्नर्स | सर्वाधिकार सुरक्षित"
+  },
+  te: {
+    "site-title": "అన్సీన్ కార్నర్స్",
+    "nav-home": "<b>హోమ్</b>", "nav-about": "<b>గురించి</b>", "nav-contact": "<b>సంప్రదించండి</b>", "nav-chat": "<b>చాట్ బాట్</b>", "nav-book": "<b>ఇప్పుడే బుక్ చేయండి</b>",
+    title: "🛕 తిరుమల వెంకటేశ్వర ఆలయం",
+    intro: "ఆంధ్రప్రదేశ్‌లోని తిరుమల వెంకటేశ్వర ఆలయం, శ్రీ విష్ణువరి అవతారమైన వెంకటేశ్వరుడికి అంకితం చేయబడిన అత్యంత ప్రసిద్ధ హిందూ ఆలయాలలో ఒకటి.",
+    "history-title": "📜 చరిత్ర – ఇది ఎప్పుడు నిర్మించబడింది?",
+    "history-1": "ఈ ఆలయ చరిత్ర వెయ్యి సంవత్సరాలకు పైగా ఉంది. పల్లవులు మరియు విజయనగర రాజవంశాలు దీనికి పెద్ద సహకారం అందించాయి.",
+    "history-2": "ఇది ప్రపంచంలో అత్యధిక విరాళాలు అందుకునే ఆలయాలలో ఒకటి.",
+    "history-3": "ఆలయ నిర్మాణం ద్రావిడ శైలిలో ఉంది.",
+    "history-4": "ఇది భారతదేశం అంతటా భక్తులకు ముఖ్యమైన యాత్రా స్థలం.",
+    "visit-title": "🕒 సందర్శన సమాచారం",
+    "visit-time": "<b>సమయాలు:</b><br> ప్రతి రోజు ఉదయం 3:00 – రాత్రి 10:00 వరకు.",
+    "visit-location": "<b>స్థానం:</b><br> తిరుపతి, ఆంధ్రప్రదేశ్, భారతదేశం.",
+    "visit-best": "<b>సందర్శించడానికి ఉత్తమ సమయం:</b><br> సెప్టెంబర్ నుండి జనవరి వరకు, ముఖ్యంగా బ్రహ్మోత్సవ వేళలో.",
+    "view360-title": "🌐 తిరుమల ఆలయ 360° వీక్షణ",
+    "itin-title": "🧭 మీ యాత్ర ప్రణాళిక రూపొందించండి",
+    "itin-activity": "చర్య (ఉదా: ఆలయ దర్శనం)",
+    "itin-notes": "గమనికలు (ఐచ్చికం)",
+    "itin-add": "యాత్రలో చేర్చండి",
+    "itin-clear": "అన్నీ తొలగించండి",
+    "itin-suggested-title": "🗓️ సూచించిన యాత్ర ప్రణాళిక",
+    "itin-day1m": "<strong>రోజు 1 - ఉదయం:</strong> దర్శనం మరియు సుప్రభాత సేవ",
+    "itin-day1a": "<strong>రోజు 1 - మధ్యాహ్నం:</strong> పాపవినాశనం మరియు ఆకాశగంగా జలపాతాలు సందర్శన",
+    "itin-day1e": "<strong>రోజు 1 - సాయంత్రం:</strong> తోమాల సేవ మరియు అర్జిత బ్రహ్మోత్సవంలో పాల్గొనండి",
+    "itin-day2m": "<strong>రోజు 2 - ఉదయం:</strong> శ్రీ వెంకటేశ్వర మ్యూజియం మరియు సమీప ఆలయాలు దర్శించండి",
+    "itin-day2a": "<strong>రోజు 2 - మధ్యాహ్నం:</strong> తిరుపతి పట్టణం మరియు స్థానిక వంటకాలను అన్వేషించండి",
+    "itin-day2n": "<strong>రోజు 2 - రాత్రి:</strong> విశ్రాంతి తీసుకోండి లేదా ప్రత్యేక రాత్రి ప్రార్థనలో పాల్గొనండి",
+    "footer": "&copy; 2025 అన్సీన్ కార్నర్స్ | అన్ని హక్కులుสงరించబడ్డాయి"
+  }
+};
+
+// 🌐 Language Switcher
+document.getElementById("language-select").addEventListener("change", (e) => {
+  const lang = e.target.value;
+  document.querySelectorAll("[data-lang]").forEach(el => {
+    const key = el.getAttribute("data-lang");
+    if (translations[lang] && translations[lang][key]) {
+      el.innerHTML = translations[lang][key];
+    }
+  });
+
+  // Update placeholders
+  document.querySelectorAll("[data-lang-placeholder]").forEach(el => {
+    const key = el.getAttribute("data-lang-placeholder");
+    if (translations[lang] && translations[lang][key]) {
+      el.placeholder = translations[lang][key];
+    }
+  });
+});
+
+// 🧭 Itinerary Section Logic
+const form = document.getElementById("itinerary-form");
+const itineraryList = document.getElementById("itinerary-list");
+const clearBtn = document.getElementById("clear-itinerary");
+
+function renderItinerary() {
+  const saved = JSON.parse(localStorage.getItem("tirupatiItinerary") || "[]");
+  itineraryList.innerHTML = "";
+  saved.forEach((item, i) => {
+    const div = document.createElement("div");
+    div.classList.add("itinerary-item");
+    div.innerHTML = `<strong>${item.date}</strong> - ${item.activity}<br>${item.notes}`;
+    itineraryList.appendChild(div);
+  });
+}
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const date = document.getElementById("date").value;
+  const activity = document.getElementById("activity").value;
+  const notes = document.getElementById("notes").value;
+  const newItem = { date, activity, notes };
+
+  const saved = JSON.parse(localStorage.getItem("tirupatiItinerary") || "[]");
+  saved.push(newItem);
+  localStorage.setItem("tirupatiItinerary", JSON.stringify(saved));
+  form.reset();
+  renderItinerary();
+});
+
+clearBtn.addEventListener("click", () => {
+  if (confirm("Are you sure you want to clear your itinerary?")) {
+    localStorage.removeItem("tirupatiItinerary");
+    renderItinerary();
+  }
+});
+
+// Load itinerary on page load
+renderItinerary();
+</script>
+
+</body>
+</html>
+
+

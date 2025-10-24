@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title data-lang="page-title">Unseen Corners – Anamudi</title>
+
+<style>
+/* --- Full-page background --- */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  color: #fff;
+  background: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhhIjJYNuAqchL9mtw8cSA-Y2l55WVgEjeoxbN93DtKhIfoOrc1EyojAhYnrxyF5IVIeeetPQoB54nXGl5j_DjXMKOMl7hJg0b6qn_CilqrGULcn0VYoHhZwtf8gN5LfxM6oXnlRbl270s/s1080/FB_IMG_1631176828386.jpg') no-repeat center center fixed;
+  background-size: cover;
+  position: relative;
+}
+
+/* Overlay for readability */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: -1;
+}
+
+/* --- Header --- */
+header {
+  background: rgba(27,39,53,0.8);
+  color: #fff;
+  padding: 15px 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+header h1 { color: #f4c542; font-size: 22px; font-weight: bold; }
+nav a { color: #fff; text-decoration: none; margin-left: 20px; font-size: 16px; }
+nav a:hover { text-decoration: underline; }
+.nav-btn { background: #f4c542; color: #000; font-weight: bold; padding: 8px 16px; border: none; border-radius: 5px; margin-left: 20px; cursor: pointer; }
+.nav-btn:hover { background: #e3b72c; }
+.lang-select { margin-left: 20px; padding: 6px 10px; border-radius: 5px; border: none; font-size: 14px; cursor: pointer; }
+
+/* --- Hero content --- */
+.hero {
+  padding-top: 100px;
+  text-align: center;
+}
+.hero-content h2 { font-size: 32px; margin-bottom: 20px; color: #f4c542; }
+.hero-content p { font-size: 18px; margin-bottom: 20px; }
+
+/* --- Info cards --- */
+.info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 20px; padding: 0 20px; }
+.info-card { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; padding: 15px; font-size: 15px; color: #fff; }
+
+/* --- 360 view & itinerary --- */
+.view360, .itinerary { margin: 50px auto; max-width: 1000px; padding: 10px 20px; background: rgba(0,0,0,0.3); border-radius: 12px; }
+.view360 iframe { width: 100%; height: 500px; border: none; border-radius: 12px; }
+.itinerary h2 { text-align: center; margin-bottom: 20px; color: #f4c542; }
+#itinerary-form { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; justify-content: center; }
+#itinerary-form input, #itinerary-form textarea { padding: 8px; border: 1px solid #ccc; border-radius: 5px; width: 200px; }
+#itinerary-form button { padding: 8px 16px; background: #27ae60; color: #fff; border: none; border-radius: 5px; cursor: pointer; }
+#itinerary-form button:hover { opacity: 0.9; }
+.itinerary-item { padding: 10px; border: 1px solid #ccc; border-radius: 8px; margin-bottom: 10px; background: rgba(255,255,255,0.2); color: #fff; }
+
+/* --- Footer --- */
+footer { text-align: center; padding: 20px; background: rgba(27,39,53,0.8); color: #fff; }
+
+/* --- Responsive --- */
+@media(max-width:768px){
+.hero-content h2 { font-size: 24px; }
+.hero-content p { font-size: 14px; }
+.view360 iframe { height: 300px; }
+#itinerary-form input, #itinerary-form textarea { width: 100%; }
+}
+</style>
+</head>
+
+<body>
+<header>
+<h1 id="site-title">Unseen Corners</h1>
+<nav>
+<a href="index.html" data-lang="nav-home"><b>Home</b></a>
+<a href="about14.html" data-lang="nav-about"><b>About</b></a>
+<a href="contact.html" data-lang="nav-contact"><b>Contact</b></a>
+<a href="t4.html" data-lang="nav-chat"><b>Chat Bot</b></a>
+<button class="nav-btn" data-lang="nav-book" onclick="window.location.href='book.html'"><b>Book Now</b></button>
+<select class="lang-select" id="language-select">
+<option value="en">English</option>
+<option value="hi">हिन्दी</option>
+<option value="te">తెలుగు</option>
+</select>
+</nav>
+</header>
+
+<section class="hero">
+<div class="hero-content">
+<h2 data-lang="title">🏞️ Anamudi – The Highest Peak of South India</h2>
+<p data-lang="intro">Anamudi, at 2,695 m (8,842 ft), is the highest peak in South India, located in the Western Ghats within the Eravikulam National Park, Kerala.</p>
+
+<h3 data-lang="history-title">📜 History & Significance</h3>
+<ul>
+<li data-lang="history-1">First ascent recorded in the early 19th century by British surveyors.</li>
+<li data-lang="history-2">A biodiversity hotspot with rare flora and fauna.</li>
+<li data-lang="history-3">Popular trekking destination within Eravikulam National Park.</li>
+<li data-lang="history-4">Culturally significant to local tribes and communities.</li>
+</ul>
+
+<h3 data-lang="visit-title">🕒 Visiting Information</h3>
+<div class="info-grid">
+<div class="info-card" data-lang="visit-time"><b>Best Trekking Season:</b><br> October–March.</div>
+<div class="info-card" data-lang="visit-location"><b>Location:</b><br> Idukki District, Kerala, India (Western Ghats).</div>
+<div class="info-card" data-lang="visit-best"><b>Activities:</b><br> Trekking, wildlife spotting, photography.</div>
+</div>
+</div>
+</section>
+
+<section class="view360">
+<h2 style="text-align:center; margin-bottom:15px;" data-lang="view360-title">🌐 Explore 360° View of Anamudi</h2>
+<iframe src="anamudi360.html" allowfullscreen title="360° view of Anamudi"></iframe>
+</section>
+
+<section class="itinerary">
+<h2 data-lang="itinerary-title">🧭 Plan Your Itinerary</h2>
+<form id="itinerary-form">
+<input type="date" id="date" required aria-label="Date" />
+<input type="text" id="activity" placeholder="Activity (e.g., Anamudi Trek)" required aria-label="Activity" />
+<textarea id="notes" rows="1" placeholder="Notes (optional)" aria-label="Notes (optional)"></textarea>
+<button type="submit" data-lang="btn-add">Add to Itinerary</button>
+<button type="button" id="clear-itinerary" style="background:#c0392b;" data-lang="btn-clear">Clear All</button>
+</form>
+<div class="itinerary-list" id="itinerary-list"></div>
+</section>
+
+<footer>
+<p data-lang="footer">&copy; 2025 Unseen Corners | All Rights Reserved</p>
+</footer>
+
+<script>
+const translations = {
+en:{ "page-title":"Unseen Corners – Anamudi","nav-home":"<b>Home</b>","nav-about":"<b>About</b>","nav-contact":"<b>Contact</b>","nav-chat":"<b>Chat Bot</b>","nav-book":"<b>Book Now</b>","footer":"&copy; 2025 Unseen Corners | All Rights Reserved","title":"🏞️ Anamudi – The Highest Peak of South India","intro":"Anamudi, at 2,695 m (8,842 ft), is the highest peak in South India, located in the Western Ghats within the Eravikulam National Park, Kerala.","history-title":"📜 History & Significance","history-1":"First ascent recorded in the early 19th century by British surveyors.","history-2":"A biodiversity hotspot with rare flora and fauna.","history-3":"Popular trekking destination within Eravikulam National Park.","history-4":"Culturally significant to local tribes and communities.","visit-title":"🕒 Visiting Information","visit-time":"<b>Best Trekking Season:</b><br> October–March.","visit-location":"<b>Location:</b><br> Idukki District, Kerala, India (Western Ghats).","visit-best":"<b>Activities:</b><br> Trekking, wildlife spotting, photography.","view360-title":"🌐 Explore 360° View of Anamudi","itinerary-title":"🧭 Plan Your Itinerary","btn-add":"Add to Itinerary","btn-clear":"Clear All"},
+hi:{ "page-title":"अनसेन कॉर्नर्स – अनामुड़ी","nav-home":"<b>होम</b>","nav-about":"<b>हमारे बारे में</b>","nav-contact":"<b>संपर्क करें</b>","nav-chat":"<b>चैट बॉट</b>","nav-book":"<b>अभी बुक करें</b>","footer":"© 2025 अनसेन कॉर्नर्स | सर्वाधिकार सुरक्षित","title":"🏞️ अनामुड़ी – दक्षिण भारत की सबसे ऊंची चोटी","intro":"अनामुड़ी, 2,695 मीटर (8,842 फीट) ऊँची, दक्षिण भारत और वेस्टर्न घाट की सबसे ऊंची चोटी है, जो केरला के एराविकुलम नेशनल पार्क में स्थित है।","history-title":"📜 इतिहास और महत्व","history-1":"पहली बार 19वीं सदी की शुरुआत में ब्रिटिश सर्वेयरों द्वारा आरोहण किया गया।","history-2":"दुर्लभ वनस्पतियों और जीवों के साथ जैव विविधता का केंद्र।","history-3":"एराविकुलम नेशनल पार्क के भीतर लोकप्रिय ट्रेकिंग स्थल।","history-4":"स्थानीय जनजातियों और समुदायों के लिए सांस्कृतिक महत्व।","visit-title":"🕒 यात्रा जानकारी","visit-time":"<b>सर्वश्रेष्ठ ट्रेकिंग मौसम:</b><br> अक्टूबर–मार्च।","visit-location":"<b>स्थान:</b><br> इडुक्की जिला, केरला, भारत (वेस्टर्न घाट)।","visit-best":"<b>गतिविधियाँ:</b><br> ट्रेकिंग, वन्यजीव देखना, फोटोग्राफी।","view360-title":"🌐 अनामुड़ी का 360° दृश्य एक्सप्लोर करें","itinerary-title":"🧭 अपनी यात्रा योजना बनाएं","btn-add":"योजना में जोड़ें","btn-clear":"सभी साफ़ करें"},
+te:{ "page-title":"అన్సీన్ కార్నర్స్ – అనామూడి","nav-home":"<b>హోమ్</b>","nav-about":"<b>గురించి</b>","nav-contact":"<b>సంప్రదించండి</b>","nav-chat":"<b>చాట్ బాట్</b>","nav-book":"<b>ఇప్పుడే బుక్ చేయండి</b>","footer":"© 2025 అన్సీన్ కార్నర్స్ | అన్ని హక్కులు రిజర్వు","title":"🏞️ అనామూడి – దక్షిణ భారతదేశంలో అత్యున్నత శిఖరం","intro":"అనామూడి, 2,695 మీ (8,842 అడుగులు) ఎత్తుతో, దక్షిణ భారతదేశంలో అత్యున్నత శిఖరం, కేరళలోని ఎరావికులం జాతీయ ఉద్యానవనంలో ఉంది.","history-title":"📜 చరిత్ర మరియు ప్రాముఖ్యత","history-1":"19వ శతాబ్దంలో బ్రిటిష్ సర్వేయర్స్ మొదటిసారుగా ఎక్కారు.","history-2":"అపూర్వ మొక్కలు మరియు జంతువులతో జీవవైవిధ్యం హాట్‌స్పాట్.","history-3":"ఎరావికులం జాతీయ ఉద్యానవనం లో ప్రాచుర్యం పొందిన ట్రెక్కింగ్ గమ్యం.","history-4":"స్థానిక قبائل మరియు సంఘాలకు సాంస్కృతిక ప్రాముఖ్యత.","visit-title":"🕒 సందర్శన సమాచారం","visit-time":"<b>ఉత్తమ ట్రెక్కింగ్ సీజన్:</b><br> అక్టోబర్–మార్చ్.","visit-location":"<b>స్థానం:</b><br> ఇడుక్కి జిల్లా, కేరళ, భారత్ (వెస్టర్న్ ఘాట్స్).","visit-best":"<b>చటువట్లు:</b><br> ట్రెక్కింగ్, వన్యప్రాణి దర్శనం, ఫోటోగ్రఫీ.","view360-title":"🌐 అనామూడి యొక్క 360° వీక్షణను అన్వేషించండి","itinerary-title":"🧭 మీ ప్రయాణం ప్రణాళికను రూపొందించండి","btn-add":"ప్రణాళికలో జోడించండి","btn-clear":"అన్నీ క్లియర్ చేయండి"}
+};
+
+function setLanguage(lang){
+  document.querySelectorAll("[data-lang]").forEach(el=>{
+    const key=el.getAttribute("data-lang");
+    if(translations[lang][key]) el.innerHTML=translations[lang][key];
+  });
+}
+
+document.getElementById("language-select").addEventListener("change", e=>setLanguage(e.target.value));
+setLanguage("en");
+
+// Itinerary
+const form=document.getElementById("itinerary-form");
+const list=document.getElementById("itinerary-list");
+let itineraryItems=JSON.parse(localStorage.getItem("anamudi-itinerary"))||[];
+
+function renderItinerary(){
+  list.innerHTML="";
+  if(itineraryItems.length===0){list.innerHTML="<p>No itinerary items added yet.</p>";return;}
+  itineraryItems.forEach((item,index)=>{
+    const div=document.createElement("div");
+    div.className="itinerary-item";
+    div.innerHTML=`<strong>${item.date}:</strong> ${item.activity} ${item.notes?`<br><em>Notes:</em> ${item.notes}`:""} <button aria-label="Remove" style="float:right;" onclick="removeItem(${index})">X</button>`;
+    list.appendChild(div);
+  });
+}
+
+function removeItem(index){
+  itineraryItems.splice(index,1);
+  localStorage.setItem("anamudi-itinerary", JSON.stringify(itineraryItems));
+  renderItinerary();
+}
+
+form.addEventListener("submit", e=>{
+  e.preventDefault();
+  const date=form.date.value;
+  const activity=form.activity.value.trim();
+  const notes=form.notes.value.trim();
+  if(date && activity){
+    itineraryItems.push({date, activity, notes});
+    localStorage.setItem("anamudi-itinerary", JSON.stringify(itineraryItems));
+    renderItinerary();
+    form.reset();
+  }
+});
+
+document.getElementById("clear-itinerary").addEventListener("click", ()=>{
+  if(confirm("Are you sure you want to clear the entire itinerary?")){
+    itineraryItems=[];
+    localStorage.removeItem("anamudi-itinerary");
+    renderItinerary();
+  }
+});
+
+renderItinerary();
+</script>
+</body>
+</html>
+
+
+

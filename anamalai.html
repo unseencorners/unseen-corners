@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title data-lang="page-title">Unseen Corners – Anamalai Hills</title>
+  <style>
+    /* Reset & basic font */
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+    
+    /* Full page background */
+    body {
+      line-height: 1.6;
+      padding-bottom: 80px;
+      background: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhhIjJYNuAqchL9mtw8cSA-Y2l55WVgEjeoxbN93DtKhIfoOrc1EyojAhYnrxyF5IVIeeetPQoB54nXGl5j_DjXMKOMl7hJg0b6qn_CilqrGULcn0VYoHhZwtf8gN5LfxM6oXnlRbl270s/s1080/FB_IMG_1631176828386.jpg') no-repeat center center/cover;
+      color: #fff;
+      position: relative;
+    }
+    
+    /* Dark overlay for readability */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.35);
+      z-index: -1;
+    }
+
+    header {
+      background: rgba(27, 39, 53, 0.85);
+      color: #fff;
+      padding: 15px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+    header h1 { color: #f4c542; font-size: 22px; font-weight: bold; }
+    nav a { color: #fff; text-decoration: none; margin-left: 20px; font-size: 16px; }
+    nav a:hover { text-decoration: underline; }
+    .nav-btn {
+      background: #f4c542; color: #000; font-weight: bold;
+      padding: 8px 16px; border: none; border-radius: 5px;
+      margin-left: 20px; cursor: pointer;
+    }
+    .nav-btn:hover { background: #e3b72c; }
+    .lang-select {
+      margin-left: 20px; padding: 6px 10px; border-radius: 5px;
+      border: none; font-size: 14px; cursor: pointer;
+    }
+
+    /* Hero section with transparent background so body image shows through */
+    .hero {
+      height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center;
+      position: relative;
+      padding-top: 70px;
+      color: #fff;
+    }
+    .hero-content { max-width: 800px; padding: 20px; }
+    .hero-content h2 { font-size: 32px; margin-bottom: 20px; color: #f4c542; text-shadow: 1px 1px 6px rgba(0,0,0,0.7); }
+    .hero-content p, .hero-content li { font-size: 18px; text-shadow: 1px 1px 5px rgba(0,0,0,0.6); }
+
+    .info-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px; margin-top: 20px;
+    }
+    .info-card {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 8px; padding: 15px; font-size: 15px;
+    }
+
+    .view360 {
+      margin: 50px auto; max-width: 1000px;
+      padding: 10px; border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      background: rgba(255,255,255,0.05);
+    }
+    .view360 iframe { width: 100%; height: 500px; border: none; border-radius: 12px; }
+
+    .itinerary {
+      max-width: 900px; margin: 50px auto; padding: 20px;
+      background: rgba(255,255,255,0.1); border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2); color: #fff;
+    }
+    .itinerary h2 { text-align: center; margin-bottom: 20px; }
+    .itinerary form { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 20px; }
+    .itinerary input, .itinerary textarea { padding: 10px; border: 1px solid #ccc; border-radius: 5px; width: 100%; max-width: 250px; }
+    .itinerary button { background: #1b2735; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; }
+    .itinerary button:hover { background: #34495e; }
+    .itinerary-item {
+      background: rgba(0,0,0,0.5); padding: 15px; border-left: 4px solid #f4c542;
+      margin-bottom: 10px; border-radius: 5px;
+    }
+
+    footer { text-align: center; padding: 20px; background: rgba(27,39,53,0.85); color: white; margin-top: 50px; }
+
+    .fade { opacity: 0; transition: opacity 0.6s ease-in-out; }
+    .fade.show { opacity: 1; }
+
+    @media(max-width:768px){
+      .hero-content h2 { font-size: 24px; }
+      .hero-content p { font-size: 16px; }
+      .view360 iframe { height: 300px; }
+      .itinerary form { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1 id="site-title">Unseen Corners</h1>
+  <nav>
+    <a href="index.html" data-lang="nav-home"><b>Home</b></a>
+    <a href="about14.html" data-lang="nav-about"><b>About</b></a>
+    <a href="contact.html" data-lang="nav-contact"><b>Contact</b></a>
+    <a href="t4.html" data-lang="nav-chat"><b>Chat Bot</b></a>
+    <button class="nav-btn" data-lang="nav-book" onclick="window.location.href='book.html'"><b>Book Now</b></button>
+    <select class="lang-select" id="language-select">
+      <option value="en">English</option>
+      <option value="hi">हिन्दी</option>
+      <option value="te">తెలుగు</option>
+    </select>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+    <h2 class="fade show" data-lang="title">🏞️ Anamalai Hills – Nature's Hidden Haven</h2>
+    <p class="fade show" data-lang="intro">The Anamalai Hills, located in Tamil Nadu and Kerala, are part of the Western Ghats and known for rich biodiversity, tribal culture, and scenic landscapes.</p>
+
+    <h3 class="fade show" data-lang="history-title">📜 History & Significance</h3>
+    <ul>
+      <li class="fade show" data-lang="history-1">Home to Anamalai Tiger Reserve and multiple sanctuaries.</li>
+      <li class="fade show" data-lang="history-2">Inhabited by indigenous tribal communities like the Malasar and Pulayar.</li>
+      <li class="fade show" data-lang="history-3">Features lush tea and coffee estates from colonial times.</li>
+      <li class="fade show" data-lang="history-4">Known for waterfalls, dense forests, and rare wildlife species.</li>
+    </ul>
+
+    <h3 class="fade show" data-lang="visit-title">🕒 Visiting Information</h3>
+    <div class="info-grid">
+      <div class="info-card fade show" data-lang="visit-time"><b>Best Season:</b><br> October to April.</div>
+      <div class="info-card fade show" data-lang="visit-location"><b>Location:</b><br> Tamil Nadu & Kerala, India.</div>
+      <div class="info-card fade show" data-lang="visit-best"><b>Activities:</b><br> Wildlife safaris, tribal village visits, trekking, waterfalls.</div>
+    </div>
+  </div>
+</section>
+
+<section class="view360">
+  <h2 style="text-align:center; margin-bottom:15px; color:#1b2735;" data-lang="view360-title">
+    🎥 Explore View of Khasi Hills
+  </h2>
+  <iframe 
+    src="https://www.youtube.com/embed/h0WryzkEIcs" 
+    allowfullscreen 
+    loading="lazy" 
+    title="Anamalai Hills Video"
+    style="width:100%; height:500px; border:none; border-radius:12px;">
+  </iframe>
+</section>
+
+
+<section class="itinerary">
+  <h2 data-lang="itinerary-title">🧭 Plan Your Itinerary</h2>
+  <form id="itinerary-form">
+    <input type="date" id="date" required />
+    <input type="text" id="activity" placeholder="Activity (e.g., Safari in Anamalai Reserve)" required />
+    <textarea id="notes" rows="1" placeholder="Notes (optional)"></textarea>
+    <button type="submit" data-lang="btn-add">Add to Itinerary</button>
+    <button type="button" id="clear-itinerary" style="background:#c0392b;" data-lang="btn-clear">Clear All</button>
+  </form>
+  <div class="itinerary-list" id="itinerary-list"></div>
+</section>
+
+<footer>
+  <p class="fade show" data-lang="footer">&copy; 2025 Unseen Corners | All Rights Reserved</p>
+</footer>
+
+<script>
+const translations = {
+  en: {
+    "page-title": "Unseen Corners – Anamalai Hills",
+    "nav-home": "<b>Home</b>", "nav-about": "<b>About</b>", "nav-contact": "<b>Contact</b>", "nav-chat": "<b>Chat Bot</b>", "nav-book": "<b>Book Now</b>",
+    "footer": "&copy; 2025 Unseen Corners | All Rights Reserved",
+    "title": "🏞️ Anamalai Hills – Nature's Hidden Haven",
+    "intro": "The Anamalai Hills, located in Tamil Nadu and Kerala, are part of the Western Ghats and known for rich biodiversity, tribal culture, and scenic landscapes.",
+    "history-title": "📜 History & Significance",
+    "history-1": "Home to Anamalai Tiger Reserve and multiple sanctuaries.",
+    "history-2": "Inhabited by indigenous tribal communities like the Malasar and Pulayar.",
+    "history-3": "Features lush tea and coffee estates from colonial times.",
+    "history-4": "Known for waterfalls, dense forests, and rare wildlife species.",
+    "visit-title": "🕒 Visiting Information",
+    "visit-time": "<b>Best Season:</b><br> October to April.",
+    "visit-location": "<b>Location:</b><br> Tamil Nadu & Kerala, India.",
+    "visit-best": "<b>Activities:</b><br> Wildlife safaris, tribal village visits, trekking, waterfalls.",
+    "view360-title": "🌐 Explore 360° View of Anamalai Hills",
+    "itinerary-title": "🧭 Plan Your Itinerary",
+    "btn-add": "Add to Itinerary",
+    "btn-clear": "Clear All"
+  },
+  hi: {
+    "page-title": "अनसेन कॉर्नर्स – अनामलाई हिल्स",
+    "nav-home": "<b>होम</b>", "nav-about": "<b>हमारे बारे में</b>", "nav-contact": "<b>संपर्क करें</b>", "nav-chat": "<b>चैट बॉट</b>", "nav-book": "<b>अभी बुक करें</b>",
+    "footer": "&copy; 2025 अनसेन कॉर्नर्स | सर्वाधिकार सुरक्षित",
+    "title": "🏞️ अनामलाई हिल्स – प्रकृति का छुपा खज़ाना",
+    "intro": "तमिलनाडु और केरल में स्थित अनामलाई पहाड़ियाँ पश्चिमी घाट का हिस्सा हैं, जो जैव विविधता, जनजातीय संस्कृति और प्राकृतिक दृश्यों के लिए प्रसिद्ध हैं।",
+    "history-title": "📜 इतिहास और महत्व",
+    "history-1": "अनामलाई टाइगर रिजर्व और कई अभयारण्यों का घर।",
+    "history-2": "मालसर और पुलायर जैसी आदिवासी जनजातियाँ यहाँ निवास करती हैं।",
+    "history-3": "उपनिवेश काल के चाय और कॉफी बागानों से युक्त।",
+    "history-4": "जलप्रपातों, घने जंगलों और दुर्लभ वन्यजीवों के लिए प्रसिद्ध।",
+    "visit-title": "🕒 यात्रा जानकारी",
+    "visit-time": "<b>सर्वश्रेष्ठ समय:</b><br> अक्टूबर से अप्रैल।",
+    "visit-location": "<b>स्थान:</b><br> तमिलनाडु और केरल, भारत।",
+    "visit-best": "<b>गतिविधियाँ:</b><br> सफारी, जनजातीय गाँव भ्रमण, ट्रेकिंग, जलप्रपात देखना।",
+    "view360-title": "🌐 अनामलाई हिल्स का 360° दृश्य देखें",
+    "itinerary-title": "🧭 अपनी यात्रा योजना बनाएं",
+    "btn-add": "यात्रा में जोड़ें",
+    "btn-clear": "सब साफ़ करें"
+  },
+  te: {
+    "page-title": "అన్సీన్ కార్నర్స్ – అనమలై హిల్స్",
+    "nav-home": "<b>హోమ్</b>", "nav-about": "<b>మా గురించి</b>", "nav-contact": "<b>సంప్రదించండి</b>", "nav-chat": "<b>చాట్ బాట్</b>", "nav-book": "<b>ఇప్పుడే బుక్ చేయండి</b>",
+    "footer": "&copy; 2025 అన్సీన్ కార్నర్స్ | అన్ని హక్కులు సురక్షితం",
+    "title": "🏞️ అనమలై హిల్స్ – ప్రకృతిలోని దాగిన రత్నం",
+    "intro": "తమిళనాడు మరియు కేరళలోని అనమలై హిల్స్, వెస్టర్న్ ఘాట్స్‌లో భాగంగా ఉన్నాయి, జైవ వైవిధ్యం, జాత్యా సంస్కృతి మరియు సుందరమైన ప్రదేశాల కోసం ప్రసిద్ధి చెందాయి.",
+    "history-title": "📜 చరిత్ర & ప్రాముఖ్యత",
+    "history-1": "అనమలై టైగర్ రిజర్వ్ మరియు అనేక అభయారణ్యాలకు హోమ్.",
+    "history-2": "మలసార్ మరియు పులయార్ వంటి స్థానిక గిరిజన సమాజాలు నివసిస్తాయి.",
+    "history-3": "విశ్రాంతి కాలంలోని టీ మరియు కాఫీ తోటలు.",
+    "history-4": "జలపాతాలు, గడ్డిపులి అడవులు మరియు అరుదైన వన్యప్రాణులకు ప్రసిద్ధి.",
+    "visit-title": "🕒 సందర్శన సమాచారం",
+    "visit-time": "<b>చెల్లుబాటు కాలం:</b><br> అక్టోబర్ నుండి ఏప్రిల్.",
+    "visit-location": "<b>ప్రదేశం:</b><br> తమిళనాడు & కేరళ, భారత్.",
+    "visit-best": "<b>చర్యలు:</b><br> వన్యప్రాణి సఫారీలు, గిరిజన గ్రామ సందర్శనలు, ట్రెక్కింగ్, జలపాతం దర్శనం.",
+    "view360-title": "🌐 అనమలై హిల్స్ 360° వీక్షణం",
+    "itinerary-title": "🧭 మీ ప్రయాణం ప్రణాళికను రూపొందించండి",
+    "btn-add": "ప్రయాణంలో జోడించండి",
+    "btn-clear": "అన్నీ క్లియర్ చేయండి"
+  }
+};
+
+// Function to switch language
+function updateLanguage(lang) {
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-lang]').forEach(el => {
+    const key = el.getAttribute('data-lang');
+    if(translations[lang] && translations[lang][key]) {
+      el.innerHTML = translations[lang][key];
+    }
+  });
+}
+
+// Language selector
+const langSelect = document.getElementById('language-select');
+langSelect.addEventListener('change', e => updateLanguage(e.target.value));
+
+// Initialize page in English
+updateLanguage('en');
+</script>
+</body>
+</html>
+
+
+

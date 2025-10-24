@@ -1,0 +1,316 @@
+<!-- FULL multilingual HTML with Itinerary language support -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title data-lang="page-title">Unseen Corners – Kashi Vishwanath Temple</title>
+  <style>
+  * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+    body { line-height: 1.6; background: #fff; color: #333; padding-bottom: 80px; }
+
+    header {
+      background: #1b2735; color: #fff;
+      padding: 15px 50px; display: flex;
+      justify-content: space-between; align-items: center;
+      flex-wrap: wrap; position: fixed; top: 0; left: 0;
+      width: 100%; z-index: 1000;
+    }
+    header h1 { color: #f4c542; font-size: 22px; font-weight: bold; }
+    nav a { color: #fff; text-decoration: none; margin-left: 20px; font-size: 16px; }
+    nav a:hover { text-decoration: underline; }
+    .nav-btn {
+      background: #f4c542; color: #000; font-weight: bold;
+      padding: 8px 16px; border: none; border-radius: 5px;
+      margin-left: 20px; cursor: pointer;
+    }
+    .lang-select {
+      margin-left: 20px; padding: 6px 10px; border-radius: 5px;
+      border: none; font-size: 14px; cursor: pointer;
+    }
+
+    .hero {
+      background: url('https://upload.wikimedia.org/wikipedia/commons/3/32/Tirumala_Venkateswara_Temple%2C_Andhra_Pradesh.jpg') no-repeat center center/cover;
+      height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center; position: relative;
+      padding-top: 70px; color: #fff;
+    }
+    .hero::before {
+      content: ""; position: absolute; top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6); z-index: 1;
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      max-width: 800px; padding: 20px;
+    }
+    .hero-content h2 { font-size: 32px; margin-bottom: 20px; color: #f4c542; }
+    .hero-content p { font-size: 18px; margin-bottom: 20px; }
+
+    .info-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px; margin-top: 20px;
+    }
+    .info-card {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 8px; padding: 15px; font-size: 15px;
+    }
+
+    .view360 {
+      margin: 50px auto; max-width: 1000px;
+      padding: 10px; border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    .view360 iframe {
+      width: 100%; height: 500px; border: none; border-radius: 12px;
+    }
+
+    .itinerary {
+      max-width: 900px; margin: 50px auto; padding: 20px;
+      background: #f9f9f9; border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .itinerary h2 { text-align: center; color: #1b2735; margin-bottom: 20px; }
+    .itinerary form { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 20px; }
+    .itinerary input, .itinerary textarea {
+      padding: 10px; border: 1px solid #ccc; border-radius: 5px;
+      width: 100%; max-width: 250px; font-size: 14px;
+    }
+    .itinerary button {
+      background: #1b2735; color: #fff;
+      padding: 10px 20px; border: none; border-radius: 5px;
+      cursor: pointer;
+    }
+    .itinerary button:hover { background: #34495e; }
+    .itinerary-item {
+      background: #fff; padding: 15px; border-left: 4px solid #f4c542;
+      margin-bottom: 10px; border-radius: 5px;
+    }
+
+    footer {
+      text-align: center; padding: 20px;
+      background: #1b2735; color: #fff;
+      margin-top: 50px;
+    }
+
+    .fade { opacity: 0; transition: opacity 0.6s ease-in-out; }
+    .fade.show { opacity: 1; }
+
+    @media(max-width:768px){
+      .hero-content h2 { font-size: 24px; }
+      .hero-content p { font-size: 16px; }
+      .view360 iframe { height: 300px; }
+      .itinerary form { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1 id="site-title">Unseen Corners</h1>
+  <nav>
+    <a href="index.html" data-lang="nav-home"><b>Home</b></a>
+    <a href="about14.html" data-lang="nav-about"><b>About</b></a>
+    <a href="contact.html" data-lang="nav-contact"><b>Contact</b></a>
+    <a href="t4.html" data-lang="nav-chat"><b>Chat Bot</b></a>
+    <button class="nav-btn" data-lang="nav-book"><b>Book Now</b></button>
+    <select class="lang-select" id="language-select">
+      <option value="en">English</option>
+      <option value="hi">हिन्दी</option>
+      <option value="te">తెలుగు</option>
+    </select>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+    <h2 class="fade show" data-lang="title">🛕 Kashi Vishwanath Temple</h2>
+    <p class="fade show" data-lang="intro">The Kashi Vishwanath Temple, located in Varanasi, Uttar Pradesh, is one of the holiest Hindu temples dedicated to Lord Shiva.</p>
+    <h3 class="fade show" data-lang="history-title">📜 History – When Was It Built?</h3>
+    <ul>
+      <li class="fade show" data-lang="history-1">The temple's history dates back several centuries and has been rebuilt many times due to invasions and destructions.</li>
+      <li class="fade show" data-lang="history-2">It is one of the twelve Jyotirlingas, the holiest Shiva temples in India.</li>
+      <li class="fade show" data-lang="history-3">The current structure was built by Ahilya Bai Holkar in the 18th century.</li>
+      <li class="fade show" data-lang="history-4">It is a major pilgrimage and cultural hub in Varanasi.</li>
+    </ul>
+
+    <h3 class="fade show" data-lang="visit-title">🕒 Visiting Information</h3>
+    <div class="info-grid">
+      <div class="info-card fade show" data-lang="visit-time"><b>Timings:</b><br> 4:00 AM – 11:00 PM daily.</div>
+      <div class="info-card fade show" data-lang="visit-location"><b>Location:</b><br> Varanasi, Uttar Pradesh, India.</div>
+      <div class="info-card fade show" data-lang="visit-best"><b>Best Time:</b><br> October to March, especially during Maha Shivaratri.</div>
+    </div>
+  </div>
+</section>
+
+<section class="view360">
+  <h2 style="text-align:center;" data-lang="view360-title">🌐 Explore 360° View of Kashi Vishwanath Temple</h2>
+  <iframe src="kashi360.html" allowfullscreen></iframe>
+</section>
+
+<section class="itinerary">
+  <h2 data-lang="itinerary-title">🧭 Plan Your Itinerary</h2>
+  <form id="itinerary-form">
+    <input type="date" id="date" required />
+    <input type="text" id="activity" placeholder="Activity (e.g., Temple Visit)" required data-lang-placeholder="activity-placeholder" />
+    <textarea id="notes" rows="1" placeholder="Notes (optional)" data-lang-placeholder="notes-placeholder"></textarea>
+    <button type="submit" data-lang="add-btn">Add to Itinerary</button>
+    <button type="button" id="clear-itinerary" style="background:#c0392b;" data-lang="clear-btn">Clear All</button>
+  </form>
+  <div class="itinerary-list" id="itinerary-list"></div>
+  <div class="itinerary-list">
+    <h3 data-lang="suggested-itinerary">🗓️ Suggested Itinerary (Built-in)</h3>
+    <div class="itinerary-item" data-lang="day1-morning"><strong>Day 1 - Morning:</strong> Visit Kashi Vishwanath Temple and attend morning Aarti</div>
+    <div class="itinerary-item" data-lang="day1-afternoon"><strong>Day 1 - Afternoon:</strong> Explore Manikarnika Ghat and local markets</div>
+    <div class="itinerary-item" data-lang="day1-evening"><strong>Day 1 - Evening:</strong> Participate in Ganga Aarti at Dashashwamedh Ghat</div>
+    <div class="itinerary-item" data-lang="day2-morning"><strong>Day 2 - Morning:</strong> Visit Sankat Mochan Hanuman Temple and BHU</div>
+    <div class="itinerary-item" data-lang="day2-afternoon"><strong>Day 2 - Afternoon:</strong> Enjoy local cuisine and visit Ramnagar Fort</div>
+    <div class="itinerary-item" data-lang="day2-night"><strong>Day 2 - Night:</strong> Attend cultural performances or rest</div>
+  </div>
+</section>
+
+<footer>
+  <p class="fade show" data-lang="footer">&copy; 2025 Unseen Corners | All Rights Reserved</p>
+</footer>
+
+<script>
+  const translations = {
+    en: {
+      "page-title": "Unseen Corners – Kashi Vishwanath Temple",
+      "nav-home": "<b>Home</b>", "nav-about": "<b>About</b>", "nav-contact": "<b>Contact</b>", "nav-chat": "<b>Chat Bot</b>", "nav-book": "<b>Book Now</b>",
+      footer: "&copy; 2025 Unseen Corners | All Rights Reserved",
+      title: "🛕 Kashi Vishwanath Temple",
+      intro: "The Kashi Vishwanath Temple, located in Varanasi, Uttar Pradesh, is one of the holiest Hindu temples dedicated to Lord Shiva.",
+      "history-title": "📜 History – When Was It Built?",
+      "history-1": "The temple's history dates back several centuries and has been rebuilt many times due to invasions and destructions.",
+      "history-2": "It is one of the twelve Jyotirlingas, the holiest Shiva temples in India.",
+      "history-3": "The current structure was built by Ahilya Bai Holkar in the 18th century.",
+      "history-4": "It is a major pilgrimage and cultural hub in Varanasi.",
+      "visit-title": "🕒 Visiting Information",
+      "visit-time": "<b>Timings:</b><br> 4:00 AM – 11:00 PM daily.",
+      "visit-location": "<b>Location:</b><br> Varanasi, Uttar Pradesh, India.",
+      "visit-best": "<b>Best Time:</b><br> October to March, especially during Maha Shivaratri.",
+      "view360-title": "🌐 Explore 360° View of Kashi Vishwanath Temple",
+      "itinerary-title": "🧭 Plan Your Itinerary",
+      "activity-placeholder": "Activity (e.g., Temple Visit)",
+      "notes-placeholder": "Notes (optional)",
+      "add-btn": "Add to Itinerary",
+      "clear-btn": "Clear All",
+      "suggested-itinerary": "🗓️ Suggested Itinerary (Built-in)",
+      "day1-morning": "<strong>Day 1 - Morning:</strong> Visit Kashi Vishwanath Temple and attend morning Aarti",
+      "day1-afternoon": "<strong>Day 1 - Afternoon:</strong> Explore Manikarnika Ghat and local markets",
+      "day1-evening": "<strong>Day 1 - Evening:</strong> Participate in Ganga Aarti at Dashashwamedh Ghat",
+      "day2-morning": "<strong>Day 2 - Morning:</strong> Visit Sankat Mochan Hanuman Temple and BHU",
+      "day2-afternoon": "<strong>Day 2 - Afternoon:</strong> Enjoy local cuisine and visit Ramnagar Fort",
+      "day2-night": "<strong>Day 2 - Night:</strong> Attend cultural performances or rest"
+    },
+    hi: {
+      "page-title": "अनदेखे कोने – काशी विश्वनाथ मंदिर",
+      "nav-home": "<b>होम</b>", "nav-about": "<b>हमारे बारे में</b>", "nav-contact": "<b>संपर्क करें</b>", "nav-chat": "<b>चैट बोट</b>", "nav-book": "<b>बुक करें</b>",
+      footer: "&copy; 2025 अनदेखे कोने | सर्वाधिकार सुरक्षित",
+      title: "🛕 काशी विश्वनाथ मंदिर",
+      intro: "काशी विश्वनाथ मंदिर, वाराणसी, उत्तर प्रदेश में स्थित, भगवान शिव को समर्पित एक पवित्र मंदिर है।",
+      "history-title": "📜 इतिहास – यह कब बना था?",
+      "history-1": "इस मंदिर का इतिहास कई सदियों पुराना है और इसे कई बार पुनर्निर्मित किया गया है।",
+      "history-2": "यह भारत के 12 ज्योतिर्लिंगों में से एक है।",
+      "history-3": "वर्तमान संरचना अहिल्या बाई होल्कर द्वारा 18वीं सदी में बनवाई गई थी।",
+      "history-4": "यह वाराणसी का एक प्रमुख सांस्कृतिक और धार्मिक केंद्र है।",
+      "visit-title": "🕒 यात्रा जानकारी",
+      "visit-time": "<b>समय:</b><br> प्रतिदिन सुबह 4 बजे से रात 11 बजे तक।",
+      "visit-location": "<b>स्थान:</b><br> वाराणसी, उत्तर प्रदेश, भारत।",
+      "visit-best": "<b>सर्वश्रेष्ठ समय:</b><br> अक्टूबर से मार्च, विशेष रूप से महा शिवरात्रि में।",
+      "view360-title": "🌐 काशी विश्वनाथ मंदिर का 360° दृश्य देखें",
+      "itinerary-title": "🧭 अपनी यात्रा योजना बनाएं",
+      "activity-placeholder": "गतिविधि (जैसे मंदिर दर्शन)",
+      "notes-placeholder": "टिप्पणियाँ (वैकल्पिक)",
+      "add-btn": "यात्रा में जोड़ें",
+      "clear-btn": "सब हटाएं",
+      "suggested-itinerary": "🗓️ सुझाई गई यात्रा (निर्मित)",
+      "day1-morning": "<strong>दिन 1 - सुबह:</strong> काशी विश्वनाथ मंदिर में पूजा और आरती",
+      "day1-afternoon": "<strong>दिन 1 - दोपहर:</strong> मणिकर्णिका घाट और स्थानीय बाज़ार भ्रमण",
+      "day1-evening": "<strong>दिन 1 - शाम:</strong> दशाश्वमेध घाट पर गंगा आरती में भाग लें",
+      "day2-morning": "<strong>दिन 2 - सुबह:</strong> संकट मोचन मंदिर और बीएचयू यात्रा",
+      "day2-afternoon": "<strong>दिन 2 - दोपहर:</strong> स्थानीय व्यंजन खाएं और रामनगर किला देखें",
+      "day2-night": "<strong>दिन 2 - रात:</strong> सांस्कृतिक कार्यक्रम देखें या विश्राम करें"
+    },
+    te: {
+      "page-title": "అన్వేషణా మూలాలు – కాశీ విశ్వనాథ ఆలయం",
+      "nav-home": "<b>హోమ్</b>", "nav-about": "<b>గురించి</b>", "nav-contact": "<b>సంప్రదించండి</b>", "nav-chat": "<b>చాట్ బాట్</b>", "nav-book": "<b>బుక్ చేయండి</b>",
+      footer: "&copy; 2025 అన్వేషణా మూలాలు | అన్ని హక్కులు రిజర్వ్ చేయబడ్డాయి",
+      title: "🛕 కాశీ విశ్వనాథ ఆలయం",
+      intro: "కాశీ విశ్వనాథ ఆలయం ఉత్తరప్రదేశ్‌లోని వారణాసిలో ఉన్న అత్యంత పవిత్రమైన శివాలయాలలో ఒకటి.",
+      "history-title": "📜 చరిత్ర – ఇది ఎప్పుడైనా నిర్మించబడింది?",
+      "history-1": "ఈ ఆలయ చరిత్ర శతాబ్దాల పూర్వం మొదలైంది మరియు అనేకసార్లు పునర్నిర్మించబడింది.",
+      "history-2": "ఇది భారతదేశంలోని 12 జ్యోతిర్లింగాలలో ఒకటి.",
+      "history-3": "ప్రస్తుత నిర్మాణం మహారాణి అహిల్యాబాయి హోల్కర్ 18వ శతాబ్దంలో నిర్మించారు.",
+      "history-4": "ఇది వారణాసిలోని ముఖ్యమైన యాత్రా స్థలంగా మారింది.",
+      "visit-title": "🕒 సందర్శన సమాచారం",
+      "visit-time": "<b>సమయం:</b><br> రోజూ ఉదయం 4:00 నుండి రాత్రి 11:00 వరకు.",
+      "visit-location": "<b>ప్రదేశం:</b><br> వారణాసి, ఉత్తరప్రదేశ్, భారత్.",
+      "visit-best": "<b>మంచి సమయం:</b><br> అక్టోబర్ నుండి మార్చి, ముఖ్యంగా మహా శివరాత్రి సమయంలో.",
+      "view360-title": "🌐 కాశీ విశ్వనాథ ఆలయ 360° వీక్షణ",
+      "itinerary-title": "🧭 మీ యాత్రను ప్రణాళిక చేయండి",
+      "activity-placeholder": "చర్య (ఉదా: ఆలయం సందర్శన)",
+      "notes-placeholder": "గమనికలు (ఐచ్ఛికం)",
+      "add-btn": "యాత్రలో చేర్చు",
+      "clear-btn": "అన్నీ తొలగించు",
+      "suggested-itinerary": "🗓️ సూచించిన ప్రణాళిక (అంతర్గత)",
+      "day1-morning": "<strong>రోజు 1 - ఉదయం:</strong> ఆలయం సందర్శించండి మరియు ఆర్తిలో పాల్గొనండి",
+      "day1-afternoon": "<strong>రోజు 1 - మధ్యాహ్నం:</strong> మనికర్ణిక ఘాట్ మరియు మార్కెట్లు చూడండి",
+      "day1-evening": "<strong>రోజు 1 - సాయంత్రం:</strong> గంగా ఆర్తిలో పాల్గొనండి",
+      "day2-morning": "<strong>రోజు 2 - ఉదయం:</strong> సంకట్ మోచన్ ఆలయం మరియు BHU సందర్శించండి",
+      "day2-afternoon": "<strong>రోజు 2 - మధ్యాహ్నం:</strong> స్థానిక వంటకాలు ఆస్వాదించండి మరియు రామనగర్ కోట సందర్శించండి",
+      "day2-night": "<strong>రోజు 2 - రాత్రి:</strong> సాంస్కృతిక ప్రదర్శనలు చూడండి లేదా విశ్రాంతి తీసుకోండి"
+    }
+  };
+
+  document.getElementById('language-select').addEventListener('change', e => {
+    const lang = e.target.value;
+    document.querySelectorAll('[data-lang]').forEach(el => {
+      const key = el.getAttribute('data-lang');
+      if (translations[lang]?.[key]) {
+        el.innerHTML = translations[lang][key];
+      }
+    });
+    document.querySelectorAll('[data-lang-placeholder]').forEach(el => {
+      const key = el.getAttribute('data-lang-placeholder');
+      if (translations[lang]?.[key]) {
+        el.placeholder = translations[lang][key];
+      }
+    });
+    document.title = translations[lang]?.["page-title"] || document.title;
+  });
+
+  // Itinerary builder
+  const form = document.getElementById('itinerary-form');
+  const list = document.getElementById('itinerary-list');
+  const clearBtn = document.getElementById('clear-itinerary');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const date = document.getElementById('date').value;
+    const activity = document.getElementById('activity').value;
+    const notes = document.getElementById('notes').value;
+    if (!date || !activity) return;
+
+    const item = document.createElement('div');
+    item.className = 'itinerary-item';
+    item.innerHTML = `<strong>${date}</strong> – ${activity}<br><small>${notes}</small>`;
+    list.appendChild(item);
+    form.reset();
+  });
+
+  clearBtn.addEventListener('click', () => {
+    list.innerHTML = '';
+  });
+</script>
+
+</body>
+</html>
+
+
+
+
+

@@ -1,0 +1,301 @@
+<!-- Om Beach | Unseen Corners -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Unseen Corners – Om Beach</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Poppins", sans-serif; }
+    html, 
+    /* Full page background */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  background: url('https://preview.redd.it/om-beach-gokarna-one-of-the-acclaimed-beaches-in-the-v0-tlop11d3uvbe1.jpg?width=1080&crop=smart&auto=webp&s=d8e973690015f3a93dcaad786f52ad96ec9b5cd3') no-repeat center center fixed;
+  background-size: cover;
+  color: black;
+  line-height: 1.6;
+}
+
+/* Optional overlay for readability */
+.bg-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.45); /* dark overlay */
+  z-index: 0;
+}
+
+/* Make sections appear above overlay */
+header, .hero, .itinerary, .view360, footer {
+  position: relative;
+  z-index: 1;
+}
+
+    header h1 { color: #ffeb3b; font-size: 22px; font-weight: bold; }
+    nav a { color: white; text-decoration: none; margin-left: 20px; font-weight: 500; }
+    nav a:hover { text-decoration: underline; }
+    .nav-btn {
+      background: #ffeb3b; color: #004d40; font-weight: bold;
+      padding: 8px 16px; border: none; border-radius: 6px;
+      margin-left: 20px; cursor: pointer;
+    }
+    .nav-btn:hover { background: #fff176; }
+    .lang-select {
+      margin-left: 20px; padding: 6px 10px; border-radius: 5px;
+      border: none; font-size: 14px; cursor: pointer;
+    }
+
+    .hero {
+      background: url('https://preview.redd.it/om-beach-gokarna-one-of-the-acclaimed-beaches-in-the-v0-tlop11d3uvbe1.jpg?width=1080&crop=smart&auto=webp&s=d8e973690015f3a93dcaad786f52ad96ec9b5cd3') no-repeat center center;
+      background-size: cover;
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center; color: white; position: relative; padding-top: 70px;
+    }
+    .hero::before {
+      content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.55); z-index: 1;
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 800px; padding: 20px; }
+    .hero-content h2 { font-size: 34px; margin-bottom: 15px; color: #ffeb3b; }
+    .hero-content p { font-size: 18px; margin-bottom: 20px; }
+
+    .info-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 15px; margin-top: 20px;
+    }
+    .info-card {
+      background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 8px; padding: 15px; font-size: 15px; color: #fff;
+    }
+
+    .view360 {
+      margin: 60px auto; max-width: 1000px;
+      padding: 15px; border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    .view360 iframe { width: 100%; height: 500px; border: none; border-radius: 12px; }
+
+    .itinerary {
+      max-width: 900px; margin: 50px auto; padding: 25px;
+      background: #f9f9f9; border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .itinerary h2 { text-align: center; color: #004d40; margin-bottom: 20px; }
+    .itinerary form { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 20px; }
+    .itinerary input, .itinerary textarea {
+      padding: 10px; border: 1px solid #ccc; border-radius: 5px;
+      width: 100%; max-width: 250px; font-size: 14px;
+    }
+    .itinerary button {
+      background: #004d40; color: white; padding: 10px 20px;
+      border: none; border-radius: 5px; cursor: pointer;
+    }
+    .itinerary button:hover { background: #00695c; }
+    .itinerary-item {
+      background: white; padding: 15px; border-left: 4px solid #ffeb3b;
+      margin-bottom: 10px; border-radius: 5px;
+    }
+
+    footer { text-align: center; padding: 20px; background: #004d40; color: white; margin-top: 50px; }
+
+    .fade { opacity: 0; transition: opacity 0.7s ease-in-out; }
+    .fade.show { opacity: 1; }
+
+    @media(max-width:768px){
+      .hero-content h2 { font-size: 26px; }
+      .hero-content p { font-size: 16px; }
+      .view360 iframe { height: 300px; }
+      .itinerary form { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Unseen Corners</h1>
+  <nav>
+    <a href="index.html"><b data-lang="navHome">Home</b></a>
+    <a href="about14.html"><b data-lang="navAbout">About</b></a>
+    <a href="contact.html"><b data-lang="navContact">Contact</b></a>
+    <a href="t4.html"><b data-lang="navChat">Chat Bot</b></a>
+    <button class="nav-btn" data-lang="bookNow" onclick="window.location.href='book.html'"><b>Book Now</b></button>
+    <select class="lang-select" id="language-select">
+      <option value="en">English</option>
+      <option value="hi">हिन्दी</option>
+      <option value="te">తెలుగు</option>
+    </select>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+    <h2 class="fade show" data-lang="heroTitle">🏖️ Om Beach, Gokarna</h2>
+    <p class="fade show" data-lang="heroDesc">
+      Om Beach, named for its natural Om-shaped shoreline, is one of Karnataka’s most iconic beaches. With golden sands, gentle waves, and a peaceful atmosphere, it’s a perfect escape for both adventure and relaxation.
+    </p>
+
+    <h3 class="fade show" data-lang="highlightsTitle">🌊 Highlights & Activities</h3>
+    <ul>
+      <li data-lang="highlight1">Named after the spiritual “Om” symbol formed by its twin crescents.</li>
+      <li data-lang="highlight2">Popular for kayaking, banana boat rides, and parasailing.</li>
+      <li data-lang="highlight3">Ideal for meditation and beach camping.</li>
+      <li data-lang="highlight4">Nearby cafes offer fresh seafood and sunset views.</li>
+    </ul>
+
+    <h3 class="fade show" data-lang="visitorInfoTitle">🕒 Visitor Information</h3>
+    <div class="info-grid">
+      <div class="info-card" data-lang="timings"><b>Timings:</b><br> Open 24 hours (best visited at sunrise or sunset).</div>
+      <div class="info-card" data-lang="location"><b>Location:</b><br> Gokarna, Karnataka, India.</div>
+      <div class="info-card" data-lang="bestTime"><b>Best Time:</b><br> October – March (ideal weather for beach activities).</div>
+    </div>
+  </div>
+</section>
+
+<section class="view360">
+  <h2 style="text-align:center; margin-bottom:15px; color:#004d40;" data-lang="view360Title">🌐 Explore 360° View of Om Beach</h2>
+ <iframe src="https://www.google.com/maps/embed?pb=!4v1760027320092!6m8!1m7!1sCAoSFkNJSE0wb2dLRUlDQWdJQ2s2Zi1ZZEE.!2m2!1d14.51924049983513!2d74.32300389389485!3f136.30874550191294!4f15.357597494102066!5f0.7820865974627469" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</section>
+
+<section class="itinerary">
+  <h2 data-lang="itineraryTitle">🧭 Plan Your Om Beach Trip</h2>
+  <form id="itinerary-form">
+    <input type="date" id="date" required />
+    <input type="text" id="activity" placeholder="" data-lang-placeholder="activity" required />
+    <textarea id="notes" rows="1" placeholder="" data-lang-placeholder="notes"></textarea>
+    <button type="submit" data-lang="addBtn">Add to Itinerary</button>
+    <button type="button" id="clear-itinerary" style="background:#c0392b;" data-lang="clearBtn">Clear All</button>
+  </form>
+  <div id="itinerary-list"></div>
+
+  <div class="itinerary-list" id="suggested-itinerary">
+    <h3 style="margin-top:30px;" data-itinerary="suggestedItineraryTitle"></h3>
+    <div class="itinerary-item" data-itinerary="day1morning"></div>
+    <div class="itinerary-item" data-itinerary="day1afternoon"></div>
+    <div class="itinerary-item" data-itinerary="day1evening"></div>
+    <div class="itinerary-item" data-itinerary="day2morning"></div>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2025 Unseen Corners | All Rights Reserved</p>
+</footer>
+
+<script>
+const translations = {
+  en: {
+    navHome: "Home", navAbout: "About", navContact: "Contact", navChat: "Chat Bot", bookNow: "Book Now",
+    heroTitle: "🏖️ Om Beach, Gokarna",
+    heroDesc: "Om Beach, named for its natural Om-shaped shoreline, is one of Karnataka’s most iconic beaches. With golden sands, gentle waves, and a peaceful atmosphere, it’s a perfect escape for both adventure and relaxation.",
+    highlightsTitle: "🌊 Highlights & Activities",
+    highlight1: "Named after the spiritual “Om” symbol formed by its twin crescents.",
+    highlight2: "Popular for kayaking, banana boat rides, and parasailing.",
+    highlight3: "Ideal for meditation and beach camping.",
+    highlight4: "Nearby cafes offer fresh seafood and sunset views.",
+    visitorInfoTitle: "🕒 Visitor Information",
+    timings: "Timings: Open 24 hours (best visited at sunrise or sunset).",
+    location: "Location: Gokarna, Karnataka, India.",
+    bestTime: "Best Time: October – March (ideal weather for beach activities).",
+    view360Title: "🌐 Explore 360° View of Om Beach",
+    itineraryTitle: "🧭 Plan Your Om Beach Trip",
+    activity: "Activity (e.g., Beach Walk, Kayaking)",
+    notes: "Notes (optional)",
+    addBtn: "Add to Itinerary",
+    clearBtn: "Clear All",
+    suggestedItineraryTitle: "🗓 Suggested Itinerary",
+    day1morning: "Day 1 - Morning: Enjoy sunrise yoga session on Om Beach.",
+    day1afternoon: "Day 1 - Afternoon: Try kayaking and have lunch at Namaste Café.",
+    day1evening: "Day 1 - Evening: Watch the sunset and relax by a bonfire.",
+    day2morning: "Day 2 - Morning: Trek to Kudle and Paradise Beach."
+  },
+  hi: {
+    navHome: "होम", navAbout: "हमारे बारे में", navContact: "संपर्क करें", navChat: "चैट बॉट", bookNow: "बुक करें",
+    heroTitle: "🏖️ ओम बीच, गोकार्ना",
+    heroDesc: "ओम बीच, अपने प्राकृतिक ओम-आकार के तटरेखा के लिए प्रसिद्ध, कर्नाटक के सबसे प्रतिष्ठित समुद्र तटों में से एक है।",
+    highlightsTitle: "🌊 मुख्य आकर्षण और गतिविधियाँ",
+    highlight1: "इसके जुड़वां अर्धचंद्राकारों द्वारा बने आध्यात्मिक 'ओम' प्रतीक के नाम पर।",
+    highlight2: "कायकिंग, केले की नाव की सवारी और पैरासेलिंग के लिए लोकप्रिय।",
+    highlight3: "ध्यान और बीच कैंपिंग के लिए आदर्श।",
+    highlight4: "पास के कैफे ताजगी समुद्री भोजन और सूर्यास्त के दृश्य प्रदान करते हैं।",
+    visitorInfoTitle: "🕒 आगंतुक जानकारी",
+    timings: "समय: 24 घंटे खुला (सर्वोत्तम समय: सूर्योदय या सूर्यास्त)।",
+    location: "स्थान: गोकार्ना, कर्नाटक, भारत।",
+    bestTime: "सर्वोत्तम समय: अक्टूबर – मार्च (सुरम्य मौसम)।",
+    view360Title: "🌐 ओम बीच का 360° दृश्य देखें",
+    itineraryTitle: "🧭 अपनी ओम बीच यात्रा की योजना बनाएं",
+    activity: "गतिविधि (उदा., बीच वॉक, कायकिंग)",
+    notes: "नोट्स (वैकल्पिक)",
+    addBtn: "यात्रा में जोड़ें",
+    clearBtn: "सभी साफ़ करें",
+    suggestedItineraryTitle: "🗓 सुझाई गई यात्रा योजना",
+    day1morning: "दिन 1 - सुबह: ओम बीच पर सूर्योदय योग सत्र का आनंद लें।",
+    day1afternoon: "दिन 1 - दोपहर: कायकिंग का प्रयास करें और नमस्ते कैफे में दोपहर का भोजन करें।",
+    day1evening: "दिन 1 - शाम: सूर्यास्त देखें और बोनफायर के पास आराम करें।",
+    day2morning: "दिन 2 - सुबह: कुडले और पैराडाइज बीच की ट्रेकिंग करें।"
+  },
+  te: {
+    navHome: "హోమ్", navAbout: "మా గురించి", navContact: "సంప్రదించండి", navChat: "చాట్ బాట్", bookNow: "బుక్ చేయండి",
+    heroTitle: "🏖️ ఓం బీచ్, గోకర్ణా",
+    heroDesc: "ఓం బీచ్, దాని సహజ ఓం ఆకార తీరుకు పేరు, కర్ణాటకలో ప్రసిద్ధమైన సముద్రతీరాల్లో ఒకటి.",
+    highlightsTitle: "🌊 ప్రధాన ఆకర్షణలు & కార్యకలాపాలు",
+    highlight1: "ద్వంద్వ అర్ధచంద్రాకారాల ద్వారా రూపొందించిన ఆధ్యాత్మిక 'ఓం' గుర్తుకు పేరు పెట్టబడింది.",
+    highlight2: "కాయకింగ్, బనానా బోట్ రైడ్స్ మరియు పరాసైలింగ్‌కు ప్రసిద్ధి.",
+    highlight3: "ధ్యానం మరియు బీచ్ క్యాంపింగ్‌కు идеయల్.",
+    highlight4: "ఇచ్చుకు సమీప క్యాఫేలు తాజా సముద్ర ఆహారం మరియు సన్‌సెట్ వీక్షణలు అందిస్తాయి.",
+    visitorInfoTitle: "🕒 సందర్శక సమాచారం",
+    timings: "సమయాలు: 24 గంటలు తెరిచి ఉంటాయి (మంచి సమయం: సూర్యోదయం లేదా సూర్యాస్తమయం).",
+    location: "స్థానం: గోకర్ణా, కర్ణాటక, భారత్.",
+    bestTime: "మంచి సమయం: అక్టోబర్ – మార్చి (సరైన వాతావరణం).",
+    view360Title: "🌐 ఓం బీచ్ 360° వీక్షణను అన్వేషించండి",
+    itineraryTitle: "🧭 మీ ఓం బీచ్ ప్రయాణాన్ని ప్లాన్ చేయండి",
+    activity: "కార్యకలాపం (ఉదా., బీచ్ వాక్, కాయకింగ్)",
+    notes: "గమనికలు (ఐచ్చికం)",
+    addBtn: "ప్రయాణంలో చేర్చండి",
+    clearBtn: "అన్ని క్లియర్ చేయండి",
+    suggestedItineraryTitle: "🗓 సూచించబడిన ప్రణాళిక",
+    day1morning: "Day 1 - ఉదయం: ఓం బీచ్‌లో సూర్యోదయ యోగా సెషన్ ను ఆనందించండి.",
+    day1afternoon: "Day 1 - మధ్యాహ్నం: కాయకింగ్ ప్రయత్నించండి మరియు నమస్తే కేఫ్‌లో భోజనం చేయండి.",
+    day1evening: "Day 1 - సాయంత్రం: సూర్యాస్తమయాన్ని చూడండి మరియు బోన్ఫైర్ వద్ద విశ్రాంతి తీసుకోండి.",
+    day2morning: "Day 2 - ఉదయం: కుడ్లే మరియు పారడైస్ బీచ్‌కు ట్రెక్కింగ్ చేయండి."
+  }
+};
+
+const langSelect = document.getElementById('language-select');
+function updateLanguage() {
+  const lang = langSelect.value;
+  document.querySelectorAll('[data-lang]').forEach(el => el.innerText = translations[lang][el.getAttribute('data-lang')]);
+  document.querySelectorAll('[data-itinerary]').forEach(el => el.innerText = translations[lang][el.getAttribute('data-itinerary')]);
+  document.querySelectorAll('[data-lang-placeholder]').forEach(el => el.placeholder = translations[lang][el.getAttribute('data-lang-placeholder')]);
+}
+langSelect.addEventListener('change', updateLanguage);
+updateLanguage();
+
+// ✅ Itinerary Builder Logic
+const form = document.getElementById('itinerary-form');
+const list = document.getElementById('itinerary-list');
+const clearBtn = document.getElementById('clear-itinerary');
+
+form.addEventListener('submit', function(e) {
+  e.preventDefault();
+  const date = document.getElementById('date').value;
+  const activity = document.getElementById('activity').value;
+  const notes = document.getElementById('notes').value;
+  if (!date || !activity) return;
+
+  const item = document.createElement('div');
+  item.className = 'itinerary-item';
+  item.innerHTML = `<strong>${date}</strong> – ${activity}<br><small>${notes}</small>`;
+  list.appendChild(item);
+  form.reset();
+});
+
+clearBtn.addEventListener('click', () => { list.innerHTML = ''; });
+</script>
+
+</body>
+</html>
+
+

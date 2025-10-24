@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Packages</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      background: #f5f5f5;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Navbar */
+    header {
+      background: #1b2735;
+      color: #fff;
+      padding: 15px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    header h1 { color: #f4c542; font-size: 22px; font-weight: bold; }
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+    nav a {
+      color: #fff; text-decoration: none; font-size: 16px;
+      padding: 8px 12px; border-radius: 5px; transition: all 0.3s ease;
+    }
+    nav a:hover { background: rgba(255,255,255,0.1); }
+    .nav-btn {
+      background: #f4c542; color: #000; font-weight: bold;
+      padding: 8px 16px; border: none; border-radius: 5px;
+      cursor: pointer; transition: all 0.3s ease;
+    }
+    .nav-btn:hover { background: #e3b72c; transform: translateY(-2px); }
+    .lang-select {
+      padding: 6px 10px; border-radius: 5px;
+      border: none; font-size: 14px; cursor: pointer;
+    }
+
+    /* Favourites Field Styles */
+    .favourites-field {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #34495e;
+      padding: 8px 16px;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      min-width: auto;
+      flex-shrink: 0;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    .favourites-field:hover {
+      background: #2c3e50;
+      transform: translateY(-2px);
+    }
+
+    .favourites-icon {
+      color: #ff4757;
+      font-size: 16px;
+    }
+
+    .favourites-count {
+      background: #ff4757;
+      color: white;
+      border-radius: 50%;
+      width: 22px;
+      height: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    .favourites-text {
+      color: white;
+      font-size: 14px;
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    .favourites-dropdown {
+      display: none;
+      position: absolute;
+      right: 0;
+      top: 100%;
+      background: white;
+      min-width: 350px;
+      max-height: 400px;
+      overflow-y: auto;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      border-radius: 12px;
+      z-index: 1000;
+      margin-top: 10px;
+      padding: 15px;
+      border: 1px solid #e9ecef;
+    }
+
+    .favourites-dropdown.show {
+      display: block;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .favourites-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #f4c542;
+    }
+
+    .favourites-header h3 {
+      margin: 0;
+      font-size: 16px;
+      font-weight: bold;
+      color: #1b2735;
+    }
+
+    .clear-fav {
+      background: #ff4757;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    .clear-fav:hover {
+      background: #ff3838;
+      transform: translateY(-2px);
+    }
+
+    .fav-cards-container {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    /* Mini Card Styles for Favourites Dropdown */
+    .fav-card {
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+      transition: all 0.3s ease;
+      border: 1px solid #e9ecef;
+    }
+
+    .fav-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .fav-card-content {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px;
+    }
+
+    .fav-card-img {
+      width: 60px;
+      height: 60px;
+      border-radius: 6px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .fav-card-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .fav-card-title {
+      font-size: 14px;
+      font-weight: bold;
+      color: #1b2735;
+      margin: 0 0 6px 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .fav-card-actions {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .fav-view-btn {
+      background: #f4c542;
+      color: #000;
+      text-decoration: none;
+      padding: 5px 10px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: bold;
+      white-space: nowrap;
+      transition: all 0.3s ease;
+    }
+
+    .fav-view-btn:hover {
+      background: #e3b72c;
+      transform: translateY(-2px);
+    }
+
+    .remove-fav {
+      background: #ff4757;
+      color: white;
+      border: none;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+    }
+
+    .remove-fav:hover {
+      background: #ff3838;
+      transform: scale(1.1);
+    }
+
+    .empty-fav {
+      padding: 30px 20px;
+      text-align: center;
+      color: #6c757d;
+      font-style: italic;
+      font-size: 14px;
+    }
+
+    /* Packages Section */
+    .packages {
+      padding: 40px 20px;
+    }
+    .packages h2 {
+      text-align: center;
+      font-size: 28px;
+      margin-bottom: 30px;
+    }
+    .package-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      justify-items: center;
+    }
+
+    /* Card */
+    .card {
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      width: 250px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+    }
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .card:hover img {
+      transform: scale(1.1);
+    }
+    .card-body {
+      padding: 15px;
+      text-align: left;
+    }
+    .card-body h3 {
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+
+    .card-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 12px;
+      gap: 10px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #1b2735;
+      color: #fff;
+      padding: 8px 12px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 14px;
+      transition: background 0.3s ease;
+      flex: 1;
+      text-align: center;
+    }
+    .btn:hover {
+      background: #f4c542;
+      color: #000;
+    }
+
+    .fav-btn {
+      background: #f8f9fa;
+      border: 1px solid #dee2e6;
+      color: #6c757d;
+      padding: 8px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 12px;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+      flex: 1;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .fav-btn:hover {
+      background: #e9ecef;
+      transform: translateY(-2px);
+    }
+
+    .fav-btn.favourited {
+      background: #ff4757;
+      border-color: #ff4757;
+      color: white;
+    }
+
+    /* Alert Styles */
+    .alert {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 12px 20px;
+      border-radius: 6px;
+      z-index: 10000;
+      font-weight: bold;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transform: translateX(150%);
+      transition: transform 0.3s ease;
+      max-width: 300px;
+    }
+
+    .alert-success {
+      background: #2ed573;
+      color: white;
+    }
+
+    .alert-error {
+      background: #ff4757;
+      color: white;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+      .package-list {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .package-list {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .favourites-dropdown {
+        min-width: 300px;
+        right: -20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .package-list {
+        grid-template-columns: 1fr;
+      }
+      .favourites-field .favourites-text {
+        display: none;
+      }
+      .favourites-dropdown {
+        min-width: 280px;
+        right: -40px;
+      }
+      .card-actions {
+        flex-direction: column;
+        gap: 8px;
+      }
+      .btn, .fav-btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header>
+    <h1 id="site-title">Unseen Corners</h1>
+    <nav>
+      <a href="index.html" id="nav-home"><b>Home</b></a>
+      <a href="about14.html" id="nav-about"><b>About</b></a>
+      <a href="contact.html" id="nav-contact"><b>Contact</b></a>
+      <a href="t4.html" id="nav-chatBot"><b>Chat Bot</b></a>
+      
+      <!-- Favourites Field -->
+      <div class="favourites-field" id="favourites-field">
+        <span class="favourites-icon">❤️</span>
+        <span class="favourites-text" id="favourites-text">Favorites</span>
+        <span class="favourites-count" id="favourites-count">0</span>
+        <div class="favourites-dropdown" id="favourites-dropdown">
+          <div class="favourites-header">
+            <h3>My Favorite Waterfalls</h3>
+            <button class="clear-fav" onclick="clearAllFav()">Clear All</button>
+          </div>
+          <div class="fav-cards-container" id="fav-cards-container">
+            <!-- Favorite cards will be dynamically added here -->
+          </div>
+        </div>
+      </div>
+
+      <button class="nav-btn" id="Login-btn" onclick="window.location.href='log14.html'"><b>Login</b></button>
+      <button class="nav-btn" id="book-btn"><b>Book Now</b></button>
+
+      <select class="lang-select" id="language-select" onchange="changeLanguage()">
+        <option value="en">English</option>
+        <option value="hi">हिन्दी</option>
+        <option value="te">తెలుగు</option>
+      </select>
+    </nav>
+  </header>
+
+  <!-- Packages Section -->
+  <section class="packages">
+    <h2 id="packages-title">Waterfalls Packages</h2>
+    <div class="package-list">
+
+      <!-- Card 1: Talakona Falls -->
+      <div class="card">
+        <img src="talakona.jpg" alt="Talakona Falls">
+        <div class="card-body">
+          <h3 id="pkg1-title">Talakona Falls</h3>
+          <div class="card-actions">
+            <a href="talakonafalls.html" class="btn">View Details</a>
+            <button class="fav-btn" 
+                    data-package-id="talakona"
+                    data-package-image="talakona.jpg"
+                    data-package-link="talakonafalls.html"
+                    onclick="toggleFav(this, 'talakona', 'Talakona Falls')">
+              ♡ Add to Favorites
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: Shivanasamudra Falls -->
+      <div class="card">
+        <img src="shivanasamudra.jpg" alt="Shivanasamudra Falls">
+        <div class="card-body">
+          <h3 id="pkg2-title">Shivanasamudra Falls</h3>
+          <div class="card-actions">
+            <a href="shivanasamudrafalls.html" class="btn">View Details</a>
+            <button class="fav-btn" 
+                    data-package-id="shivanasamudra"
+                    data-package-image="shivanasamudra.jpg"
+                    data-package-link="shivanasamudrafalls.html"
+                    onclick="toggleFav(this, 'shivanasamudra', 'Shivanasamudra Falls')">
+              ♡ Add to Favorites
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3: Seven Sisters Falls -->
+      <div class="card">
+        <img src="sevensisters.jpg" alt="Seven Sisters Falls">
+        <div class="card-body">
+          <h3 id="pkg3-title">Seven Sisters Falls</h3>
+          <div class="card-actions">
+            <a href="sevensistersfall.html" class="btn">View Details</a>
+            <button class="fav-btn" 
+                    data-package-id="sevensisters"
+                    data-package-image="sevensisters.jpg"
+                    data-package-link="sevensistersfall.html"
+                    onclick="toggleFav(this, 'sevensisters', 'Seven Sisters Falls')">
+              ♡ Add to Favorites
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4: Nohkalikai Falls -->
+      <div class="card">
+        <img src="nohkalikai.jpg" alt="Nohkalikai Falls">
+        <div class="card-body">
+          <h3 id="pkg4-title">Nohkalikai Falls</h3>
+          <div class="card-actions">
+            <a href="nohkalikaifalls.html" class="btn">View Details</a>
+            <button class="fav-btn" 
+                    data-package-id="nohkalikai"
+                    data-package-image="nohkalikai.jpg"
+                    data-package-link="nohkalikaifalls.html"
+                    onclick="toggleFav(this, 'nohkalikai', 'Nohkalikai Falls')">
+              ♡ Add to Favorites
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 5: Dudhsagar Falls -->
+      <div class="card">
+        <img src="dudhsagar.jpg" alt="Dudhsagar Falls">
+        <div class="card-body">
+          <h3 id="pkg5-title">Dudhsagar Falls</h3>
+          <div class="card-actions">
+            <a href="dudhsagarfalls.html" class="btn">View Details</a>
+            <button class="fav-btn" 
+                    data-package-id="dudhsagar"
+                    data-package-image="dudhsagar.jpg"
+                    data-package-link="dudhsagarfalls.html"
+                    onclick="toggleFav(this, 'dudhsagar', 'Dudhsagar Falls')">
+              ♡ Add to Favorites
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 6: Chitrakote Falls -->
+      <div class="card">
+        <img src="chitrakoot.jpg" alt="Chitrakote Falls">
+        <div class="card-body">
+          <h3 id="pkg6-title">Chitrakote Falls</h3>
+          <div class="card-actions">
+            <a href="chitrakotafalls.html" class="btn">View Details</a>
+            <button class="fav-btn" 
+                    data-package-id="chitrakote"
+                    data-package-image="chitrakoot.jpg"
+                    data-package-link="chitrakotafalls.html"
+                    onclick="toggleFav(this, 'chitrakote', 'Chitrakote Falls')">
+              ♡ Add to Favorites
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 7: Athirappilly Falls -->
+      <div class="card">
+        <img src="athirapally.jpg" alt="Athirappilly Falls">
+        <div class="card-body">
+          <h3 id="pkg7-title">Athirappilly Falls</h3>
+          <div class="card-actions">
+            <a href="athirappillyfalls.html" class="btn">View Details</a>
+            <button class="fav-btn" 
+                    data-package-id="athirappilly"
+                    data-package-image="athirapally.jpg"
+                    data-package-link="athirappillyfalls.html"
+                    onclick="toggleFav(this, 'athirappilly', 'Athirappilly Falls')">
+              ♡ Add to Favorites
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 8: Jog Falls -->
+      <div class="card">
+        <img src="jog.jpg" alt="Jog Falls">
+        <div class="card-body">
+          <h3 id="pkg8-title">Jog Falls</h3>
+          <div class="card-actions">
+            <a href="jogfalls.html" class="btn">View Details</a>
+            <button class="fav-btn" 
+                    data-package-id="jog"
+                    data-package-image="jog.jpg"
+                    data-package-link="jogfalls.html"
+                    onclick="toggleFav(this, 'jog', 'Jog Falls')">
+              ♡ Add to Favorites
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 9: Barehipani Falls -->
+      <div class="card">
+        <img src="barehipani.jpg" alt="Barehipani Falls">
+        <div class="card-body">
+          <h3 id="pkg9-title">Barehipani Falls</h3>
+          <div class="card-actions">
+            <a href="barehipanifalls.html" class="btn">View Details</a>
+            <button class="fav-btn" 
+                    data-package-id="barehipani"
+                    data-package-image="barehipani.jpg"
+                    data-package-link="barehipanifalls.html"
+                    onclick="toggleFav(this, 'barehipani', 'Barehipani Falls')">
+              ♡ Add to Favorites
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <script>
+    // Enhanced translations with favorites text
+    const translations = {
+      en: {
+        siteTitle: "Unseen Corners",
+        navHome: "Home",
+        navAbout: "About",
+        navContact: "Contact",
+        navChatBot: "Chat Bot",
+        navBookNow: "Book Now",
+        navLogin: "Login",
+        packagesTitle: "Waterfalls Packages",
+        pkg1: { title: "Talakona Falls" },
+        pkg2: { title: "Shivanasamudra Falls" },
+        pkg3: { title: "Seven Sisters Falls" },
+        pkg4: { title: "Nohkalikai Falls" },
+        pkg5: { title: "Dudhsagar Falls" },
+        pkg6: { title: "Chitrakote Falls" },
+        pkg7: { title: "Athirappilly Falls" },
+        pkg8: { title: "Jog Falls" },
+        pkg9: { title: "Barehipani Falls" },
+        fav: "Add to Favorites",
+        favourited: "In Favorites",
+        favs: "Favorites",
+        myFavs: "My Favorite Waterfalls",
+        clearAll: "Clear All",
+        emptyFavs: "No favorite waterfalls yet"
+      },
+      hi: {
+        siteTitle: "अनसीन कॉर्नर्स",
+        navHome: "होम",
+        navAbout: "के बारे में",
+        navContact: "संपर्क",
+        navChatBot: "चैट बॉट",
+        navBookNow: "अभी बुक करें",
+        navLogin: "लॉगिन",
+        packagesTitle: "झरनों के पैकेज",
+        pkg1: { title: "तालाकोना जलप्रपात" },
+        pkg2: { title: "शिवानासमुद्र जलप्रपात" },
+        pkg3: { title: "सेवन सिस्टर्स जलप्रपात" },
+        pkg4: { title: "नोहकलिकाई जलप्रपात" },
+        pkg5: { title: "दूधसागर जलप्रपात" },
+        pkg6: { title: "चित्रकोट जलप्रपात" },
+        pkg7: { title: "अथिराप्पिल्ली जलप्रपात" },
+        pkg8: { title: "जोग जलप्रपात" },
+        pkg9: { title: "बरेहीपानी जलप्रपात" },
+        fav: "फेव में जोड़ें",
+        favourited: "फेव में",
+        favs: "फेव्स",
+        myFavs: "मेरे पसंदीदा झरने",
+        clearAll: "सब साफ करें",
+        emptyFavs: "अभी कोई पसंदीदा झरना नहीं"
+      },
+      te: {
+        siteTitle: "అన్సీన్ కార్నర్స్",
+        navHome: "హోమ్",
+        navAbout: "గురించి",
+        navContact: "సంప్రదించండి",
+        navChatBot: "చాట్ బాట్",
+        navBookNow: "బుక్ చేయండి",
+        navLogin: "లాగిన్",
+        packagesTitle: "జలపాతాల ప్యాకేజీలు",
+        pkg1: { title: "తలకోన జలపాతం" },
+        pkg2: { title: "శివనసముద్ర జలపాతాలు" },
+        pkg3: { title: "సెవెన్ సిస్టర్స్ జలపాతాలు" },
+        pkg4: { title: "నోహ్కాలికై జలపాతం" },
+        pkg5: { title: "దూద్‌సాగర్ జలపాతం" },
+        pkg6: { title: "చిత్రకోట్ జలపాతం" },
+        pkg7: { title: "అతిరప్పిల్లి జలపాతం" },
+        pkg8: { title: "జోగ్ జలపాతం" },
+        pkg9: { title: "బరేహిపని జలపాతం" },
+        fav: "ఫేవ్ కు జోడించండి",
+        favourited: "ఫేవ్ లో",
+        favs: "ఫేవ్స్",
+        myFavs: "నా ఇష్టమైన జలపాతాలు",
+        clearAll: "అన్నీ క్లియర్ చేయండి",
+        emptyFavs: "ఇంకా ఇష్టమైన జలపాతాలు లేవు"
+      }
+    };
+
+    // Favourites functionality
+    function toggleFav(button, packageId, packageName) {
+        button.classList.toggle('favourited');
+        
+        let favs = JSON.parse(localStorage.getItem('waterfallFavs')) || [];
+        const lang = document.getElementById("language-select").value;
+        
+        if (button.classList.contains('favourited')) {
+            if (!favs.find(fav => fav.id === packageId)) {
+                const packageImage = button.getAttribute('data-package-image');
+                const packageLink = button.getAttribute('data-package-link');
+                favs.push({ 
+                    id: packageId, 
+                    name: packageName,
+                    image: packageImage,
+                    link: packageLink
+                });
+                showAlert(`${packageName} added to favorites!`, 'success');
+            }
+        } else {
+            favs = favs.filter(fav => fav.id !== packageId);
+            showAlert(`${packageName} removed from favorites`, 'error');
+        }
+        
+        localStorage.setItem('waterfallFavs', JSON.stringify(favs));
+        updateFavButtonText(button, lang);
+        updateFavsField();
+    }
+
+    function updateFavButtonText(button, lang) {
+        if (button.classList.contains('favourited')) {
+            button.innerHTML = `♥ ${translations[lang].favourited}`;
+        } else {
+            button.innerHTML = `♡ ${translations[lang].fav}`;
+        }
+    }
+
+    function updateFavsField() {
+        const favs = JSON.parse(localStorage.getItem('waterfallFavs')) || [];
+        const favContainer = document.getElementById('fav-cards-container');
+        const favCount = document.getElementById('favourites-count');
+        const favText = document.getElementById('favourites-text');
+        const lang = document.getElementById("language-select").value;
+
+        // Update count and text
+        favCount.textContent = favs.length;
+        favText.textContent = translations[lang].favs;
+
+        // Update dropdown content with actual cards
+        if (favs.length === 0) {
+            favContainer.innerHTML = `<div class="empty-fav">${translations[lang].emptyFavs}</div>`;
+        } else {
+            favContainer.innerHTML = favs.map(fav => `
+                <div class="fav-card" data-package-id="${fav.id}">
+                    <div class="fav-card-content">
+                        <img src="${fav.image}" alt="${fav.name}" class="fav-card-img">
+                        <div class="fav-card-info">
+                            <h4 class="fav-card-title">${fav.name}</h4>
+                            <div class="fav-card-actions">
+                                <a href="${fav.link}" class="fav-view-btn">View Details</a>
+                                <button class="remove-fav" onclick="removeFav('${fav.id}')">×</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Update dropdown header
+        document.querySelector('.favourites-header h3').textContent = translations[lang].myFavs;
+        document.querySelector('.clear-fav').textContent = translations[lang].clearAll;
+    }
+
+    function removeFav(packageId) {
+        let favs = JSON.parse(localStorage.getItem('waterfallFavs')) || [];
+        const packageName = favs.find(fav => fav.id === packageId)?.name || 'Item';
+        favs = favs.filter(fav => fav.id !== packageId);
+        localStorage.setItem('waterfallFavs', JSON.stringify(favs));
+        
+        // Update card button
+        const cardButton = document.querySelector(`.fav-btn[data-package-id="${packageId}"]`);
+        if (cardButton) {
+            cardButton.classList.remove('favourited');
+            updateFavButtonText(cardButton, document.getElementById("language-select").value);
+        }
+        
+        updateFavsField();
+        showAlert(`${packageName} removed from favorites`, 'error');
+    }
+
+    function clearAllFav() {
+        if (confirm('Are you sure you want to clear all favorites?')) {
+            localStorage.removeItem('waterfallFavs');
+            
+            // Update all card buttons
+            document.querySelectorAll('.fav-btn').forEach(button => {
+                button.classList.remove('favourited');
+                updateFavButtonText(button, document.getElementById("language-select").value);
+            });
+            
+            updateFavsField();
+            showAlert('All favorites cleared!', 'success');
+        }
+    }
+
+    // Enhanced alert system
+    function showAlert(message, type = 'success') {
+        // Remove any existing alerts
+        const existingAlert = document.querySelector('.alert');
+        if (existingAlert) {
+            existingAlert.remove();
+        }
+        
+        const alert = document.createElement('div');
+        alert.className = `alert alert-${type}`;
+        alert.textContent = message;
+        document.body.appendChild(alert);
+        
+        setTimeout(() => alert.style.transform = 'translateX(0)', 100);
+        setTimeout(() => {
+            alert.style.transform = 'translateX(150%)';
+            setTimeout(() => alert.remove(), 300);
+        }, 3000);
+    }
+
+    // Language switching functionality
+    function changeLanguage() {
+        const lang = document.getElementById("language-select").value;
+        const t = translations[lang];
+
+        document.getElementById("site-title").innerText = t.siteTitle;
+        document.getElementById("nav-home").innerText = t.navHome;
+        document.getElementById("nav-about").innerText = t.navAbout;
+        document.getElementById("nav-contact").innerText = t.navContact;
+        document.getElementById("nav-chatBot").innerText = t.navChatBot;
+        document.getElementById("book-btn").innerText = t.navBookNow;
+        document.getElementById("Login-btn").innerText = t.navLogin;
+        document.getElementById("packages-title").innerText = t.packagesTitle;
+        document.getElementById("pkg1-title").innerText = t.pkg1.title;
+        document.getElementById("pkg2-title").innerText = t.pkg2.title;
+        document.getElementById("pkg3-title").innerText = t.pkg3.title;
+        document.getElementById("pkg4-title").innerText = t.pkg4.title;
+        document.getElementById("pkg5-title").innerText = t.pkg5.title;
+        document.getElementById("pkg6-title").innerText = t.pkg6.title;
+        document.getElementById("pkg7-title").innerText = t.pkg7.title;
+        document.getElementById("pkg8-title").innerText = t.pkg8.title;
+        document.getElementById("pkg9-title").innerText = t.pkg9.title;
+
+        // Update favorite buttons and field
+        document.querySelectorAll('.fav-btn').forEach(button => {
+            updateFavButtonText(button, lang);
+        });
+        updateFavsField();
+    }
+
+    // Toggle favourites dropdown
+    document.getElementById('favourites-field').addEventListener('click', function(e) {
+        e.stopPropagation();
+        const dropdown = document.getElementById('favourites-dropdown');
+        dropdown.classList.toggle('show');
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(e) {
+        const dropdown = document.getElementById('favourites-dropdown');
+        const field = document.getElementById('favourites-field');
+        
+        if (!field.contains(e.target) && !dropdown.contains(e.target)) {
+            dropdown.classList.remove('show');
+        }
+    });
+
+    // Initialize on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        // Set saved language preference
+        const savedLang = localStorage.getItem('preferredLanguage') || 'en';
+        document.getElementById('language-select').value = savedLang;
+        
+        // Initialize with saved language
+        changeLanguage();
+        
+        // Initialize favorite buttons state
+        const favs = JSON.parse(localStorage.getItem('waterfallFavs')) || [];
+        document.querySelectorAll('.fav-btn').forEach(button => {
+            const packageId = button.getAttribute('data-package-id');
+            if (favs.find(fav => fav.id === packageId)) {
+                button.classList.add('favourited');
+            }
+            updateFavButtonText(button, savedLang);
+        });
+        
+        // Initialize favorites field
+        updateFavsField();
+        
+        // Save language preference on change
+        document.getElementById('language-select').addEventListener('change', function() {
+            localStorage.setItem('preferredLanguage', this.value);
+        });
+    });
+
+    // Keyboard navigation for favourites dropdown
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            document.getElementById('favourites-dropdown').classList.remove('show');
+        }
+    });
+  </script>
+</body>
+</html>

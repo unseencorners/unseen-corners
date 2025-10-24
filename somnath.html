@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title data-lang="page-title">Unseen Corners – Somnath Temple</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+    
+    /* Full-page background */
+    body {
+      line-height: 1.6;
+      padding-bottom: 80px;
+      color: #fff;
+      background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrczX3-TbMThaVK0n3v9UKB7jJqDiecJ6bJw&s') no-repeat center center fixed;
+      background-size: cover;
+      position: relative;
+    }
+    /* Dark overlay for readability */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.5);
+      z-index: -1;
+    }
+
+    header {
+      background: rgba(27,39,53,0.9);
+      color: #fff;
+      padding: 15px 50px; display: flex;
+      justify-content: space-between; align-items: center;
+      flex-wrap: wrap; position: fixed; top: 0; left: 0;
+      width: 100%; z-index: 1000;
+    }
+    header h1 { color: #f4c542; font-size: 22px; font-weight: bold; }
+    nav a { color: #fff; text-decoration: none; margin-left: 20px; font-size: 16px; }
+    nav a:hover { text-decoration: underline; }
+    .nav-btn {
+      background: #f4c542; color: #000; font-weight: bold;
+      padding: 8px 16px; border: none; border-radius: 5px;
+      margin-left: 20px; cursor: pointer;
+    }
+    .nav-btn:hover { background: #e3b72c; }
+    .lang-select {
+      margin-left: 20px; padding: 6px 10px; border-radius: 5px;
+      border: none; font-size: 14px; cursor: pointer;
+    }
+
+    /* Hero section content only (no background) */
+    .hero {
+      background: none;
+      height: auto;
+      padding-top: 100px; /* Adjust for fixed header */
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+    }
+    .hero::before { display: none; } /* Remove hero overlay */
+    .hero-content { max-width: 800px; padding: 20px; }
+
+    .hero-content h2 { font-size: 32px; margin-bottom: 20px; color: #f4c542; }
+    .hero-content p { font-size: 18px; margin-bottom: 20px; }
+    .hero-content ul { text-align: left; margin: 15px 0; }
+
+    .info-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px; margin-top: 20px;
+    }
+    .info-card {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 8px; padding: 15px; font-size: 15px;
+      color: #fff;
+    }
+
+    .view360 {
+      margin: 50px auto; max-width: 1000px;
+      padding: 10px; border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      background: rgba(255,255,255,0.9);
+    }
+    .view360 iframe {
+      width: 100%; height: 500px; border: none; border-radius: 12px;
+    }
+
+    .itinerary {
+      max-width: 900px; margin: 50px auto; padding: 20px;
+      background: rgba(255,255,255,0.9); border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      color: #000;
+    }
+    .itinerary h2 { text-align: center; color: #1b2735; margin-bottom: 20px; }
+    .itinerary form { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 20px; }
+    .itinerary input, .itinerary textarea {
+      padding: 10px; border: 1px solid #ccc; border-radius: 5px;
+      width: 100%; max-width: 250px; font-size: 14px;
+      resize: vertical;
+    }
+    .itinerary button {
+      background: #1b2735; color: #fff;
+      padding: 10px 20px; border: none; border-radius: 5px;
+      cursor: pointer;
+    }
+    .itinerary button:hover { background: #34495e; }
+    .itinerary button#clear-itinerary {
+      background: #c0392b;
+    }
+    .itinerary button#clear-itinerary:hover {
+      background: #922b21;
+    }
+    .itinerary-list { margin-top: 20px; }
+    .itinerary-item {
+      background: #fff; padding: 15px; border-left: 4px solid #f4c542;
+      margin-bottom: 10px; border-radius: 5px;
+      color: #000;
+    }
+
+    footer {
+      text-align: center; padding: 20px;
+      background: rgba(27,39,53,0.9); color: #fff;
+      margin-top: 50px;
+    }
+
+    .fade { opacity: 0; transition: opacity 0.6s ease-in-out; }
+    .fade.show { opacity: 1; }
+
+    @media(max-width:768px){
+      .hero-content h2 { font-size: 24px; }
+      .hero-content p { font-size: 16px; }
+      .view360 iframe { height: 300px; }
+      .itinerary form { flex-direction: column; align-items: center; }
+      .info-card {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1 id="site-title" data-lang="site-title">Unseen Corners</h1>
+  <nav>
+    <a href="index.html" data-lang="nav-home"><b>Home</b></a>
+    <a href="about14.html" data-lang="nav-about"><b>About</b></a>
+    <a href="contact.html" data-lang="nav-contact"><b>Contact</b></a>
+    <a href="t4.html" data-lang="nav-chat"><b>Chat Bot</b></a>
+    <button class="nav-btn" data-lang="nav-book" onclick="window.location.href='book.html'"><b>Book Now</b></button>
+    <select class="lang-select" id="language-select" aria-label="Select language">
+      <option value="en">English</option>
+      <option value="hi">हिन्दी</option>
+      <option value="te">తెలుగు</option>
+    </select>
+  </nav>
+</header>
+
+<section class="hero" role="banner" aria-label="Somnath Temple Introduction">
+  <div class="hero-content">
+    <h2 class="fade show" data-lang="title">🛕 Somnath Temple</h2>
+    <p class="fade show" data-lang="intro">Somnath Temple, located in Gujarat, is one of the twelve Jyotirlinga shrines of Lord Shiva. It is renowned for its rich history, stunning architecture, and spiritual significance as a symbol of resilience and devotion.</p>
+
+    <h3 class="fade show" data-lang="history-title">📜 History – When Was It Built?</h3>
+    <ul>
+      <li class="fade show" data-lang="history-1">The temple's origins date back to ancient times, with many reconstructions after multiple invasions.</li>
+      <li class="fade show" data-lang="history-2">It stands as a symbol of Hindu resilience and cultural heritage.</li>
+      <li class="fade show" data-lang="history-3">Famous for its Chalukya style architecture and intricate carvings.</li>
+      <li class="fade show" data-lang="history-4">A vital pilgrimage site for devotees of Lord Shiva and Indian history enthusiasts alike.</li>
+    </ul>
+
+    <h3 class="fade show" data-lang="visit-title">🕒 Visiting Information</h3>
+    <div class="info-grid">
+      <div class="info-card fade show" data-lang="visit-time"><b>Timings:</b><br> 6:00 AM – 9:00 PM daily.</div>
+      <div class="info-card fade show" data-lang="visit-location"><b>Location:</b><br> Veraval, Gujarat, India.</div>
+      <div class="info-card fade show" data-lang="visit-best"><b>Best Time:</b><br> October to March, during festivals like Maha Shivaratri and Diwali.</div>
+    </div>
+  </div>
+</section>
+
+<section class="view360" aria-label="360 degree view of Somnath Temple">
+  <h2 style="text-align:center; margin-bottom:15px; color:#1b2735;" data-lang="view360-title">🌐 Explore 360° View of Somnath Temple</h2>
+ <iframe src="https://www.google.com/maps/embed?pb=!4v1760445767754!6m8!1m7!1sCAoSHENJQUJJaEFhQmp0S2hQblVPbU5sR1lpZE84OWo.!2m2!1d20.88798992103062!2d70.4012568565272!3f51.558373213372654!4f14.640928751738869!5f0.4000000000000002" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</section>
+
+<section class="itinerary" aria-label="Plan your itinerary">
+  <h2 data-lang="itinerary-header">🧭 Plan Your Itinerary</h2>
+  <form id="itinerary-form" aria-describedby="form-instructions">
+    <div id="form-instructions" class="sr-only">Fill the date and activity, optionally add notes, then click Add to Itinerary.</div>
+    <input type="date" id="date" required aria-required="true" aria-label="Select date" />
+    <input type="text" id="activity" placeholder="Activity (e.g., Temple Visit)" required aria-required="true" aria-label="Enter activity" />
+    <textarea id="notes" rows="1" placeholder="Notes (optional)" aria-label="Enter notes"></textarea>
+    <button type="submit" data-lang="add-button">Add to Itinerary</button>
+    <button type="button" id="clear-itinerary" data-lang="clear-button">Clear All</button>
+  </form>
+  <div class="itinerary-list" id="itinerary-list" aria-live="polite" aria-atomic="true"></div>
+  
+  <div class="itinerary-list" aria-label="Suggested built-in itinerary">
+    <h3 data-lang="builtin-itinerary-header" style="margin-top:30px;"></h3>
+    <div class="itinerary-item" data-lang="day1-morning"></div>
+    <div class="itinerary-item" data-lang="day1-afternoon"></div>
+    <div class="itinerary-item" data-lang="day1-evening"></div>
+    <div class="itinerary-item" data-lang="day2-morning"></div>
+    <div class="itinerary-item" data-lang="day2-afternoon"></div>
+    <div class="itinerary-item" data-lang="day2-night"></div>
+  </div>
+</section>
+
+<footer>
+  <p class="fade show" data-lang="footer">&copy; 2025 Unseen Corners | All Rights Reserved</p>
+</footer>
+
+<script>
+  const translations = {
+    en: {
+      "page-title": "Unseen Corners – Somnath Temple",
+      "site-title": "Unseen Corners",
+      "nav-home": "<b>Home</b>",
+      "nav-about": "<b>About</b>",
+      "nav-contact": "<b>Contact</b>",
+      "nav-chat": "<b>Chat Bot</b>",
+      "nav-book": "<b>Book Now</b>",
+      "footer": "&copy; 2025 Unseen Corners | All Rights Reserved",
+      "title": "🛕 Somnath Temple",
+      "intro": "Somnath Temple, located in Gujarat, is one of the twelve Jyotirlinga shrines of Lord Shiva. It is renowned for its rich history, stunning architecture, and spiritual significance as a symbol of resilience and devotion.",
+      "history-title": "📜 History – When Was It Built?",
+      "history-1": "The temple's origins date back to ancient times, with many reconstructions after multiple invasions.",
+      "history-2": "It stands as a symbol of Hindu resilience and cultural heritage.",
+      "history-3": "Famous for its Chalukya style architecture and intricate carvings.",
+      "history-4": "A vital pilgrimage site for devotees of Lord Shiva and Indian history enthusiasts alike.",
+      "visit-title": "🕒 Visiting Information",
+      "visit-time": "<b>Timings:</b><br> 6:00 AM – 9:00 PM daily.",
+      "visit-location": "<b>Location:</b><br> Veraval, Gujarat, India.",
+      "visit-best": "<b>Best Time:</b><br> October to March, during festivals like Maha Shivaratri and Diwali.",
+      "view360-title": "🌐 Explore 360° View of Somnath Temple",
+      "itinerary-header": "🧭 Plan Your Itinerary",
+      "add-button": "Add to Itinerary",
+      "clear-button": "Clear All",
+      "builtin-itinerary-header": "🗓️ Suggested Itinerary (Built-in)",
+      "day1-morning": "<strong>Day 1 - Morning:</strong> Visit Somnath Temple and explore the temple complex",
+      "day1-afternoon": "<strong>Day 1 - Afternoon:</strong> Visit nearby Bhalka Tirth and Triveni Sangam",
+      "day1-evening": "<strong>Day 1 - Evening:</strong> Attend evening aarti and stroll along the Prabhas Patan beach",
+      "day2-morning": "<strong>Day 2 - Morning:</strong> Explore the Somnath Museum and light & sound show",
+      "day2-afternoon": "<strong>Day 2 - Afternoon:</strong> Visit Gir National Park (optional day trip)",
+      "day2-night": "<strong>Day 2 - Night:</strong> Relax and enjoy local Gujarati cuisine"
+    },
+    hi: {
+      "page-title": "अनसीन कॉर्नर्स – सोमनाथ मंदिर",
+      "site-title": "अनसीन कॉर्नर्स",
+      "nav-home": "<b>मुखपृष्ठ</b>",
+      "nav-about": "<b>हमारे बारे में</b>",
+      "nav-contact": "<b>संपर्क करें</b>",
+      "nav-chat": "<b>चैट बोट</b>",
+      "nav-book": "<b>अभी बुक करें</b>",
+      "footer": "&copy; 2025 अनसीन कॉर्नर्स | सर्वाधिकार सुरक्षित",
+      "title": "🛕 सोमनाथ मंदिर",
+      "intro": "सोमनाथ मंदिर, गुजरात में स्थित, भगवान शिव के बारह ज्योतिर्लिंग स्थलों में से एक है। यह अपनी समृद्ध इतिहास, भव्य वास्तुकला और भक्ति के प्रतीक के रूप में प्रसिद्ध है।",
+      "history-title": "📜 इतिहास – कब बनाया गया?",
+      "history-1": "मंदिर की उत्पत्ति प्राचीन काल से है, कई बार पुनर्निर्माण के बाद।",
+      "history-2": "यह हिंदू दृढ़ता और सांस्कृतिक विरासत का प्रतीक है।",
+      "history-3": "चालुक्य शैली की वास्तुकला और जटिल नक्काशियों के लिए प्रसिद्ध।",
+      "history-4": "भगवान शिव के भक्तों और भारतीय इतिहास प्रेमियों के लिए एक महत्वपूर्ण तीर्थ स्थल।",
+      "visit-title": "🕒 यात्रा जानकारी",
+      "visit-time": "<b>समय:</b><br> प्रतिदिन सुबह 6:00 बजे से रात 9:00 बजे तक।",
+      "visit-location": "<b>स्थान:</b><br> वेरावल, गुजरात, भारत।",
+      "visit-best": "<b>सर्वश्रेष्ठ समय:</b><br> अक्टूबर से मार्च, महा शिवरात्रि और दिवाली जैसे त्योहारों के दौरान।",
+      "view360-title": "🌐 सोमनाथ मंदिर का 360° दृश्य एक्सप्लोर करें",
+      "itinerary-header": "🧭 अपनी यात्रा योजना बनाएं",
+      "add-button": "यात्रा में जोड़ें",
+      "clear-button": "सभी साफ करें",
+      "builtin-itinerary-header": "🗓️ सुझाया गया कार्यक्रम (निर्मित)",
+      "day1-morning": "<strong>दिन 1 - सुबह:</strong> सोमनाथ मंदिर जाएँ और मंदिर परिसर का अन्वेषण करें",
+      "day1-afternoon": "<strong>दिन 1 - दोपहर:</strong> निकटवर्ती भालका तीर्थ और त्रिवेणी संगम देखें",
+      "day1-evening": "<strong>दिन 1 - शाम:</strong> संध्या आरती में भाग लें और प्रभास पाटन बीच पर टहलें",
+      "day2-morning": "<strong>दिन 2 - सुबह:</strong> सोमनाथ संग्रहालय और लाइट एंड साउंड शो देखें",
+      "day2-afternoon": "<strong>दिन 2 - दोपहर:</strong> गिर राष्ट्रीय उद्यान जाएं (वैकल्पिक दिन यात्रा)",
+      "day2-night": "<strong>दिन 2 - रात:</strong> स्थानीय गुजराती व्यंजनों का आनंद लें"
+    },
+    te: {
+      "page-title": "అన్సీన్ కార్నర్స్ – సోమనాథ్ ఆలయం",
+      "site-title": "అన్సీన్ కార్నర్స్",
+      "nav-home": "<b>హోమ్</b>",
+      "nav-about": "<b>మాకు గురించి</b>",
+      "nav-contact": "<b>సంప్రదించండి</b>",
+      "nav-chat": "<b>చాట్ బోట్</b>",
+      "nav-book": "<b>ఇప్పుడే బుక్ చేయండి</b>",
+      "footer": "&copy; 2025 అన్సీన్ కార్నర్స్ | అన్ని హక్కులు రిజర్వ్",
+      "title": "🛕 సోమనాథ్ ఆలయం",
+      "intro": "గుజరాత్‌లో ఉన్న సోమనాథ్ ఆలయం, భగవంతుడైన శివుని పన్నెండు జ్యోతిర్లింగాలలో ఒకటి. ఇది దాని సమృద్ధి చెందిన చరిత్ర, అద్భుతమైన నిర్మాణం మరియు ఆధ్యాత్మిక ప్రాముఖ్యతతో ప్రసిద్ధి చెందింది.",
+      "history-title": "📜 చరిత్ర – ఎప్పుడు నిర్మించబడింది?",
+      "history-1": "ఆలయం పూర్వీకాలం నుండి ఉంది, అనేక శత్రు దాడుల తర్వాత పునర్నిర్మాణాలు జరిగాయి.",
+      "history-2": "ఇది హిందూ ధైర్యం మరియు సాంస్కృతిక వారసత్వానికి చిహ్నంగా నిలుస్తుంది.",
+      "history-3": "చాలుక్య శైలి వాస్తవ్య శిల్పకళ మరియు సన్నివేశాల కోసం ప్రసిద్ధి చెందింది.",
+      "history-4": "శివుని భక్తులు మరియు భారతీయ చరిత్ర ప్రేమికుల కొరకు ముఖ్యమైన యాత్ర స్థలం.",
+      "visit-title": "🕒 సందర్శనా సమాచారం",
+      "visit-time": "<b>సమయాలు:</b><br> ప్రతిరోజు ఉదయం 6:00 నుండి రాత్రి 9:00 వరకు.",
+      "visit-location": "<b>ప్రదేశం:</b><br> వెరావల్, గుజరాత్, భారత్.",
+      "visit-best": "<b>ఉత్తమ సమయం:</b><br> అక్టోబర్ నుండి మార్చి వరకు, మహా శివరాత్రి మరియు దీపావళి వంటి పండుగల సమయంలో.",
+      "view360-title": "🌐 సోమనాథ్ ఆలయానికి 360° వీక్షణ అన్వేషించండి",
+      "itinerary-header": "🧭 మీ ప్రయాణ ప్రణాళికను రూపొందించండి",
+      "add-button": "ప్రణాళికలో చేర్చండి",
+      "clear-button": "అన్నీ క్లియర్ చేయండి",
+      "builtin-itinerary-header": "🗓️ సూచించబడిన ప్రణాళిక (బిల్ట్-ఇన్)",
+      "day1-morning": "<strong>రోజు 1 - ఉదయం:</strong> సోమనాథ్ ఆలయాన్ని సందర్శించండి మరియు ఆలయ ప్రాంగణాన్ని అన్వేషించండి",
+      "day1-afternoon": "<strong>రోజు 1 - మధ్యాహ్నం:</strong> సమీప భాల్కా తీర్థం మరియు త్రివేణి సంగమ్ సందర్శించండి",
+      "day1-evening": "<strong>రోజు 1 - సాయంత్రం:</strong> సాయంత్ర ఆరతిలో పాల్గొనండి మరియు ప్రభాస్ పటాన్ బీచ్ వద్ద తిరగండి",
+      "day2-morning": "<strong>రోజు 2 - ఉదయం:</strong> సోమనాథ్ మ్యూజియం మరియు లైట్ & సౌండ్ షోని అన్వేషించండి",
+      "day2-afternoon": "<strong>రోజు 2 - మధ్యాహ్నం:</strong> గిర్ నేషనల్ పార్క్ సందర్శించండి (ఐచ్ఛికం)",
+      "day2-night": "<strong>రోజు 2 - రాత్రి:</strong> స్థానిక గుజరాతి వంటకాలను ఆస్వాదించండి"
+    }
+  };
+
+  const langSelect = document.getElementById('language-select');
+
+  function setLanguage(lang) {
+    // Change all elements with data-lang attribute
+    document.querySelectorAll('[data-lang]').forEach(el => {
+      const key = el.getAttribute('data-lang');
+      if (translations[lang]?.[key]) {
+        el.classList.remove('show');
+        setTimeout(() => {
+          el.innerHTML = translations[lang][key];
+          el.classList.add('show');
+        }, 300);
+      }
+    });
+
+    // Update placeholders separately
+    if (lang === 'en') {
+      document.getElementById('activity').placeholder = "Activity (e.g., Temple Visit)";
+      document.getElementById('notes').placeholder = "Notes (optional)";
+      document.getElementById('date').ariaLabel = "Select date";
+    } else if (lang === 'hi') {
+      document.getElementById('activity').placeholder = "गतिविधि (जैसे, मंदिर दर्शन)";
+      document.getElementById('notes').placeholder = "टिप्पणियाँ (वैकल्पिक)";
+      document.getElementById('date').ariaLabel = "दिनांक चुनें";
+    } else if (lang === 'te') {
+      document.getElementById('activity').placeholder = "చర్య (ఉదా: ఆలయ సందర్శన)";
+      document.getElementById('notes').placeholder = "గమనికలు (ఐచ్ఛికం)";
+      document.getElementById('date').ariaLabel = "తేదీ ఎంచుకోండి";
+    }
+
+    // Update document title
+    document.title = translations[lang]?.["page-title"] || document.title;
+  }
+
+  langSelect.addEventListener('change', e => {
+    setLanguage(e.target.value);
+  });
+
+  // Initialize language on page load
+  setLanguage(langSelect.value);
+
+  // Itinerary form functionality
+  const form = document.getElementById('itinerary-form');
+  const itineraryList = document.getElementById('itinerary-list');
+  const clearBtn = document.getElementById('clear-itinerary');
+
+  function createItineraryItem(date, activity, notes) {
+    const div = document.createElement('div');
+    div.classList.add('itinerary-item');
+    div.innerHTML = `<strong>${date}:</strong> ${activity}${notes ? `<br><em>Notes:</em> ${notes}` : ''}`;
+    return div;
+  }
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const date = form.date.value;
+    const activity = form.activity.value.trim();
+    const notes = form.notes.value.trim();
+
+    if (!date || !activity) return;
+
+    const item = createItineraryItem(date, activity, notes);
+    itineraryList.appendChild(item);
+
+    form.reset();
+    form.date.focus();
+  });
+
+  clearBtn.addEventListener('click', () => {
+    itineraryList.innerHTML = '';
+  });
+</script>
+
+</body>
+</html>
+
+

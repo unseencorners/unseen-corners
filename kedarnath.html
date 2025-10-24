@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title data-lang="page-title">Unseen Corners – Kedarnath</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+body { 
+  line-height: 1.6; 
+  color: #fff; 
+  padding-bottom: 80px;
+  background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuo9pOEhQAvKM6j_ioffmNuonXUlU6sFQg4A&s') no-repeat center center/cover;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.4);
+  z-index: 0;
+}
+
+header, .hero-content, .info-grid, .view360, .itinerary, .gallery, footer {
+  position: relative; z-index: 1;
+}
+
+header {
+  background: rgba(27, 39, 53, 0.3);
+  color: #fff;
+  padding: 15px 50px; 
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  flex-wrap: wrap; 
+  position: fixed; 
+  top: 0; left: 0;
+  width: 100%; 
+  z-index: 2;
+  backdrop-filter: blur(5px);
+}
+
+nav a { color: #fff; text-decoration: none; margin-left: 20px; font-size: 16px; }
+nav a:hover { text-decoration: underline; }
+.nav-btn { background: #f4c542; color: #000; font-weight: bold; padding: 8px 16px; border: none; border-radius: 5px; margin-left: 20px; cursor: pointer; }
+.nav-btn:hover { background: #e3b72c; }
+
+.hero { height: auto; padding: 100px 20px 50px; text-align: center; color: #fff; }
+.hero-content { max-width: 800px; margin: 0 auto; padding: 20px; background: rgba(0,0,0,0.3); border-radius: 10px; }
+.hero-content h2 { font-size: 32px; margin-bottom: 20px; color: #f4c542; }
+.hero-content p { font-size: 18px; margin-bottom: 20px; }
+
+.info-card { background: rgba(0,0,0,0.5); border-radius: 8px; padding: 15px; font-size: 15px; color: #fff; margin-bottom:10px; }
+.info-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 20px; }
+
+.itinerary { background: rgba(0,0,0,0.6); color: #fff; max-width: 900px; margin: 50px auto; padding: 20px; border-radius: 10px; }
+.itinerary input, .itinerary textarea { padding:10px; border-radius:5px; border:none; width:100%; max-width:250px; margin-bottom:10px; }
+.itinerary button { background:#1b2735; color:#fff; padding:10px 20px; border:none; border-radius:5px; cursor:pointer; margin-right:5px; }
+.itinerary button:hover { background:#34495e; }
+.itinerary-list { margin-top:20px; }
+.itinerary-item { background:#fff; color:#000; padding:15px; border-left:4px solid #f4c542; margin-bottom:10px; border-radius:5px; }
+
+.view360 iframe { border-radius:12px; width:100%; height:500px; margin-top:20px; }
+
+.gallery { max-width:1000px; margin:50px auto; text-align:center; }
+.gallery-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:15px; margin-top:20px; }
+.gallery-item img { width:100%; border-radius:10px; cursor:pointer; transition: transform 0.3s ease; }
+.gallery-item img:hover { transform:scale(1.05); }
+.gallery-caption { margin-top:15px; font-size:16px; color:#f4c542; }
+
+footer { background: rgba(27, 39, 53, 0.3); text-align:center; padding:20px; color:#fff; backdrop-filter: blur(5px); }
+
+@media(max-width:768px){
+  .hero-content h2 { font-size:24px; }
+  .hero-content p { font-size:16px; }
+  .view360 iframe { height:300px; }
+  .itinerary form { flex-direction: column; align-items: center; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1 id="site-title">Unseen Corners</h1>
+  <nav>
+    <a href="index,html" data-lang="nav-home"><b>Home</b></a>
+    <a href="about14.html" data-lang="nav-about"><b>About</b></a>
+    <a href="contact" data-lang="nav-contact"><b>Contact</b></a>
+    <a href="t4.html" data-lang="nav-chat"><b>Chat Bot</b></a>
+    <button class="nav-btn" data-lang="nav-book" onclick="window.location.href='book.html'"><b>Book Now</b></button>
+    <select class="lang-select" id="language-select">
+      <option value="en">English</option>
+      <option value="hi">हिन्दी</option>
+      <option value="te">తెలుగు</option>
+    </select>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+    <h2 class="fade show" data-lang="title">🛕 Kedarnath</h2>
+    <p class="fade show" data-lang="intro">Kedarnath, nestled in the Garhwal Himalayas of Uttarakhand, is one of the most revered Hindu temples dedicated to Lord Shiva.</p>
+
+    <h3 class="fade show" data-lang="history-title">📜 History – When Was It Established?</h3>
+    <ul>
+      <li class="fade show" data-lang="history-1"></li>
+      <li class="fade show" data-lang="history-2"></li>
+      <li class="fade show" data-lang="history-3"></li>
+      <li class="fade show" data-lang="history-4"></li>
+    </ul>
+
+    <h3 class="fade show" data-lang="visit-title">🕒 Visiting Information</h3>
+    <div class="info-grid">
+      <div class="info-card fade show" data-lang="visit-time"></div>
+      <div class="info-card fade show" data-lang="visit-location"></div>
+      <div class="info-card fade show" data-lang="visit-best"></div>
+    </div>
+  </div>
+</section>
+
+<section class="view360">
+  <h2 style="text-align:center; margin-bottom:15px; color:#1b2735;" data-lang="view360-title">🌐 Explore 360° View of Kedarnath</h2>
+  <iframe src="https://www.google.com/maps/embed?pb=!4v1760448306879!6m8!1m7!1sCAoSFkNJSE0wb2dLRUlDQWdJRGV1cGJFUkE.!2m2!1d30.73508636365512!2d79.06697850131246!3f350.1722470177229!4f-4.05826384200023!5f0.7820865974627469" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</section>
+
+<section class="itinerary">
+  <h2>🧭 <span data-lang="custom-itinerary">Plan Your Itinerary</span></h2>
+  <form id="itinerary-form">
+    <input type="date" id="date" required />
+    <input type="text" id="activity" placeholder="Activity (e.g., Temple Visit)" required />
+    <textarea id="notes" rows="1" placeholder="Notes (optional)"></textarea>
+    <button type="submit">Add to Itinerary</button>
+    <button type="button" id="clear-itinerary" style="background:#c0392b;">Clear All</button>
+  </form>
+
+  <div class="itinerary-list" id="itinerary-list"></div>
+
+  <div class="itinerary-list" id="built-in-itinerary">
+    <h3 style="margin-top:30px;" data-lang="suggested-title">🗓️ Suggested Itinerary (Built-in)</h3>
+    <div class="itinerary-item" data-lang="day1-morning"></div>
+    <div class="itinerary-item" data-lang="day1-afternoon"></div>
+    <div class="itinerary-item" data-lang="day1-evening"></div>
+    <div class="itinerary-item" data-lang="day2-morning"></div>
+    <div class="itinerary-item" data-lang="day2-afternoon"></div>
+    <div class="itinerary-item" data-lang="day2-night"></div>
+  </div>
+</section>
+
+<section class="gallery">
+  <h3 class="fade show" data-lang="gallery-title">📸 Photo Gallery</h3>
+  <div class="gallery-grid">
+    <div class="gallery-item"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZYdZO_CjyKXHMkeS1gQ189z7J5wVBS-IvsA&s" alt="Kedarnath View" data-lang="img2-caption"></div>
+    <div class="gallery-item"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDD5gOcbtrQ_jvS9USJzypJiF9YUT_Fq0M1s5IYm9kobsj3wWkM1SX7KAEkerqnXYWr1g&usqp=CAU" alt="Winter Kedarnath" data-lang="img3-caption"></div>
+    <div class="gallery-item"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5lU1osyzM37Uqeesk-hiLarvn0YSzaQ_ULQ&s" alt="Scenery" data-lang="img4-caption"></div>
+  </div>
+  <div class="gallery-caption fade show" id="gallery-caption"></div>
+</section>
+
+<footer>
+  <p class="fade show" data-lang="footer">&copy; 2025 Unseen Corners | All Rights Reserved</p>
+</footer>
+
+<script>
+// Translations
+const translations = {
+  en: {
+    "page-title": "Unseen Corners – Kedarnath",
+    "nav-home": "<b>Home</b>", "nav-about": "<b>About</b>", "nav-contact": "<b>Contact</b>", "nav-chat": "<b>Chat Bot</b>", "nav-book": "<b>Book Now</b>",
+    "footer": "&copy; 2025 Unseen Corners | All Rights Reserved",
+    "title": "🛕 Kedarnath",
+    "intro": "Kedarnath, nestled in the Garhwal Himalayas of Uttarakhand, is one of the most revered Hindu temples dedicated to Lord Shiva.",
+    "history-title": "📜 History – When Was It Established?",
+    "history-1": "The temple is believed to have been constructed by the Pandavas during the Mahabharata era, dedicated to Lord Shiva.",
+    "history-2": "It is one of the twelve Jyotirlingas and symbolizes divine strength and purity.",
+    "history-3": "Situated at an altitude of about 11,755 feet, the pilgrimage involves a steep trek of approximately 16 km from Gaurikund.",
+    "history-4": "Kedarnath holds immense spiritual and cultural importance in Northern India.",
+    "visit-title": "🕒 Visiting Information",
+    "visit-time": "<b>Timings:</b><br> 5:00 AM – 7:00 PM daily (seasonal)",
+    "visit-location": "<b>Location:</b><br> Rudraprayag district, Uttarakhand, India.",
+    "visit-best": "<b>Best Time:</b><br> May to October; temple closes in winter due to heavy snowfall.",
+    "view360-title": "🌐 Explore 360° View of Kedarnath",
+    "custom-itinerary": "Plan Your Itinerary",
+    "suggested-title": "🗓️ Suggested Itinerary (Built-in)",
+    "day1-morning": "<strong>Day 1 - Morning:</strong> Arrive at Gaurikund, begin trek to Kedarnath shrine",
+    "day1-afternoon": "<strong>Day 1 - Afternoon:</strong> Perform darshan at Kedarnath temple and explore surroundings",
+    "day1-evening": "<strong>Day 1 - Evening:</strong> Rest at Kedarnath guesthouse or camp",
+    "day2-morning": "<strong>Day 2 - Morning:</strong> Trek back to Gaurikund and visit nearby temples",
+    "day2-afternoon": "<strong>Day 2 - Afternoon:</strong> Visit Rudraprayag or other local attractions",
+    "day2-night": "<strong>Day 2 - Night:</strong> Prepare for onward journey or stay for further exploration",
+    "gallery-title":"📸 Photo Gallery",
+    "img1-caption":"Kedarnath Temple from front view",
+    "img2-caption":"View from surrounding hills",
+    "img3-caption":"Kedarnath during winter season",
+    "img4-caption":"Scenic mountains near Kedarnath"
+  },
+  hi: {
+    "page-title": "अनदेखे कोने – केदारनाथ",
+    "nav-home": "<b>मुख्य पृष्ठ</b>", "nav-about": "<b>परिचय</b>", "nav-contact": "<b>संपर्क करें</b>", "nav-chat": "<b>चैट बॉट</b>", "nav-book": "<b>बुक करें</b>",
+    "footer": "&copy; 2025 अनदेखे कोने | सर्वाधिकार सुरक्षित",
+    "title": "🛕 केदारनाथ",
+    "intro": "केदारनाथ, उत्तराखंड के गढ़वाल हिमालय में बसा हुआ है, और भगवान शिव को समर्पित सबसे पवित्र हिंदू मंदिरों में से एक है।",
+    "history-title": "📜 इतिहास – यह कब स्थापित हुआ?",
+    "history-1": "माना जाता है कि इस मंदिर का निर्माण महाभारत काल में पांडवों द्वारा किया गया था।",
+    "history-2": "यह 12 ज्योतिर्लिंगों में से एक है और दिव्य शक्ति और पवित्रता का प्रतीक है।",
+    "history-3": "लगभग 11,755 फीट की ऊँचाई पर स्थित यह मंदिर गौरीकुंड से 16 किमी की कठिन यात्रा पर स्थित है।",
+    "history-4": "केदारनाथ उत्तर भारत में अत्यधिक धार्मिक और सांस्कृतिक महत्व रखता है।",
+    "visit-title": "🕒 यात्रा जानकारी",
+    "visit-time": "<b>समय:</b><br> रोजाना सुबह 5:00 – शाम 7:00 (मौसमी)",
+    "visit-location": "<b>स्थान:</b><br> रुद्रप्रयाग जिला, उत्तराखंड, भारत।",
+    "visit-best": "<b>श्रेष्ठ समय:</b><br> मई से अक्टूबर; सर्दियों में भारी बर्फबारी के कारण मंदिर बंद रहता है।",
+    "view360-title": "🌐 केदारनाथ का 360° दृश्य देखें",
+    "custom-itinerary": "अपनी यात्रा योजना बनाएं",
+    "suggested-title": "🗓️ सुझाई गई यात्रा योजना",
+    "day1-morning": "<strong>दिन 1 - सुबह:</strong> गौरीकुंड पहुंचें, केदारनाथ के लिए यात्रा शुरू करें",
+    "day1-afternoon": "<strong>दिन 1 - दोपहर:</strong> मंदिर में दर्शन करें और आसपास के क्षेत्रों का भ्रमण करें",
+    "day1-evening": "<strong>दिन 1 - शाम:</strong> गेस्टहाउस या कैंप में विश्राम करें",
+    "day2-morning": "<strong>दिन 2 - सुबह:</strong> गौरीकुंड वापस जाएं और पास के मंदिरों का भ्रमण करें",
+    "day2-afternoon": "<strong>दिन 2 - दोपहर:</strong> रुद्रप्रयाग या अन्य स्थानीय आकर्षण देखें",
+    "day2-night": "<strong>दिन 2 - रात:</strong> अगली यात्रा की तैयारी करें या और ठहरें",
+    "gallery-title":"📸 फोटो गैलरी",
+    "img1-caption":"केदारनाथ मंदिर का सामने का दृश्य",
+    "img2-caption":"आसपास की पहाड़ियों से दृश्य",
+    "img3-caption":"शीतकालीन केदारनाथ",
+    "img4-caption":"केदारनाथ के पास मनोरम पहाड़"
+  },
+  te: {
+    "page-title": "చూసిన కోణాలు – కేదారనాథ్",
+    "nav-home": "<b>హోమ్</b>", "nav-about": "<b>గురించి</b>", "nav-contact": "<b>సంప్రదించండి</b>", "nav-chat": "<b>చాట్ బాట్</b>", "nav-book": "<b>బుక్ చేయండి</b>",
+    "footer": "&copy; 2025 Unseen Corners | అన్ని హక్కులూ వారిగా ఉన్నవి",
+    "title": "🛕 కేదారనాథ్",
+    "intro": "కేదారనాథ్, ఉత్తరాఖండ్ గఢ్వాల్ హిమాలయాల్లో ఉన్నదిగా, లార్డ్ శివుడికి అంకితం చేసిన పవిత్రమైన ఆలయాలలో ఒకటి.",
+    "history-title": "📜 చరిత్ర – ఇది ఎప్పుడు స్థాపించబడింది?",
+    "history-1": "ఈ ఆలయం మహాభారత కాలంలో పాండవులు నిర్మించినదిగా నమ్ముతారు.",
+    "history-2": "ఇది పన్నెండు జ్యోతిర్లింగాలలో ఒకటి మరియు దివ్య శక్తి మరియు పవిత్రతకు సంకేతం.",
+    "history-3": "సుమారు 11,755 అడుగుల ఎత్తులో గౌరికుండ్ నుండి 16 కి.మీ. ప్రయాణంతో ఈ పుణ్యయాత్ర కొనసాగుతుంది.",
+    "history-4": "కేదారనాథ్ ఉత్తర భారతదేశంలో ఆధ్యాత్మికంగా మరియు సాంస్కృతికంగా ఎంతో ప్రాముఖ్యత కలిగి ఉంది.",
+    "visit-title": "🕒 సందర్శన సమాచారం",
+    "visit-time": "<b>సమయం:</b><br> ప్రతి రోజు ఉదయం 5:00 – సాయంత్రం 7:00 (వాతావరణానికి అనుగుణంగా)",
+    "visit-location": "<b>ప్రదేశం:</b><br> రుద్రప్రయాగ్ జిల్లా, ఉత్తరాఖండ్, ఇండియా.",
+    "visit-best": "<b>ఉత్తమ సమయం:</b><br> మే నుండి అక్టోబర్ వరకు; శీతాకాలంలో మంచు వర్షాల వల్ల ఆలయం మూసివేస్తారు.",
+    "view360-title": "🌐 కేదారనాథ్ 360° వీక్షణ",
+    "custom-itinerary": "మీ యాత్రను ప్రణాళిక చేయండి",
+    "suggested-title": "🗓️ సూచించిన ప్రణాళిక",
+    "day1-morning": "<strong>రోజు 1 - ఉదయం:</strong> గౌరికుండ్ చేరుకుని కేదారనాథ్ కి ప్రయాణం ప్రారంభించండి",
+    "day1-afternoon": "<strong>రోజు 1 - మధ్యాహ్నం:</strong> ఆలయంలో దర్శనం చేసి పరిసరాలు అన్వేషించండి",
+    "day1-evening": "<strong>రోజు 1 - సాయంత్రం:</strong> అతిథిగృహంలో లేదా క్యాంప్‌లో విశ్రాంతి తీసుకోండి",
+    "day2-morning": "<strong>రోజు 2 - ఉదయం:</strong> గౌరికుండ్ కు తిరిగి వచ్చి సమీప దేవాలయాలను సందర్శించండి",
+    "day2-afternoon": "<strong>రోజు 2 - మధ్యాహ్నం:</strong> రుద్రప్రయాగ్ లేదా ఇతర ప్రదేశాలను సందర్శించండి",
+    "day2-night": "<strong>రోజు 2 - రాత్రి:</strong> తదుపరి యాత్రకు సిద్ధం అవ్వండి లేదా మిగిలి ఉండండి",
+    "gallery-title":"📸 ఫోటో గ్యాలరీ",
+    "img1-caption":"కేదారనాథ్ ఆలయం ముందు వీక్షణ",
+    "img2-caption":"సమీప కొండల నుండి వీక్షణ",
+    "img3-caption":"శీతాకాల కేదారనాథ్",
+    "img4-caption":"కేదారనాథ్ సమీపం అద్భుతమైన పర్వతాలు"
+  }
+};
+
+// Language switch
+document.getElementById('language-select').addEventListener('change', e => {
+  const lang = e.target.value;
+  document.querySelectorAll('[data-lang]').forEach(el => {
+    const key = el.getAttribute('data-lang');
+    if(translations[lang]?.[key]){
+      el.classList.remove('show');
+      setTimeout(()=>{ el.innerHTML = translations[lang][key]; el.classList.add('show'); },100);
+    }
+  });
+  document.title = translations[lang]?.["page-title"] || document.title;
+});
+
+// Itinerary
+const form = document.getElementById('itinerary-form');
+const list = document.getElementById('itinerary-list');
+const clearBtn = document.getElementById('clear-itinerary');
+
+form.addEventListener('submit', e=>{
+  e.preventDefault();
+  const date = document.getElementById('date').value;
+  const activity = document.getElementById('activity').value;
+  const notes = document.getElementById('notes').value;
+  if(!date || !activity) return;
+  const item = document.createElement('div');
+  item.className='itinerary-item';
+  item.innerHTML = `<strong>${date}</strong> – ${activity}<br><small>${notes}</small>`;
+  list.appendChild(item);
+  form.reset();
+});
+
+clearBtn.addEventListener('click', ()=>{ list.innerHTML=''; });
+
+// Gallery captions
+const galleryItems = document.querySelectorAll('.gallery-item img');
+const galleryCaption = document.getElementById('gallery-caption');
+galleryItems.forEach(img=>{
+  img.addEventListener('click', ()=>{
+    const lang = document.getElementById('language-select').value;
+    const key = img.getAttribute('data-lang');
+    galleryCaption.innerHTML = translations[lang][key] || "";
+  });
+});
+</script>
+
+</body>
+</html>

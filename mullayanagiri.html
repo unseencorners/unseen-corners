@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title data-lang="page-title">Unseen Corners – Mullayanagiri</title>
+
+ <style>
+  * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+  
+  /* Full-page background */
+  body {
+    line-height: 1.6;
+    color: #fff;
+    background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlHx3H3vPumrL9_kQH19AWVZZwt62rqr5Nww&s') no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+    position: relative;
+  }
+
+  /* Overlay for readability */
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.6);
+    z-index: -1;
+  }
+
+  header {
+    background: rgba(27,39,53,0.8);
+    color: #fff;
+    padding: 15px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    z-index: 1000;
+  }
+  header h1 { color: #f4c542; font-size: 22px; font-weight: bold; }
+  nav a { color: #fff; text-decoration: none; margin-left: 20px; font-size: 16px; }
+  nav a:hover { text-decoration: underline; }
+  .nav-btn { background: #f4c542; color: #000; font-weight: bold; padding: 8px 16px; border: none; border-radius: 5px; margin-left: 20px; cursor: pointer; }
+  .lang-select { margin-left: 20px; padding: 6px 10px; border-radius: 5px; border: none; font-size: 14px; cursor: pointer; }
+
+  .hero { padding-top: 120px; text-align: center; }
+  .hero-content { max-width: 800px; margin: 0 auto; }
+
+  .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 20px; padding: 0 20px; }
+  .info-card { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; padding: 15px; font-size: 15px; color: #fff; }
+
+  .view360, .itinerary { margin: 50px auto; max-width: 1000px; padding: 10px 20px; background: rgba(0,0,0,0.3); border-radius: 12px; }
+  .view360 iframe { width: 100%; height: 500px; border: none; border-radius: 12px; }
+
+  .itinerary h2 { text-align: center; margin-bottom: 20px; color: #f4c542; }
+  #itinerary-form { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; justify-content: center; }
+  #itinerary-form input, #itinerary-form textarea { padding: 8px; border: 1px solid #ccc; border-radius: 5px; width: 200px; }
+  #itinerary-form button { padding: 8px 16px; background: #27ae60; color: #fff; border: none; border-radius: 5px; cursor: pointer; }
+  #itinerary-form button:hover { opacity: 0.9; }
+  .itinerary-item { padding: 10px; border: 1px solid #ccc; border-radius: 8px; margin-bottom: 10px; background: rgba(255,255,255,0.2); color: #fff; }
+
+  footer { text-align: center; padding: 20px; background: rgba(27,39,53,0.8); color: #fff; }
+
+  @media(max-width:768px){
+    .hero-content h2 { font-size: 24px; }
+    .view360 iframe { height: 300px; }
+    #itinerary-form input, #itinerary-form textarea { width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1 id="site-title">Unseen Corners</h1>
+  <nav>
+    <a href="index.html" data-lang="nav-home"><b>Home</b></a>
+    <a href="about14.html" data-lang="nav-about"><b>About</b></a>
+    <a href="contact.html" data-lang="nav-contact"><b>Contact</b></a>
+    <a href="t4.html" data-lang="nav-chat"><b>Chat Bot</b></a>
+    <button class="nav-btn" data-lang="nav-book" onclick="window.location.href='book.html'"><b>Book Now</b></button>
+    <select class="lang-select" id="language-select">
+      <option value="en">English</option>
+      <option value="hi">हिन्दी</option>
+      <option value="te">తెలుగు</option>
+    </select>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+    <h2 class="fade show" data-lang="title">🏞️ Mullayanagiri – Karnataka’s Highest Peak</h2>
+    <p class="fade show" data-lang="intro">Mullayanagiri is the highest peak in Karnataka, located in the Baba Budangiri range, famous for its stunning views and cool climate.</p>
+
+    <h3 class="fade show" data-lang="history-title">📜 History & Significance</h3>
+    <ul>
+      <li class="fade show" data-lang="history-1">Popular trekking destination with scenic landscapes.</li>
+      <li class="fade show" data-lang="history-2">Known for panoramic sunrise and misty views.</li>
+      <li class="fade show" data-lang="history-3">Home to unique flora and fauna in the Western Ghats.</li>
+      <li class="fade show" data-lang="history-4">Important spiritual site with a shrine at the summit.</li>
+    </ul>
+
+    <h3 class="fade show" data-lang="visit-title">🕒 Visiting Information</h3>
+    <div class="info-grid">
+      <div class="info-card fade show" data-lang="visit-time"><b>Best Trekking Season:</b><br> October–February.</div>
+      <div class="info-card fade show" data-lang="visit-location"><b>Location:</b><br> Chikmagalur, Karnataka, India (Western Ghats).</div>
+      <div class="info-card fade show" data-lang="visit-best"><b>Activities:</b><br> Trekking, photography, bird watching.</div>
+    </div>
+  </div>
+</section>
+
+<section class="view360">
+  <h2 style="text-align:center; margin-bottom:15px; color:#1b2735;" data-lang="view360-title">🌐 Explore 360° View of Mullayanagiri</h2>
+ <iframe src="https://www.google.com/maps/embed?pb=!4v1760037032984!6m8!1m7!1sCAoSF0NJSE0wb2dLRUlDQWdJQzB4X0dXckFF!2m2!1d13.39088549572226!2d75.72132949972149!3f142.71397785941178!4f-8.114748937879654!5f0.7820865974627469" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</section>
+
+<section class="itinerary">
+  <h2 data-lang="itinerary-title">🧭 Plan Your Itinerary</h2>
+  <form id="itinerary-form">
+    <input type="date" id="date" required aria-label="Date" />
+    <input type="text" id="activity" placeholder="Activity (e.g., Mullayanagiri Trek)" required aria-label="Activity" />
+    <textarea id="notes" rows="1" placeholder="Notes (optional)" aria-label="Notes (optional)"></textarea>
+    <button type="submit" data-lang="btn-add">Add to Itinerary</button>
+    <button type="button" id="clear-itinerary" style="background:#c0392b;" data-lang="btn-clear">Clear All</button>
+  </form>
+  <div class="itinerary-list" id="itinerary-list"></div>
+  <div class="itinerary-list">
+    <h3 style="margin-top:30px;" data-lang="suggested-title">🗓️ Suggested Itinerary (Built‑in)</h3>
+    <div class="itinerary-item"><strong data-lang="day1-label">Day 1:</strong> <span data-lang="day1-activity">Arrive in Chikmagalur</span></div>
+    <div class="itinerary-item"><strong data-lang="day2-label">Day 2:</strong> <span data-lang="day2-activity">Visit Coffee Plantations and Local Markets</span></div>
+    <div class="itinerary-item"><strong data-lang="day3-label">Day 3:</strong> <span data-lang="day3-activity">Trek Mullayanagiri and enjoy sunrise</span></div>
+    <div class="itinerary-item"><strong data-lang="day4-label">Day 4:</strong> <span data-lang="day4-activity">Explore Baba Budangiri Hills</span></div>
+    <div class="itinerary-item"><strong data-lang="day5-label">Day 5:</strong> <span data-lang="day5-activity">Return and depart</span></div>
+  </div>
+</section>
+
+<footer>
+  <p class="fade show" data-lang="footer">&copy; 2025 Unseen Corners | All Rights Reserved</p>
+</footer>
+
+<script>
+  const translations = {
+    en: {
+      "page-title": "Unseen Corners – Mullayanagiri",
+      "nav-home": "<b>Home</b>", "nav-about": "<b>About</b>", "nav-contact": "<b>Contact</b>", "nav-chat": "<b>Chat Bot</b>", "nav-book": "<b>Book Now</b>",
+      "footer": "&copy; 2025 Unseen Corners | All Rights Reserved",
+      "title": "🏞️ Mullayanagiri – Karnataka’s Highest Peak",
+      "intro": "Mullayanagiri is the highest peak in Karnataka, located in the Baba Budangiri range, famous for its stunning views and cool climate.",
+      "history-title": "📜 History & Significance",
+      "history-1": "Popular trekking destination with scenic landscapes.",
+      "history-2": "Known for panoramic sunrise and misty views.",
+      "history-3": "Home to unique flora and fauna in the Western Ghats.",
+      "history-4": "Important spiritual site with a shrine at the summit.",
+      "visit-title": "🕒 Visiting Information",
+      "visit-time": "<b>Best Trekking Season:</b><br> October–February.",
+      "visit-location": "<b>Location:</b><br> Chikmagalur, Karnataka, India (Western Ghats).",
+      "visit-best": "<b>Activities:</b><br> Trekking, photography, bird watching.",
+      "view360-title": "🌐 Explore 360° View of Mullayanagiri",
+      "itinerary-title": "🧭 Plan Your Itinerary",
+      "btn-add": "Add to Itinerary",
+      "btn-clear": "Clear All",
+      "suggested-title": "🗓️ Suggested Itinerary (Built‑in)",
+      "day1-label": "Day 1:", "day1-activity": "Arrive in Chikmagalur",
+      "day2-label": "Day 2:", "day2-activity": "Visit Coffee Plantations and Local Markets",
+      "day3-label": "Day 3:", "day3-activity": "Trek Mullayanagiri and enjoy sunrise",
+      "day4-label": "Day 4:", "day4-activity": "Explore Baba Budangiri Hills",
+      "day5-label": "Day 5:", "day5-activity": "Return and depart"
+    },
+    hi: {
+      "page-title": "अनसेन कॉर्नर्स – मुल्लायनागिरी",
+      "nav-home": "<b>होम</b>", "nav-about": "<b>हमारे बारे में</b>", "nav-contact": "<b>संपर्क करें</b>", "nav-chat": "<b>चैट बॉट</b>", "nav-book": "<b>अभी बुक करें</b>",
+      "footer": "© 2025 अनसेन कॉर्नर्स | सर्वाधिकार सुरक्षित",
+      "title": "🏞️ मुल्लायनागिरी – कर्नाटक का सबसे ऊँचा शिखर",
+      "intro": "मुल्लायनागिरी कर्नाटक का सबसे ऊँचा शिखर है, जो बाबा बुद्धंगिरी श्रेणी में स्थित है, अपनी खूबसूरत नज़ारों और ठंडी जलवायु के लिए प्रसिद्ध।",
+      "history-title": "📜 इतिहास और महत्व",
+      "history-1": "सुंदर परिदृश्यों के साथ लोकप्रिय ट्रेकिंग गंतव्य।",
+      "history-2": "सुबह के सूर्योदय और धुंधले दृश्य के लिए जाना जाता है।",
+      "history-3": "पश्चिमी घाटों में अद्वितीय वनस्पति और जीवों का घर।",
+      "history-4": "शिखर पर एक तीर्थ स्थल के रूप में महत्वपूर्ण।",
+      "visit-title": "🕒 यात्रा सूचना",
+      "visit-time": "<b>सबसे अच्छा ट्रेकिंग मौसम:</b><br> अक्टूबर–फरवरी।",
+      "visit-location": "<b>स्थान:</b><br> चिकमंगलूर, कर्नाटक, भारत (पश्चिमी घाट)।",
+      "visit-best": "<b>गतिविधियां:</b><br> ट्रेकिंग, फोटोग्राफी, पक्षी देखने।",
+      "view360-title": "🌐 मुल्लायनागिरी का 360° दृश्य देखें",
+      "itinerary-title": "🧭 अपनी यात्रा योजना बनाएं",
+      "btn-add": "यात्रा योजना में जोड़ें",
+      "btn-clear": "सभी साफ़ करें",
+      "suggested-title": "🗓️ सुझाई गई यात्रा योजना (निर्मित)",
+      "day1-label": "दिन 1:", "day1-activity": "चिकमंगलूर में आगमन",
+      "day2-label": "दिन 2:", "day2-activity": "कॉफ़ी बागान और स्थानीय बाजार देखें",
+      "day3-label": "दिन 3:", "day3-activity": "मुल्लायनागिरी की चढ़ाई और सूर्योदय का आनंद लें",
+      "day4-label": "दिन 4:", "day4-activity": "बाबा बुद्धंगिरी पहाड़ियों का अन्वेषण करें",
+      "day5-label": "दिन 5:", "day5-activity": "वापसी और प्रस्थान"
+    },
+    te: {
+      "page-title": "అన్సీన్ కార్నర్స్ – ముల్లయనగిరి",
+      "nav-home": "<b>హోమ్</b>", "nav-about": "<b>మా గురించి</b>", "nav-contact": "<b>సంప్రదించండి</b>", "nav-chat": "<b>చాట్ బాట్</b>", "nav-book": "<b>ఇప్పుడు బుక్ చేయండి</b>",
+      "footer": "© 2025 అన్సీన్ కార్నర్స్ | అన్నీ హక్కులు రిజర్వ్ చేయబడ్డాయి",
+      "title": "🏞️ ముల్లయనగిరి – కర్ణాటకలో అత్యున్నత పర్వత శిఖరం",
+      "intro": "ముల్లయనగిరి కర్ణాటకలోని అత్యున్నత పర్వత శిఖరం, బాబా బుద్దంగిరి శ్రేణిలో ఉంది, అందమైన దృశ్యాలు మరియు చల్లని వాతావరణం కోసం ప్రసిద్ధి చెందింది.",
+      "history-title": "📜 చరిత్ర మరియు ప్రాముఖ్యత",
+      "history-1": "సుందరమైన దృశ్యాలతో ప్రాచుర్యం పొందిన ట్రెక్కింగ్ గమ్యం.",
+      "history-2": "పanorమిక్ సూర్యోదయం మరియు మిస్టీ దృశ్యాల కోసం ప్రసిద్ధి.",
+      "history-3": "వెస్టర్న్ ఘాట్స్ లో ప్రత్యేక వనరులు మరియు జంతువులు.",
+      "history-4": "శిఖరంపై పవిత్ర స్థలం.",
+      "visit-title": "🕒 సందర్శన సమాచారం",
+      "visit-time": "<b>ఉత్తమ ట్రెక్కింగ్ సీజన్:</b><br> అక్టోబర్–ఫిబ్రవరి.",
+      "visit-location": "<b>స్థానం:</b><br> చికమగలూరు, కర్ణాటక, భారత్ (వెస్టర్న్ ఘాట్స్).",
+      "visit-best": "<b>చర్యలు:</b><br> ట్రెక్కింగ్, ఫోటోగ్రఫీ, పక్షుల పరిశీలన.",
+      "view360-title": "🌐 ముల్లయనగిరి 360° వీక్షణను అన్వేషించండి",
+      "itinerary-title": "🧭 మీ యాత్ర ప్రణాళికను రూపొందించండి",
+      "btn-add": "ప్రణాళికకు జోడించండి",
+      "btn-clear": "అన్ని తొలగించండి",
+      "suggested-title": "🗓️ సూచించిన ప్రణాళిక (ఇన్‌బిల్ట్)",
+      "day1-label": "రోజు 1:", "day1-activity": "చికమగలూరులో చేరండి",
+      "day2-label": "రోజు 2:", "day2-activity": "కాఫీ తోటలు మరియు స్థానిక మార్కెట్లు సందర్శించండి",
+      "day3-label": "రోజు 3:", "day3-activity": "ముల్లయనగిరి ట్రెక్కింగ్ మరియు సూర్యోదయాన్ని ఆస్వాదించండి",
+      "day4-label": "రోజు 4:", "day4-activity": "బాబా బుద్దంగిరి కొండలను అన్వేషించండి",
+      "day5-label": "రోజు 5:", "day5-activity": "వాపసుకు వెళ్లండి మరియు ప్రయాణం ముగించండి"
+    }
+  };
+
+  const elements = document.querySelectorAll('[data-lang]');
+  const langSelect = document.getElementById('language-select');
+
+  function setLanguage(lang) {
+    elements.forEach(el => {
+      const key = el.getAttribute('data-lang');
+      if(translations[lang] && translations[lang][key]) {
+        el.innerHTML = translations[lang][key];
+      }
+    });
+  }
+
+  langSelect.addEventListener('change', () => {
+    setLanguage(langSelect.value);
+  });
+
+  // Initialize language to English by default
+  setLanguage('en');
+
+  // Itinerary form logic
+  const itineraryForm = document.getElementById('itinerary-form');
+  const itineraryList = document.getElementById('itinerary-list');
+  const clearBtn = document.getElementById('clear-itinerary');
+
+  let itinerary = JSON.parse(localStorage.getItem('mullayanagiri-itinerary')) || [];
+
+  function renderItinerary() {
+    itineraryList.innerHTML = '';
+    if(itinerary.length === 0){
+      itineraryList.innerHTML = '<p style="text-align:center; font-style: italic; color: #555;">No activities added yet.</p>';
+      return;
+    }
+    itinerary.forEach((item, index) => {
+      const div = document.createElement('div');
+      div.classList.add('itinerary-item');
+      div.innerHTML = `<strong>${item.date}</strong>: ${item.activity} ${item.notes ? `- <em>${item.notes}</em>` : ''} <button aria-label="Remove activity" style="float:right; background:#e74c3c; border:none; color:#fff; border-radius:4px; cursor:pointer;">&times;</button>`;
+      div.querySelector('button').addEventListener('click', () => {
+        itinerary.splice(index,1);
+        localStorage.setItem('mullayanagiri-itinerary', JSON.stringify(itinerary));
+        renderItinerary();
+      });
+      itineraryList.appendChild(div);
+    });
+  }
+
+  itineraryForm.addEventListener('submit', e => {
+    e.preventDefault();
+    const date = document.getElementById('date').value;
+    const activity = document.getElementById('activity').value.trim();
+    const notes = document.getElementById('notes').value.trim();
+
+    if(date && activity) {
+      itinerary.push({date, activity, notes});
+      localStorage.setItem('mullayanagiri-itinerary', JSON.stringify(itinerary));
+      renderItinerary();
+      itineraryForm.reset();
+    }
+  });
+
+  clearBtn.addEventListener('click', () => {
+    itinerary = [];
+    localStorage.removeItem('mullayanagiri-itinerary');
+    renderItinerary();
+  });
+
+  // Initial render
+  renderItinerary();
+</script>
+
+</body>
+</html>
+
+
+

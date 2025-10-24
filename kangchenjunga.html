@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title data-lang="page-title">Unseen Corners – Kangchenjunga</title>
+
+<style>
+  /* Body with full-page background */
+  body {
+    min-height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background: url('https://miro.medium.com/v2/1*1MBCAD6jNfIZtRFVbxCY1Q.jpeg') no-repeat center center/cover;
+    background-attachment: fixed;
+    color: #fff;
+    padding-top: 70px; /* space for fixed header */
+  }
+
+  header {
+    background: rgba(27, 39, 53, 0.85); /* semi-transparent */
+    color: #fff;
+    padding: 15px 50px;
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;
+    position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+  }
+
+  header h1 { color: #f4c542; font-size: 22px; font-weight: bold; }
+  nav a { color: #fff; text-decoration: none; margin-left: 20px; font-size: 16px; }
+  nav a:hover { text-decoration: underline; }
+  .nav-btn { background: #f4c542; color: #000; font-weight: bold; padding: 8px 16px; border: none; border-radius: 5px; margin-left: 20px; cursor: pointer; }
+  .lang-select { margin-left: 20px; padding: 6px 10px; border-radius: 5px; border: none; font-size: 14px; cursor: pointer; }
+
+  /* Hero section transparent */
+  .hero {
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    padding: 50px 20px;
+    color: #fff;
+    min-height: 70vh;
+  }
+
+  .hero::before {
+    content: "";
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.4); /* optional dark overlay */
+    z-index: 1;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    padding: 20px;
+  }
+
+  .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 20px; }
+  .info-card { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; padding: 15px; font-size: 15px; }
+
+  .view360, .itinerary { margin: 50px auto; max-width: 1000px; padding: 10px 20px; background: rgba(0,0,0,0.35); border-radius: 12px; }
+  .view360 iframe { width: 100%; height: 500px; border: none; border-radius: 12px; }
+
+  .itinerary h2 { text-align: center; margin-bottom: 20px; color: #f4c542; }
+
+  #itinerary-form { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; justify-content: center; }
+  #itinerary-form input, #itinerary-form textarea { padding: 8px; border: 1px solid #ccc; border-radius: 5px; }
+  #itinerary-form button { padding: 8px 16px; background: #27ae60; color: #fff; border: none; border-radius: 5px; cursor: pointer; }
+
+  .itinerary-item { padding: 10px; border: 1px solid #ccc; border-radius: 8px; margin-bottom: 10px; background: rgba(255,255,255,0.9); color: #000; }
+
+  footer { text-align: center; padding: 20px; background: rgba(27, 39, 53, 0.85); color: #fff; }
+
+  .fade { opacity: 0; transition: opacity 0.6s ease-in-out; }
+  .fade.show { opacity: 1; }
+
+  @media(max-width:768px){
+    .hero-content h2 { font-size: 24px; }
+    .view360 iframe { height: 300px; }
+  }
+</style>
+
+</head>
+<body>
+
+<header>
+  <h1 id="site-title">Unseen Corners</h1>
+  <nav>
+    <a href="index.html" data-lang="nav-home"><b>Home</b></a>
+    <a href="about14.html" data-lang="nav-about"><b>About</b></a>
+    <a href="contact.html" data-lang="nav-contact"><b>Contact</b></a>
+    <a href="t4.html" data-lang="nav-chat"><b>Chat Bot</b></a>
+    <button class="nav-btn" data-lang="nav-book" onclick="window.location.href='book.html'"><b>Book Now</b></button>
+    <select class="lang-select" id="language-select">
+      <option value="en">English</option>
+      <option value="hi">हिन्दी</option>
+      <option value="te">తెలుగు</option>
+    </select>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+    <h2 class="fade show" data-lang="title">🏔️ Kangchenjunga – The Third Highest Peak</h2>
+    <p class="fade show" data-lang="intro">Kangchenjunga is the third highest mountain in the world, located in the Himalayas on the border between Nepal and India, known for its remote and pristine beauty.</p>
+
+    <h3 class="fade show" data-lang="history-title">📜 History & Significance</h3>
+    <ul>
+      <li class="fade show" data-lang="history-1">Renowned for its sacred status in local cultures.</li>
+      <li class="fade show" data-lang="history-2">Known for difficult climbs and rugged terrain.</li>
+      <li class="fade show" data-lang="history-3">Home to rare Himalayan flora and fauna.</li>
+      <li class="fade show" data-lang="history-4">A symbol of natural grandeur and adventure.</li>
+    </ul>
+
+    <h3 class="fade show" data-lang="visit-title">🕒 Visiting Information</h3>
+    <div class="info-grid">
+      <div class="info-card fade show" data-lang="visit-time"><b>Best Climbing Season:</b><br> April–May and October–November.</div>
+      <div class="info-card fade show" data-lang="visit-location"><b>Location:</b><br> Eastern Himalayas, Nepal/India border.</div>
+      <div class="info-card fade show" data-lang="visit-best"><b>Activities:</b><br> Trekking, mountaineering, cultural tours.</div>
+    </div>
+  </div>
+</section>
+
+<section class="view360">
+  <h2 style="text-align:center; margin-bottom:15px; color:#01579b;">🎥 Watch Kanchenjunga Video</h2>
+  
+  <iframe
+    width="100%"
+    height="500"
+    src="https://www.youtube.com/embed/z-TiIBe-doo"
+    title="Kanchenjunga Video"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen>
+  </iframe>
+</section>
+
+
+<section class="itinerary">
+  <h2 data-lang="itinerary-title">🧭 Plan Your Itinerary</h2>
+  <form id="itinerary-form">
+    <input type="date" id="date" required aria-label="Date" />
+    <input type="text" id="activity" placeholder="Activity (e.g., Kangchenjunga Base Camp Trek)" required aria-label="Activity" />
+    <textarea id="notes" rows="1" placeholder="Notes (optional)" aria-label="Notes (optional)"></textarea>
+    <button type="submit" data-lang="btn-add">Add to Itinerary</button>
+    <button type="button" id="clear-itinerary" style="background:#c0392b;" data-lang="btn-clear">Clear All</button>
+  </form>
+  <div class="itinerary-list" id="itinerary-list"></div>
+  <div class="itinerary-list">
+    <h3 style="margin-top:30px;" data-lang="suggested-title">🗓️ Suggested Itinerary (Built‑in)</h3>
+    <div class="itinerary-item"><strong data-lang="day1-label">Day 1:</strong> <span data-lang="day1-activity">Arrive in Kathmandu</span></div>
+    <div class="itinerary-item"><strong data-lang="day2-label">Day 2:</strong> <span data-lang="day2-activity">Fly to Suketar and trek to Tumlingtar</span></div>
+    <div class="itinerary-item"><strong data-lang="day3-label">Day 3:</strong> <span data-lang="day3-activity">Trek to Ghunsa</span></div>
+    <div class="itinerary-item"><strong data-lang="day4-label">Day 4:</strong> <span data-lang="day4-activity">Acclimatization day at Ghunsa</span></div>
+    <div class="itinerary-item"><strong data-lang="day5-label">Day 5:</strong> <span data-lang="day5-activity">Trek to Kangchenjunga Base Camp area</span></div>
+    <!-- Add more days if needed -->
+  </div>
+</section>
+
+<footer>
+  <p class="fade show" data-lang="footer">&copy; 2025 Unseen Corners | All Rights Reserved</p>
+</footer>
+
+<script>
+  const translations = {
+    en: {
+      "page-title": "Unseen Corners – Kangchenjunga",
+      "nav-home": "<b>Home</b>", "nav-about": "<b>About</b>", "nav-contact": "<b>Contact</b>", "nav-chat": "<b>Chat Bot</b>", "nav-book": "<b>Book Now</b>",
+      "footer": "&copy; 2025 Unseen Corners | All Rights Reserved",
+      "title": "🏔️ Kangchenjunga – The Third Highest Peak",
+      "intro": "Kangchenjunga is the third highest mountain in the world, located in the Himalayas on the border between Nepal and India, known for its remote and pristine beauty.",
+      "history-title": "📜 History & Significance",
+      "history-1": "Renowned for its sacred status in local cultures.",
+      "history-2": "Known for difficult climbs and rugged terrain.",
+      "history-3": "Home to rare Himalayan flora and fauna.",
+      "history-4": "A symbol of natural grandeur and adventure.",
+      "visit-title": "🕒 Visiting Information",
+      "visit-time": "<b>Best Climbing Season:</b><br> April–May and October–November.",
+      "visit-location": "<b>Location:</b><br> Eastern Himalayas, Nepal/India border.",
+      "visit-best": "<b>Activities:</b><br> Trekking, mountaineering, cultural tours.",
+      "itinerary-title": "🧭 Plan Your Itinerary",
+      "btn-add": "Add to Itinerary",
+      "btn-clear": "Clear All",
+      "suggested-title": "🗓️ Suggested Itinerary (Built‑in)",
+      "day1-label": "Day 1:", "day1-activity": "Arrive in Kathmandu",
+      "day2-label": "Day 2:", "day2-activity": "Fly to Suketar and trek to Tumlingtar",
+      "day3-label": "Day 3:", "day3-activity": "Trek to Ghunsa",
+      "day4-label": "Day 4:", "day4-activity": "Acclimatization day at Ghunsa",
+      "day5-label": "Day 5:", "day5-activity": "Trek to Kangchenjunga Base Camp area"
+    },
+    hi: {
+      "page-title": "अनसेन कॉर्नर्स – कंचनजंगा",
+      "nav-home": "<b>होम</b>", "nav-about": "<b>हमारे बारे में</b>", "nav-contact": "<b>संपर्क करें</b>", "nav-chat": "<b>चैट बॉट</b>", "nav-book": "<b>अभी बुक करें</b>",
+      "footer": "© 2025 अनसेन कॉर्नर्स | सर्वाधिकार सुरक्षित",
+      "title": "🏔️ कंचनजंगा – तीसरा सबसे ऊँचा शिखर",
+      "intro": "कंचनजंगा दुनिया का तीसरा सबसे ऊँचा पर्वत है, जो नेपाल और भारत की सीमा पर हिमालय में स्थित है, इसकी दूरस्थ और स्वच्छ सुंदरता के लिए जाना जाता है।",
+      "history-title": "📜 इतिहास और महत्व",
+      "history-1": "स्थानीय संस्कृतियों में इसकी पवित्र स्थिति के लिए प्रसिद्ध।",
+      "history-2": "कठिन चढ़ाई और कठिन इलाक़े के लिए जाना जाता है।",
+      "history-3": "हिमालयी दुर्लभ वनस्पति और जीवों का घर।",
+      "history-4": "प्राकृतिक भव्यता और साहसिकता का प्रतीक।",
+      "visit-title": "🕒 यात्रा सूचना",
+      "visit-time": "<b>सर्वोत्तम चढ़ाई मौसम:</b><br> अप्रैल–मई और अक्टूबर–नवंबर।",
+      "visit-location": "<b>स्थान:</b><br> पूर्वी हिमालय, नेपाल/भारत सीमा।",
+      "visit-best": "<b>गतिविधियाँ:</b><br> ट्रेकिंग, पर्वतारोहण, सांस्कृतिक पर्यटन।",
+      "itinerary-title": "🧭 अपनी यात्रा योजना बनाएं",
+      "btn-add": "यात्रा कार्यक्रम में जोड़ें",
+      "btn-clear": "सब साफ़ करें",
+      "suggested-title": "🗓️ सुझाया गया यात्रा कार्यक्रम (निर्मित)",
+      "day1-label": "दिन 1:", "day1-activity": "काठमांडू पहुंचें",
+      "day2-label": "दिन 2:", "day2-activity": "सुकातार के लिए उड़ान और टुमलिंगटार तक ट्रेक",
+      "day3-label": "दिन 3:", "day3-activity": "घुंसा तक ट्रेक",
+      "day4-label": "दिन 4:", "day4-activity": "घुंसा में समायोजन दिन",
+      "day5-label": "दिन 5:", "day5-activity": "कंचनजंगा बेस कैंप क्षेत्र तक ट्रेक"
+    },
+    te: {
+      "page-title": "అన్సీన్ కార్నర్స్ – కంచనజంగా",
+      "nav-home": "<b>హోమ్</b>", "nav-about": "<b>గురించి</b>", "nav-contact": "<b>సంప్రదించండి</b>", "nav-chat": "<b>చాట్ బాట్</b>", "nav-book": "<b>ఇప్పుడు బుక్ చేయండి</b>",
+      "footer": "© 2025 అన్సీన్ కార్నర్స్ | అన్ని హక్కులు నమోదు",
+      "title": "🏔️ కంచనజంగా – మూడవ అతిపెద్ద పర్వత శిఖరం",
+      "intro": "కంచనజంగా ప్రపంచంలో మూడవ అతిపెద్ద పర్వతం, ఇది నెపాల్ మరియు ఇండియా సరిహద్దులో హిమాలయాల్లో ఉంది, దాని నిష్కళంకమైన అందం మరియు ఒడిదుడుకులకోసం ప్రసిద్ధి చెందింది.",
+      "history-title": "📜 చరిత్ర & ప్రాముఖ్యత",
+      "history-1": "స్థానిక సంస్కృతులలో పవిత్ర స్థానం కలిగింది.",
+      "history-2": "కఠినమైన ఎక్కుదల మరియు రుగ్గెడ్ భూభాగం కోసం ప్రసిద్ధి చెందింది.",
+      "history-3": "అత్యల్పమైన హిమాలయన్ మొక్కలు మరియు జంతువుల నివాసం.",
+      "history-4": "ప్రకృతి వైభవం మరియు సాహసోపేతత యొక్క చిహ్నం.",
+      "visit-title": "🕒 సందర్శన సమాచారం",
+      "visit-time": "<b>ఉత్తమ ఎక్కుదల సీజన్:</b><br> ఏప్రిల్–మే మరియు అక్టోబర్–నవంబర్.",
+      "visit-location": "<b>స్థానం:</b><br> తూర్పు హిమాలయాలు, నెపాల్/భారత సరిహద్దు.",
+      "visit-best": "<b>కార్యకలాపాలు:</b><br> ట్రెక్కింగ్, పర్వతారోহণం, సాంస్కృతిక పర్యటనలు.",
+      "itinerary-title": "🧭 మీ యాత్ర పథకం రూపొందించండి",
+      "btn-add": "యాత్ర పథకంలో జోడించండి",
+      "btn-clear": "అన్నీ క్లియర్ చేయండి",
+      "suggested-title": "🗓️ సూచించిన యాత్ర పథకం (అంతర్భాగం)",
+      "day1-label": "రోజు 1:", "day1-activity": "కాఠమండు చేరుకోండి",
+      "day2-label": "రోజు 2:", "day2-activity": "సుకెటార్‌కు ఎగురుతూ టుమ్లింగ్టార్‌కు ట్రెక్కింగ్",
+      "day3-label": "రోజు 3:", "day3-activity": "ఘున్సా వరకు ట్రెక్కింగ్",
+      "day4-label": "రోజు 4:", "day4-activity": "ఘున్సాలో ఆక్సిమిలేషన్ రోజు",
+      "day5-label": "రోజు 5:", "day5-activity": "కంచనజంగా బేస్ క్యాంప్ ప్రాంతానికి ట్రెక్కింగ్"
+    }
+  };
+
+  function updateLanguage(lang) {
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-lang]').forEach(el => {
+      const key = el.getAttribute('data-lang');
+      if (translations[lang] && translations[lang][key]) {
+        el.innerHTML = translations[lang][key];
+      }
+    });
+  }
+
+  const langSelect = document.getElementById('language-select');
+  langSelect.addEventListener('change', e => updateLanguage(e.target.value));
+
+  // Initialize language
+  updateLanguage('en');
+
+  // Itinerary form
+  const form = document.getElementById('itinerary-form');
+  const list = document.getElementById('itinerary-list');
+
+  function renderItinerary() {
+    const items = JSON.parse(localStorage.getItem('kangchenjunga-itinerary') || '[]');
+    list.innerHTML = '';
+    items.forEach((item, i) => {
+      const div = document.createElement('div');
+      div.className = 'itinerary-item';
+      div.textContent = `${item.date}: ${item.activity}` + (item.notes ? ` (${item.notes})` : '');
+      list.appendChild(div);
+    });
+  }
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const date = form.date.value;
+    const activity = form.activity.value.trim();
+    const notes = form.notes.value.trim();
+    if (!date || !activity) return alert('Please fill in both date and activity.');
+    const items = JSON.parse(localStorage.getItem('kangchenjunga-itinerary') || '[]');
+    items.push({date, activity, notes});
+    localStorage.setItem('kangchenjunga-itinerary', JSON.stringify(items));
+    renderItinerary();
+    form.reset();
+  });
+
+  document.getElementById('clear-itinerary').addEventListener('click', () => {
+    if (confirm('Are you sure you want to clear the itinerary?')) {
+      localStorage.removeItem('kangchenjunga-itinerary');
+      renderItinerary();
+    }
+  });
+
+  renderItinerary();
+</script>
+
+</body>
+</html>
+
+
+
+

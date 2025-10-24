@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unseen Corners</title>
+ <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+    body { line-height: 1.6; background: #fff; color: #333; }
+
+    /* Navbar */
+    header {
+      background: #1b2735;
+      color: #fff;
+      padding: 15px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 { color: #f4c542; font-size: 22px; font-weight: bold; }
+    nav a {
+      color: #fff; text-decoration: none; margin-left: 20px; font-size: 16px;
+    }
+    nav a:hover { text-decoration: underline; }
+    .nav-btn {
+      background: #f4c542; color: #000; font-weight: bold;
+      padding: 8px 16px; border: none; border-radius: 5px;
+      margin-left: 20px; cursor: pointer;
+    }
+    .nav-btn:hover { background: #e3b72c; }
+    .lang-select {
+      margin-left: 20px; padding: 6px 10px; border-radius: 5px;
+      border: none; font-size: 14px; cursor: pointer;
+    }
+   
+    /* Hero */
+    .hero {
+      background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e') no-repeat center center/cover;
+      color: #fff; text-align: left; padding: 100px 50px; position: relative;
+    }
+    .hero h2 { font-size: 42px; margin-bottom: 15px; }
+    .hero p { font-size: 18px; margin-bottom: 20px; max-width: 500px; }
+    .btn {
+      background: #f4c542; color: #000; padding: 12px 25px; font-size: 16px;
+      font-weight: bold; border: none; border-radius: 5px;
+      cursor: pointer; display: inline-flex; align-items: center;
+    }
+    .btn:hover { background: #e3b72c; }
+    .btn span { margin-left: 8px; }
+
+    /* Search bar */
+    .search-bar { margin-top: 25px; display: flex; max-width: 500px; }
+    .search-bar input {
+      flex: 1; padding: 12px; border: none; border-radius: 5px 0 0 5px; font-size: 16px;
+    }
+    .search-bar button {
+      padding: 12px 20px; border: none; background: #f4c542;
+      color: #000; font-weight: bold; font-size: 16px;
+      border-radius: 0 5px 5px 0; cursor: pointer;
+    }
+    .search-bar button:hover { background: #e3b72c; }
+
+    /* Packages */
+    .packages { padding: 50px; text-align: center; }
+    .packages h2 { font-size: 28px; margin-bottom: 30px; }
+    .package-list {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;
+    }
+    .card {
+      background: #fff; border-radius: 10px; overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: transform 0.2s ease;
+    }
+    .card:hover { transform: scale(1.05); }
+    .card img { width: 100%; height: 180px; object-fit: cover; }
+    .card-body { padding: 15px; text-align: left; }
+    .card-body h3 { font-size: 20px; margin-bottom: 8px; }
+    .card-body p { font-size: 15px; color: #555; }
+
+    /* Footer */
+    footer { text-align:center; padding: 50px; color: #789; background: #f3f3f8; border-top: 1px solid #ddd; }
+     * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+      
+        }
+        
+        .search-container {
+            width: 100%;
+            max-width: 500px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            position: relative;
+        }
+        
+        .search-bar {
+            width: 100%;
+            padding: 12px 45px 12px 15px;
+            font-size: 1rem;
+            border: 2px solid #FFD700;
+            border-radius: 8px;
+            outline: none;
+            transition: all 0.3s ease;
+            background: white;
+        }
+        
+        .search-bar:focus {
+            border-color: #FFC107;
+            box-shadow: 0 0 0 3px rgba(255, 193, 7, 0.2);
+        }
+        
+        .search-icon {
+            position: absolute;
+            right: 35px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #FFD700;
+            font-size: 1.1rem;
+        }
+        
+        .search-results {
+            text-align: left;
+            margin-top: 10px;
+            background: white;
+            border-radius: 8px;
+            padding: 10px;
+            display: none;
+            max-height: 300px;
+            overflow-y: auto;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border: 1px solid #FFD700;
+        }
+        
+        .result-item {
+            padding: 10px 12px;
+            border-bottom: 1px solid #f0f0f0;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .result-item:hover {
+            background: #FFF9C4;
+        }
+        
+        .result-item:last-child {
+            border-bottom: none;
+        }
+        
+        .result-icon {
+            margin-right: 10px;
+            font-size: 1.1rem;
+            color: #FFC107;
+        }
+        
+        .result-content h4 {
+            color: #333;
+            margin-bottom: 2px;
+            font-size: 0.95rem;
+        }
+        
+        .result-content p {
+            color: #666;
+            font-size: 0.8rem;
+        }
+        
+        .category-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+            justify-content: center;
+        }
+        
+        .tag {
+            background: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 1px solid #FFD700;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .tag:hover {
+            background: #FFD700;
+            transform: translateY(-1px);
+        }
+        
+        .tag-icon {
+            margin-right: 5px;
+            font-size: 0.9rem;
+        }
+        
+        .no-results {
+            padding: 15px;
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+    /* ===================== */
+    /*   RESPONSIVE QUERIES  */
+    /* ===================== */
+
+    /* Navbar responsive */
+    @media (max-width: 768px) {
+      header { flex-direction: column; align-items: flex-start; }
+      nav { display: flex; flex-direction: column; width: 100%; margin-top: 10px; }
+      nav a, .nav-btn, .lang-select { margin: 8px 0; font-size: 16px; }
+    }
+
+    /* Hero responsive */
+    @media (max-width: 768px) {
+      .hero { padding: 60px 20px; text-align: center; }
+      .hero h2 { font-size: 28px; }
+      .hero p { font-size: 16px; }
+      .search-bar { flex-direction: column; }
+      .search-bar input, .search-bar button { width: 100%; border-radius: 5px; margin: 5px 0; }
+    }
+
+    /* Cards responsive */
+    @media (max-width: 768px) {
+      .package-list { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 480px) {
+      .package-list { grid-template-columns: 1fr; }
+    }
+
+    /* Footer responsive */
+    @media (max-width: 768px) {
+      footer { padding: 30px; font-size: 14px; }
+    }
+</style>
+
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header>
+    <h1 id="site-title">Unseen Corners</h1>
+    <nav>
+      <a href="index.html" id="nav-home"><b>Home</b></a>
+      <a href="about14.html" id="nav-about"><b>About</b></a>
+      <a href="contact.html" id="nav-contact"><b>Contact</b></a>
+      <a href="t4.html" id="nav-chatBot"><b>Chat Bot</b></a>
+      <button class="nav-btn" id="book-btn"  onclick="window.location.href='PCLL.html'"><b>Book Now</b></button>
+      <button class="nav-btn" onclick="window.location.href='log14.html'"><b>Login</b></button>
+      
+      <!-- Language Selector -->
+
+      <select class="lang-select" id="language-select" onchange="changeLanguage()">
+        <option value="en"><b>English</b></option>
+        <option value="hi"><b>हिन्दी</b></option>
+        <option value="te"><b>తెలుగు</b></option>
+      </select>
+    </nav>
+  </header>
+ <section class="hero">
+    <h2 id="hero-title">                                                                    Discover Hidden Destinations</h2>
+    <p id="hero-desc">Explore breathtaking places around the world with our curated travel packages.</p>
+   
+   
+   <button class="btn" id="explore-btn" onclick="window.location.href="PCLL.html'">
+  Explore Now <span>🌍</span>
+</button>
+
+
+   
+   
+   
+   <div class="search-container">
+      <input type="text" class="search-bar" id="searchInput" placeholder="Search Indian destinations...">
+        
+        
+        <div class="search-results" id="searchResults">
+            <div id="resultsList">
+                <!-- Results will appear here -->
+            </div>
+        </div>
+        
+        <div class="category-tags">
+            <div class="tag" data-category="beach">
+                <span class="tag-icon">🏖️</span>     Beach
+            </div>
+            <div class="tag" data-category="mountain">
+                <span class="tag-icon">⛰️</span> Mountain
+            </div>
+            <div class="tag" data-category="waterfall">
+                <span class="tag-icon">🌊</span> Waterfall
+            </div>
+            <div class="tag" data-category="temple">
+                <span class="tag-icon">🛕</span> Temple
+            </div>
+            <div class="tag" data-category="cave">
+                <span class="tag-icon">🕳️</span> Cave & Hill
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            const searchResults = document.getElementById('searchResults');
+            const resultsList = document.getElementById('resultsList');
+            const tags = document.querySelectorAll('.tag');
+            
+            // Tourism data with all the specified destinations
+            const tourismData = [
+                // Beaches
+                { name: "Baga Beach", type: "beach", description: "Popular beach in Goa", icon: "🏖️" },
+                { name: "Palolem Beach", type: "beach", description: "Serene beach in South Goa", icon: "🏖️" },
+                { name: "Kovalem Beach", type: "beach", description: "Beautiful beach in Goa", icon: "🏖️" },
+                { name: "Juhu Beach", type: "beach", description: "Famous beach in Mumbai", icon: "🏖️" },
+                { name: "Marina Beach", type: "beach", description: "Longest beach in Chennai", icon: "🏖️" },
+                
+                // Mountains
+                { name: "Mount Everest", type: "mountain", description: "World's highest mountain", icon: "⛰️" },
+                { name: "Kanchenjunga", type: "mountain", description: "Third highest mountain", icon: "⛰️" },
+                { name: "Nanda Devi", type: "mountain", description: "Second highest in India", icon: "⛰️" },
+                { name: "Anaimudi", type: "mountain", description: "Highest in Western Ghats", icon: "⛰️" },
+                { name: "Mullayanagiri", type: "mountain", description: "Highest peak in Karnataka", icon: "⛰️" },
+                
+                // Waterfalls
+                { name: "Talakona Waterfall", type: "waterfall", description: "Highest in Andhra Pradesh", icon: "🌊" },
+                { name: "Shivanasamudra", type: "waterfall", description: "Scenic waterfall", icon: "🌊" },
+                { name: "Nohkalikai Waterfall", type: "waterfall", description: "Tallest plunge waterfall", icon: "🌊" },
+                { name: "Dudhsagar Waterfall", type: "waterfall", description: "Four-tiered waterfall", icon: "🌊" },
+                { name: "Jog Falls", type: "waterfall", description: "Second highest waterfall", icon: "🌊" },
+                
+                // Temples
+                { name: "Tirupati Temple", type: "temple", description: "Famous Hindu temple", icon: "🛕" },
+                { name: "Kashi Vishwanath", type: "temple", description: "Temple in Varanasi", icon: "🛕" },
+                { name: "Jagannath Temple", type: "temple", description: "Temple in Puri", icon: "🛕" },
+                { name: "Madurai Meenakshi", type: "temple", description: "Historic temple", icon: "🛕" },
+                { name: "Vaishno Devi", type: "temple", description: "Temple in Jammu", icon: "🛕" },
+                
+                // Caves and Hills
+                { name: "Nilgiri Hills", type: "cave", description: "Mountain range", icon: "🕳️" },
+                { name: "Satpura Range", type: "cave", description: "Hills in central India", icon: "🕳️" },
+                { name: "Aravalli Range", type: "cave", description: "Oldest mountain range", icon: "🕳️" },
+                { name: "Shillong Peak", type: "cave", description: "Highest in Meghalaya", icon: "🕳️" },
+                { name: "Vindhya Range", type: "cave", description: "Mountain range", icon: "🕳️" }
+            ];
+            
+            // Function to filter results based on search input
+            function filterResults(searchTerm) {
+                if (searchTerm.length === 0) {
+                    searchResults.style.display = 'none';
+                    return;
+                }
+                
+                const filteredResults = tourismData.filter(item => 
+                    item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                    item.type.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                    item.description.toLowerCase().includes(searchTerm.toLowerCase())
+                );
+                
+                displayResults(filteredResults);
+            }
+            
+            // Function to filter by category
+            function filterByCategory(category) {
+                const filteredResults = tourismData.filter(item => 
+                    item.type.toLowerCase() === category.toLowerCase()
+                );
+                
+                displayResults(filteredResults);
+                searchInput.value = category;
+                searchResults.style.display = 'block';
+            }
+            
+            // Function to display filtered results
+            function displayResults(results) {
+                resultsList.innerHTML = '';
+                
+                if (results.length === 0) {
+                    resultsList.innerHTML = `
+                        <div class="no-results">
+                            No destinations found. Try another search.
+                        </div>
+                    `;
+                } else {
+                    results.forEach(result => {
+                        const resultItem = document.createElement('div');
+                        resultItem.className = 'result-item';
+                        
+                        resultItem.innerHTML = `
+                            <div class="result-icon">${result.icon}</div>
+                            <div class="result-content">
+                                <h4>${result.name}</h4>
+                                <p>${result.description}</p>
+                            </div>
+                        `;
+                        
+                        resultItem.addEventListener('click', function() {
+                            searchInput.value = result.name;
+                            searchResults.style.display = 'none';
+                        });
+                        
+                        resultsList.appendChild(resultItem);
+                    });
+                }
+                
+                searchResults.style.display = 'block';
+            }
+            
+            // Event listener for search input
+            searchInput.addEventListener('input', function() {
+                filterResults(this.value);
+            });
+            
+            // Add click events to category tags
+            tags.forEach(tag => {
+                tag.addEventListener('click', function() {
+                    const category = this.getAttribute('data-category');
+                    filterByCategory(category);
+                    searchInput.focus();
+                });
+            });
+            
+            // Hide results when clicking outside
+            document.addEventListener('click', function(event) {
+                if (!event.target.closest('.search-container')) {
+                    searchResults.style.display = 'none';
+                }
+            });
+        });
+    </script>
+    </div>
+  </section>
+
+  <!-- Packages Section -->
+  <section class="packages">
+    <h2 id="packages-title">Popular Packages</h2>
+    <div class="package-list">
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" alt=" Beaches">
+        <div class="card-body">
+          <h3 id="pkg1-title">Beaches</h3>
+          <a href="frontend.html" class="btn">View Details</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://cdn.britannica.com/05/58605-050-86F58113/Annapurna-massif-village-Nepal.jpg" alt="Mountain Trek">
+        <div class="card-body">
+          <h3 id="pkg2-title">Mountain Trek</h3>
+          <a href="mountains.html" class="btn">View Details</a>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://bangaloretourism.in/images/v2/headers/shivasamudram-falls-bangalore-timings-entry-fee-bangalore-tourism-header-cr-lensnmatter.jpg" alt="Waterfalls">
+        <div class="card-body">
+          <h3 id="pkg3-title">Waterfalls</h3>
+          <a href="frontend2.html" class="btn">View Details</a>
+        </div>
+      </div>
+    </div>
+    <footer>
+     <div style="text-align:center;max-width:1200px;">
+          <h3>Our Office</h3>
+          <p>📍Rajamandry, Ap, India</p>
+          <p>📞 +91 7207252439</p>
+          <p>✉ hello@unseencorners.com</p>
+
+          <h3 style="margin-top:20px">Find Us</h3>
+          <div style="background:#ddd;height:200px;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#666">
+            Google Map Placeholder
+          </div>
+     </div>
+  <p>© 2025 Unseen Corners | <a href="about14.html">About</a> | <a href="PCLL.html">Packages</a> | <a href="c.html">Contact</a></p>
+
+  </footer>
+  </section>
+  <script>
+    const translations = {
+      en: {
+        siteTitle: "Unseen Corners",
+        navHome: "Home",
+        navAbout: "About",
+        navContact: "Contact",
+        navchatBot: "ChatBot",
+        heroTitle: "Discover Hidden Destinations",
+        heroDesc: "Explore breathtaking places around the our Nation with our curated travel packages.",
+        bookBtn: "Book Now",
+        exploreBtn: "Explore Now 🌍",
+        searchBtn: "Search 🔍",
+        packagesTitle: "Popular Packages",
+        pkg1: { title: "Goa Beaches" },
+        pkg2: { title: "Himalayan Trek" },
+        pkg3: { title: "Jaipur Heritage" }
+      },
+      hi: {
+        siteTitle: "अनसीन कॉर्नर्स",
+        navHome: "होम",
+        navAbout: "के बारे में",
+        navContact: "संपर्क",
+        navchatBot: "चैटबॉट",
+        heroTitle: "छिपे हुए गंतव्यों की खोज करें",
+        heroDesc: "हमारे चुनिंदा यात्रा पैकेजों के साथ देश भर के लुभावने स्थानों का अन्वेषण करें|",
+        bookBtn: "अभी बुक करें",
+        exploreBtn: "अब खोजें 🌍",
+        searchBtn: "खोजें 🔍",
+        packagesTitle: "लोकप्रिय पैकेज",
+        pkg1: { title: "गोवा बीच" },
+        pkg2: { title: "हिमालय ट्रेक" },
+        pkg3: { title: "जयपुर हेरिटेज" }
+      },
+      te: {
+        siteTitle: "అన్సీన్ కార్నర్స్",
+        navHome: "హోమ్",
+        navAbout: "గురించి",
+        navContact: "సంప్రదించండి",
+        navchatBot: "చాట్‌బాట్",
+        heroTitle: "దాచిన గమ్యస్థానాలను కనుగొనండి",
+        heroDesc: "మా క్యూరేటెడ్ ట్రావెల్ ప్యాకేజీలతో మన దేశంలోని ఉత్కంఠభరితమైన ప్రదేశాలను అన్వేషించండి..",
+        bookBtn: "ఇప్పుడే బుక్ చేయండి",
+        exploreBtn: "ఇప్పుడు అన్వేషించండి 🌍",
+        searchBtn: "శోధించండి 🔍",
+        packagesTitle: "ప్రముఖ ప్యాకేజీలు",
+        pkg1: { title: "గోవా బీచ్‌లు" },
+        pkg2: { title: "హిమాలయన్ ట్రెక్" },
+        pkg3: { title: "జైపూర్ హెరిటేజ్"}
+      }
+    };
+
+    function changeLanguage() {
+      const lang = document.getElementById("language-select").value;
+      const t = translations[lang];
+
+      document.getElementById("site-title").innerText = t.siteTitle;
+      document.getElementById("nav-home").innerText = t.navHome;
+      document.getElementById("nav-about").innerText = t.navAbout;
+      document.getElementById("nav-contact").innerText = t.navContact;
+      document.getElementById("nav-chatBot").innerText = t.navchatBot; 
+      document.getElementById("hero-title").innerText = t.heroTitle;
+      document.getElementById("hero-desc").innerText = t.heroDesc;
+      document.getElementById("book-btn").innerText = t.bookBtn;
+      document.getElementById("explore-btn").innerText = t.exploreBtn;
+      document.getElementById("search-btn").innerText = t.searchBtn;
+      document.getElementById("packages-title").innerText = t.packagesTitle;
+      document.getElementById("pkg1-title").innerText = t.pkg1.title;
+      document.getElementById("pkg2-title").innerText = t.pkg2.title;
+      document.getElementById("pkg3-title").innerText = t.pkg3.title;
+    }
+  </script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

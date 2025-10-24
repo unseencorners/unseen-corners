@@ -1,0 +1,295 @@
+<<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RK BEACH</title>
+</head>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Poppins", sans-serif; }
+
+  /* Full page background */
+  body {
+    background: url('https://www.deccanchronicle.com/h-upload/2024/03/10/1078986-3.jpg') no-repeat center center/cover;
+    color: white;
+    line-height: 1.6;
+    padding-bottom: 80px;
+  }
+
+  /* Dark overlay for readability */
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.35); /* adjust darkness */
+    z-index: -1;
+  }
+
+  header {
+    background: rgba(1,87,155,0.85); /* semi-transparent header */
+    color: white;
+    padding: 15px 40px;
+    display: flex; justify-content: space-between;
+    align-items: center; flex-wrap: wrap;
+    position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+  }
+
+  header h1 { color: #ffeb3b; font-size: 22px; font-weight: bold; }
+  nav a { color: white; text-decoration: none; margin-left: 20px; font-weight: 500; }
+  nav a:hover { text-decoration: underline; }
+  .nav-btn { background: #ffeb3b; color: #01579b; font-weight: bold; padding: 8px 16px; border: none; border-radius: 6px; margin-left: 20px; cursor: pointer; }
+  .nav-btn:hover { background: #fff176; }
+  .lang-select { margin-left: 20px; padding: 6px 10px; border-radius: 5px; border: none; font-size: 14px; cursor: pointer; }
+
+  /* Hero section now just positions text over background */
+  .hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    padding-top: 70px;
+  }
+  .hero-content {
+    max-width: 800px;
+    padding: 20px;
+  }
+  .hero-content h2 { font-size: 36px; margin-bottom: 15px; color: #ffeb3b; text-shadow: 1px 1px 4px rgba(0,0,0,0.7); }
+  .hero-content p { font-size: 18px; margin-bottom: 20px; text-shadow: 1px 1px 4px rgba(0,0,0,0.7); }
+
+  /* Rest of the content styling stays mostly the same, text now white */
+  .info-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 15px; margin-top: 20px;
+  }
+  .info-card {
+    background: rgba(255,255,255,0.2);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 8px; padding: 15px; font-size: 15px; color: #fff;
+  }
+
+  .view360 {
+    margin: 60px auto; max-width: 1000px; padding: 15px; border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2); background: rgba(255,255,255,0.05);
+  }
+  .view360 iframe { width: 100%; height: 500px; border: none; border-radius: 12px; }
+
+  .itinerary {
+    max-width: 900px; margin: 50px auto; padding: 25px; background: rgba(255,255,255,0.1);
+    border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.2); color: #fff;
+  }
+  .itinerary h2 { text-align: center; margin-bottom: 20px; }
+  .itinerary input, .itinerary textarea { padding: 10px; border-radius: 5px; border: 1px solid #ccc; width: 100%; max-width: 250px; }
+  .itinerary button { background: #01579b; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; }
+  .itinerary button:hover { background: #0277bd; }
+  .itinerary-item { background: rgba(0,0,0,0.5); padding: 15px; border-left: 4px solid #ffeb3b; margin-bottom: 10px; border-radius: 5px; }
+
+  footer { text-align: center; padding: 20px; background: rgba(1,87,155,0.85); color: white; margin-top: 50px; }
+
+  @media(max-width:768px){
+    .hero-content h2 { font-size: 28px; }
+    .hero-content p { font-size: 16px; }
+    .view360 iframe { height: 300px; }
+    .itinerary form { flex-direction: column; align-items: center; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Unseen Corners</h1>
+  <nav>
+    <a href="index.html"><b>Home</b></a>
+    <a href="about14.html"><b>About</b></a>
+    <a href="contact.html"><b>Contact</b></a>
+    <a href="t4.html"><b>Chat Bot</b></a>
+    <button class="nav-btn" onclick="window.location.href='book.html'"><b>Book Now</b></button>
+    <select class="lang-select" id="language-select">
+      <option value="en">English</option>
+      <option value="hi">हिन्दी</option>
+      <option value="te">తెలుగు</option>
+    </select>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+    <h2 class="fade show">🏖️ Ramakrishna Beach, Visakhapatnam</h2>
+    <p class="fade show">
+      Ramakrishna Beach, affectionately known as RK Beach, is one of the most famous and scenic beaches of Andhra Pradesh. Stretching along the Bay of Bengal, it’s a perfect blend of calm waves, cultural charm, and city vibes.
+    </p>
+
+    <h3 class="fade show">🌊 Highlights & Activities</h3>
+    <ul>
+      <li>Enjoy the serene sunrise and scenic sea promenade.</li>
+      <li>Visit nearby attractions like the Submarine Museum and Kali Temple.</li>
+      <li>Perfect for beach walks, photography, and picnics.</li>
+      <li>Clean, well-maintained, and family-friendly beach destination.</li>
+    </ul>
+
+    <h3 class="fade show">🕒 Visitor Information</h3>
+    <div class="info-grid">
+      <div class="info-card"><b>Timings:</b><br> Open all day (ideal for sunrise & evening visits).</div>
+      <div class="info-card"><b>Location:</b><br> Visakhapatnam, Andhra Pradesh, India.</div>
+      <div class="info-card"><b>Best Time:</b><br> November – February for pleasant weather.</div>
+    </div>
+  </div>
+</section>
+
+<section class="view360">
+  <h2 style="text-align:center; margin-bottom:15px; color:#01579b;">🌐 Explore 360° View of RK Beach</h2>
+ <iframe src="https://www.google.com/maps/embed?pb=!4v1760030678102!6m8!1m7!1sCAoSFkNJSE0wb2dLRUlDQWdJQ2hyNF93YUE.!2m2!1d17.71416181228227!2d83.32365786596486!3f69.5123627321607!4f12.608265035703994!5f0.7820865974627469" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</section>
+
+<section class="itinerary">
+  <h2>🧭 Plan Your RK Beach Trip</h2>
+  <form id="itinerary-form">
+    <input type="date" id="date" required />
+    <input type="text" id="activity" placeholder="Activity (e.g., Beach Walk, Museum Visit)" required />
+    <textarea id="notes" rows="1" placeholder="Notes (optional)"></textarea>
+    <button type="submit">Add to Itinerary</button>
+    <button type="button" id="clear-itinerary" style="background:#c0392b;">Clear All</button>
+  </form>
+  <div id="itinerary-list"></div>
+
+  <div class="itinerary-list">
+    <h3 style="margin-top:30px;">🗓 Suggested Itinerary</h3>
+    <div class="itinerary-item"><strong>Day 1 - Morning:</strong> Watch the sunrise at RK Beach.</div>
+    <div class="itinerary-item"><strong>Day 1 - Afternoon:</strong> Visit the Submarine Museum and have lunch nearby.</div>
+    <div class="itinerary-item"><strong>Day 1 - Evening:</strong> Take a stroll along the promenade and visit the Kali Temple.</div>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2025 Unseen Corners | All Rights Reserved</p>
+</footer>
+
+<script>
+  // ✅ Itinerary Builder Logic
+  const form = document.getElementById('itinerary-form');
+  const list = document.getElementById('itinerary-list');
+  const clearBtn = document.getElementById('clear-itinerary');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const date = document.getElementById('date').value;
+    const activity = document.getElementById('activity').value;
+    const notes = document.getElementById('notes').value;
+    if (!date || !activity) return;
+
+    const item = document.createElement('div');
+    item.className = 'itinerary-item';
+    item.innerHTML = `<strong>${date}</strong> – ${activity}<br><small>${notes}</small>`;
+    list.appendChild(item);
+    form.reset();
+  });
+
+  clearBtn.addEventListener('click', () => { list.innerHTML = ''; });
+  const translations = {
+    en: {
+      title: "🏖️ Ramakrishna Beach, Visakhapatnam",
+      description: "Ramakrishna Beach, affectionately known as RK Beach, is one of the most famous and scenic beaches of Andhra Pradesh. Stretching along the Bay of Bengal, it’s a perfect blend of calm waves, cultural charm, and city vibes.",
+      highlights: "🌊 Highlights & Activities",
+      activities: [
+        "Enjoy the serene sunrise and scenic sea promenade.",
+        "Visit nearby attractions like the Submarine Museum and Kali Temple.",
+        "Perfect for beach walks, photography, and picnics.",
+        "Clean, well-maintained, and family-friendly beach destination."
+      ],
+      visitor: "🕒 Visitor Information",
+      timings: "Open all day (ideal for sunrise & evening visits).",
+      location: "Visakhapatnam, Andhra Pradesh, India.",
+      bestTime: "November – February for pleasant weather.",
+      itinerary: "🧭 Plan Your RK Beach Trip",
+      date: "Date",
+      activityLabel: "Activity (e.g., Beach Walk, Museum Visit)",
+      notes: "Notes (optional)",
+      addBtn: "Add to Itinerary",
+      clearBtn: "Clear All",
+      suggested: "🗓 Suggested Itinerary"
+    },
+    hi: {
+      title: "🏖️ रामकृष्ण बीच, विशाखापत्तनम",
+      description: "रामकृष्ण बीच, जिसे प्यार से आरके बीच कहा जाता है, आंध्र प्रदेश के सबसे प्रसिद्ध और सुंदर समुद्र तटों में से एक है। बंगाल की खाड़ी के किनारे फैला यह स्थल शांत लहरों, सांस्कृतिक आकर्षण और शहर के वातावरण का अद्भुत मिश्रण है।",
+      highlights: "🌊 मुख्य आकर्षण और गतिविधियाँ",
+      activities: [
+        "सुबह की शांति और समुद्र तट पर सैर का आनंद लें।",
+        "पास के आकर्षण जैसे सबमरीन म्यूजियम और काली मंदिर देखें।",
+        "समुद्र तट पर सैर, फ़ोटोग्राफ़ी और पिकनिक के लिए उपयुक्त।",
+        "स्वच्छ, अच्छी तरह से रख-रखाव और परिवार के अनुकूल।"
+      ],
+      visitor: "🕒 आगंतुक जानकारी",
+      timings: "पूरे दिन खुले (सूर्योदय और शाम के लिए आदर्श)।",
+      location: "विशाखापत्तनम, आंध्र प्रदेश, भारत।",
+      bestTime: "सुखद मौसम के लिए नवंबर – फरवरी।",
+      itinerary: "🧭 अपनी आरके बीच यात्रा योजना बनाएं",
+      date: "तारीख",
+      activityLabel: "गतिविधि (जैसे, बीच वॉक, म्यूजियम विजिट)",
+      notes: "नोट्स (वैकल्पिक)",
+      addBtn: "सूची में जोड़ें",
+      clearBtn: "सभी साफ़ करें",
+      suggested: "🗓 सुझाई गई यात्रा"
+    },
+    te: {
+      title: "🏖️ రామకృష్ణ బీచ్, విశాఖపట్నం",
+      description: "రామకృష్ణ బీచ్, స్నేహపూర్వకంగా RK బీచ్ అని పిలువబడే, ఆంధ్రప్రదేశ్‌లోని అత్యంత ప్రసిద్ధమైన మరియు అందమైన బీచ్‌లలో ఒకటి. బంగాల్ బే వెంబడి విస్తరించి, ఇది శాంతమైన అలలు, సాంస్కృతిక ఆకర్షణ మరియు నగర వాతావరణం కలయికను అందిస్తుంది.",
+      highlights: "🌊 ముఖ్య ఆకర్షణలు & కార్యకలాపాలు",
+      activities: [
+        "శాంతమైన ఉదయం మరియు సముద్రం వీధి లో సేదతీరాన్ని ఆస్వాదించండి.",
+        "సమీప ఆకర్షణలు లాంటి సబ్‌మరిన్ మ్యూజియం మరియు కాళీ దేవాలయాన్ని సందర్శించండి.",
+        "బీచ్ వాక్‌లు, ఫోటోగ్రఫీ మరియు పిక్నిక్‌లకు సరైనది.",
+        "శుభ్రంగా, బాగా నిర్వహించబడిన, కుటుంబానుకూల బీచ్."
+      ],
+      visitor: "🕒 సందర్శకుల సమాచారం",
+      timings: "పూర్తి రోజూ తెరిచి ఉంటుంది (సూర్యోదయం & సాయంత్రం సందర్శనలకు సరిపోతుంది).",
+      location: "విశాఖపట్నం, ఆంధ్రప్రదేశ్, భారత్.",
+      bestTime: "సంవత్సరం నవంబర్ – ఫిబ్రవరి మధ్య సౌకర్యంగా ఉంటుంది.",
+      itinerary: "🧭 మీ RK బీచ్ ట్రిప్ ప్లాన్ చేయండి",
+      date: "తేదీ",
+      activityLabel: "క్రియ (ఉదా: బీచ్ వాక్, మ్యూజియం విజిట్)",
+      notes: "గమనికలు (ఐచ్చికం)",
+      addBtn: "యాత్రా జాబితాకు చేర్చండి",
+      clearBtn: "అన్నీ తొలగించు",
+      suggested: "🗓 సూచించిన యాత్రా జాబితా"
+    }
+  };
+
+  const languageSelect = document.getElementById('language-select');
+  languageSelect.addEventListener('change', (e) => {
+    const lang = e.target.value;
+    document.querySelector('.hero-content h2').textContent = translations[lang].title;
+    document.querySelector('.hero-content p').textContent = translations[lang].description;
+    document.querySelector('.hero-content h3:nth-of-type(1)').textContent = translations[lang].highlights;
+    
+    const activityList = document.querySelector('.hero-content ul');
+    activityList.innerHTML = '';
+    translations[lang].activities.forEach(act => {
+      const li = document.createElement('li');
+      li.textContent = act;
+      activityList.appendChild(li);
+    });
+
+    document.querySelector('.hero-content h3:nth-of-type(2)').textContent = translations[lang].visitor;
+    const infoCards = document.querySelectorAll('.info-card');
+    infoCards[0].innerHTML = `<b>Timings:</b><br> ${translations[lang].timings}`;
+    infoCards[1].innerHTML = `<b>Location:</b><br> ${translations[lang].location}`;
+    infoCards[2].innerHTML = `<b>Best Time:</b><br> ${translations[lang].bestTime}`;
+
+    document.querySelector('.itinerary h2').textContent = translations[lang].itinerary;
+    document.getElementById('date').placeholder = translations[lang].date;
+    document.getElementById('activity').placeholder = translations[lang].activityLabel;
+    document.getElementById('notes').placeholder = translations[lang].notes;
+    document.querySelector('#itinerary-form button[type="submit"]').textContent = translations[lang].addBtn;
+    document.querySelector('#clear-itinerary').textContent = translations[lang].clearBtn;
+    document.querySelector('.itinerary-list h3').textContent = translations[lang].suggested;
+  });
+</script>
+
+</body>
+</html>
+
+
+
+

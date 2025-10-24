@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title data-lang="page-title">Unseen Corners – Trisul Peak</title>
+  <meta name="description" content="Explore Trisul — a majestic Himalayan peak in Uttarakhand. Learn about its history, trekking routes, and scenic beauty." />
+  <meta name="keywords" content="Trisul, Himalayas, Uttarakhand, Trekking, Mountain, Trisul I" />
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+    body { line-height: 1.6; background: #fff; color: #333; }
+
+    header {
+      background: #1b2735;
+      color: #fff;
+      padding: 15px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+    header h1 { color: #f4c542; font-size: 22px; font-weight: bold; }
+    nav a { color: #fff; text-decoration: none; margin-left: 20px; font-size: 16px; }
+    nav a:hover { text-decoration: underline; }
+    .nav-btn {
+      background: #f4c542; color: #000; font-weight: bold;
+      padding: 8px 16px; border: none; border-radius: 5px;
+      margin-left: 20px; cursor: pointer;
+    }
+    .nav-btn:hover { background: #e3b72c; }
+    .lang-select {
+      margin-left: 20px; padding: 6px 10px; border-radius: 5px;
+      border: none; font-size: 14px; cursor: pointer;
+    }
+
+    .hero {
+      background: url('trisul.jpg') no-repeat center center/cover;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      padding-top: 70px;
+      color: #fff;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+      z-index: 1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      padding: 20px;
+    }
+    .hero-content h2 { font-size: 32px; margin-bottom: 20px; color: #f4c542; }
+    .hero-content p { font-size: 18px; margin-bottom: 20px; }
+    .hero-content ul { text-align: left; margin: 15px 0; }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+    .info-card {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 8px;
+      padding: 15px;
+      font-size: 15px;
+    }
+
+    .view360 {
+      margin: 50px auto;
+      max-width: 1000px;
+      padding: 10px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    .view360 iframe {
+      width: 100%;
+      height: 500px;
+      border: none;
+      border-radius: 12px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #1b2735;
+      color: #fff;
+    }
+
+    .fade { opacity: 0; transition: opacity 0.6s ease-in-out; }
+    .fade.show { opacity: 1; }
+
+    @media(max-width:768px){
+      .hero-content h2 { font-size: 24px; }
+      .hero-content p { font-size: 16px; }
+      .view360 iframe { height: 300px; }
+    }
+  </style>
+</head>
+<body aria-label="Trisul Peak information page">
+
+  <header role="banner">
+    <h1 id="site-title">Unseen Corners</h1>
+    <nav role="navigation" aria-label="Main navigation">
+      <a href="index.html" data-lang="nav-home"><b>Home</b></a>
+      <a href="about14.html" data-lang="nav-about"><b>About</b></a>
+      <a href="contact.html" data-lang="nav-contact"><b>Contact</b></a>
+      <a href="t4.html" data-lang="nav-chat"><b>Chat Bot</b></a>
+      <button class="nav-btn" data-lang="nav-book" aria-label="Book a tour" onclick="window.location.href='book.html'"><b>Book Now</b></button>
+      <label for="language-select" class="sr-only">Select Language</label>
+      <select class="lang-select" id="language-select" aria-label="Select language">
+        <option value="en">English</option>
+        <option value="hi">हिन्दी</option>
+        <option value="te">తెలుగు</option>
+      </select>
+    </nav>
+  </header>
+
+  <section class="hero" role="region" aria-label="Hero section with Trisul background">
+    <div class="hero-content">
+      <h2 class="fade show" data-lang="title">🏔️ Trisul – Majestic Peak in the Kumaon Himalayas</h2>
+      <p class="fade show" data-lang="intro">Trisul is a group of three Himalayan mountain peaks in Uttarakhand. Trisul I, the highest among them, stands at 7,120 meters (23,359 ft), offering a breathtaking view and historical significance in mountaineering.</p>
+
+      <h3 class="fade show" data-lang="history-title">📜 About Trisul</h3>
+      <ul>
+        <li class="fade show" data-lang="history-1">Located in the Kumaon region of Uttarakhand, India.</li>
+        <li class="fade show" data-lang="history-2">Named after "Trishul" (Trident) – weapon of Lord Shiva.</li>
+        <li class="fade show" data-lang="history-3">Trisul I was the first peak over 7,000 m climbed by any expedition (in 1907).</li>
+        <li class="fade show" data-lang="history-4">Visible from Auli and other parts of the Garhwal and Kumaon Himalayas.</li>
+      </ul>
+
+      <h3 class="fade show" data-lang="visit-title">🕒 Visiting Details</h3>
+      <div class="info-grid">
+        <div class="info-card fade show" data-lang="visit-time"><b>Best Time to Visit:</b><br> April – June & September – November</div>
+        <div class="info-card fade show" data-lang="visit-location"><b>Location:</b><br> Uttarakhand, Kumaon Himalayas</div>
+        <div class="info-card fade show" data-lang="visit-info"><b>Notes:</b><br> Trekking requires permission; suitable for experienced trekkers.</div>
+      </div>
+    </div>
+  </section>
+
+ <section class="view360">
+  <h2 style="text-align:center; margin-bottom:15px;" data-lang="view360-title">🎥 Watch the Beauty of Anamudi</h2>
+  <div style="display:flex; justify-content:center;">
+    <iframe 
+      width="80%" 
+      height="500" 
+      src="https://www.youtube.com/embed/OZ_OzZYwWiI" 
+      title="Anamudi 360 Video" 
+      frameborder="0" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+      allowfullscreen>
+    </iframe>
+  </div>
+</section>
+
+  <footer>
+    <p class="fade show" data-lang="footer">&copy; 2025 Unseen Corners | All Rights Reserved</p>
+  </footer>
+
+  <!-- Language Switcher -->
+  <script>
+    const translations = {
+      en: {
+        "page-title": "Unseen Corners – Trisul Peak",
+        "nav-home": "<b>Home</b>", "nav-about": "<b>About</b>", "nav-contact": "<b>Contact</b>", "nav-chat": "<b>Chat Bot</b>", "nav-book": "<b>Book Now</b>",
+        footer: "&copy; 2025 Unseen Corners | All Rights Reserved",
+        title: "🏔️ Trisul – Majestic Peak in the Kumaon Himalayas",
+        intro: "Trisul is a group of three Himalayan mountain peaks in Uttarakhand. Trisul I, the highest among them, stands at 7,120 meters (23,359 ft), offering a breathtaking view and historical significance in mountaineering.",
+        "history-title": "📜 About Trisul",
+        "history-1": "Located in the Kumaon region of Uttarakhand, India.",
+        "history-2": "Named after \"Trishul\" (Trident) – weapon of Lord Shiva.",
+        "history-3": "Trisul I was the first peak over 7,000 m climbed by any expedition (in 1907).",
+        "history-4": "Visible from Auli and other parts of the Garhwal and Kumaon Himalayas.",
+        "visit-title": "🕒 Visiting Details",
+        "visit-time": "<b>Best Time to Visit:</b><br> April – June & September – November",
+        "visit-location": "<b>Location:</b><br> Uttarakhand, Kumaon Himalayas",
+        "visit-info": "<b>Notes:</b><br> Trekking requires permission; suitable for experienced trekkers.",
+        "view360-title": "🌐 Explore 360° View of Trisul"
+      },
+      hi: {
+        "page-title": "अनसीन कॉर्नर्स – त्रिशूल पर्वत",
+        "nav-home": "<b>होम</b>", "nav-about": "<b>परिचय</b>", "nav-contact": "<b>संपर्क</b>", "nav-chat": "<b>चैट बॉट</b>", "nav-book": "<b>बुक करें</b>",
+        footer: "&copy; 2025 अनसीन कॉर्नर्स | सर्वाधिकार सुरक्षित",
+        title: "🏔️ त्रिशूल – कुमाऊं हिमालय का भव्य शिखर",
+        intro: "त्रिशूल उत्तराखंड के तीन हिमालयी चोटियों का समूह है। त्रिशूल I सबसे ऊँचा है जिसकी ऊँचाई 7,120 मीटर (23,359 फीट) है। यह एक ऐतिहासिक और अद्भुत दृश्य प्रदान करता है।",
+        "history-title": "📜 त्रिशूल के बारे में",
+        "history-1": "यह भारत के उत्तराखंड राज्य के कुमाऊं क्षेत्र में स्थित है।",
+        "history-2": "इसका नाम भगवान शिव के शस्त्र 'त्रिशूल' पर रखा गया है।",
+        "history-3": "त्रिशूल I पहला 7,000 मीटर से ऊँचा पर्वत था जिसे 1907 में पर्वतारोहण दल ने फतह किया।",
+        "history-4": "यह औली और अन्य हिमालयी क्षेत्रों से आसानी से देखा जा सकता है।",
+        "visit-title": "🕒 यात्रा विवरण",
+        "visit-time": "<b>भ्रमण का सर्वश्रेष्ठ समय:</b><br> अप्रैल – जून और सितंबर – नवंबर",
+        "visit-location": "<b>स्थान:</b><br> उत्तराखंड, कुमाऊं हिमालय",
+        "visit-info": "<b>नोट:</b><br> ट्रेकिंग के लिए अनुमति आवश्यक है; अनुभवी ट्रेकर्स के लिए उपयुक्त।",
+        "view360-title": "🌐 त्रिशूल का 360° दृश्य देखें"
+      },
+      te: {
+        "page-title": "అన్‌సీన్ కార్నర్స్ – త్రిశూల్ శిఖరం",
+        "nav-home": "<b>హోమ్</b>", "nav-about": "<b>గురించి</b>", "nav-contact": "<b>సంప్రదించండి</b>", "nav-chat": "<b>చాట్ బాట్</b>", "nav-book": "<b>బుక్ చేయండి</b>",
+        footer: "&copy; 2025 అన్‌సీన్ కార్నర్స్ | అన్ని హక్కులు కలవి",
+        title: "🏔️ త్రిశూల్ – కుమాయూన్ హిమాలయాల్లో అద్భుత శిఖరం",
+        intro: "త్రిశూల్ ఉత్తరాఖండ్ లోని మూడు శిఖరాల సమూహం. త్రిశూల్ I 7,120 మీటర్ల (23,359 అడుగుల) ఎత్తుతో అద్భుత దృశ్యం మరియు చరిత్ర కలిగి ఉంది.",
+        "history-title": "📜 త్రిశూల్ గురించి",
+        "history-1": "ఇది ఉత్తరాఖండ్ రాష్ట్రంలోని కుమాయూన్ ప్రాంతంలో ఉంది.",
+        "history-2": "ఇది శివుని త్రిశూలానికి పేరుపడిన శిఖరం.",
+        "history-3": "త్రిశూల్ I 7,000 మీటర్ల పైగా ఎత్తున్న మొదటి శిఖరం (1907లో అధిరోహించారు).",
+        "history-4": "ఇది ఔలీ మరియు ఇతర ప్రాంతాల నుండి కనిపిస్తుంది.",
+        "visit-title": "🕒 సందర్శన వివరాలు",
+        "visit-time": "<b>ఉత్తమ సమయం:</b><br> ఏప్రిల్ – జూన్ మరియు సెప్టెంబర్ – నవంబర్",
+        "visit-location": "<b>స్థానం:</b><br> ఉత్తరాఖండ్, కుమాయూన్ హిమాలయాలు",
+        "visit-info": "<b>గమనిక:</b><br> ట్రెక్కింగ్ అనుమతి అవసరం; అనుభవజ్ఞులకి అనుకూలం.",
+        "view360-title": "🌐 త్రిశూల్ యొక్క 360° వీక్షణ"
+      }
+    };
+
+    const langSelect = document.getElementById('language-select');
+    langSelect.addEventListener('change', e => {
+      const lang = e.target.value;
+      document.querySelectorAll('[data-lang]').forEach(el => {
+        const key = el.getAttribute('data-lang');
+        if (translations[lang][key]) {
+          el.classList.remove('show');
+          setTimeout(() => {
+            el.innerHTML = translations[lang][key];
+            el.classList.add('show');
+          }, 300);
+        }
+      });
+      document.title = translations[lang]["page-title"];
+    });
+  </script>
+</body>
+
+</html>
+
+

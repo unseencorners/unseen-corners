@@ -1,0 +1,2158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>India Tourism Chatbot - Discover Hidden Gems</title>
+    <style>
+        body {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #6c7b95 0%, #8a9bb5 100%);
+            height: 100%;
+            min-height: 100%;
+        }
+
+        html {
+            height: 100%;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            background: rgba(248, 249, 250, 0.95);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            color: #495057;
+            margin: 0 0 10px 0;
+            font-size: 2.2em;
+        }
+
+        .header p {
+            color: #6c757d;
+            margin: 0;
+            font-size: 1.1em;
+        }
+
+        .language-selector {
+            margin: 15px 0;
+        }
+
+        .language-btn {
+            background: #6c7b95;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            margin: 0 5px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+        }
+
+        .language-btn:hover {
+            background: #5a6a85;
+            transform: translateY(-2px);
+        }
+
+        .language-btn.active {
+            background: #495057;
+        }
+
+        .chatbot-container {
+            background: rgba(248, 249, 250, 0.95);
+            border-radius: 15px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            max-height: 400px;
+        }
+
+        .message {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .message.user {
+            justify-content: flex-end;
+        }
+
+        .message-content {
+            max-width: 70%;
+            padding: 12px 18px;
+            border-radius: 18px;
+            font-size: 0.95em;
+            line-height: 1.4;
+        }
+
+        .message.bot .message-content {
+            background: #e9ecef;
+            color: #495057;
+            border-bottom-left-radius: 5px;
+        }
+
+        .message.user .message-content {
+            background: #6c7b95;
+            color: white;
+            border-bottom-right-radius: 5px;
+        }
+
+        .avatar {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            margin: 0 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2em;
+        }
+
+        .bot-avatar {
+            background: #6c757d;
+            color: white;
+        }
+
+        .user-avatar {
+            background: #495057;
+            color: white;
+        }
+
+        .quick-suggestions {
+            padding: 15px 20px;
+            border-top: 1px solid #ecf0f1;
+            background: #f8f9fa;
+        }
+
+        .suggestion-btn {
+            background: #fff;
+            border: 2px solid #6c7b95;
+            color: #6c7b95;
+            padding: 8px 15px;
+            margin: 5px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.85em;
+            transition: all 0.3s ease;
+        }
+
+        .suggestion-btn:hover {
+            background: #6c7b95;
+            color: white;
+            transform: translateY(-1px);
+        }
+
+        .input-area {
+            padding: 20px;
+            border-top: 1px solid #ecf0f1;
+            display: flex;
+            gap: 10px;
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: 12px 18px;
+            border: 2px solid #e9ecef;
+            border-radius: 25px;
+            font-size: 0.95em;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .chat-input:focus {
+            border-color: #6c7b95;
+        }
+
+        .send-btn {
+            background: #495057;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.95em;
+            transition: all 0.3s ease;
+        }
+
+        .send-btn:hover {
+            background: #343a40;
+            transform: translateY(-1px);
+        }
+
+        .destination-card {
+            background: #fff;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px 0;
+            border-left: 4px solid #6c7b95;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .destination-card h4 {
+            color: #495057;
+            margin: 0 0 8px 0;
+        }
+
+        .destination-card p {
+            color: #6c757d;
+            margin: 5px 0;
+            font-size: 0.9em;
+        }
+
+        .enhanced-location-card {
+            background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+            border-radius: 20px;
+            margin: 15px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            border: 1px solid #e9ecef;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .enhanced-location-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .location-header {
+            background: linear-gradient(135deg, #6c7b95 0%, #8a9bb5 100%);
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+
+        .location-info h3 {
+            margin: 0 0 15px 0;
+            font-size: 1.6em;
+            font-weight: 600;
+        }
+
+        .location-meta {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .location-meta span {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            backdrop-filter: blur(10px);
+        }
+
+        .location-content {
+            padding: 25px;
+        }
+
+        .description {
+            font-size: 1.1em;
+            color: #495057;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .detail-item {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #6c7b95;
+        }
+
+        .location-details {
+            background: #f1f3f4;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            border-left: 4px solid #6c757d;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .action-btn {
+            background: linear-gradient(135deg, #6c7b95 0%, #5a6a85 100%);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(108, 123, 149, 0.3);
+        }
+
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(108, 123, 149, 0.4);
+            background: linear-gradient(135deg, #5a6a85 0%, #6c7b95 100%);
+        }
+
+        .search-filters {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px;
+            border-radius: 15px;
+            margin-bottom: 15px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .filter-btn {
+            background: #e9ecef;
+            border: 2px solid #ced4da;
+            color: #495057;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.85em;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: #6c7b95;
+            color: white;
+            border-color: #5a6a85;
+            transform: translateY(-1px);
+        }
+
+        .typing-indicator {
+            display: none;
+            padding: 10px 0;
+        }
+
+        .typing-dots {
+            display: inline-block;
+        }
+
+        .typing-dots span {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #ced4da;
+            margin: 0 2px;
+            animation: typing 1.4s infinite ease-in-out;
+        }
+
+        .typing-dots span:nth-child(1) { animation-delay: -0.32s; }
+        .typing-dots span:nth-child(2) { animation-delay: -0.16s; }
+
+        @keyframes typing {
+            0%, 80%, 100% { transform: scale(0.8); opacity: 0.5; }
+            40% { transform: scale(1); opacity: 1; }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .message-content {
+                max-width: 85%;
+            }
+            
+            .suggestion-btn {
+                display: block;
+                width: 100%;
+                margin: 5px 0;
+            }
+
+            .details-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .location-header {
+                text-align: center;
+                padding: 20px;
+            }
+
+            .location-meta {
+                justify-content: center;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+
+            .action-btn {
+                width: 100%;
+                margin: 5px 0;
+            }
+
+            .search-filters {
+                flex-direction: column;
+            }
+
+            .filter-btn {
+                width: 100%;
+                margin: 3px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="container">
+        <header class="header">
+            <h1 id="main-title">🇮🇳 Incredible India Tourism Assistant</h1>
+            <p id="subtitle">Discover hidden gems and popular destinations across India</p>
+            
+            <div class="language-selector">
+                <button class="language-btn active" onclick="changeLanguage('en')">English</button>
+                <button class="language-btn" onclick="changeLanguage('hi')">हिंदी</button>
+                <button class="language-btn" onclick="changeLanguage('te')">తెలుగు</button>
+            </div>
+        </header>
+
+        <div class="chatbot-container">
+            <div class="chat-messages" id="chatMessages">
+                <div class="message bot">
+                    <div class="avatar bot-avatar">🤖</div>
+                    <div class="message-content" id="welcome-message">
+                        Namaste! I'm your India tourism guide. I can help you discover amazing destinations - from famous places like Charminar and Tirupati to hidden gems like Gandikota and Araku Valley. What would you like to explore today?
+                    </div>
+                </div>
+            </div>
+
+            <div class="typing-indicator" id="typingIndicator">
+                <div class="message bot">
+                    <div class="avatar bot-avatar">🤖</div>
+                    <div class="message-content">
+                        <div class="typing-dots">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="search-filters">
+                <button class="filter-btn" onclick="filterByCategory('monuments')" id="filter1">🏛️ Monuments</button>
+                <button class="filter-btn" onclick="filterByCategory('temples')" id="filter2">🛕 Temples</button>
+                <button class="filter-btn" onclick="filterByCategory('caves')" id="filter3">🕳️ Caves</button>
+                <button class="filter-btn" onclick="filterByCategory('waterfalls')" id="filter4">💧 Waterfalls</button>
+                <button class="filter-btn" onclick="filterByCategory('mountains')" id="filter5">⛰️ Mountains</button>
+                <button class="filter-btn" onclick="filterByCategory('beaches')" id="filter6">🏖️ Beaches</button>
+            </div>
+
+            <div class="quick-suggestions">
+                <button class="suggestion-btn" onclick="sendMessage('charminar')" id="suggestion1">Charminar</button>
+                <button class="suggestion-btn" onclick="sendMessage('tirupati temple')" id="suggestion2">Tirupati Temple</button>
+                <button class="suggestion-btn" onclick="sendMessage('ajanta caves')" id="suggestion3">Ajanta Caves</button>
+                <button class="suggestion-btn" onclick="sendMessage('jog falls')" id="suggestion4">Jog Falls</button>
+            </div>
+
+            <div class="input-area">
+                <input type="text" class="chat-input" id="chatInput" placeholder="Search for Charminar, Golconda, temples, or any destination...">
+                <button class="send-btn" onclick="sendUserMessage()" id="send-btn">Send</button>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        let currentLanguage = 'en';
+        
+        const translations = {
+            en: {
+                title: "🇮🇳 Incredible India Tourism Assistant",
+                subtitle: "Discover hidden gems, caves, waterfalls, mountains and popular destinations across India",
+                welcome: "Namaste! I'm your India tourism guide. I can help you discover amazing destinations - from famous places like Charminar and Tirupati to hidden gems like Gandikota, caves like Ajanta-Ellora, waterfalls like Jog Falls, and mountains. What would you like to explore today?",
+                placeholder: "Search for caves, waterfalls, mountains, temples, or any destination...",
+                send: "Send",
+                suggestion1: "Ajanta Caves",
+                suggestion2: "Jog Falls", 
+                suggestion3: "Mountain Peaks",
+                suggestion4: "Waterfalls"
+            },
+            hi: {
+                title: "🇮🇳 अविश्वसनीय भारत पर्यटन सहायक",
+                subtitle: "भारत भर में छुपे हुए रत्न, गुफाएं, झरने, पहाड़ और लोकप्रिय गंतव्य खोजें",
+                welcome: "नमस्ते! मैं आपका भारत पर्यटन गाइड हूं। मैं आपको चारमीनार और तिरुपति जैसी प्रसिद्ध जगहों से लेकर गंडीकोटा जैसे छुपे हुए रत्न, अजंता-एलोरा जैसी गुफाएं, जोग फॉल्स जैसे झरने और पहाड़ों तक अद्भुत गंतव्यों की खोज में मदद कर सकता हूं। आज आप क्या खोजना चाहेंगे?",
+                placeholder: "गुफाएं, झरने, पहाड़, मंदिर या कोई भी गंतव्य खोजें...",
+                send: "भेजें",
+                suggestion1: "अजंता गुफाएं",
+                suggestion2: "जोग फॉल्स",
+                suggestion3: "पर्वत शिखर", 
+                suggestion4: "झरने"
+            },
+            te: {
+                title: "🇮🇳 అద్భుతమైన భారత పర్యటన సహాయకుడు",
+                subtitle: "భారతదేశం అంతటా దాచిన రత్नాలు, గుహలు, జలపాతాలు, పర్వతాలు మరియు ప్రసిద్ధ గమ్యస్థానాలను కనుగొనండి",
+                welcome: "నమస్కారం! నేను మీ భారత పర్యటన గైడ్‌ని. చార్మినార్ మరియు తిరుపతి వంటి ప్రసిద్ధ ప్రదేశాల నుండి గండికోట వంటి దాచిన రత్నాలు, అజంతా-ఎల్లోరా వంటి గుహలు, జోగ్ జలపాతం వంటి జలపాతాలు మరియు పర్వతాల వరకు అద్భుతమైన గమ్యస్థానాలను కనుగొనడంలో సహాయపడగలను. ఈరోజు మీరు ఏమి అన్వేషించాలని అనుకుంటున్నారు?",
+                placeholder: "గుహలు, జలపాతాలు, పర్వతాలు, దేవాలయాలు లేదా ఏదైనా గమ్యస్థానం వెతకండి...",
+                send: "పంపండి",
+                suggestion1: "అజంతా గుహలు",
+                suggestion2: "జోగ్ జలపాతం",
+                suggestion3: "పర్వత శిఖరాలు",
+                suggestion4: "జలపాతాలు"
+            }
+        };
+
+        const destinations = {
+            popular: {
+                goa: {
+                    name: "Goa",
+                    description: "Famous beaches, Portuguese architecture, vibrant nightlife",
+                    bestTime: "November to March",
+                    highlights: ["Baga Beach", "Old Goa Churches", "Dudhsagar Falls"]
+                },
+                kerala: {
+                    name: "Kerala",
+                    description: "Backwaters, hill stations, spice plantations",
+                    bestTime: "October to March",
+                    highlights: ["Alleppey Backwaters", "Munnar Hills", "Kochi Fort"]
+                },
+                rajasthan: {
+                    name: "Rajasthan",
+                    description: "Royal palaces, desert landscapes, rich culture",
+                    bestTime: "October to March",
+                    highlights: ["Jaipur City Palace", "Udaipur Lakes", "Jaisalmer Desert"]
+                },
+                karnataka: {
+                    name: "Karnataka",
+                    description: "Ancient temples, royal palaces, coffee plantations",
+                    bestTime: "October to March",
+                    highlights: ["Mysore Palace", "Coorg Coffee Estates", "Bangalore Gardens"]
+                },
+                tamilnadu: {
+                    name: "Tamil Nadu",
+                    description: "Dravidian temples, hill stations, classical culture",
+                    bestTime: "November to March",
+                    highlights: ["Meenakshi Temple", "Ooty Hills", "Mahabalipuram Shore Temple"]
+                },
+                himachal: {
+                    name: "Himachal Pradesh",
+                    description: "Snow-capped mountains, hill stations, adventure sports",
+                    bestTime: "March to June, October to February",
+                    highlights: ["Manali", "Shimla", "Dharamshala"]
+                },
+                uttarakhand: {
+                    name: "Uttarakhand",
+                    description: "Spiritual destinations, trekking, Himalayan peaks",
+                    bestTime: "April to June, September to November",
+                    highlights: ["Rishikesh", "Nainital", "Valley of Flowers"]
+                },
+                maharashtra: {
+                    name: "Maharashtra",
+                    description: "Hill stations, caves, coastal areas, vibrant cities",
+                    bestTime: "October to March",
+                    highlights: ["Ajanta Ellora Caves", "Lonavala", "Mumbai"]
+                },
+                delhi: {
+                    name: "Delhi",
+                    description: "Capital city with Mughal monuments and modern attractions",
+                    bestTime: "October to March",
+                    highlights: ["Red Fort", "India Gate", "Lotus Temple"]
+                },
+                uttarpradesh: {
+                    name: "Uttar Pradesh",
+                    description: "Spiritual cities, Taj Mahal, ancient temples",
+                    bestTime: "October to March",
+                    highlights: ["Taj Mahal", "Varanasi Ghats", "Mathura Vrindavan"]
+                },
+                punjab: {
+                    name: "Punjab",
+                    description: "Golden Temple, Sikh heritage, vibrant culture",
+                    bestTime: "October to March",
+                    highlights: ["Golden Temple", "Jallianwala Bagh", "Wagah Border"]
+                }
+            },
+            hidden: {
+                ziro: {
+                    name: "Ziro Valley, Arunachal Pradesh",
+                    description: "UNESCO World Heritage site with Apatani tribe culture",
+                    bestTime: "March to October",
+                    highlights: ["Apatani villages", "Pine forests", "Music festivals"]
+                },
+                majuli: {
+                    name: "Majuli Island, Assam",
+                    description: "World's largest river island with Vaishnavite monasteries",
+                    bestTime: "November to April",
+                    highlights: ["Satras (monasteries)", "Mask making", "River cruises"]
+                },
+                chopta: {
+                    name: "Chopta, Uttarakhand",
+                    description: "Mini Switzerland of India with pristine meadows",
+                    bestTime: "April to November",
+                    highlights: ["Tungnath Temple", "Chandrashila Peak", "Rhododendron forests"]
+                },
+                hampi: {
+                    name: "Hampi, Karnataka",
+                    description: "Ancient Vijayanagara Empire ruins",
+                    bestTime: "October to March",
+                    highlights: ["Virupaksha Temple", "Stone Chariot", "Matanga Hill"]
+                },
+                spiti: {
+                    name: "Spiti Valley, Himachal Pradesh",
+                    description: "Cold desert mountain valley with Buddhist monasteries",
+                    bestTime: "May to October",
+                    highlights: ["Key Monastery", "Chandratal Lake", "Fossil village"]
+                },
+                araku: {
+                    name: "Araku Valley, Andhra Pradesh",
+                    description: "Tribal valley with coffee plantations and waterfalls",
+                    bestTime: "October to March",
+                    highlights: ["Borra Caves", "Tribal Museum", "Coffee plantations"]
+                },
+                lepakshi: {
+                    name: "Lepakshi, Andhra Pradesh",
+                    description: "Ancient temple with hanging pillar and Nandi statue",
+                    bestTime: "October to March",
+                    highlights: ["Veerabhadra Temple", "Hanging Pillar", "Monolithic Nandi"]
+                },
+                warangal: {
+                    name: "Warangal, Telangana",
+                    description: "Medieval Kakatiya dynasty capital with stone gateways",
+                    bestTime: "October to March",
+                    highlights: ["Thousand Pillar Temple", "Warangal Fort", "Kakatiya Kala Thoranam"]
+                },
+                nagarjunasagar: {
+                    name: "Nagarjunasagar, Telangana",
+                    description: "Ancient Buddhist site with massive dam and wildlife",
+                    bestTime: "November to February",
+                    highlights: ["Nagarjunakonda Museum", "Buddhist ruins", "Tiger Reserve"]
+                },
+                gandikota: {
+                    name: "Gandikota, Andhra Pradesh",
+                    description: "Grand Canyon of India with stunning gorge views",
+                    bestTime: "October to March",
+                    highlights: ["Pennar River Gorge", "Gandikota Fort", "Sunset viewpoints"]
+                },
+                belum: {
+                    name: "Belum Caves, Andhra Pradesh",
+                    description: "India's second longest cave system with stalactites",
+                    bestTime: "October to March",
+                    highlights: ["Underground formations", "Meditation Hall", "Thousand Hood Cave"]
+                },
+                ananthagiri: {
+                    name: "Ananthagiri Hills, Telangana",
+                    description: "Serene hills with ancient temples and coffee plantations",
+                    bestTime: "October to March",
+                    highlights: ["Anantha Padmanabha Temple", "Trekking trails", "Tribal villages"]
+                },
+                horsley: {
+                    name: "Horsley Hills, Andhra Pradesh",
+                    description: "Hill station with pleasant climate and adventure activities",
+                    bestTime: "September to March",
+                    highlights: ["Viewpoints", "Adventure sports", "Eucalyptus groves"]
+                },
+                tirthan: {
+                    name: "Tirthan Valley, Himachal Pradesh",
+                    description: "Pristine valley with trout fishing and Great Himalayan National Park",
+                    bestTime: "March to June, September to November",
+                    highlights: ["Trout fishing", "GHNP trekking", "Serolsar Lake"]
+                },
+                kasol: {
+                    name: "Kasol, Himachal Pradesh",
+                    description: "Mini Israel in Parvati Valley with Israeli cafes and trekking",
+                    bestTime: "March to June, September to November",
+                    highlights: ["Parvati Valley", "Israeli cuisine", "Kheerganga trek"]
+                },
+                binsar: {
+                    name: "Binsar, Uttarakhand",
+                    description: "Wildlife sanctuary with panoramic Himalayan views",
+                    bestTime: "March to June, September to November",
+                    highlights: ["Himalayan views", "Wildlife sanctuary", "Zero Point"]
+                },
+                munsiyari: {
+                    name: "Munsiyari, Uttarakhand",
+                    description: "Little Kashmir with Panchachuli peaks and glaciers",
+                    bestTime: "April to June, September to November",
+                    highlights: ["Panchachuli peaks", "Milam Glacier", "Khaliya Top"]
+                },
+                khajjiar: {
+                    name: "Khajjiar, Himachal Pradesh",
+                    description: "Mini Switzerland with meadows and deodar forests",
+                    bestTime: "March to June, September to November",
+                    highlights: ["Khajjiar Lake", "Deodar forests", "Adventure sports"]
+                },
+                mcleodganj: {
+                    name: "McLeod Ganj, Himachal Pradesh",
+                    description: "Little Lhasa with Dalai Lama residence and Tibetan culture",
+                    bestTime: "March to June, September to November",
+                    highlights: ["Dalai Lama Temple", "Tibetan culture", "Triund trek"]
+                }
+            },
+            caves: {
+                ajanta: {
+                    name: "Ajanta Caves, Maharashtra",
+                    description: "Ancient Buddhist rock-cut caves with exquisite paintings",
+                    bestTime: "October to March",
+                    highlights: ["Buddhist art", "Rock paintings", "UNESCO World Heritage"]
+                },
+                ellora: {
+                    name: "Ellora Caves, Maharashtra",
+                    description: "Multi-religious rock-cut caves showcasing Hindu, Buddhist, Jain art",
+                    bestTime: "October to March",
+                    highlights: ["Kailasa Temple", "Multi-faith architecture", "Stone carvings"]
+                },
+                elephanta: {
+                    name: "Elephanta Caves, Mumbai",
+                    description: "Ancient Hindu cave temples dedicated to Lord Shiva",
+                    bestTime: "October to March",
+                    highlights: ["Trimurti sculpture", "Shiva temples", "Ferry ride from Mumbai"]
+                },
+                borra: {
+                    name: "Borra Caves, Andhra Pradesh",
+                    description: "Million-year-old limestone caves with stalactites and stalagmites",
+                    bestTime: "October to March",
+                    highlights: ["Natural formations", "Limestone structures", "Tribal legends"]
+                },
+                karla: {
+                    name: "Karla Caves, Maharashtra",
+                    description: "Ancient Buddhist rock-cut caves near Lonavala",
+                    bestTime: "October to March",
+                    highlights: ["Chaitya hall", "Buddhist architecture", "Trekking"]
+                }
+            },
+            waterfalls: {
+                jog: {
+                    name: "Jog Falls, Karnataka",
+                    description: "India's second-highest plunge waterfall",
+                    bestTime: "July to January",
+                    highlights: ["Four-tiered falls", "Monsoon beauty", "Trekking trails"]
+                },
+                dudhsagar: {
+                    name: "Dudhsagar Falls, Goa",
+                    description: "Milky white waterfall cascading from great height",
+                    bestTime: "June to September",
+                    highlights: ["Train crossing", "Trekking", "Swimming pools"]
+                },
+                athirapally: {
+                    name: "Athirapally Falls, Kerala",
+                    description: "Niagara of India with lush green surroundings",
+                    bestTime: "June to September",
+                    highlights: ["Film shooting location", "Rainbow views", "Nature walks"]
+                },
+                shivanasamudra: {
+                    name: "Shivanasamudra Falls, Karnataka",
+                    description: "Twin waterfalls formed by river Kaveri",
+                    bestTime: "July to October",
+                    highlights: ["Hydroelectric project", "Twin cascades", "Ancient temples"]
+                },
+                courtallam: {
+                    name: "Courtallam Falls, Tamil Nadu",
+                    description: "Spa of South India with medicinal properties",
+                    bestTime: "June to September",
+                    highlights: ["Medicinal waters", "Multiple tiers", "Ayurvedic benefits"]
+                },
+                hogenakkal: {
+                    name: "Hogenakkal Falls, Tamil Nadu",
+                    description: "Niagara of India with coracle boat rides",
+                    bestTime: "July to October",
+                    highlights: ["Coracle rides", "Medicinal baths", "Carbonatite rocks"]
+                }
+            },
+            mountains: {
+                nandadevi: {
+                    name: "Nanda Devi, Uttarakhand",
+                    description: "India's second-highest mountain peak",
+                    bestTime: "May to October",
+                    highlights: ["Biosphere Reserve", "Trekking", "Rare flora fauna"]
+                },
+                kanchenjunga: {
+                    name: "Kanchenjunga, Sikkim",
+                    description: "World's third-highest peak with stunning sunrise views",
+                    bestTime: "March to May, October to December",
+                    highlights: ["Sunrise views", "Trekking routes", "Buddhist monasteries"]
+                },
+                anamudi: {
+                    name: "Anamudi Peak, Kerala",
+                    description: "Highest peak in South India in Eravikulam National Park",
+                    bestTime: "September to March",
+                    highlights: ["Nilgiri Tahr", "Shola forests", "Tea plantations"]
+                },
+                mullayanagiri: {
+                    name: "Mullayanagiri, Karnataka",
+                    description: "Highest peak in Karnataka with panoramic views",
+                    bestTime: "September to March",
+                    highlights: ["Sunrise views", "Coffee plantations", "Trekking"]
+                },
+                doddabetta: {
+                    name: "Doddabetta Peak, Tamil Nadu",
+                    description: "Highest peak in Nilgiri Hills near Ooty",
+                    bestTime: "April to June, September to November",
+                    highlights: ["Telescope house", "Panoramic views", "Pleasant climate"]
+                }
+            },
+            southIndia: {
+                coorg: {
+                    name: "Coorg, Karnataka",
+                    description: "Scotland of India with coffee estates and misty hills",
+                    bestTime: "October to March",
+                    highlights: ["Abbey Falls", "Raja's Seat", "Coffee plantations"]
+                },
+                chikmagalur: {
+                    name: "Chikmagalur, Karnataka",
+                    description: "Birthplace of Indian coffee with scenic mountains",
+                    bestTime: "September to March",
+                    highlights: ["Mullayanagiri Peak", "Baba Budangiri", "Coffee estates"]
+                },
+                kodaikanal: {
+                    name: "Kodaikanal, Tamil Nadu",
+                    description: "Princess of Hill Stations with lakes and valleys",
+                    bestTime: "April to June, September to October",
+                    highlights: ["Kodai Lake", "Coaker's Walk", "Pillar Rocks"]
+                },
+                yercaud: {
+                    name: "Yercaud, Tamil Nadu",
+                    description: "Jewel of South India with coffee plantations",
+                    bestTime: "October to June",
+                    highlights: ["Emerald Lake", "Shevaroy Hills", "Rose Garden"]
+                },
+                pondicherry: {
+                    name: "Pondicherry",
+                    description: "French colonial charm with spiritual atmosphere",
+                    bestTime: "October to March",
+                    highlights: ["French Quarter", "Auroville", "Paradise Beach"]
+                }
+            },
+            northIndia: {
+                delhi: {
+                    name: "Delhi",
+                    description: "Capital city blending Mughal heritage with modern India",
+                    bestTime: "October to March",
+                    highlights: ["Red Fort", "India Gate", "Lotus Temple"]
+                },
+                agra: {
+                    name: "Agra, Uttar Pradesh",
+                    description: "City of Taj Mahal and Mughal architectural marvels",
+                    bestTime: "October to March",
+                    highlights: ["Taj Mahal", "Agra Fort", "Fatehpur Sikri"]
+                },
+                varanasi: {
+                    name: "Varanasi, Uttar Pradesh",
+                    description: "Spiritual capital with ancient ghats and temples",
+                    bestTime: "October to March",
+                    highlights: ["Ganga Aarti", "Kashi Vishwanath", "Sarnath"]
+                },
+                mathura: {
+                    name: "Mathura-Vrindavan, Uttar Pradesh",
+                    description: "Krishna's birthplace with sacred temples",
+                    bestTime: "October to March",
+                    highlights: ["Krishna Janmabhoomi", "Banke Bihari Temple", "Govardhan Hill"]
+                },
+                amritsar: {
+                    name: "Amritsar, Punjab",
+                    description: "Golden Temple city with Sikh heritage",
+                    bestTime: "October to March",
+                    highlights: ["Golden Temple", "Jallianwala Bagh", "Wagah Border"]
+                },
+                rishikesh: {
+                    name: "Rishikesh, Uttarakhand",
+                    description: "Yoga capital with Ganga and adventure sports",
+                    bestTime: "February to May, September to November",
+                    highlights: ["Laxman Jhula", "River rafting", "Yoga ashrams"]
+                },
+                haridwar: {
+                    name: "Haridwar, Uttarakhand",
+                    description: "Gateway to Char Dham with evening Ganga Aarti",
+                    bestTime: "February to May, September to November",
+                    highlights: ["Har Ki Pauri", "Ganga Aarti", "Mansa Devi Temple"]
+                },
+                nainital: {
+                    name: "Nainital, Uttarakhand",
+                    description: "Lake city in Kumaon hills with colonial charm",
+                    bestTime: "March to June, September to November",
+                    highlights: ["Naini Lake", "Mall Road", "Snow View Point"]
+                }
+            }
+        };
+
+        function changeLanguage(lang) {
+            currentLanguage = lang;
+            
+            // Update active button
+            document.querySelectorAll('.language-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Update UI text
+            const t = translations[lang];
+            document.getElementById('main-title').textContent = t.title;
+            document.getElementById('subtitle').textContent = t.subtitle;
+            document.getElementById('welcome-message').textContent = t.welcome;
+            document.getElementById('chatInput').placeholder = t.placeholder;
+            document.getElementById('send-btn').textContent = t.send;
+            document.getElementById('suggestion1').textContent = t.suggestion1;
+            document.getElementById('suggestion2').textContent = t.suggestion2;
+            document.getElementById('suggestion3').textContent = t.suggestion3;
+            document.getElementById('suggestion4').textContent = t.suggestion4;
+        }
+
+        function sendMessage(message) {
+            document.getElementById('chatInput').value = message;
+            sendUserMessage();
+        }
+
+        function sendUserMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+            
+            if (!message) return;
+            
+            // Add user message
+            addMessage(message, 'user');
+            input.value = '';
+            
+            // Show typing indicator
+            showTyping();
+            
+            // Process message and respond
+            setTimeout(() => {
+                hideTyping();
+                processMessage(message);
+            }, 1500);
+        }
+
+        function addMessage(content, sender) {
+            const messagesContainer = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${sender}`;
+            
+            const avatar = document.createElement('div');
+            avatar.className = `avatar ${sender}-avatar`;
+            avatar.textContent = sender === 'bot' ? '🤖' : '👤';
+            
+            const messageContent = document.createElement('div');
+            messageContent.className = 'message-content';
+            messageContent.innerHTML = content;
+            
+            if (sender === 'user') {
+                messageDiv.appendChild(messageContent);
+                messageDiv.appendChild(avatar);
+            } else {
+                messageDiv.appendChild(avatar);
+                messageDiv.appendChild(messageContent);
+            }
+            
+            messagesContainer.appendChild(messageDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function showTyping() {
+            document.getElementById('typingIndicator').style.display = 'block';
+            document.getElementById('chatMessages').scrollTop = document.getElementById('chatMessages').scrollHeight;
+        }
+
+        function hideTyping() {
+            document.getElementById('typingIndicator').style.display = 'none';
+        }
+
+        function findSpecificLocation(message) {
+            const locationKeywords = {
+                // Monuments & Temples
+                'charminar': 'charminar',
+                'golconda': 'golconda', 
+                'golkonda': 'golconda',
+                'tirupati': 'tirupati',
+                'meenakshi': 'meenakshi',
+                'hampi': 'hampi',
+                'lepakshi': 'lepakshi',
+                'warangal': 'warangal',
+                'mysore': 'mysore',
+                'hyderabad': 'hyderabad',
+                'madurai': 'madurai',
+                
+                // North India Monuments
+                'taj mahal': 'tajmahal',
+                'red fort': 'redfort',
+                'india gate': 'indiagate',
+                'qutub minar': 'qutubminar',
+                'lotus temple': 'lotustemple',
+                'humayun tomb': 'humayuntomb',
+                'jama masjid': 'jamamasjid',
+                'golden temple': 'goldentemple',
+                'fatehpur sikri': 'fatehpursikri',
+                'agra fort': 'agrafort',
+                
+                // Caves
+                'ajanta': 'ajanta',
+                'ellora': 'ellora',
+                'elephanta': 'elephanta',
+                'borra': 'borra',
+                'karla': 'karla',
+                'belum': 'belum',
+                
+                // Waterfalls
+                'jog falls': 'jog',
+                'jog': 'jog',
+                'dudhsagar': 'dudhsagar',
+                'athirapally': 'athirapally',
+                'shivanasamudra': 'shivanasamudra',
+                'courtallam': 'courtallam',
+                'hogenakkal': 'hogenakkal',
+                
+                // Mountains & Hills
+                'nanda devi': 'nandadevi',
+                'nandadevi': 'nandadevi',
+                'kanchenjunga': 'kanchenjunga',
+                'anamudi': 'anamudi',
+                'mullayanagiri': 'mullayanagiri',
+                'doddabetta': 'doddabetta',
+                
+                // Hill Stations
+                'munnar': 'munnar',
+                'kodaikanal': 'kodaikanal',
+                'ooty': 'ooty',
+                'coorg': 'coorg',
+                'araku': 'araku',
+                'gandikota': 'gandikota',
+                'horsley': 'horsley',
+                'nainital': 'nainital',
+                'mussoorie': 'mussoorie',
+                'kasol': 'kasol',
+                'mcleodganj': 'mcleodganj',
+                'mcleod ganj': 'mcleodganj',
+                'khajjiar': 'khajjiar',
+                'tirthan': 'tirthan',
+                'binsar': 'binsar',
+                'munsiyari': 'munsiyari',
+                'chopta': 'chopta',
+                'spiti': 'spiti',
+                
+                // Cities & Popular Places
+                'delhi': 'delhi',
+                'new delhi': 'delhi',
+                'agra': 'agra',
+                'varanasi': 'varanasi',
+                'banaras': 'varanasi',
+                'kashi': 'varanasi',
+                'mathura': 'mathura',
+                'vrindavan': 'mathura',
+                'amritsar': 'amritsar',
+                'rishikesh': 'rishikesh',
+                'haridwar': 'haridwar',
+                'alleppey': 'alleppey',
+                'vizag': 'vizag',
+                'visakhapatnam': 'vizag',
+                'pondicherry': 'pondicherry',
+                'mahabalipuram': 'mahabalipuram',
+                'thanjavur': 'thanjavur',
+                'kanyakumari': 'kanyakumari',
+                'rameswaram': 'rameswaram',
+                'manali': 'manali',
+                'shimla': 'shimla',
+                'darjeeling': 'darjeeling',
+                'khajuraho': 'khajuraho',
+                'lucknow': 'lucknow',
+                'kanpur': 'kanpur',
+                'allahabad': 'allahabad',
+                'prayagraj': 'allahabad'
+            };
+            
+            for (const [keyword, location] of Object.entries(locationKeywords)) {
+                if (message.includes(keyword)) {
+                    return location;
+                }
+            }
+            return null;
+        }
+
+        function getSpecificLocationResponse(location) {
+            const locationData = {
+                charminar: {
+                    name: "Charminar, Hyderabad",
+                    description: "Iconic 16th-century monument and symbol of Hyderabad",
+                    bestTime: "October to March",
+                    highlights: ["Historic architecture", "Laad Bazaar shopping", "Mecca Masjid nearby"],
+                    details: "Built in 1591 by Sultan Muhammad Quli Qutb Shah, this magnificent structure has four grand arches and minarets. The surrounding area offers traditional bazaars, pearls, and authentic Hyderabadi cuisine.",
+                    category: "Monument",
+                    rating: "4.5/5",
+                    distance: "City Center"
+                },
+                golconda: {
+                    name: "Golconda Fort, Hyderabad", 
+                    description: "Majestic medieval fort famous for diamonds and acoustics",
+                    bestTime: "October to March",
+                    highlights: ["Sound and Light show", "Diamond trading history", "Panoramic city views"],
+                    details: "Once the capital of the Qutb Shahi dynasty, this fort is renowned for its ingenious acoustic system and was the center of the world's diamond trade. The famous Kohinoor diamond originated here.",
+                    category: "Fort",
+                    rating: "4.6/5",
+                    distance: "11 km from Hyderabad"
+                },
+                tirupati: {
+                    name: "Tirupati Balaji Temple",
+                    description: "World's richest temple dedicated to Lord Venkateswara",
+                    bestTime: "September to March",
+                    highlights: ["Sri Venkateswara Temple", "Tirumala Hills", "Spiritual experience"],
+                    details: "Located on the seven hills of Tirumala, this temple attracts millions of devotees annually. The deity is believed to fulfill wishes and the temple's architecture is a marvel of Dravidian style.",
+                    category: "Temple",
+                    rating: "4.8/5",
+                    distance: "150 km from Chennai"
+                },
+                hampi: {
+                    name: "Hampi, Karnataka",
+                    description: "UNESCO World Heritage site with Vijayanagara Empire ruins",
+                    bestTime: "October to March", 
+                    highlights: ["Virupaksha Temple", "Stone Chariot", "Matanga Hill sunset"],
+                    details: "Once the capital of the mighty Vijayanagara Empire, Hampi is a surreal landscape of ancient temples, royal complexes, and boulder-strewn terrain that tells stories of a glorious past.",
+                    category: "Heritage Site",
+                    rating: "4.7/5",
+                    distance: "350 km from Bangalore"
+                },
+                gandikota: {
+                    name: "Gandikota, Andhra Pradesh",
+                    description: "Grand Canyon of India with breathtaking gorge views",
+                    bestTime: "October to March",
+                    highlights: ["Pennar River Gorge", "Gandikota Fort", "Sunset viewpoints"],
+                    details: "This hidden gem offers spectacular views of the Pennar River cutting through red sandstone cliffs, creating India's own version of the Grand Canyon. The ancient fort adds historical significance.",
+                    category: "Natural Wonder",
+                    rating: "4.4/5",
+                    distance: "280 km from Hyderabad"
+                },
+                araku: {
+                    name: "Araku Valley, Andhra Pradesh",
+                    description: "Scenic hill station with tribal culture and coffee plantations",
+                    bestTime: "October to March",
+                    highlights: ["Borra Caves", "Tribal Museum", "Coffee plantations"],
+                    details: "A picturesque valley inhabited by various tribal communities, known for its coffee, bamboo chicken, and the famous toy train journey through tunnels and bridges.",
+                    category: "Hill Station",
+                    rating: "4.3/5",
+                    distance: "120 km from Visakhapatnam"
+                },
+                meenakshi: {
+                    name: "Meenakshi Temple, Madurai",
+                    description: "Magnificent Dravidian temple with colorful gopurams",
+                    bestTime: "October to March",
+                    highlights: ["Thousand Pillar Hall", "Colorful sculptures", "Evening ceremonies"],
+                    details: "Dedicated to Goddess Meenakshi and Lord Sundareshwar, this temple is a masterpiece of Dravidian architecture with towering gopurams covered in thousands of colorful sculptures."
+                },
+                munnar: {
+                    name: "Munnar, Kerala",
+                    description: "Hill station famous for tea plantations and misty mountains",
+                    bestTime: "September to March",
+                    highlights: ["Tea gardens", "Eravikulam National Park", "Top Station viewpoint"],
+                    details: "A former British hill station, Munnar is carpeted with emerald tea plantations, home to the endangered Nilgiri Tahr, and offers breathtaking views of the Western Ghats."
+                },
+                ooty: {
+                    name: "Ooty (Udhagamandalam), Tamil Nadu",
+                    description: "Queen of Hill Stations with colonial charm",
+                    bestTime: "April to June, September to November",
+                    highlights: ["Nilgiri Mountain Railway", "Botanical Gardens", "Ooty Lake"],
+                    details: "A popular hill station with colonial architecture, beautiful gardens, and the famous toy train. The pleasant climate and scenic beauty make it a perfect retreat."
+                },
+                kodaikanal: {
+                    name: "Kodaikanal, Tamil Nadu", 
+                    description: "Princess of Hill Stations with lakes and valleys",
+                    bestTime: "April to June, September to October",
+                    highlights: ["Kodai Lake", "Coaker's Walk", "Pillar Rocks"],
+                    details: "Known for its star-shaped lake, misty mountains, and pleasant climate. The town offers beautiful viewpoints, waterfalls, and is famous for homemade chocolates."
+                },
+                coorg: {
+                    name: "Coorg, Karnataka",
+                    description: "Scotland of India with coffee estates and spice plantations",
+                    bestTime: "October to March",
+                    highlights: ["Abbey Falls", "Raja's Seat", "Coffee plantations"],
+                    details: "A hill station known for its coffee culture, Kodava traditions, and lush green landscapes. The region offers plantation stays, adventure activities, and authentic Coorgi cuisine."
+                },
+                hyderabad: {
+                    name: "Hyderabad, Telangana",
+                    description: "City of Nizams with rich history and modern IT hub",
+                    bestTime: "October to March",
+                    highlights: ["Charminar", "Golconda Fort", "Ramoji Film City"],
+                    details: "The capital city blends historic monuments with modern technology parks. Famous for biryani, pearls, and the iconic Charminar monument."
+                },
+                vizag: {
+                    name: "Visakhapatnam, Andhra Pradesh",
+                    description: "Port city with beautiful beaches and naval heritage",
+                    bestTime: "October to March",
+                    highlights: ["RK Beach", "Submarine Museum", "Kailasagiri Hill"],
+                    details: "A major port city known for its pristine beaches, naval museum, and scenic hills. The city offers a perfect blend of urban life and natural beauty."
+                },
+                // Caves
+                ajanta: {
+                    name: "Ajanta Caves, Maharashtra",
+                    description: "Ancient Buddhist rock-cut caves with exquisite paintings",
+                    bestTime: "October to March",
+                    highlights: ["Buddhist art", "Rock paintings", "UNESCO World Heritage"],
+                    details: "Dating from 2nd century BCE to 6th century CE, these 30 caves showcase the finest Buddhist art and architecture. The paintings depict Jataka tales and Buddhist philosophy."
+                },
+                ellora: {
+                    name: "Ellora Caves, Maharashtra", 
+                    description: "Multi-religious rock-cut caves showcasing Hindu, Buddhist, Jain art",
+                    bestTime: "October to March",
+                    highlights: ["Kailasa Temple", "Multi-faith architecture", "Stone carvings"],
+                    details: "34 caves representing three religions - Buddhism, Hinduism, and Jainism. The Kailasa Temple (Cave 16) is the world's largest monolithic structure."
+                },
+                elephanta: {
+                    name: "Elephanta Caves, Mumbai",
+                    description: "Ancient Hindu cave temples dedicated to Lord Shiva",
+                    bestTime: "October to March",
+                    highlights: ["Trimurti sculpture", "Shiva temples", "Ferry ride from Mumbai"],
+                    details: "Located on Elephanta Island, these 7th-century caves house magnificent sculptures of Lord Shiva, including the famous three-faced Trimurti."
+                },
+                borra: {
+                    name: "Borra Caves, Andhra Pradesh",
+                    description: "Million-year-old limestone caves with stalactites and stalagmites",
+                    bestTime: "October to March",
+                    highlights: ["Natural formations", "Limestone structures", "Tribal legends"],
+                    details: "Discovered in 1807, these caves are famous for their natural formations and are considered sacred by local tribes. The caves extend to a depth of 80 meters."
+                },
+                karla: {
+                    name: "Karla Caves, Maharashtra",
+                    description: "Ancient Buddhist rock-cut caves near Lonavala",
+                    bestTime: "October to March",
+                    highlights: ["Chaitya hall", "Buddhist architecture", "Trekking"],
+                    details: "Dating from 2nd century BCE, the main cave has the largest chaitya hall in India with beautiful wooden ribs and intricate carvings."
+                },
+                // Waterfalls
+                jog: {
+                    name: "Jog Falls, Karnataka",
+                    description: "India's second-highest plunge waterfall",
+                    bestTime: "July to January",
+                    highlights: ["Four-tiered falls", "Monsoon beauty", "Trekking trails"],
+                    details: "Created by the Sharavathi River, this 253-meter waterfall has four distinct cascades - Raja, Rani, Rover, and Rocket. Best viewed during monsoon season."
+                },
+                dudhsagar: {
+                    name: "Dudhsagar Falls, Goa",
+                    description: "Milky white waterfall cascading from great height",
+                    bestTime: "June to September",
+                    highlights: ["Train crossing", "Trekking", "Swimming pools"],
+                    details: "The 310-meter tall waterfall gets its name from its milky appearance. The famous train crossing through the falls offers a spectacular view."
+                },
+                athirapally: {
+                    name: "Athirapally Falls, Kerala",
+                    description: "Niagara of India with lush green surroundings",
+                    bestTime: "June to September",
+                    highlights: ["Film shooting location", "Rainbow views", "Nature walks"],
+                    details: "The 80-meter waterfall on the Chalakudy River is surrounded by dense forests and has been featured in many Indian films including Baahubali."
+                },
+                shivanasamudra: {
+                    name: "Shivanasamudra Falls, Karnataka",
+                    description: "Twin waterfalls formed by river Kaveri",
+                    bestTime: "July to October",
+                    highlights: ["Hydroelectric project", "Twin cascades", "Ancient temples"],
+                    details: "Asia's first hydroelectric power station was built here in 1902. The twin falls - Gaganachukki and Bharachukki - offer spectacular views."
+                },
+                courtallam: {
+                    name: "Courtallam Falls, Tamil Nadu",
+                    description: "Spa of South India with medicinal properties",
+                    bestTime: "June to September",
+                    highlights: ["Medicinal waters", "Multiple tiers", "Ayurvedic benefits"],
+                    details: "Known for its therapeutic properties, the water is believed to have medicinal value due to herbs from the Western Ghats. Multiple tiers offer different experiences."
+                },
+                hogenakkal: {
+                    name: "Hogenakkal Falls, Tamil Nadu",
+                    description: "Niagara of India with coracle boat rides",
+                    bestTime: "July to October",
+                    highlights: ["Coracle rides", "Medicinal baths", "Carbonatite rocks"],
+                    details: "The Kaveri River creates these falls over carbonatite rocks. Famous for coracle boat rides and oil massages by local fishermen."
+                },
+                // Mountains
+                nandadevi: {
+                    name: "Nanda Devi, Uttarakhand",
+                    description: "India's second-highest mountain peak",
+                    bestTime: "May to October",
+                    highlights: ["Biosphere Reserve", "Trekking", "Rare flora fauna"],
+                    details: "At 7,816 meters, this peak is surrounded by the Nanda Devi Biosphere Reserve, home to rare Himalayan wildlife and alpine flowers."
+                },
+                kanchenjunga: {
+                    name: "Kanchenjunga, Sikkim",
+                    description: "World's third-highest peak with stunning sunrise views",
+                    bestTime: "March to May, October to December",
+                    highlights: ["Sunrise views", "Trekking routes", "Buddhist monasteries"],
+                    details: "The 8,586-meter peak offers spectacular sunrise views from Tiger Hill in Darjeeling and various viewpoints in Sikkim."
+                },
+                anamudi: {
+                    name: "Anamudi Peak, Kerala",
+                    description: "Highest peak in South India in Eravikulam National Park",
+                    bestTime: "September to March",
+                    highlights: ["Nilgiri Tahr", "Shola forests", "Tea plantations"],
+                    details: "At 2,695 meters, this peak in the Western Ghats is home to the endangered Nilgiri Tahr and unique shola forest ecosystem."
+                },
+                mullayanagiri: {
+                    name: "Mullayanagiri, Karnataka",
+                    description: "Highest peak in Karnataka with panoramic views",
+                    bestTime: "September to March",
+                    highlights: ["Sunrise views", "Coffee plantations", "Trekking"],
+                    details: "At 1,930 meters, this peak offers 360-degree views of the Western Ghats and is surrounded by coffee plantations and dense forests."
+                },
+                doddabetta: {
+                    name: "Doddabetta Peak, Tamil Nadu",
+                    description: "Highest peak in Nilgiri Hills near Ooty",
+                    bestTime: "April to June, September to November",
+                    highlights: ["Telescope house", "Panoramic views", "Pleasant climate"],
+                    details: "At 2,637 meters, this peak offers panoramic views of the Nilgiri Hills and has a telescope house for better viewing of the landscape."
+                },
+                // North India Locations
+                delhi: {
+                    name: "Delhi",
+                    description: "Capital city blending Mughal heritage with modern India",
+                    bestTime: "October to March",
+                    highlights: ["Red Fort", "India Gate", "Lotus Temple"],
+                    details: "India's capital showcases 1000 years of history with Mughal monuments, British colonial architecture, and modern attractions. From the majestic Red Fort to the serene Lotus Temple, Delhi offers diverse experiences.",
+                    category: "Capital City",
+                    rating: "4.5/5",
+                    distance: "National Capital"
+                },
+                tajmahal: {
+                    name: "Taj Mahal, Agra",
+                    description: "UNESCO World Heritage monument of eternal love",
+                    bestTime: "October to March",
+                    highlights: ["Marble architecture", "Sunrise/sunset views", "Mughal gardens"],
+                    details: "Built by Emperor Shah Jahan for his wife Mumtaz, this ivory-white marble mausoleum is considered the finest example of Mughal architecture and a symbol of India worldwide.",
+                    category: "Monument",
+                    rating: "4.9/5",
+                    distance: "200 km from Delhi"
+                },
+                redfort: {
+                    name: "Red Fort, Delhi",
+                    description: "Mughal fortress and UNESCO World Heritage site",
+                    bestTime: "October to March",
+                    highlights: ["Mughal architecture", "Light & Sound show", "Independence Day venue"],
+                    details: "The main residence of the Mughal emperors for 200 years, this red sandstone fort complex showcases the peak of Mughal creativity and serves as the venue for India's Independence Day celebrations.",
+                    category: "Fort",
+                    rating: "4.3/5",
+                    distance: "Old Delhi"
+                },
+                indiagate: {
+                    name: "India Gate, Delhi",
+                    description: "War memorial and iconic landmark of Delhi",
+                    bestTime: "October to March",
+                    highlights: ["War memorial", "Evening illumination", "Rajpath views"],
+                    details: "A 42-meter high war memorial dedicated to Indian soldiers who died in World War I. The area around India Gate is perfect for evening strolls and picnics.",
+                    category: "Memorial",
+                    rating: "4.4/5",
+                    distance: "Central Delhi"
+                },
+                goldentemple: {
+                    name: "Golden Temple, Amritsar",
+                    description: "Holiest Sikh shrine with golden dome",
+                    bestTime: "October to March",
+                    highlights: ["Golden architecture", "Langar (free meal)", "Spiritual atmosphere"],
+                    details: "The most sacred shrine of Sikhism, covered in gold and surrounded by a holy pool. The temple serves free meals to over 100,000 visitors daily regardless of religion or background.",
+                    category: "Temple",
+                    rating: "4.8/5",
+                    distance: "450 km from Delhi"
+                },
+                varanasi: {
+                    name: "Varanasi, Uttar Pradesh",
+                    description: "Spiritual capital and oldest living city in the world",
+                    bestTime: "October to March",
+                    highlights: ["Ganga Aarti", "Ancient ghats", "Kashi Vishwanath Temple"],
+                    details: "One of the world's oldest continuously inhabited cities, Varanasi is the spiritual heart of India. The evening Ganga Aarti ceremony and boat rides on the Ganges offer profound spiritual experiences.",
+                    category: "Spiritual City",
+                    rating: "4.6/5",
+                    distance: "320 km from Lucknow"
+                },
+                rishikesh: {
+                    name: "Rishikesh, Uttarakhand",
+                    description: "Yoga capital of the world with adventure sports",
+                    bestTime: "February to May, September to November",
+                    highlights: ["Yoga ashrams", "River rafting", "Laxman Jhula"],
+                    details: "Known as the 'Yoga Capital of the World', Rishikesh offers spiritual retreats, adventure sports, and stunning Himalayan views. The Beatles famously visited here in 1968.",
+                    category: "Spiritual & Adventure",
+                    rating: "4.5/5",
+                    distance: "240 km from Delhi"
+                },
+                nainital: {
+                    name: "Nainital, Uttarakhand",
+                    description: "Lake city in Kumaon hills with colonial charm",
+                    bestTime: "March to June, September to November",
+                    highlights: ["Naini Lake", "Mall Road", "Snow View Point"],
+                    details: "A charming hill station built around the emerald Naini Lake, offering boating, colonial architecture, and panoramic Himalayan views. Perfect for a romantic getaway or family vacation.",
+                    category: "Hill Station",
+                    rating: "4.4/5",
+                    distance: "300 km from Delhi"
+                },
+                mathura: {
+                    name: "Mathura-Vrindavan, Uttar Pradesh",
+                    description: "Krishna's birthplace with sacred temples",
+                    bestTime: "October to March",
+                    highlights: ["Krishna Janmabhoomi", "Banke Bihari Temple", "Holi celebrations"],
+                    details: "The birthplace of Lord Krishna, these twin cities are filled with temples, ashrams, and spiritual energy. The Holi celebrations here are world-famous for their colors and devotion.",
+                    category: "Pilgrimage",
+                    rating: "4.5/5",
+                    distance: "150 km from Delhi"
+                },
+                kasol: {
+                    name: "Kasol, Himachal Pradesh",
+                    description: "Mini Israel in Parvati Valley with Israeli cafes",
+                    bestTime: "March to June, September to November",
+                    highlights: ["Parvati Valley", "Israeli cuisine", "Kheerganga trek"],
+                    details: "A small village in Parvati Valley popular with Israeli travelers, offering stunning mountain views, Israeli food, and access to beautiful treks like Kheerganga and Tosh.",
+                    category: "Backpacker Haven",
+                    rating: "4.3/5",
+                    distance: "500 km from Delhi"
+                },
+                mcleodganj: {
+                    name: "McLeod Ganj, Himachal Pradesh",
+                    description: "Little Lhasa with Dalai Lama residence",
+                    bestTime: "March to June, September to November",
+                    highlights: ["Dalai Lama Temple", "Tibetan culture", "Triund trek"],
+                    details: "Home to the Dalai Lama and Tibetan government-in-exile, this hill station offers Tibetan culture, monasteries, and beautiful treks with views of Dhauladhar ranges.",
+                    category: "Cultural Hub",
+                    rating: "4.4/5",
+                    distance: "480 km from Delhi"
+                }
+            };
+
+            const place = locationData[location];
+            if (!place) {
+                return "I couldn't find detailed information about that specific location. Try asking about popular destinations or hidden gems!";
+            }
+
+            return `
+                <div class="enhanced-location-card">
+                    <div class="location-header">
+                        <div class="location-info">
+                            <h3>${place.name}</h3>
+                            <div class="location-meta">
+                                <span class="category">${place.category || 'Destination'}</span>
+                                <span class="rating">⭐ ${place.rating || 'N/A'}</span>
+                                <span class="distance">📍 ${place.distance || 'Location'}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="location-content">
+                        <p class="description">${place.description}</p>
+                        <div class="details-grid">
+                            <div class="detail-item">
+                                <strong>🗓️ Best Time:</strong> ${place.bestTime}
+                            </div>
+                            <div class="detail-item">
+                                <strong>✨ Highlights:</strong> ${place.highlights.join(', ')}
+                            </div>
+                        </div>
+                        <div class="location-details">
+                            <p>${place.details}</p>
+                        </div>
+                        <div class="action-buttons">
+                            <button class="action-btn" onclick="showNearbyAttractions('${location}')">🗺️ Nearby Places</button>
+                            <button class="action-btn" onclick="showTravelTips('${location}')">💡 Travel Tips</button>
+                            <button class="action-btn" onclick="showWeatherInfo('${location}')">🌤️ Weather</button>
+                        </div>
+                    </div>
+                </div>
+                <br>Explore more about this amazing destination!`;
+        }
+
+        function getTemplesAndMonumentsResponse(message) {
+            return `🏛️ Famous Temples & Monuments in India:<br><br>
+                <div class="destination-card">
+                    <h4>🕌 Charminar, Hyderabad</h4>
+                    <p><strong>Best Time:</strong> October to March</p>
+                    <p><strong>Highlights:</strong> Historic architecture, Laad Bazaar, Mecca Masjid</p>
+                    <p>Iconic 16th-century monument and symbol of Hyderabad with four grand arches.</p>
+                </div>
+                <div class="destination-card">
+                    <h4>🏰 Golconda Fort, Hyderabad</h4>
+                    <p><strong>Best Time:</strong> October to March</p>
+                    <p><strong>Highlights:</strong> Sound system, Diamond history, City views</p>
+                    <p>Medieval fort famous for its acoustic system and diamond trading heritage.</p>
+                </div>
+                <div class="destination-card">
+                    <h4>🙏 Tirupati Balaji Temple</h4>
+                    <p><strong>Best Time:</strong> September to March</p>
+                    <p><strong>Highlights:</strong> Richest temple, Tirumala Hills, Spiritual experience</p>
+                    <p>World's richest temple dedicated to Lord Venkateswara on seven hills.</p>
+                </div>
+                <div class="destination-card">
+                    <h4>🏛️ Meenakshi Temple, Madurai</h4>
+                    <p><strong>Best Time:</strong> October to March</p>
+                    <p><strong>Highlights:</strong> Colorful gopurams, Thousand pillars, Evening ceremonies</p>
+                    <p>Magnificent Dravidian temple with towering colorful sculptures.</p>
+                </div>
+                <br>Each monument tells a unique story of India's rich cultural heritage!`;
+        }
+
+        function processMessage(message) {
+            const lowerMessage = message.toLowerCase();
+            let response = '';
+            
+            // First check for specific location searches
+            const specificLocation = findSpecificLocation(lowerMessage);
+            if (specificLocation) {
+                response = getSpecificLocationResponse(specificLocation);
+            }
+            // Check for caves
+            else if (lowerMessage.includes('cave') || lowerMessage.includes('ajanta') || lowerMessage.includes('ellora') || lowerMessage.includes('elephanta') || lowerMessage.includes('borra')) {
+                response = getCavesResponse(lowerMessage);
+            }
+            // Check for waterfalls
+            else if (lowerMessage.includes('waterfall') || lowerMessage.includes('falls') || lowerMessage.includes('jog') || lowerMessage.includes('dudhsagar') || lowerMessage.includes('athirapally')) {
+                response = getWaterfallsResponse(lowerMessage);
+            }
+            // Check for mountains
+            else if (lowerMessage.includes('mountain') || lowerMessage.includes('peak') || lowerMessage.includes('nanda devi') || lowerMessage.includes('kanchenjunga') || lowerMessage.includes('anamudi')) {
+                response = getMountainsResponse(lowerMessage);
+            }
+            // Check for temples and monuments
+            else if (lowerMessage.includes('temple') || lowerMessage.includes('monument') || lowerMessage.includes('charminar') || lowerMessage.includes('golconda') || lowerMessage.includes('tirupati')) {
+                response = getTemplesAndMonumentsResponse(lowerMessage);
+            }
+            // Check for destination queries
+            else if (lowerMessage.includes('hidden') || lowerMessage.includes('offbeat') || lowerMessage.includes('unexplored')) {
+                response = getHiddenGemsResponse(lowerMessage);
+            } else if (lowerMessage.includes('popular') || lowerMessage.includes('famous')) {
+                response = getPopularDestinationsResponse(lowerMessage);
+            } else if (lowerMessage.includes('northeast') || lowerMessage.includes('north east')) {
+                response = getNortheastResponse();
+            } else if (lowerMessage.includes('north india') || lowerMessage.includes('northern india')) {
+                response = getNorthIndiaResponse(lowerMessage);
+            } else if (lowerMessage.includes('south india') || lowerMessage.includes('southern india')) {
+                response = getSouthIndiaResponse(lowerMessage);
+            } else if (lowerMessage.includes('delhi') && !lowerMessage.includes('new delhi')) {
+                response = getDelhiResponse(lowerMessage);
+            } else if (lowerMessage.includes('uttar pradesh') || lowerMessage.includes('up ')) {
+                response = getUttarPradeshResponse(lowerMessage);
+            } else if (lowerMessage.includes('andhra pradesh') || lowerMessage.includes('andhra')) {
+                response = getAndhraResponse(lowerMessage);
+            } else if (lowerMessage.includes('telangana')) {
+                response = getTelanganaResponse(lowerMessage);
+            } else if (lowerMessage.includes('karnataka')) {
+                response = getKarnatakaResponse(lowerMessage);
+            } else if (lowerMessage.includes('tamil nadu') || lowerMessage.includes('tamilnadu')) {
+                response = getTamilNaduResponse(lowerMessage);
+            } else if (lowerMessage.includes('rajasthan')) {
+                response = getRajasthanResponse(lowerMessage);
+            } else if (lowerMessage.includes('kerala')) {
+                response = getKeralaResponse(lowerMessage);
+            } else if (lowerMessage.includes('budget') || lowerMessage.includes('cheap')) {
+                response = getBudgetTipsResponse();
+            } else if (lowerMessage.includes('food') || lowerMessage.includes('cuisine')) {
+                response = getFoodResponse();
+            } else if (lowerMessage.includes('adventure') || lowerMessage.includes('trekking')) {
+                response = getAdventureResponse();
+            } else if (lowerMessage.includes('beach')) {
+                response = getBeachResponse();
+            } else if (lowerMessage.includes('mountain') || lowerMessage.includes('hill')) {
+                response = getMountainResponse();
+            } else {
+                response = getGeneralResponse();
+            }
+            
+            addMessage(response, 'bot');
+        }
+
+        function getHiddenGemsResponse(message) {
+            let response = "🌟 Here are some incredible hidden gems in India:<br><br>";
+            
+            if (message.includes('northeast') || message.includes('north east')) {
+                return getNortheastResponse();
+            }
+            
+            const hiddenGems = [
+                destinations.hidden.ziro,
+                destinations.hidden.majuli,
+                destinations.hidden.chopta,
+                destinations.hidden.spiti
+            ];
+            
+            hiddenGems.forEach(dest => {
+                response += createDestinationCard(dest);
+            });
+            
+            response += "<br>These places offer authentic experiences away from crowds! Would you like detailed information about any specific destination?";
+            return response;
+        }
+
+        function getNortheastResponse() {
+            return `🏔️ Northeast India is full of hidden treasures:<br><br>
+                ${createDestinationCard(destinations.hidden.ziro)}
+                ${createDestinationCard(destinations.hidden.majuli)}
+                <div class="destination-card">
+                    <h4>🌸 Dzukou Valley, Nagaland</h4>
+                    <p><strong>Best Time:</strong> June to September</p>
+                    <p><strong>Highlights:</strong> Valley of flowers, trekking, pristine nature</p>
+                    <p>Known as the "Valley of Flowers of Northeast" with stunning seasonal blooms.</p>
+                </div>
+                <div class="destination-card">
+                    <h4>🏞️ Mawlynnong, Meghalaya</h4>
+                    <p><strong>Best Time:</strong> October to May</p>
+                    <p><strong>Highlights:</strong> Cleanest village in Asia, living root bridges</p>
+                    <p>Experience sustainable living and unique Khasi culture.</p>
+                </div>
+                <br>The Northeast offers incredible biodiversity and unique tribal cultures!`;
+        }
+
+        function getRajasthanResponse(message) {
+            if (message.includes('offbeat') || message.includes('hidden')) {
+                return `🏰 Offbeat Rajasthan destinations:<br><br>
+                    <div class="destination-card">
+                        <h4>🏜️ Khimsar, Nagaur</h4>
+                        <p><strong>Best Time:</strong> October to March</p>
+                        <p><strong>Highlights:</strong> Sand dunes, heritage hotel, camel safaris</p>
+                        <p>A peaceful desert town with authentic Rajasthani culture.</p>
+                    </div>
+                    <div class="destination-card">
+                        <h4>🦅 Keoladeo National Park, Bharatpur</h4>
+                        <p><strong>Best Time:</strong> October to March</p>
+                        <p><strong>Highlights:</strong> Bird watching, UNESCO site, cycling trails</p>
+                        <p>Former royal hunting ground now a bird paradise.</p>
+                    </div>
+                    <div class="destination-card">
+                        <h4>🏛️ Bundi</h4>
+                        <p><strong>Best Time:</strong> October to March</p>
+                        <p><strong>Highlights:</strong> Step wells, murals, Taragarh Fort</p>
+                        <p>The "Blue City" with stunning architecture and fewer crowds.</p>
+                    </div>
+                    <br>These places showcase Rajasthan's heritage without the tourist rush!`;
+            } else {
+                return `🏰 Rajasthan - The Land of Kings:<br><br>
+                    ${createDestinationCard(destinations.popular.rajasthan)}
+                    <br>Popular attractions include Jaipur's Pink City, Udaipur's romantic lakes, and Jaisalmer's golden fort. Would you like offbeat Rajasthan recommendations instead?`;
+            }
+        }
+
+        function getKeralaResponse(message) {
+            if (message.includes('unexplored') || message.includes('hidden')) {
+                return `🌴 Unexplored Kerala gems:<br><br>
+                    <div class="destination-card">
+                        <h4>🏞️ Vagamon</h4>
+                        <p><strong>Best Time:</strong> September to March</p>
+                        <p><strong>Highlights:</strong> Rolling meadows, pine forests, paragliding</p>
+                        <p>A serene hill station perfect for nature lovers.</p>
+                    </div>
+                    <div class="destination-card">
+                        <h4>🏖️ Bekal</h4>
+                        <p><strong>Best Time:</strong> October to March</p>
+                        <p><strong>Highlights:</strong> Pristine beaches, Bekal Fort, backwaters</p>
+                        <p>Untouched coastal beauty in northern Kerala.</p>
+                    </div>
+                    <div class="destination-card">
+                        <h4>🌿 Silent Valley National Park</h4>
+                        <p><strong>Best Time:</strong> December to April</p>
+                        <p><strong>Highlights:</strong> Pristine rainforest, endemic species, trekking</p>
+                        <p>One of India's last remaining tropical rainforests.</p>
+                    </div>
+                    <br>These hidden spots offer Kerala's natural beauty without crowds!`;
+            } else {
+                return `🌴 Kerala - God's Own Country:<br><br>
+                    ${createDestinationCard(destinations.popular.kerala)}
+                    <br>Famous for houseboats in Alleppey, tea gardens in Munnar, and Ayurvedic treatments. Want to explore lesser-known Kerala destinations?`;
+            }
+        }
+
+        function getBudgetTipsResponse() {
+            return `💰 Budget Travel Tips for India:<br><br>
+                <div class="destination-card">
+                    <h4>🚂 Transportation</h4>
+                    <p>• Use Indian Railways for long distances (book in advance)</p>
+                    <p>• Local buses and shared autos for short trips</p>
+                    <p>• Consider sleeper class trains for overnight journeys</p>
+                </div>
+                <div class="destination-card">
+                    <h4>🏠 Accommodation</h4>
+                    <p>• Stay in hostels, guesthouses, or homestays</p>
+                    <p>• Book government tourism accommodations</p>
+                    <p>• Consider dormitories in popular destinations</p>
+                </div>
+                <div class="destination-card">
+                    <h4>🍽️ Food & Activities</h4>
+                    <p>• Eat at local dhabas and street food stalls</p>
+                    <p>• Visit free attractions like temples and markets</p>
+                    <p>• Travel during off-season for better deals</p>
+                </div>
+                <br>Budget: ₹1000-2000 per day for backpacker style travel!`;
+        }
+
+        function getFoodResponse() {
+            return `🍛 Indian Cuisine Highlights:<br><br>
+                <div class="destination-card">
+                    <h4>🌶️ North India</h4>
+                    <p>Butter chicken, naan, rajma, chole bhature, lassi</p>
+                    <p>Rich gravies, wheat-based breads, dairy products</p>
+                </div>
+                <div class="destination-card">
+                    <h4>🥥 South India</h4>
+                    <p>Dosa, idli, sambar, coconut chutney, filter coffee</p>
+                    <p>Rice-based dishes, coconut, curry leaves, spices</p>
+                </div>
+                <div class="destination-card">
+                    <h4>🦐 Coastal Regions</h4>
+                    <p>Fish curry, prawn fry, appam, seafood specialties</p>
+                    <p>Fresh seafood with coconut and local spices</p>
+                </div>
+                <br>Each region has unique flavors - try local specialties wherever you go!`;
+        }
+
+        function getAdventureResponse() {
+            return `🏔️ Adventure Activities in India:<br><br>
+                <div class="destination-card">
+                    <h4>🥾 Trekking</h4>
+                    <p><strong>Popular:</strong> Valley of Flowers, Roopkund, Kedarnath</p>
+                    <p><strong>Hidden:</strong> Chopta-Chandrashila, Har Ki Dun, Brahmatal</p>
+                </div>
+                <div class="destination-card">
+                    <h4>🏄 Water Sports</h4>
+                    <p><strong>Rafting:</strong> Rishikesh, Zanskar River</p>
+                    <p><strong>Scuba:</strong> Andaman, Goa, Pondicherry</p>
+                </div>
+                <div class="destination-card">
+                    <h4>🪂 Aerial Adventures</h4>
+                    <p><strong>Paragliding:</strong> Bir Billing, Manali, Kamshet</p>
+                    <p><strong>Skydiving:</strong> Mysore, Aamby Valley</p>
+                </div>
+                <br>Always choose certified operators and check weather conditions!`;
+        }
+
+        function getBeachResponse() {
+            return `🏖️ Beautiful Beaches in India:<br><br>
+                <div class="destination-card">
+                    <h4>🌊 Popular Beaches</h4>
+                    <p><strong>Goa:</strong> Baga, Calangute, Anjuna</p>
+                    <p><strong>Kerala:</strong> Kovalam, Varkala, Marari</p>
+                </div>
+                <div class="destination-card">
+                    <h4>🏝️ Hidden Beach Gems</h4>
+                    <p><strong>Gokarna, Karnataka:</strong> Om Beach, Half Moon Beach</p>
+                    <p><strong>Tarkarli, Maharashtra:</strong> Clear waters, water sports</p>
+                    <p><strong>Neil Island, Andaman:</strong> Pristine coral beaches</p>
+                </div>
+                <div class="destination-card">
+                    <h4>🐚 Unique Beaches</h4>
+                    <p><strong>Chandipur, Odisha:</strong> Disappearing sea phenomenon</p>
+                    <p><strong>Kapu Beach, Karnataka:</strong> Lighthouse and rocky shores</p>
+                </div>
+                <br>Each beach offers different experiences - from party vibes to serene solitude!`;
+        }
+
+        function getCavesResponse(message) {
+            return `🏛️ Famous Caves in India:<br><br>
+                <div class="destination-card">
+                    <h4>🎨 Ajanta Caves, Maharashtra</h4>
+                    <p><strong>Best Time:</strong> October to March</p>
+                    <p><strong>Highlights:</strong> Buddhist art, Rock paintings, UNESCO World Heritage</p>
+                    <p>30 ancient Buddhist caves with exquisite paintings from 2nd century BCE to 6th century CE.</p>
+                </div>
+                <div class="destination-card">
+                    <h4>🏛️ Ellora Caves, Maharashtra</h4>
+                    <p><strong>Best Time:</strong> October to March</p>
+                    <p><strong>Highlights:</strong> Kailasa Temple, Multi-faith architecture, Stone carvings</p>
+                    <p>34 caves representing Buddhism, Hinduism, and Jainism with the world's largest monolithic structure.</p>
+                </div>
+                <div class="destination-card">
+                    <h4>🕉️ Elephanta Caves, Mumbai</h4>
+                    <p><strong>Best Time:</strong> October to March</p>
+                    <p><strong>Highlights:</strong> Trimurti sculpture, Shiva temples, Ferry ride</p>
+                    <p>7th-century Hindu cave temples on Elephanta Island with magnificent Shiva sculptures.</p>
+                </div>
+                <div class="destination-card">
+                    <h4>💎 Borra Caves, Andhra Pradesh</h4>
+                    <p><strong>Best Time:</strong> October to March</p>
+                    <p><strong>Highlights:</strong> Natural formations, Limestone structures, Tribal legends</p>
+                    <p>Million-year-old limestone caves with stunning stalactites and stalagmites.</p>
+                </div>
+                <br>Each cave system offers unique historical and geological wonders!`;
+        }
+
+        function getWaterfallsResponse(message) {
+            return `💧 Spectacular Waterfalls in India:<br><br>
+                <div class="destination-card">
+                    <h4>🌊 Jog Falls, Karnataka</h4>
+                    <p><strong>Best Time:</strong> July to January</p>
+                    <p><strong>Highlights:</strong> Four-tiered falls, Monsoon beauty, Trekking trails</p>
+                    <p>India's second-highest plunge waterfall with four distinct cascades - Raja, Rani, Rover, and Rocket.</p>
+                </div>
+                <div class="destination-card">
+                    <h4>🥛 Dudhsagar Falls, Goa</h4>
+                    <p><strong>Best Time:</strong> June to September</p>
+                    <p><strong>Highlights:</strong> Train crossing, Trekking, Swimming pools</p>
+                    <p>310-meter tall milky white waterfall famous for the train crossing through it.</p>
+                </div>
+                <div class="destination-card">
+                    <h4>🌈 Athirapally Falls, Kerala</h4>
+                    <p><strong>Best Time:</strong> June to September</p>
+                    <p><strong>Highlights:</strong> Film location, Rainbow views, Nature walks</p>
+                    <p>The "Niagara of India" surrounded by lush forests, featured in Baahubali movie.</p>
+                </div>
+                <div class="destination-card">
+                    <h4>🚣 Hogenakkal Falls, Tamil Nadu</h4>
+                    <p><strong>Best Time:</strong> July to October</p>
+                    <p><strong>Highlights:</strong> Coracle rides, Medicinal baths, Carbonatite rocks</p>
+                    <p>Famous for coracle boat rides and therapeutic oil massages by local fishermen.</p>
+                </div>
+                <br>Best experienced during monsoon season for maximum flow and beauty!`;
+        }
+
+        function getMountainsResponse(message) {
+            return `⛰️ Majestic Mountain Peaks in India:<br><br>
+                <div class="destination-card">
+                    <h4>🏔️ Kanchenjunga, Sikkim</h4>
+                    <p><strong>Best Time:</strong> March to May, October to December</p>
+                    <p><strong>Highlights:</strong> Sunrise views, Trekking routes, Buddhist monasteries</p>
+                    <p>World's third-highest peak at 8,586 meters with spectacular sunrise views from Tiger Hill.</p>
+                </div>
+                <div class="destination-card">
+                    <h4>🌸 Nanda Devi, Uttarakhand</h4>
+                    <p><strong>Best Time:</strong> May to October</p>
+                    <p><strong>Highlights:</strong> Biosphere Reserve, Trekking, Rare flora fauna</p>
+                    <p>India's second-highest peak at 7,816 meters surrounded by UNESCO Biosphere Reserve.</p>
+                </div>
+                <div class="destination-card">
+                    <h4>🦌 Anamudi Peak, Kerala</h4>
+                    <p><strong>Best Time:</strong> September to March</p>
+                    <p><strong>Highlights:</strong> Nilgiri Tahr, Shola forests, Tea plantations</p>
+                    <p>Highest peak in South India at 2,695 meters, home to endangered Nilgiri Tahr.</p>
+                </div>
+                <div class="destination-card">
+                    <h4>☕ Mullayanagiri, Karnataka</h4>
+                    <p><strong>Best Time:</strong> September to March</p>
+                    <p><strong>Highlights:</strong> Sunrise views, Coffee plantations, Trekking</p>
+                    <p>Karnataka's highest peak at 1,930 meters offering 360-degree Western Ghats views.</p>
+                </div>
+                <br>Each peak offers unique trekking experiences and breathtaking panoramic views!`;
+        }
+
+        function getMountainResponse() {
+            return `⛰️ Mountain Destinations in India:<br><br>
+                <div class="destination-card">
+                    <h4>🏔️ Himalayas</h4>
+                    <p><strong>Popular:</strong> Manali, Shimla, Darjeeling</p>
+                    <p><strong>Hidden:</strong> Tirthan Valley, Kasol, Malana</p>
+                </div>
+                <div class="destination-card">
+                    <h4>🌿 Western Ghats</h4>
+                    <p><strong>Popular:</strong> Munnar, Ooty, Coorg</p>
+                    <p><strong>Hidden:</strong> Agumbe, Kudremukh, Chikmagalur</p>
+                </div>
+                <div class="destination-card">
+                    <h4>🏞️ Eastern Ghats</h4>
+                    <p><strong>Araku Valley:</strong> Coffee plantations, tribal culture</p>
+                    <p><strong>Yercaud:</strong> Lake views, pleasant climate</p>
+                </div>
+                <br>Mountain destinations offer cool climate, scenic views, and adventure activities!`;
+        }
+
+        function getSouthIndiaResponse(message) {
+            if (message.includes('hidden') || message.includes('offbeat')) {
+                return `🏛️ Hidden Gems of South India:<br><br>
+                    ${createDestinationCard(destinations.hidden.gandikota)}
+                    ${createDestinationCard(destinations.hidden.lepakshi)}
+                    ${createDestinationCard(destinations.hidden.belum)}
+                    ${createDestinationCard(destinations.hidden.araku)}
+                    <br>South India has incredible hidden treasures beyond the popular destinations!`;
+            } else {
+                return `🏛️ South India - Land of Temples and Culture:<br><br>
+                    ${createDestinationCard(destinations.popular.kerala)}
+                    ${createDestinationCard(destinations.popular.karnataka)}
+                    ${createDestinationCard(destinations.popular.tamilnadu)}
+                    ${createDestinationCard(destinations.southIndia.pondicherry)}
+                    <br>Rich in culture, temples, and natural beauty! Want to explore hidden gems in specific states?`;
+            }
+        }
+
+        function getNorthIndiaResponse(message) {
+            if (message.includes('hidden') || message.includes('offbeat')) {
+                return `🏔️ Hidden Gems of North India:<br><br>
+                    ${createDestinationCard(destinations.hidden.tirthan)}
+                    ${createDestinationCard(destinations.hidden.kasol)}
+                    ${createDestinationCard(destinations.hidden.binsar)}
+                    ${createDestinationCard(destinations.hidden.munsiyari)}
+                    ${createDestinationCard(destinations.hidden.khajjiar)}
+                    <br>North India's hidden valleys and hill stations offer pristine beauty away from crowds!`;
+            } else {
+                return `🏔️ North India - Heritage and Himalayas:<br><br>
+                    ${createDestinationCard(destinations.northIndia.delhi)}
+                    ${createDestinationCard(destinations.northIndia.agra)}
+                    ${createDestinationCard(destinations.northIndia.varanasi)}
+                    ${createDestinationCard(destinations.northIndia.amritsar)}
+                    ${createDestinationCard(destinations.northIndia.rishikesh)}
+                    <br>From iconic monuments to spiritual cities and Himalayan retreats! Want to explore offbeat North India?`;
+            }
+        }
+
+        function getDelhiResponse(message) {
+            return `🏛️ Delhi - India's Capital City:<br><br>
+                <div class="destination-card">
+                    <h4>🏰 Red Fort (Lal Qila)</h4>
+                    <p><strong>Best Time:</strong> October to March</p>
+                    <p><strong>Highlights:</strong> Mughal architecture, Light & Sound show, UNESCO site</p>
+                    <p>Main residence of Mughal emperors and venue for Independence Day celebrations.</p>
+                </div>
+                <div class="destination-card">
+                    <h4>🏛️ India Gate</h4>
+                    <p><strong>Best Time:</strong> Evening visits recommended</p>
+                    <p><strong>Highlights:</strong> War memorial, Evening illumination, Rajpath</p>
+                    <p>42-meter high war memorial perfect for evening strolls and picnics.</p>
+                </div>
+                <div class="destination-card">
+                    <h4>🕌 Lotus Temple</h4>
+                    <p><strong>Best Time:</strong> October to March</p>
+                    <p><strong>Highlights:</strong> Unique architecture, Meditation, Bahai faith</p>
+                    <p>Stunning lotus-shaped temple open to all religions for meditation.</p>
+                </div>
+                <div class="destination-card">
+                    <h4>🏛️ Qutub Minar</h4>
+                    <p><strong>Best Time:</strong> October to March</p>
+                    <p><strong>Highlights:</strong> Tallest brick minaret, Indo-Islamic architecture</p>
+                    <p>73-meter tall victory tower showcasing early Indo-Islamic architecture.</p>
+                </div>
+                <br>Delhi offers a perfect blend of ancient heritage and modern attractions!`;
+        }
+
+        function getUttarPradeshResponse(message) {
+            return `🕌 Uttar Pradesh - Heartland of India:<br><br>
+                <div class="destination-card">
+                    <h4>🕌 Taj Mahal, Agra</h4>
+                    <p><strong>Best Time:</strong> October to March</p>
+                    <p><strong>Highlights:</strong> Marble architecture, Sunrise views, Mughal gardens</p>
+                    <p>UNESCO World Heritage monument and symbol of eternal love.</p>
+                </div>
+                <div class="destination-card">
+                    <h4>🛕 Varanasi (Kashi)</h4>
+                    <p><strong>Best Time:</strong> October to March</p>
+                    <p><strong>Highlights:</strong> Ganga Aarti, Ancient ghats, Kashi Vishwanath</p>
+                    <p>World's oldest living city and spiritual capital of India.</p>
+                </div>
+                <div class="destination-card">
+                    <h4>🙏 Mathura-Vrindavan</h4>
+                    <p><strong>Best Time:</strong> October to March</p>
+                    <p><strong>Highlights:</strong> Krishna temples, Holi celebrations, Spiritual atmosphere</p>
+                    <p>Birthplace of Lord Krishna with numerous temples and ashrams.</p>
+                </div>
+                <div class="destination-card">
+                    <h4>🏰 Lucknow</h4>
+                    <p><strong>Best Time:</strong> October to March</p>
+                    <p><strong>Highlights:</strong> Nawabi culture, Bara Imambara, Cuisine</p>
+                    <p>City of Nawabs famous for its culture, architecture, and kebabs.</p>
+                </div>
+                <br>UP combines spiritual significance with architectural marvels and rich culture!`;
+        }
+
+        function getAndhraResponse(message) {
+            return `🏞️ Andhra Pradesh - Hidden Treasures:<br><br>
+                ${createDestinationCard(destinations.hidden.gandikota)}
+                ${createDestinationCard(destinations.hidden.araku)}
+                ${createDestinationCard(destinations.hidden.lepakshi)}
+                ${createDestinationCard(destinations.hidden.belum)}
+                ${createDestinationCard(destinations.hidden.horsley)}
+                <div class="destination-card">
+                    <h4>🏖️ Vizag (Visakhapatnam)</h4>
+                    <p><strong>Best Time:</strong> October to March</p>
+                    <p><strong>Highlights:</strong> Beaches, Submarine Museum, Kailasagiri</p>
+                    <p>Port city with beautiful beaches and naval heritage.</p>
+                </div>
+                <br>Andhra Pradesh offers diverse experiences from canyons to caves to beaches!`;
+        }
+
+        function getTelanganaResponse(message) {
+            return `🏰 Telangana - Heritage and Nature:<br><br>
+                ${createDestinationCard(destinations.hidden.warangal)}
+                ${createDestinationCard(destinations.hidden.nagarjunasagar)}
+                ${createDestinationCard(destinations.hidden.ananthagiri)}
+                <div class="destination-card">
+                    <h4>🏛️ Hyderabad</h4>
+                    <p><strong>Best Time:</strong> October to March</p>
+                    <p><strong>Highlights:</strong> Charminar, Golconda Fort, Ramoji Film City</p>
+                    <p>City of Nizams with rich history and famous biryani.</p>
+                </div>
+                <div class="destination-card">
+                    <h4>🌊 Pochampally</h4>
+                    <p><strong>Best Time:</strong> October to March</p>
+                    <p><strong>Highlights:</strong> Ikat weaving, Handloom village, Traditional crafts</p>
+                    <p>Famous for exquisite Pochampally silk sarees and ikat patterns.</p>
+                </div>
+                <br>Telangana combines medieval heritage with modern attractions!`;
+        }
+
+        function getKarnatakaResponse(message) {
+            if (message.includes('hidden') || message.includes('offbeat')) {
+                return `🌿 Hidden Karnataka Gems:<br><br>
+                    ${createDestinationCard(destinations.hidden.hampi)}
+                    ${createDestinationCard(destinations.southIndia.chikmagalur)}
+                    <div class="destination-card">
+                        <h4>🏞️ Agumbe</h4>
+                        <p><strong>Best Time:</strong> September to February</p>
+                        <p><strong>Highlights:</strong> Rainforest, Sunset viewpoint, King Cobra research</p>
+                        <p>Cherrapunji of South India with lush Western Ghats.</p>
+                    </div>
+                    <div class="destination-card">
+                        <h4>🏖️ Gokarna</h4>
+                        <p><strong>Best Time:</strong> October to March</p>
+                        <p><strong>Highlights:</strong> Om Beach, Kudle Beach, Mahabaleshwar Temple</p>
+                        <p>Peaceful alternative to Goa with pristine beaches.</p>
+                    </div>
+                    <br>Karnataka's hidden gems offer diverse experiences from ruins to rainforests!`;
+            } else {
+                return `🏛️ Karnataka - Garden State:<br><br>
+                    ${createDestinationCard(destinations.popular.karnataka)}
+                    ${createDestinationCard(destinations.southIndia.coorg)}
+                    <br>Famous for Mysore Palace, Bangalore's gardens, and Coorg's coffee estates. Want to explore offbeat Karnataka?`;
+            }
+        }
+
+        function getTamilNaduResponse(message) {
+            if (message.includes('hidden') || message.includes('offbeat')) {
+                return `🏛️ Hidden Tamil Nadu Treasures:<br><br>
+                    ${createDestinationCard(destinations.southIndia.yercaud)}
+                    <div class="destination-card">
+                        <h4>🏞️ Coonoor</h4>
+                        <p><strong>Best Time:</strong> October to March</p>
+                        <p><strong>Highlights:</strong> Nilgiri Mountain Railway, Tea gardens, Sim's Park</p>
+                        <p>Charming hill station with colonial heritage.</p>
+                    </div>
+                    <div class="destination-card">
+                        <h4>🏖️ Dhanushkodi</h4>
+                        <p><strong>Best Time:</strong> October to March</p>
+                        <p><strong>Highlights:</strong> Ghost town, Ram Setu, Pristine beaches</p>
+                        <p>Mystical abandoned town at India's southern tip.</p>
+                    </div>
+                    <div class="destination-card">
+                        <h4>🌿 Valparai</h4>
+                        <p><strong>Best Time:</strong> September to May</p>
+                        <p><strong>Highlights:</strong> Tea estates, Wildlife, Anamalai Hills</p>
+                        <p>Scenic hill station with tea plantations and elephants.</p>
+                    </div>
+                    <br>Tamil Nadu's hidden gems blend nature, history, and spirituality!`;
+            } else {
+                return `🏛️ Tamil Nadu - Temple State:<br><br>
+                    ${createDestinationCard(destinations.popular.tamilnadu)}
+                    ${createDestinationCard(destinations.southIndia.kodaikanal)}
+                    <br>Famous for Dravidian temples, classical dance, and hill stations. Interested in offbeat Tamil Nadu destinations?`;
+            }
+        }
+
+        function getPopularDestinationsResponse(message) {
+            return `🌟 Popular Indian Destinations:<br><br>
+                ${createDestinationCard(destinations.popular.goa)}
+                ${createDestinationCard(destinations.popular.kerala)}
+                ${createDestinationCard(destinations.popular.rajasthan)}
+                ${createDestinationCard(destinations.popular.karnataka)}
+                <br>These are crowd favorites! Would you prefer some hidden gems instead?`;
+        }
+
+        function getGeneralResponse() {
+            const responses = [
+                "I can help you discover amazing places in India! Try searching for specific locations like 'Charminar', 'Tirupati', or ask about hidden gems, budget travel, food, or adventure activities.",
+                "India has incredible diversity! Ask me about specific places like 'Hampi', 'Golconda', regions like Northeast, Rajasthan, Kerala, or types of destinations like beaches, mountains, or temples.",
+                "Looking for travel inspiration? I can suggest specific destinations, offbeat places, budget tips, local cuisine, or adventure activities across India. Try searching for any location name!",
+                "Tell me what interests you - specific places like 'Meenakshi Temple', nature, culture, adventure, food, or relaxation - and I'll suggest perfect Indian destinations!"
+            ];
+            
+            return responses[Math.floor(Math.random() * responses.length)];
+        }
+
+        function createDestinationCard(destination) {
+            return `
+                <div class="destination-card">
+                    <h4>📍 ${destination.name}</h4>
+                    <p><strong>Best Time:</strong> ${destination.bestTime}</p>
+                    <p><strong>Highlights:</strong> ${destination.highlights.join(', ')}</p>
+                    <p>${destination.description}</p>
+                </div>
+            `;
+        }
+
+        function filterByCategory(category) {
+            // Update active filter button
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Send category search message
+            const categoryMessages = {
+                'monuments': 'famous monuments in india',
+                'temples': 'famous temples in india',
+                'caves': 'caves in india',
+                'waterfalls': 'waterfalls in india',
+                'mountains': 'mountains in india',
+                'beaches': 'beaches in india'
+            };
+            
+            sendMessage(categoryMessages[category] || category);
+        }
+
+        function showNearbyAttractions(location) {
+            const nearbyData = {
+                'charminar': 'Nearby attractions to Charminar include Mecca Masjid (5 min walk), Laad Bazaar for shopping, Salar Jung Museum (2 km), and Golconda Fort (11 km). The area is perfect for exploring on foot!',
+                'golconda': 'Near Golconda Fort you can visit Qutb Shahi Tombs (2 km), Charminar (11 km), Hussain Sagar Lake (15 km), and the Film City (25 km). Great for a full day of sightseeing!',
+                'tirupati': 'Around Tirupati visit Sri Venkateswara Temple, Kapila Theertham waterfall, Sri Kalahasti Temple (36 km), Chandragiri Fort (12 km), and Talakona Waterfalls (49 km).',
+                'hampi': 'Hampi nearby attractions include Virupaksha Temple, Vittala Temple Complex, Matanga Hill for sunset, Anegundi village, and Daroji Bear Sanctuary (15 km).',
+                'gandikota': 'Near Gandikota explore Belum Caves (77 km), Yaganti Temple (85 km), Rollapadu Bird Sanctuary, and Kurnool Fort. Perfect for a weekend trip!',
+                'ajanta': 'Near Ajanta Caves visit Ellora Caves (100 km), Daulatabad Fort (105 km), Aurangabad city attractions, and Bibi Ka Maqbara (110 km).',
+                'jog': 'Around Jog Falls explore Sharavathi Wildlife Sanctuary, Ikkeri historical site (30 km), Keladi (35 km), and Sagar town for accommodation.'
+            };
+            
+            const nearbyInfo = nearbyData[location] || 'Nearby attractions information will be available soon. Try exploring the local area and asking locals for hidden gems!';
+            addMessage(`🗺️ <strong>Nearby Attractions:</strong><br><br>${nearbyInfo}`, 'bot');
+        }
+
+        function showTravelTips(location) {
+            const travelTips = {
+                'charminar': '💡 <strong>Travel Tips for Charminar:</strong><br>• Best time to visit: Early morning or evening<br>• Wear comfortable shoes for walking<br>• Try Hyderabadi biryani nearby<br>• Bargain at Laad Bazaar<br>• Carry water and sun protection',
+                'golconda': '💡 <strong>Travel Tips for Golconda:</strong><br>• Visit during Sound & Light show (evening)<br>• Wear comfortable climbing shoes<br>• Carry water for the climb<br>• Test the acoustic system at entrance<br>• Allow 2-3 hours for complete visit',
+                'tirupati': '💡 <strong>Travel Tips for Tirupati:</strong><br>• Book darshan tickets online in advance<br>• Follow dress code strictly<br>• Carry valid ID proof<br>• Consider staying overnight in Tirumala<br>• Avoid peak festival seasons for shorter queues',
+                'hampi': '💡 <strong>Travel Tips for Hampi:</strong><br>• Rent a bicycle or scooter for easy exploration<br>• Start early to avoid heat<br>• Carry plenty of water<br>• Stay in Hospet for better accommodation<br>• Visit during sunset for best photography',
+                'gandikota': '💡 <strong>Travel Tips for Gandikota:</strong><br>• Visit during sunset for best views<br>• Carry camping gear if planning overnight stay<br>• Book accommodation in advance<br>• Bring your own food and water<br>• Be careful near cliff edges',
+                'ajanta': '💡 <strong>Travel Tips for Ajanta:</strong><br>• Photography inside caves requires special ticket<br>• Wear comfortable walking shoes<br>• Carry water and snacks<br>• Hire a guide for better understanding<br>• Visit early to avoid crowds',
+                'jog': '💡 <strong>Travel Tips for Jog Falls:</strong><br>• Visit during monsoon for maximum flow<br>• Wear non-slip shoes for trekking<br>• Carry raincoat during monsoon<br>• Stay in Sagar for accommodation<br>• Be cautious during heavy rains'
+            };
+            
+            const tips = travelTips[location] || '💡 <strong>General Travel Tips:</strong><br>• Research local weather and customs<br>• Book accommodation in advance<br>• Carry valid ID and emergency contacts<br>• Respect local culture and environment<br>• Stay hydrated and carry first aid';
+            addMessage(tips, 'bot');
+        }
+
+        function showWeatherInfo(location) {
+            const weatherInfo = {
+                'charminar': '🌤️ <strong>Weather in Hyderabad:</strong><br>• Summer (Mar-Jun): Hot, 25-42°C<br>• Monsoon (Jul-Sep): Pleasant, 22-32°C<br>• Winter (Oct-Feb): Cool, 15-28°C<br>• Best months: October to March',
+                'golconda': '🌤️ <strong>Weather in Hyderabad:</strong><br>• Summer: Very hot, avoid midday visits<br>• Monsoon: Pleasant but slippery paths<br>• Winter: Perfect for climbing<br>• Best time: Early morning or evening',
+                'tirupati': '🌤️ <strong>Weather in Tirupati:</strong><br>• Summer (Mar-Jun): Hot, 24-40°C<br>• Monsoon (Jul-Sep): Moderate, 22-35°C<br>• Winter (Oct-Feb): Pleasant, 18-30°C<br>• Tirumala is cooler than Tirupati town',
+                'hampi': '🌤️ <strong>Weather in Hampi:</strong><br>• Summer: Very hot, 25-42°C<br>• Monsoon: Moderate rainfall<br>• Winter: Pleasant, 15-32°C<br>• Best time: October to March',
+                'gandikota': '🌤️ <strong>Weather in Gandikota:</strong><br>• Summer: Hot and dry<br>• Monsoon: Pleasant with greenery<br>• Winter: Cool and perfect for camping<br>• Best time: October to March',
+                'ajanta': '🌤️ <strong>Weather in Ajanta:</strong><br>• Summer: Hot, 25-42°C<br>• Monsoon: Pleasant, good for travel<br>• Winter: Cool and comfortable<br>• Best time: October to March',
+                'jog': '🌤️ <strong>Weather at Jog Falls:</strong><br>• Summer: Warm, falls may be dry<br>• Monsoon: Heavy rains, falls at peak<br>• Winter: Pleasant, reduced water flow<br>• Best time: July to January'
+            };
+            
+            const weather = weatherInfo[location] || '🌤️ <strong>General Weather Info:</strong><br>• Check local weather forecast before travel<br>• Pack according to season<br>• Monsoon season varies by region<br>• Mountain areas are generally cooler<br>• Coastal areas have moderate climate';
+            addMessage(weather, 'bot');
+        }
+
+        // Enter key functionality
+        document.getElementById('chatInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                sendUserMessage();
+            }
+        });
+
+        // Initialize with welcome message
+        document.addEventListener('DOMContentLoaded', function() {
+            // Auto-scroll to bottom
+            const chatMessages = document.getElementById('chatMessages');
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'990df40fa3e657ad',t:'MTc2MDg1MjU1OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
